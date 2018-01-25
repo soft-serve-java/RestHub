@@ -6,7 +6,7 @@
 	<groupId>com.kh013j</groupId>
 	<artifactId>caffinno</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>caffinno</name>
 	<description>This is site for restaurant service improvement by automatisation of some processes in there.</description>
@@ -32,7 +32,6 @@
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
