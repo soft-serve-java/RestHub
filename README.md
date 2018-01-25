@@ -1,2 +1,43 @@
-# CaffInno
-This is project for improvement restaurant service by automatisation of some processes.
+# CaffInno</br</br>
+This is site for reustarant service improvement by automatisation of some processes in there.</br>
+There are four roles in our project such as User, Cook, Waiter and Administrator.</br>
+Their functionality is given below.</br>
+</br></br>
+  User abilities:</br>
+-look through reustarant menu and see detailed information about reustarant dishes like ingredients, callories, price, photo;</br>
+-add preferable dishes from menu into the bucket;</br>
+-correct the count of added in the bucket dishes;</br>
+-delete dishes from the bucket; </br>
+-call a waiter;</br>
+-sort reustarant menu;</br>
+-make an order;</br>
+-see order status such as "in the order queue", "cooking", "ready", "on it's way", "delivered";</br>
+-see time before serving of their dishes;</br>
+-pay for dishes;</br>
+-estimate the the reustarant if they wish;</br>
+-make a feedback about the reustarant if they wish.</br>
+</br></br>
+  Cook abilities:</br>
+-see the optimised queue of orders;</br>
+-change the order status "cooking" to "ready".</br>
+</br></br>
+  Waiter abilities:</br>
+-see the order information like dishes, table number etc.;  </br>
+-change the order status from "on it's way" to "delivered".</br>
+</br></br>
+  Administrator abilities:</br>
+-add new dishes in reustarant menu;</br>
+-edit some dishes in reustarant menu;</br>
+-remove some dishes in reustarant menu;</br>
+-forbid some dishes for servimg because of products lack;</br>
+-see the feedbacks and estimates from users.</br>
+</br></br>
+# Prerequisites</br></br>
+-JDK V.8;</br>
+-Spring Boot v.1.5.9;</br>
+-HTML v.5;</br>
+-Bootstrap v.4;</br>
+-Maven v.3.5+;</br>
+-PostgreSQL v.10.1+;</br>
+
+
