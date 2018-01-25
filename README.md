@@ -1,4 +1,4 @@
-# CaffInno</br</br>
+# CaffInno</br>
 This is site for reustarant service improvement by automatisation of some processes in there.</br>
 There are four roles in our project such as User, Cook, Waiter and Administrator.</br>
 Their functionality is given below.</br>
@@ -32,7 +32,7 @@ Their functionality is given below.</br>
 -forbid some dishes for servimg because of products lack;</br>
 -see the feedbacks and estimates from users.</br>
 </br></br>
-# Prerequisites</br></br>
+# Prerequisites</br>
 -JDK V.8;</br>
 -Spring Boot v.1.5.9;</br>
 -HTML v.5;</br>
