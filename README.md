@@ -4,7 +4,7 @@ There are four roles in our project such as User, Cook, Waiter and Administrator
 Their functionality is given below.</br>
 </br></br>
   User abilities:</br>
--look through restaurant menu and see detailed information about restaurant dishes like ingredients, callories, price, photo;</br>
+-look through restaurant menu and see detailed information about restaurant dishes like ingredients, calories, price, photo;</br>
 -add preferable dishes from menu into the bucket;</br>
 -correct the count of added in the bucket dishes;</br>
 -delete dishes from the bucket; </br>
