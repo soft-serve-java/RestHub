@@ -1,5 +1,5 @@
 # RestHub</br>
-This is site for restaurant service improvement by automatisation of some processes in there.</br>
+This is site for restaurant service improvement by automatization of some processes in there.</br>
 There are four roles in our project such as User, Cook, Waiter and Administrator.</br>
 Their functionality is given below.</br>
 </br></br>
