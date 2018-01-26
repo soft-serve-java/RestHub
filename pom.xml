@@ -6,9 +6,9 @@
 	<groupId>com.kh013j</groupId>
 	<artifactId>caffinno</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
-	<name>caffinno</name>
+	<name>resthub</name>
 	<description>This is site for restaurant service improvement by automatisation of some processes in there.</description>
 
 	<parent>

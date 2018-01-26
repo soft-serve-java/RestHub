@@ -6,6 +6,6 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Hello, our project name</h3>
+<h3>Hello, RestHub</h3>
 </body>
 </html>
