@@ -19,8 +19,13 @@ public class HelloController {
         return "Welcome";
     }
     @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
-    public String Layoutgrid(){
+    public String layoutgrid(){
         return "Layoutgrid";
+    }
+
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
+    public String cart(){
+        return "Cart";
     }
 
 }

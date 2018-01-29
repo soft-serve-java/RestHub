@@ -32,12 +32,15 @@
                 </li>
                 <li>
                     <button class="btn btn-success" style="margin-right:10px;">
-                        <span style="text-align: left">Call a waiter</span></button>
+                        <span style="text-align: left"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
+                    </button>
                 </li>
                 <li>
-                    <button class="btn btn-default" style="margin-right:10px;">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </button>
+                    <a href="/cart">
+                        <button class="btn btn-info" style="margin-right:10px;">
+                           <span style="text-align: left">Cart  <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                        </button>
+                    </a>
                 </li>
                 <li>
                     <form class="form-inline" action="#">
