@@ -18,4 +18,8 @@ public class HelloController {
     public String welcome(){
         return "Welcome";
     }
+    @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
+    public String Layoutgrid(){
+        return "Layoutgrid";
+    }
 }
