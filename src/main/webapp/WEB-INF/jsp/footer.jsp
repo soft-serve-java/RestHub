@@ -1,4 +1,4 @@
-<footer class="footer" style="position: absolute; bottom: 20px; width: 100%">
+<footer class="footer" style="bottom: 20px; width: 100%">
     <div class="container">
         <span style="margin-right: 10%"> RestHub Inc. 	&#169;</span>
         <span style="margin-right: 13%">Contact us </span>
@@ -14,8 +14,5 @@
     </div>
 </footer>
 </body>
-
-<style>
-
-</style>
 </html>
+
