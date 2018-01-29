@@ -9,10 +9,9 @@
 <%@ include file = "header.jsp" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://use.fontawesome.com/6cbbd52504.js"></script>
 <div class="container py-2" style="width: 50rem">
     <table class="table table-hover">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th style="width: 40%">Title</th>
             <th style="width: 20%">Price</th>
@@ -133,6 +132,7 @@
         </button>
     </div>
 </div>
+
 
 <style>
     .table > tbody > tr > td {
