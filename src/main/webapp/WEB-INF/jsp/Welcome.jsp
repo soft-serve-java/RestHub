@@ -39,4 +39,21 @@
         <span class="carousel-control-next-icon"></span>
     </a>
 </div>
+<div class="container">
+<div class="row">
+    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
+
+</div>
+</div>
+<style>
+    .row{
+        padding: 15pt;
+    }
+    .btn-block{
+        padding: 10pt;
+    }
+</style>
 <%@ include file = "footer.jsp" %>

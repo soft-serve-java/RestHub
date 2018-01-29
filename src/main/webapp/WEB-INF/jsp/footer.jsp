@@ -1,5 +1,5 @@
-<footer class="footer" style="bottom: 20px; width: 100%">
-    <div class="container">
+<footer class="footer" style="bottom: 20px; width: 100%;">
+    <div class="container" style="padding-top: 80pt">
         <span style="margin-right: 10%"> RestHub Inc. 	&#169;</span>
         <span style="margin-right: 13%">Contact us </span>
         <span class="align-middle">Join us

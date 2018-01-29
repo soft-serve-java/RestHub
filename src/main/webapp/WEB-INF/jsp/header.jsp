@@ -16,10 +16,9 @@
     <div class="container">
         <div class="navbar-collapse collapse">
             <ul class="navbar-nav nav-fill w-100">
-                <a class="navbar-brand" href="#">Our logo</a>
-
+                <a class="navbar-brand" href="/welcome"><img src="../images/logo.png"></a>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Soups</a>
+                    <a class="nav-link" href="/layoutgrid">Soups</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Meals</a>

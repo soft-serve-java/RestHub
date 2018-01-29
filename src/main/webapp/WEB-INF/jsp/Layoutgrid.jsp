@@ -111,6 +111,13 @@
         /*vertical-align: middle;*/
         text-align: center;
     }
+    .row{
+        padding-top: 15pt;
+    }
+    .col{
+        padding-bottom: 15pt;
+    }
+
 </style>
 
 <%@ include file = "footer.jsp" %>
