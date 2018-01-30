@@ -127,7 +127,7 @@
         <h4 class="col-md-5">
             Total amount: 61.55$
         </h4>
-        <button class="btn btn-success col-md-2">
+        <button class="btn btn-success col-md-2" style="margin-bottom: 10%">
             Submit
         </button>
     </div>

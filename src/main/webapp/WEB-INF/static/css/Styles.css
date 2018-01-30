@@ -24,11 +24,15 @@ body {
 }
 
 .footer {
-    position: absolute;
+    height: 5%;
+    background-color: white;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    position: fixed;
+    left:0;
+    bottom:0;
 }
 
 .add-text{
