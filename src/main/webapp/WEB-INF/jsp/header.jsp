@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel='stylesheet' type="text/css" href="../css/Styles.css">
 </head>
-<body style="margin-bottom: 60px">
+<body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navi">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

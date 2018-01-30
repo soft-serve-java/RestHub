@@ -1,10 +1,39 @@
+body {
+    margin-bottom: 60px;
+}
+
 .nav-button {
     margin-right: 10px;
     margin-bottom: 10px;
 }
-.nav-form{
+
+.nav-form {
     margin-right: 10px;
 }
-#navi{
+
+#navi {
     height: 70px;
+}
+
+.i-button {
+    width: 30px;
+    height: 30px;
+    border: solid black 2px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 20px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add-text{
+    color: #000000;
+    margin-right: 15%;
 }
