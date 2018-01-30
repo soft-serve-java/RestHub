@@ -41,10 +41,10 @@
 </div>
 <div class="container">
 <div class="row">
-    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
-    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
-    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
-    <button type="button" class="btn btn-warning btn-lg btn-block">Button</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">Waiter</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">Cook</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">Administrator</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block">User</button>
 
 </div>
 </div>
