@@ -7,7 +7,7 @@
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../images/CUT3M37NQM.jpg" alt="Carry" width="1400" height="550">
+            <img src="../images/CUT3M37NQM.jpg" alt="Carry" class="fluid" width="100%">
             <div class="carousel-caption">
                 <h1>Welcome!</h1>
                 <br><br><br>
@@ -16,7 +16,7 @@
         </div>
         <div class="carousel-item">
             <img src="../images/CUTsauteed-shrimp-topped-with-roasted-red-pepper-sauce-in-pan_2.jpg" alt="Shrimps"
-                 width="1400" height="550">
+                 class="fluid" width="100%">
             <div class="carousel-caption">
                 <h1>Welcome!</h1>
                 <br><br><br>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="../images/CUTharissa.jpg" alt="Harissa" width="1400" height="550">
+            <img src="../images/CUTharissa.jpg" alt="Harissa" class="fluid" width="100%">
             <div class="carousel-caption">
                 <h1>Welcome!</h1>
                 <br><br><br>

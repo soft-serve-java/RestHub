@@ -11,18 +11,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
-<style>
-    nav{
-        min-width: 500px;
-        min-height: 70px;
-    }
-</style>
 <body style="margin-bottom: 60px">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <div class="navbar-collapse collapse">
-            <ul class="navbar-nav nav-fill w-100">
-                <a class="navbar-brand" href="/welcome"><img src="../images/logo.png"></a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/welcome"><img src="../images/logo.png"></a>
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" >
                 <li class="nav-item">
                     <a class="nav-link" href="/layoutgrid">Soups</a>
                 </li>
@@ -47,15 +45,13 @@
                         </button>
                     </a>
                 </li>
-                <li>
-                    <form class="form-inline" action="#">
+            </ul>
+
+        <form class="form-inline" action="#">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search">
                         <button type="button" class="btn btn-default">
                             <i class="fa fa-search"></i>
                         </button>
                     </form>
-                </li>
-            </ul>
         </div>
-    </div>
 </nav>
