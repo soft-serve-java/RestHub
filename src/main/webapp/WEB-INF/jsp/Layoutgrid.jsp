@@ -119,11 +119,4 @@
 
     </div>
 </div>
-
-<style>
-    .col1{
-        padding-bottom: 0pt;
-    }
-</style>
-
 <%@ include file = "footer.jsp" %>

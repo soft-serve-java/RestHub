@@ -40,6 +40,10 @@ body {
     margin-right: 15%;
 }
 
+.col1{
+    padding-bottom: 0pt;
+}
+
 .card{
     width: 350px;
 }
