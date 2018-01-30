@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <div class="col" style="text-align: right">
+    <div class="col1" style="text-align: right">
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort by
@@ -119,5 +119,11 @@
 
     </div>
 </div>
+
+<style>
+    .col1{
+        padding-bottom: 0pt;
+    }
+</style>
 
 <%@ include file = "footer.jsp" %>
