@@ -13,4 +13,19 @@ public class HelloController {
     public String sayHello(){
         return "Hello";
     }
+
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    public String welcome(){
+        return "Welcome";
+    }
+    @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
+    public String layoutgrid(){
+        return "Layoutgrid";
+    }
+
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
+    public String cart(){
+        return "Cart";
+    }
+
 }
