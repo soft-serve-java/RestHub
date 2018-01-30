@@ -11,6 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+<style>
+    nav{
+        min-width: 500px;
+        min-height: 70px;
+    }
+</style>
 <body style="margin-bottom: 60px">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
