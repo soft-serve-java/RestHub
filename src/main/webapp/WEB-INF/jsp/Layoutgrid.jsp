@@ -4,7 +4,7 @@
     <div class="row">
 
         <div class="col">
-            <div class="card" style="width: 350px" >
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Spicy buffalo Cauliflower.jpg" alt="Spicy buffalo Cauliflower">
                 <div class="card-block">
                     <h4 class="card-title">Spicy buffalo Cauliflower</h4>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Shaved mushroom & spinach flatbread.jpg" alt="Shaved mushroom & spinach flatbread">
                 <div class="card-block">
                     <h4 class="card-title">Shaved mushroom & spinach flatbread</h4>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/White%20corn%20guacamole.jpg" alt="Card image cap">
                 <div class="card-block">
                     <h4 class="card-title">White corn guacamole</h4>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Petite wedge.jpg" alt="Petite wedge">
                 <div class="card-block">
                     <h4 class="card-title">Petite wedge</h4>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="col">
-            <div class="card"  style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Arugula salad.jpg" alt="Arugula salad">
                 <div class="card-block">
                     <h4 class="card-title">Arugula salad</h4>
@@ -60,9 +60,9 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Spinach artishoke dip.jpg" alt="Spinach artishoke dip">
-                <div class="card-block">
+                <div class="card-block" style="height: 177px">
                     <h4 class="card-title">Spinach artishoke dip</h4>
                     <p class="card-text">Served hot with housemade blue & white corn tortilla chips.</p>
                     <h5 class="card-title">1$ <a href="#" class="btn btn-primary">Add to cart</a> </h5>
@@ -71,7 +71,7 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Charred chichito pepers.png" alt="Charred chichito pepers">
                 <div class="card-block">
                     <h4 class="card-title">Charred chichito pepers</h4>
@@ -82,7 +82,7 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Cripsy mac-n-cheese.jpg" alt="Cripsy mac-n-cheese">
                 <div class="card-block">
                     <h4 class="card-title">Cripsy mac-n-cheese</h4>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 350px;">
+            <div class="card">
                 <img class="card-img-top" src="../images/dishes/Bianco Flatbread.jpg" alt="Bianco Flatbread">
                 <div class="card-block">
                     <h4 class="card-title">Bianco Flatbread</h4>
@@ -105,19 +105,5 @@
 
     </div>
 </div>
-
-<style>
-    .container {
-        /*vertical-align: middle;*/
-        text-align: center;
-    }
-    .row{
-        padding-top: 15pt;
-    }
-    .col{
-        padding-bottom: 15pt;
-    }
-
-</style>
 
 <%@ include file = "footer.jsp" %>

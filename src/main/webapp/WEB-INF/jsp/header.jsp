@@ -13,7 +13,7 @@
     <link rel='stylesheet' type="text/css" href="../css/Styles.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navi">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -36,13 +36,13 @@
                 </li>
                 <li>
                     <button class="btn btn-success nav-button" style="margin-right:10px;">
-                        <span style="text-align: left"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
+                        <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
                     </button>
                 </li>
                 <li>
                     <a href="/cart">
                         <button class="btn btn-info nav-button" style="margin-right:10px;">
-                           <span style="text-align: left">Cart  <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                           <span class="left-span">Cart  <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                         </button>
                     </a>
                 </li>
@@ -60,7 +60,5 @@
                     <a class="nav-link" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
                 </li>
             </ul>
-
-
         </div>
 </nav>

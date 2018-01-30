@@ -132,12 +132,4 @@
         </button>
     </div>
 </div>
-
-
-<style>
-    .table > tbody > tr > td {
-        vertical-align: middle;
-        text-align: center;
-    }
-</style>
 <%@ include file = "footer.jsp" %>

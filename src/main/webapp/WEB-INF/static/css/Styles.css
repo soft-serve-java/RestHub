@@ -11,10 +11,6 @@ body {
     margin-right: 10px;
 }
 
-#navi {
-    height: 70px;
-}
-
 .i-button {
     width: 30px;
     height: 30px;
@@ -23,10 +19,12 @@ body {
     background-color: white;
     margin-right: 20px;
 }
+.left-span{
+    text-align: left;
+}
 
 .footer {
     position: absolute;
-    bottom: 20px;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -36,4 +34,24 @@ body {
 .add-text{
     color: #000000;
     margin-right: 15%;
+}
+
+.card{
+    width: 350px;
+}
+
+.container {
+    /*vertical-align: middle;*/
+    text-align: center;
+}
+.row{
+    padding-top: 15pt;
+}
+.col{
+    padding-bottom: 15pt;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    text-align: center;
 }
