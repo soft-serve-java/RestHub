@@ -18,6 +18,7 @@ public class HelloController {
     public String welcome(){
         return "Welcome";
     }
+
     @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
     public String layoutgrid(){
         return "Layoutgrid";
@@ -26,6 +27,11 @@ public class HelloController {
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String cart(){
         return "Cart";
+    }
+
+    @RequestMapping(value = "/dishdescription", method = RequestMethod.GET)
+    public String dishdescription(){
+        return "Dishdescription";
     }
 
 }
