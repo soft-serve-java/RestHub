@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type="text/css" href="../css/Styles.css">
 </head>
 <body style="margin-bottom: 60px">
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -34,24 +35,32 @@
                     <a class="nav-link" href="#">Deserts</a>
                 </li>
                 <li>
-                    <button class="btn btn-success" style="margin-right:10px;">
+                    <button class="btn btn-success nav-button" style="margin-right:10px;">
                         <span style="text-align: left"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
                     </button>
                 </li>
                 <li>
                     <a href="/cart">
-                        <button class="btn btn-info" style="margin-right:10px;">
+                        <button class="btn btn-info nav-button" style="margin-right:10px;">
                            <span style="text-align: left">Cart  <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                         </button>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <form  action="#" class="nav-form">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-default btn-lg nav-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+                </li>
             </ul>
 
-        <form class="form-inline" action="#">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                        <button type="button" class="btn btn-default">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
+
         </div>
 </nav>
