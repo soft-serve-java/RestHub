@@ -13,7 +13,7 @@
     <link rel='stylesheet' type="text/css" href="../css/Styles.css">
 </head>
 <body style="margin-bottom: 60px">
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navi">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
