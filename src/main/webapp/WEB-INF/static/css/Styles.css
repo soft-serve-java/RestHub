@@ -24,13 +24,15 @@ body {
 }
 
 .footer {
-    height: 5%;
+    height: auto;
     background-color: white;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    position: fixed;
+    position: absolute;
+    padding-top: 10px;
+    padding-bottom: 5px;
     left:0;
     bottom:0;
 }
@@ -45,7 +47,7 @@ body {
 }
 
 .card{
-    width: 350px;
+    margin-top: 15pt;
 }
 
 .container {
@@ -55,11 +57,13 @@ body {
 .row{
     padding-top: 15pt;
 }
-.col{
-    padding-bottom: 15pt;
-}
+
 
 .table > tbody > tr > td {
     vertical-align: middle;
     text-align: center;
+}
+
+.inline{
+    display: inline;
 }
