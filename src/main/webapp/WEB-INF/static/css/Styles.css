@@ -43,7 +43,7 @@ body {
 }
 
 .col1{
-    padding-bottom: 0pt;
+    padding-bottom: 1pt;
 }
 
 .card{
@@ -56,6 +56,10 @@ body {
 }
 .row{
     padding-top: 15pt;
+}
+
+.row1{
+    padding-top: 1pt;
 }
 
 

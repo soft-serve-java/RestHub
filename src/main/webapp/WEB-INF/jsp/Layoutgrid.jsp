@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <div class="col1" style="text-align: right; padding-top: 5px">
+    <div class="col1" style="text-align: right">
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort by
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row1">
 
         <div class="card-deck">
             <div class="card">
