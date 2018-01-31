@@ -42,7 +42,7 @@
                 <li>
                     <a href="/cart">
                         <button class="btn btn-info nav-button" style="margin-right:10px;">
-                           <span class="left-span">Cart  <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                           <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                         </button>
                     </a>
                 </li>
