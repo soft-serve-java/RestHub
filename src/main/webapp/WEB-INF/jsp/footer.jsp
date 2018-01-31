@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer" >
     <div class="container">
         <span class="add-text"> RestHub Inc. 	&#169;</span>
         <a href="#" class="add-text">Contact us </a>
