@@ -47,6 +47,9 @@
                     </div>
                 </div></td>
             <td style="text-align: center">
+                <button class="btn btn-success">
+                <span class="fa fa-check"></span>
+            </button>
                 <button class="btn btn-danger">
                     <span class="fa fa-times"></span>
                 </button>
@@ -79,6 +82,9 @@
                     </div>
                 </div></td>
             <td style="text-align: center">
+                <button class="btn btn-success">
+                    <span class="fa fa-check"></span>
+                </button>
                 <button class="btn btn-danger">
                     <span class="fa fa-times"></span>
                 </button>
@@ -111,6 +117,9 @@
                     </div>
                 </div></td>
             <td style="text-align: center">
+                <button class="btn btn-success">
+                    <span class="fa fa-check"></span>
+                </button>
                 <button class="btn btn-danger">
                     <span class="fa fa-times"></span>
                 </button>
@@ -128,7 +137,7 @@
             Total amount: 61.55$
         </h4>
         <button class="btn btn-success col-md-2" style="margin-bottom: 10%">
-            Submit
+            Submit All <span class="fa fa-check"></span>
         </button>
     </div>
 </div>
