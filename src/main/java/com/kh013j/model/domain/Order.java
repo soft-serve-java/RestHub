@@ -6,10 +6,10 @@ import lombok.Data;
 
 @Data
 public class Order {
-  long id;
-  Time time;
-  User user;
-  boolean isClosed;
-  List<OrderedDish> orderedFood;
+  private long id;
+  private Time time;
+  private User user;
+  private boolean isClosed;
+  private List<OrderedDish> orderedFood;
 
 }

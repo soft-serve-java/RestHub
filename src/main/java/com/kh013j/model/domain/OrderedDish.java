@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode
 public class OrderedDish extends Dish {
-  Order order;
-  Status status;
-   int quantity;
+  private Order order;
+  private Status status;
+  private int quantity;
 }

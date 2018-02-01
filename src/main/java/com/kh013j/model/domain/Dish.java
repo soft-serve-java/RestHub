@@ -18,13 +18,13 @@ import lombok.ToString;
 public class Dish {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  long id;
-  String name;
-  String description;
-  String weight;
-  String calories;
-  Time time;
-  int price;
+  private long id;
+  private String name;
+  private String description;
+  private String weight;
+  private String calories;
+  private Time time;
+  private int price;
   @ManyToOne
   @JoinColumn(name = "category_id")
   Category category;
