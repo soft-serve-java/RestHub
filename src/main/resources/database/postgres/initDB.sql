@@ -1,78 +1,82 @@
+CREATE SEQUENCE rest_sequance;
+
 CREATE SCHEMA rh;
 
 CREATE TABLE rh.category(
-    id bigint NOT NULL PRIMARY KEY,
-    name character varying(50)
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  name varchar(50)
 );
 
 
 CREATE TABLE rh.role(
-    id bigint NOT NULL PRIMARY KEY,
-    name character varying(50)
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  name varchar(50)
 );
 
 
 
 CREATE TABLE rh.status(
-    id bigint NOT NULL PRIMARY KEY,
-    name character varying(50)
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  name varchar(50)
 );
 
 
 
 CREATE TABLE rh.user
 (
-    id bigint NOT NULL PRIMARY KEY,
-    "e-mail" character varying(50),
-    login character varying(50),
-    password character varying(50),
-    "roleId" bigint,
-    CONSTRAINT "roleID" FOREIGN KEY ("roleId")
-    REFERENCES rh.role (id) MATCH SIMPLE
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  "e-mail" varchar(50),
+  login varchar(50),
+  password varchar(50),
+  "role_id" bigint,
+  CONSTRAINT "role_id" FOREIGN KEY ("role_id")
+  REFERENCES rh.role (id) MATCH SIMPLE
 );
 
 
 
 CREATE TABLE rh.order
 (
-    "id" bigint NOT NULL PRIMARY KEY,
-    time timestamp without time zone,
-    tablenumber bigint,
-    close boolean,
-    "userId" bigint,
-    CONSTRAINT "userId" FOREIGN KEY ("userId")
-    REFERENCES rh.user (id)
+  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  time timestamp without time zone,
+  tablenumber int,
+  close boolean,
+  "userId" bigint,
+  CONSTRAINT "user_id" FOREIGN KEY ("user_id")
+  REFERENCES rh.user (id)
 );
 
 
 
 CREATE TABLE rh.dish
 (
-    "id" bigint NOT NULL PRIMARY KEY,
-    name character varying(50),
-    description character varying(1000),
-    weight bigint,
-    calories bigint,
-    preparingtime timestamp without time zone,
-    price bigint,
-    avalibility boolean,
-    picture path,
-    "categoryId" bigint,
-    CONSTRAINT "categoryId" FOREIGN KEY ("categoryId")
-    REFERENCES rh.category (id)
+  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  name varchar(50),
+  description varchar(1000),
+  weight int,
+  calories int,
+  preparingtime varchar(50),
+  price int,
+  avalibility boolean,
+  picture varchar(100),
+  "category_id" bigint,
+  CONSTRAINT "category_id" FOREIGN KEY ("category_id")
+  REFERENCES rh.category (id)
 );
 
 
 CREATE TABLE rh.orderdish
 (
-    quantity bigint,
-    "dishId" bigint,
-    "statusId" bigint,
-    "orderId" bigint,
-    CONSTRAINT "dishId" FOREIGN KEY ("dishId")
-    REFERENCES rh.dish (id),
-    CONSTRAINT "statusId" FOREIGN KEY ("statusId")
-    REFERENCES rh.status (id),
-    CONSTRAINT "orderId" FOREIGN KEY ("orderId")
-    REFERENCES rh.order (id)
+  quantity int,
+  "dish_id" bigint,
+  "status_id" bigint,
+  "order_id" bigint,
+  CONSTRAINT "dish_id" FOREIGN KEY ("dish_id")
+  REFERENCES rh.dish (id),
+  CONSTRAINT "status_id" FOREIGN KEY ("status_id")
+  REFERENCES rh.status (id),
+  CONSTRAINT "order_id" FOREIGN KEY ("order_id")
+  REFERENCES rh.order (id)
 )
+
+
