@@ -6,5 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <!--Вот сюда прописывать пути для скриптов DB-->
+    <!--
     <include file="db/changelog/db.changelog-1.sql"/>
+    -->
 </databaseChangeLog>
