@@ -30,7 +30,7 @@ public class Dish {
   private String description;
   private int weight;
   private int calories;
-  private Timestamp preparingtime;
+  private String preparingtime;
   private int price;
   @ManyToOne
   @JoinColumn(name = "category_id")
