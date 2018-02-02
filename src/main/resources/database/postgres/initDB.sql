@@ -1,7 +1,7 @@
-DROP  SCHEMA IF EXISTS  rh CASCADE;
+DROP SCHEMA IF EXISTS rh CASCADE;
 CREATE SCHEMA rh;
-DROP SEQUENCE IF EXISTS  rest_sequance;
-CREATE  SEQUENCE rest_sequance;
+
+CREATE SEQUENCE rest_sequance;
 
 CREATE TABLE rh.category(
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
@@ -15,17 +15,15 @@ CREATE TABLE rh.role(
 );
 
 
-
 CREATE TABLE rh.status(
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   name varchar(50)
 );
 
 
-
 CREATE TABLE rh.user
 (
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   "email" varchar(50),
   login varchar(50),
   password varchar(50),
@@ -33,7 +31,6 @@ CREATE TABLE rh.user
   CONSTRAINT "role_id" FOREIGN KEY ("role_id")
   REFERENCES rh.role (id) MATCH SIMPLE
 );
-
 
 
 CREATE TABLE rh.order
@@ -46,7 +43,6 @@ CREATE TABLE rh.order
   CONSTRAINT "user_id" FOREIGN KEY ("user_id")
   REFERENCES rh.user (id)
 );
-
 
 
 CREATE TABLE rh.dish
@@ -71,12 +67,12 @@ CREATE TABLE rh.orderdish
   "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   quantity int,
   "dish_id" bigint,
-  "status" VARCHAR(40),
+  "status_id" bigint,
   "order_id" bigint,
   CONSTRAINT "dish_id" FOREIGN KEY ("dish_id")
   REFERENCES rh.dish (id),
+  CONSTRAINT "status_id" FOREIGN KEY ("status_id")
+  REFERENCES rh.status (id),
   CONSTRAINT "order_id" FOREIGN KEY ("order_id")
   REFERENCES rh.order (id)
-)
-
-
+);
