@@ -1,5 +1,4 @@
-DROP SCHEMA rh CASCADE;
-CREATE SCHEMA rh ;
+CREATE SCHEMA rh;
 
 CREATE TABLE rh.category(
   id bigint NOT NULL PRIMARY KEY,
@@ -36,13 +35,13 @@ CREATE TABLE rh.user
 
 CREATE TABLE rh.order
 (
-  "id" bigint NOT NULL PRIMARY KEY,
-  time timestamp without time zone,
-  tablenumber bigint,
-  close boolean,
-  "user_id" bigint,
-  CONSTRAINT "user_id" FOREIGN KEY ("user_id")
-  REFERENCES rh.user (id)
+    "id" bigint NOT NULL PRIMARY KEY,
+    time timestamp without time zone,
+    tablenumber bigint,
+    close boolean,
+    "userId" bigint,
+    CONSTRAINT "userId" FOREIGN KEY ("userId")
+    REFERENCES rh.user (id)
 );
 
 
