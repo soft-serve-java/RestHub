@@ -32,7 +32,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <h4>${orderItem.title}</h4>
+                        <h4>${orderItem.name}</h4>
                         <p class="text-muted">${orderItem.weight}</p>
                     </div>
                 </div>
