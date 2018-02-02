@@ -27,7 +27,8 @@ public class OrderedDish {
   @ManyToOne
   @JoinColumn(name = "order_id")
   private Order order;
-  @Enumerated(EnumType.STRING)
+  @ManyToOne
+  @JoinColumn(name = "status_id")
   private Status status;
   private int quantity;
 }
