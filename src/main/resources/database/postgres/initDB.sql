@@ -2,20 +2,20 @@ CREATE SCHEMA rh;
 
 CREATE TABLE rh.category(
     id bigint NOT NULL PRIMARY KEY,
-    name character(50)
+    name character varying(50)
 );
 
 
 CREATE TABLE rh.role(
     id bigint NOT NULL PRIMARY KEY,
-    name character(50)
+    name character varying(50)
 );
 
 
 
 CREATE TABLE rh.status(
     id bigint NOT NULL PRIMARY KEY,
-    name character(50)
+    name character varying(50)
 );
 
 
@@ -23,9 +23,9 @@ CREATE TABLE rh.status(
 CREATE TABLE rh.user
 (
     id bigint NOT NULL PRIMARY KEY,
-    "e-mail" character(50),
-    login character(50),
-    password character(50),
+    "e-mail" character varying(50),
+    login character varying(50),
+    password character varying(50),
     "roleId" bigint,
     CONSTRAINT "roleID" FOREIGN KEY ("roleId")
     REFERENCES rh.role (id) MATCH SIMPLE
@@ -49,8 +49,8 @@ CREATE TABLE rh.order
 CREATE TABLE rh.dish
 (
     "id" bigint NOT NULL PRIMARY KEY,
-    name character(50),
-    description character(1000),
+    name character varying(50),
+    description character varying(1000),
     weight bigint,
     calories bigint,
     preparingtime timestamp without time zone,
