@@ -24,5 +24,4 @@ public class CaffinnoApplicationTests {
 		categoryRepository.save(new Category(1, "salad"));
 		Assert.assertEquals(new Category(1, "salad"),  categoryRepository.findOne(1L));
 	}
-
 }
