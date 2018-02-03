@@ -5,7 +5,9 @@
   Time: 17:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file = "header.jsp" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,21 +22,23 @@
         </tr>
         </thead>
         <tbody>
+        <c:if test="${not empty orderItems}">
+        <c:forEach items="${orderItems}" var="orderItem">
         <tr>
             <td>
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="https://mafia.ua/storage/editor/fotos/450x450/filadelfiya-miks.jpeg" class="w-100">
+                        <img src="${orderItem.picture}" class="w-100">
 
                     </div>
                     <div class="col-md-6">
-                        <h4 >Sushi Pliladeplia</h4>
-                        <p class="text-muted">1000 grams</p>
+                        <h4>${orderItem.name}</h4>
+                        <p class="text-muted">${orderItem.weight}</p>
                     </div>
                 </div>
             </td>
-            <td>30.32$</td>
-            <td >
+            <td>${orderItem.price}$</td>
+            <td>
                 <div class="row">
                     <div class="input-group">
                         <button type="button" class="btn btn-secondary" disabled="disabled" data-type="minus" data-field="quant[1]">
@@ -55,90 +59,23 @@
                 </button>
             </td>
         </tr>
-        <tr>
-            <td>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="https://mafia.ua/storage/editor/fotos/450x450/fresh-miks-metrovaya.jpeg" class="w-100">
-
-                    </div>
-                    <div class="col-md-6">
-                        <h4 >Pizza Fresh Mix</h4>
-                        <p class="text-muted">1200 grams</p>
-                    </div>
-                </div>
-            </td>
-            <td>18.99$</td>
-            <td >
-                <div class="row">
-                    <div class="input-group">
-                        <button type="button" class="btn btn-secondary" disabled="disabled" data-type="minus" data-field="quant[1]">
-                            <span class="fa fa-minus"></span>
-                        </button>
-                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                        <button type="button" class="btn btn-secondary" data-type="plus" data-field="quant[1]">
-                            <span class="fa fa-plus"></span>
-                        </button>
-                    </div>
-                </div></td>
-            <td style="text-align: center">
-                <button class="btn btn-success">
-                    <span class="fa fa-check"></span>
-                </button>
-                <button class="btn btn-danger">
-                    <span class="fa fa-times"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="https://mafia.ua/storage/editor/fotos/450x450/bastardo-staryj-krym-inkerman-ukraina.png" class="w-100">
-
-                    </div>
-                    <div class="col-md-6">
-                        <h4 >Wine Inkerman Old Crimea</h4>
-                        <p class="text-muted">0.75 l</p>
-                    </div>
-                </div>
-            </td>
-            <td>12.85$</td>
-            <td >
-                <div class="row">
-                    <div class="input-group">
-                        <button type="button" class="btn btn-secondary" disabled="disabled" data-type="minus" data-field="quant[1]">
-                            <span class="fa fa-minus"></span>
-                        </button>
-                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                        <button type="button" class="btn btn-secondary" data-type="plus" data-field="quant[1]">
-                            <span class="fa fa-plus"></span>
-                        </button>
-                    </div>
-                </div></td>
-            <td style="text-align: center">
-                <button class="btn btn-success">
-                    <span class="fa fa-check"></span>
-                </button>
-                <button class="btn btn-danger">
-                    <span class="fa fa-times"></span>
-                </button>
-            </td>
-        </tr>
+    </c:forEach>
+        </c:if>
         </tbody>
     </table>
-
     <hr/>
     <div class="row">
         <h5 class="col-md-4">
-            You have 3 items in your cart
+            You have ${fn:length(orderItems)} items in your cart
         </h5>
         <h4 class="col-md-5">
-            Total amount: 61.55$
+            Total amount: ${ordersTotalAmount}$
         </h4>
         <button class="btn btn-success col-md-2" style="margin-bottom: 10%">
             Submit All <span class="fa fa-check"></span>
         </button>
     </div>
+
+
 </div>
 <%@ include file = "footer.jsp" %>
