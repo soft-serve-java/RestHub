@@ -5,8 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <!--Вот сюда прописывать пути для скриптов DB-->
+    <include file="database/postgres/01-create-books-and-author-schema.xml"/>
     <!--
-    <include file="db/changelog/db.changelog-1.sql"/>
+    <include file="database/postgres/initDB.sql"/>
+    <include file="database/postgres/populateDB.sql"/>
     -->
 </databaseChangeLog>
