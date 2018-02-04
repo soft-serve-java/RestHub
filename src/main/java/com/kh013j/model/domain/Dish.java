@@ -1,23 +1,14 @@
 package com.kh013j.model.domain;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
+
 @Entity
-@Table(name = "dish")
+@Table(name = "dish", schema = "rh")
 @Data
 @ToString
 @AllArgsConstructor

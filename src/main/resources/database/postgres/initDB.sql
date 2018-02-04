@@ -25,11 +25,11 @@ CREATE TABLE rh.status(
 
 CREATE TABLE rh.user
 (
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
-  "email" varchar(50),
-  login varchar(50),
+  id       BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  email    VARCHAR(50),
+  login    VARCHAR(50),
   password varchar(50),
-  "role_id" bigint,
+  role_id  BIGINT,
   CONSTRAINT "role_id" FOREIGN KEY ("role_id")
   REFERENCES rh.role (id) MATCH SIMPLE
 );
@@ -38,11 +38,11 @@ CREATE TABLE rh.user
 
 CREATE TABLE rh.order
 (
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
-  time timestamp without time zone,
+  id          BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  time        TIMESTAMP WITHOUT TIME ZONE,
   tablenumber int,
-  close boolean,
-  "user_id" bigint,
+  close       BOOLEAN,
+  user_id     BIGINT,
   CONSTRAINT "user_id" FOREIGN KEY ("user_id")
   REFERENCES rh.user (id)
 );
@@ -51,16 +51,16 @@ CREATE TABLE rh.order
 
 CREATE TABLE rh.dish
 (
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
-  name varchar(50),
-  description varchar(1000),
-  weight int,
-  calories int,
+  id            BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  name          VARCHAR(50),
+  description   VARCHAR(1000),
+  weight        INT,
+  calories      INT,
   preparingtime varchar(50),
-  price int,
-  avalibility boolean,
-  picture varchar(100),
-  "category_id" bigint,
+  price         INT,
+  avalibility   BOOLEAN,
+  picture       VARCHAR(100),
+  category_id   BIGINT,
   CONSTRAINT "category_id" FOREIGN KEY ("category_id")
   REFERENCES rh.category (id)
 );
@@ -68,14 +68,14 @@ CREATE TABLE rh.dish
 
 CREATE TABLE rh.orderdish
 (
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id       BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   quantity int,
-  "dish_id" bigint,
-  "status" VARCHAR(40),
-  "order_id" bigint,
-  CONSTRAINT "dish_id" FOREIGN KEY ("dish_id")
+  dish_id  BIGINT,
+  status   VARCHAR(40),
+  order_id BIGINT,
+  CONSTRAINT dish_id FOREIGN KEY ("dish_id")
   REFERENCES rh.dish (id),
-  CONSTRAINT "order_id" FOREIGN KEY ("order_id")
+  CONSTRAINT order_id FOREIGN KEY ("order_id")
   REFERENCES rh.order (id)
 )
 

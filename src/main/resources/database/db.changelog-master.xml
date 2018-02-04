@@ -4,10 +4,19 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+        <!--
+        <include file="database/postgres/01-create-books-and-author-schema.xml"/>
+        <include file="database/postgres/initDB.sql"/>
+        <include file="database/postgres/populateDB.sql"/>
+         -->
+        <changeSet id="1" author="me">
+                <validCheckSum>any</validCheckSum>
+                <sqlFile path="database/postgres/initDB.sql"/>
+        </changeSet>
+        <changeSet id="2" author="me">
+                <validCheckSum>any</validCheckSum>
+                <sqlFile path="database/postgres/populateDB.sql"/>
+        </changeSet>
 
-    <include file="database/postgres/01-create-books-and-author-schema.xml"/>
-    <!--
-    <include file="database/postgres/initDB.sql"/>
-    <include file="database/postgres/populateDB.sql"/>
-    -->
+
 </databaseChangeLog>
