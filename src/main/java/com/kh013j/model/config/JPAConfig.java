@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -22,7 +23,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.kh013j.model.repository")
-@PropertySource("classpath:jpa.properties")
+@PropertySources({
+    @PropertySource("classpath:jpa.properties"),
+    @PropertySource("classpath:local_jpa.properties")})
 public class JPAConfig {
   @Autowired
   private Environment env;
@@ -69,7 +72,8 @@ public class JPAConfig {
     Properties properties = new Properties();
     properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
     properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-    properties.setProperty("hibernate.current_session_context_class", env.getProperty("hibernate.current_session_context_class"));
+    properties.setProperty("hibernate.current_session_context_class",
+        env.getProperty("hibernate.current_session_context_class"));
     return properties;
   }
 
