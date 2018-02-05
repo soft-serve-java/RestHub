@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -30,9 +31,9 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
-    public String layoutgrid(Model model){
-        model.addAttribute("menuItems", dishService.findAll());
-        return "Layoutgrid";
+    public ModelAndView layoutgrid(){
+        return new ModelAndView("Layoutgrid", "menuItems",
+            dishService.findAll());
     }
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
