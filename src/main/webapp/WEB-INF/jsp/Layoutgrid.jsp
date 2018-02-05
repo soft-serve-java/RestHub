@@ -21,7 +21,7 @@
         <div class="card-deck">
         <c:forEach items="${menuItems}" begin="${loop.index}" end="${loop.index + 3}" var="item">
         <div class="card">
-                <img class="card-img-top" src="${item.picture}" alt="${item.name}">
+            <a  href="/dishdescription/${item.id}"> <img class="card-img-top"  src="${item.picture}" alt="${item.name}"  ></a>
                 <div class="card-body">
                     <h4 class="card-title">${item.name}</h4>
                     <p class="card-text">${item.description}</p>
