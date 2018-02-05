@@ -5,12 +5,9 @@ import com.kh013j.model.domain.Dish;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.DishRepository;
 import com.kh013j.model.service.interfaces.DishService;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import java.util.List;
-
 
 public class DishServiceImpl implements DishService {
     @Resource
@@ -42,6 +39,12 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findByCategoryOrderByCalories(category);
     }
 
+    @Override
+    @Transactional(rollbackFor=DishNotFound.class)
+    public List<Dish> findAllDishByCategory(Category category){
+        return dishRepository.findAllByCategory(category);
+    }
+
 
     @Override
     @Transactional(rollbackFor=DishNotFound.class)
@@ -61,7 +64,7 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findAll();
     }
 
-    @Transactional(rollbackFor=DishNotFound.class)
+  /*  @Transactional(rollbackFor=DishNotFound.class)
     public Dish update(Dish dish) throws DishNotFound {
         Dish updatedDish = dishRepository.findOne(dish.getId());
 
@@ -79,5 +82,5 @@ public class DishServiceImpl implements DishService {
         updatedDish.setAvalibility(dish.isAvalibility());
 
         return updatedDish;
-    }
+    }*/
 }

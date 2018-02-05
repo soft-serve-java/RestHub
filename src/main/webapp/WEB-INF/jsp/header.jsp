@@ -23,16 +23,16 @@
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" >
                 <li class="nav-item">
-                    <a class="nav-link" href="/layoutgrid">Soups</a>
+                    <a class="nav-link" href="/menu/soups">Soups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Meals</a>
+                    <a class="nav-link" href="/menu/meals">Meals</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Drinks</a>
+                    <a class="nav-link" href="/menu/drinks">Drinks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Deserts</a>
+                    <a class="nav-link" href="/menu/deserts">Deserts</a>
                 </li>
                 <li>
                     <button class="btn btn-success nav-button" style="margin-right:10px;">
