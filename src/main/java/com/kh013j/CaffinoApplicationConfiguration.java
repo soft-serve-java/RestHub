@@ -17,5 +17,4 @@ public class CaffinoApplicationConfiguration {
   public OrderService orderServiceConfig(){
     return new OrderServiceImpl();
   }
-
 }
