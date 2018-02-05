@@ -1,5 +1,6 @@
 package com.kh013j.controllers;
 
+import com.kh013j.model.repository.CategoryRepository;
 import com.kh013j.model.service.OrderServiceImpl;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.DishServiceImpl;
@@ -16,9 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloController {
     @Autowired
-    DishService dishService = new DishServiceImpl();
+    DishService dishService;
     @Autowired
-    OrderService orderService = new OrderServiceImpl();
+    OrderService orderService;
+    @Autowired
+  CategoryRepository categoryRepository;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello(){
@@ -35,6 +38,23 @@ public class HelloController {
         return new ModelAndView("Layoutgrid", "menuItems",
             dishService.findAll());
     }
+  @RequestMapping(value = "/layoutgrid/sort/{criteria}", method = RequestMethod.GET)
+  public ModelAndView layoutgridSortBy(@PathVariable(value="criteria") String criteria){
+      switch (criteria){
+        case "byPrice":
+          return new ModelAndView("Layoutgrid", "menuItems",
+              dishService.findAllDishByCategoryOrderByPrice(categoryRepository.findOne(1L)));
+        case "ByPreparingtime":
+          return new ModelAndView("Layoutgrid", "menuItems",
+              dishService.findAllDishByCategoryOrderByPreparingtime(categoryRepository.findOne(1L)));
+        case "ByCalories":
+          return new ModelAndView("Layoutgrid", "menuItems",
+              dishService.findAllDishByCategoryOrderByCalories(categoryRepository.findOne(1L)));
+
+      }
+    return new ModelAndView("Layoutgrid", "menuItems",
+        dishService.findAll());
+  }
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String cart(Model model){

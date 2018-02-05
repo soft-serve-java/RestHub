@@ -8,9 +8,9 @@
                 Sort by
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Price</a>
-                <a class="dropdown-item" href="#">Calories</a>
-                <a class="dropdown-item" href="#">Preparing time</a>
+                <a class="dropdown-item" href="/layoutgrid/sort/byPrice">Price</a>
+                <a class="dropdown-item" href="ByCalories">Calories</a>
+                <a class="dropdown-item" href="ByPreparingtime">Preparing time</a>
             </div>
         </div>
     </div>
