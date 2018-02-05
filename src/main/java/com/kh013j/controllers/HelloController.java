@@ -17,9 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloController {
     @Autowired
-    DishService dishService = new DishServiceImpl();
+    DishService dishService;
     @Autowired
-    OrderService orderService = new OrderServiceImpl();
+    OrderService orderService;
     @Autowired
   CategoryRepository categoryRepository;
 

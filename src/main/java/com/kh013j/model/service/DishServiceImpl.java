@@ -12,7 +12,6 @@ import javax.annotation.Resource;
 import java.util.List;
 
 
-@Service
 public class DishServiceImpl implements DishService {
     @Resource
     private DishRepository dishRepository;
