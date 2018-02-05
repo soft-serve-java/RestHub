@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "orderdish")
+@Table(name = "orderdish" , schema = "rh")
 public class OrderedDish {
   @Id
   long id;
