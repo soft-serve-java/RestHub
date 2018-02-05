@@ -1,5 +1,6 @@
 package com.kh013j.model.service;
 
+import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.DishRepository;
@@ -11,9 +12,6 @@ import javax.annotation.Resource;
 import java.util.List;
 
 
-/**
- * Created by User on 04.02.2018.
- */
 @Service
 public class DishServiceImpl implements DishService {
     @Resource
@@ -30,6 +28,21 @@ public class DishServiceImpl implements DishService {
     public Dish findById(long id) {
         return dishRepository.findOne(id);
     }
+
+    @Override
+    public List findAllDishByCategoryOrderByPrice(Category category) {
+        return dishRepository.findByCategoryOrderByPrice(category);
+    }
+    @Override
+    public List findAllDishByCategoryOrderByPreparingtime(Category category) {
+        return dishRepository.findByCategoryOrderByPreparingtime(category);
+    }
+
+    @Override
+    public List findAllDishByCategoryOrderByCalories(Category category) {
+        return dishRepository.findByCategoryOrderByCalories(category);
+    }
+
 
     @Override
     @Transactional(rollbackFor=DishNotFound.class)
