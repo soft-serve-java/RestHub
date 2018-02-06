@@ -13,7 +13,7 @@ import javax.persistence.*;
 }*/
 
 @Entity
-@Table(name = "status")
+@Table(name = "status", schema = "rh")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

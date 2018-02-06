@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="en" style="position: relative; min-height: 100%">
 <head>
@@ -10,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel='stylesheet' type="text/css" href="../css/Styles.css">
+    <link rel='stylesheet' type="text/css" href="/css/Styles.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -19,20 +20,20 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/welcome"><img src="../images/logo.png"></a>
+    <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" >
                 <li class="nav-item">
-                    <a class="nav-link" href="/layoutgrid">Soups</a>
+                    <a class="nav-link" href="/menu/soups">Soups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Meals</a>
+                    <a class="nav-link" href="/menu/meals">Meals</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Drinks</a>
+                    <a class="nav-link" href="/menu/drinks">Drinks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Deserts</a>
+                    <a class="nav-link" href="/menu/deserts">Deserts</a>
                 </li>
                 <li>
                     <button class="btn btn-success nav-button" style="margin-right:10px;">
@@ -40,11 +41,20 @@
                     </button>
                 </li>
                 <li>
-                    <a href="/cart">
-                        <button class="btn btn-info nav-button" style="margin-right:10px;">
-                           <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                        </button>
-                    </a>
+
+                    <c:if test="${not empty orderMap}">
+                        <a href="/order">
+                            <button class="btn btn-info nav-button" style="margin-right:10px;">
+                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+                             </button>
+                        </a>
+                    </c:if>
+                    <c:if test="${empty orderMap}">
+                            <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
+                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+                            </button>
+                    </c:if>
+
                 </li>
                 <li class="nav-item">
                     <form  action="#" class="nav-form">
