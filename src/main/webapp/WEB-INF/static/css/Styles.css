@@ -11,6 +11,10 @@ body {
     margin-right: 10px;
 }
 
+.card{
+    max-width: 250px;
+}
+
 .i-button {
     width: 30px;
     height: 30px;

@@ -20,7 +20,7 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/welcome"><img src="../images/logo.png"></a>
+    <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" >
                 <li class="nav-item">
