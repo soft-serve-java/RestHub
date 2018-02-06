@@ -7,4 +7,6 @@ public class ViewName {
 
     public static String WELCOME = "Welcome";
 
+    public static String ORDER = "Cart";
+
 }

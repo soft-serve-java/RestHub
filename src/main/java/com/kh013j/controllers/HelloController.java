@@ -1,5 +1,6 @@
 package com.kh013j.controllers;
 
+import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.repository.CategoryRepository;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
@@ -33,31 +34,31 @@ public class HelloController {
 
     @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
     public ModelAndView layoutgrid(){
-        return new ModelAndView("Layoutgrid", "menuItems",
+        return new ModelAndView(ViewName.MENU, "menuItems",
             dishService.findAll());
     }
   @RequestMapping(value = "/layoutgrid/sort/{criteria}", method = RequestMethod.GET)
   public ModelAndView layoutgridSortBy(@PathVariable(value="criteria") String criteria){
       switch (criteria){
         case "byPrice":
-          return new ModelAndView("Layoutgrid", "menuItems",
+          return new ModelAndView(ViewName.MENU, "menuItems",
               dishService.findAllDishByCategoryOrderByPrice(categoryRepository.findOne(1L)));
         case "ByPreparingtime":
-          return new ModelAndView("Layoutgrid", "menuItems",
+          return new ModelAndView(ViewName.MENU, "menuItems",
               dishService.findAllDishByCategoryOrderByPreparingtime(categoryRepository.findOne(1L)));
         case "ByCalories":
-          return new ModelAndView("Layoutgrid", "menuItems",
+          return new ModelAndView(ViewName.MENU, "menuItems",
               dishService.findAllDishByCategoryOrderByCalories(categoryRepository.findOne(1L)));
 
       }
-    return new ModelAndView("Layoutgrid", "menuItems",
+    return new ModelAndView(ViewName.MENU, "menuItems",
         dishService.findAll());
   }
 
     @RequestMapping(value = "/dishdescription/{id}", method = RequestMethod.GET)
     public String dishdescription(Model model, @PathVariable(value="id") long id){
         model.addAttribute("dish", dishService.findById(id));
-        return "Dishdescription";
+        return ViewName.DISH_DESCRIPTION;
     }
 
 }

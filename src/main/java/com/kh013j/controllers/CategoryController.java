@@ -1,5 +1,6 @@
 package com.kh013j.controllers;
 
+import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/menu/{category}", method = RequestMethod.GET)
     public ModelAndView showCategory( @PathVariable(value = "category") String category) {
-        return new ModelAndView("Layoutgrid", "menuItems", dishService.findAllDishByCategory(
+        return new ModelAndView(ViewName.MENU, "menuItems", dishService.findAllDishByCategory(
                 categoryService.findCategoryByName(category)));
     }
 }

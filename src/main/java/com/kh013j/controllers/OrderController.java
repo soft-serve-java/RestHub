@@ -1,5 +1,6 @@
 package com.kh013j.controllers;
 
+import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
@@ -9,6 +10,7 @@ import com.kh013j.model.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,12 +53,12 @@ public class OrderController {
     @RequestMapping(value = "/submitOrder")
     public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap){
         orderService.create(createOrderFromMap(orderMap));
-        return new RedirectView("/welcome");
+        return new RedirectView("/"+ ViewName.WELCOME);
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String order(){
-        return "Cart";
+        return ViewName.ORDER;
     }
 
 
