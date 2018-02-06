@@ -23,8 +23,8 @@ INSERT INTO rh."user"(id, "email", login, password, "role_id") VALUES (5, 'news@
 INSERT INTO rh."user"(id, "email", login, password, "role_id") VALUES (6, 'intuit@i.ua', 'ititit', 'mkoijnb', 4);
 
 
-INSERT INTO rh."order"(id, "time", tablenumber, close, "user_id") VALUES (1, 'NOW()', 1, FALSE, '4');
-INSERT INTO rh."order"(id, "time", tablenumber, close, "user_id") VALUES (2, 'NOW()', 1, FALSE, '4');
-INSERT INTO rh."order"(id, "time", tablenumber, close, "user_id") VALUES (3, 'NOW()', 1, FALSE, '4');
-INSERT INTO rh."order"(id, "time", tablenumber, close, "user_id") VALUES (4, 'NOW()', 1, FALSE, '4');
-INSERT INTO rh."order"(id, "time", tablenumber, close, "user_id") VALUES (5, 'NOW()', 1, FALSE, '4');
+INSERT INTO rh."order"(id, "time", table_number, close, "user_id") VALUES (1, 'NOW()', 1, FALSE, '4');
+INSERT INTO rh."order"(id, "time", table_number, close, "user_id") VALUES (2, 'NOW()', 1, FALSE, '4');
+INSERT INTO rh."order"(id, "time", table_number, close, "user_id") VALUES (3, 'NOW()', 1, FALSE, '4');
+INSERT INTO rh."order"(id, "time", table_number, close, "user_id") VALUES (4, 'NOW()', 1, FALSE, '4');
+INSERT INTO rh."order"(id, "time", table_number, close, "user_id") VALUES (5, 'NOW()', 1, FALSE, '4');

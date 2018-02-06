@@ -16,18 +16,18 @@ CREATE TABLE rh.role(
 
 
 CREATE TABLE rh.status(
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   name varchar(50)
 );
 
 
 CREATE TABLE rh.user
 (
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
-  "email" varchar(50),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  email varchar(50),
   login varchar(50),
   password varchar(50),
-  "role_id" bigint,
+  role_id bigint,
   CONSTRAINT "role_id" FOREIGN KEY ("role_id")
   REFERENCES rh.role (id) MATCH SIMPLE
 );
@@ -35,11 +35,11 @@ CREATE TABLE rh.user
 
 CREATE TABLE rh.order
 (
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   time timestamp without time zone,
-  tablenumber int,
+  table_number int,
   close boolean,
-  "user_id" bigint,
+  user_id bigint,
   CONSTRAINT "user_id" FOREIGN KEY ("user_id")
   REFERENCES rh.user (id)
 );
@@ -47,7 +47,7 @@ CREATE TABLE rh.order
 
 CREATE TABLE rh.dish
 (
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   name varchar(50),
   description varchar(1000),
   weight int,
@@ -56,7 +56,7 @@ CREATE TABLE rh.dish
   price int,
   avalibility boolean,
   picture varchar(100),
-  "category_id" bigint,
+  category_id bigint,
   CONSTRAINT "category_id" FOREIGN KEY ("category_id")
   REFERENCES rh.category (id)
 );
@@ -64,11 +64,11 @@ CREATE TABLE rh.dish
 
 CREATE TABLE rh.orderdish
 (
-  "id" bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   quantity int,
-  "dish_id" bigint,
-  "status_id" bigint,
-  "order_id" bigint,
+  dish_id bigint,
+  status_id bigint,
+  order_id bigint,
   CONSTRAINT "dish_id" FOREIGN KEY ("dish_id")
   REFERENCES rh.dish (id),
   CONSTRAINT "status_id" FOREIGN KEY ("status_id")
