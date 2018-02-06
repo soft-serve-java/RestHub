@@ -21,11 +21,19 @@
         <div class="card-deck">
         <c:forEach items="${menuItems}" begin="${loop.index}" end="${loop.index + 3}" var="item">
         <div class="card">
+
             <a  href="/dishdescription/${item.id}"> <img class="card-img-top"  src="${item.picture}" alt="${item.name}"  ></a>
-                <div class="card-body">
+
+            <c:if test="${orderMap.containsKey(item)}">
+                <div  class="card-header">
+                    In order (${orderMap.get(item)})
+                </div>
+            </c:if>
+            <div class="card-body">
                     <h4 class="card-title">${item.name}</h4>
                     <p class="card-text">${item.description}</p>
                 </div>
+
                     <div class="card-footer">
                         <h5 class="card-title inline">${item.price}$</h5>
                         <a href="/addToOrder/${item.id}" class="btn btn-primary inline">Add to cart</a>
