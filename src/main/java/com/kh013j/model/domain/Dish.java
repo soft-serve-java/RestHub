@@ -1,14 +1,23 @@
 package com.kh013j.model.domain;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
-
 @Entity
-@Table(name = "dish", schema = "rh")
+@Table(name = "dish" , schema = "rh")
 @Data
 @ToString
 @AllArgsConstructor
@@ -17,19 +26,15 @@ public class Dish {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   long id;
-  @Column(length = 50)
   private String name;
-  @Column(length = 1000)
   private String description;
   private int weight;
   private int calories;
-  @Column(length = 50)
   private String preparingtime;
   private int price;
   @ManyToOne
   @JoinColumn(name = "category_id")
   private Category category;
-  @Column(length = 100)
   private String picture;
   private boolean avalibility;
 }

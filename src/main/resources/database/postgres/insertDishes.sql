@@ -1,0 +1,3 @@
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+, picture, category_id) VALUES ('Spicy buffalo Cauliflower', 'Fresh cauliflower florets buttermilk-battered and fried to a golden brown, then tossed in housemade Sriracha buffalo sauce and topped with a salad of celery, Gorgonzola and cilantro.'
+, 300, 1200, 3, 130, true, '/images/Spicy%20buffalo%20Cauliflower.jpg', 1);

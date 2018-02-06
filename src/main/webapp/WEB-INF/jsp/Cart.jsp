@@ -22,41 +22,38 @@
         </tr>
         </thead>
         <tbody>
-        <c:if test="${not empty orderItems}">
-        <c:forEach items="${orderItems}" var="orderItem">
+        <c:if test="${not empty orderMap}">
+        <c:forEach items="${orderMap}" var="orderItem">
         <tr>
             <td>
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="${orderItem.picture}" class="w-100">
+                        <img src="${orderItem.key.picture}" class="w-100">
 
                     </div>
                     <div class="col-md-6">
-                        <h4>${orderItem.name}</h4>
-                        <p class="text-muted">${orderItem.weight}</p>
+                        <h4>${orderItem.key.name}</h4>
+                        <p class="text-muted">${orderItem.key.weight}</p>
                     </div>
                 </div>
             </td>
-            <td>${orderItem.price}$</td>
+            <td>${orderItem.key.price}$</td>
             <td>
                 <div class="row">
                     <div class="input-group">
                         <button type="button" class="btn btn-secondary" disabled="disabled" data-type="minus" data-field="quant[1]">
                             <span class="fa fa-minus"></span>
                         </button>
-                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                        <input type="text" name="quant[1]" class="form-control input-number" value="${orderItem.value}" min="1" max="10">
                         <button type="button" class="btn btn-secondary" data-type="plus" data-field="quant[1]">
                             <span class="fa fa-plus"></span>
                         </button>
                     </div>
                 </div></td>
             <td style="text-align: center">
-                <button class="btn btn-success">
-                <span class="fa fa-check"></span>
-            </button>
-                <button class="btn btn-danger">
-                    <span class="fa fa-times"></span>
-                </button>
+                <a href="/" class="btn btn-success inline"><span class="fa fa-check"></span></a>
+
+                <a href="/removeFromOrder/${orderItem.key.id}" class="btn btn-danger inline"><span class="fa fa-times"></span></a>
             </td>
         </tr>
     </c:forEach>
@@ -66,14 +63,15 @@
     <hr/>
     <div class="row">
         <h5 class="col-md-4">
-            You have ${fn:length(orderItems)} items in your cart
+            You have ${fn:length(orderMap)} items in your cart
         </h5>
         <h4 class="col-md-5">
             Total amount: ${ordersTotalAmount}$
         </h4>
-        <button class="btn btn-success col-md-2" style="margin-bottom: 10%">
+        <a href="/submitOrder" class="btn btn-success col-md-2" style="margin-bottom: 10%">
             Submit All <span class="fa fa-check"></span>
-        </button>
+        </a>
+
     </div>
 
 
