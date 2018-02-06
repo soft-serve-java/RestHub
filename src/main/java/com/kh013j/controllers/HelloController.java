@@ -56,12 +56,6 @@ public class HelloController {
         dishService.findAll());
   }
 
-    @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String cart(Model model){
-        model.addAttribute("orderItem", orderService.findById(1));
-        return "Cart";
-    }
-
     @RequestMapping(value = "/dishdescription/{id}", method = RequestMethod.GET)
     public String dishdescription(Model model, @PathVariable(value="id") long id){
         model.addAttribute("dish", dishService.findById(id));

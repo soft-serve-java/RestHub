@@ -40,7 +40,7 @@
                     </button>
                 </li>
                 <li>
-                    <a href="/cart">
+                    <a href="/order">
                         <button class="btn btn-info nav-button" style="margin-right:10px;">
                            <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                         </button>

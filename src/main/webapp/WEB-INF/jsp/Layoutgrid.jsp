@@ -28,7 +28,7 @@
                 </div>
                     <div class="card-footer">
                         <h5 class="card-title inline">${item.price}$</h5>
-                        <a href="/${item.id}" class="btn btn-primary inline">Add to cart</a>
+                        <a href="/addToOrder/${item.id}" class="btn btn-primary inline">Add to cart</a>
                     </div>
         </div>
         </c:forEach>
