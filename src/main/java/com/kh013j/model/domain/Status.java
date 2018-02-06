@@ -3,9 +3,9 @@ package com.kh013j.model.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 
 /*public enum Status {
@@ -21,5 +21,6 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Size(min = 2, max = 50)
     private String name;
 }
