@@ -1,11 +1,13 @@
 package com.kh013j.model.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @AllArgsConstructor
@@ -15,5 +17,6 @@ import lombok.NoArgsConstructor;
 public class Role {
   @Id
   private long id;
+  @Column(length = 50)
   private String name;
 }
