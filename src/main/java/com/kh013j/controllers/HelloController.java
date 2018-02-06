@@ -37,7 +37,7 @@ public class HelloController {
         return new ModelAndView(ViewName.MENU, "menuItems",
             dishService.findAll());
     }
-  @RequestMapping(value = "/layoutgrid/sort/{criteria}", method = RequestMethod.GET)
+  @RequestMapping(value = "/menu/sort/{criteria}", method = RequestMethod.GET)
   public ModelAndView layoutgridSortBy(@PathVariable(value="criteria") String criteria){
       switch (criteria){
         case "byPrice":

@@ -2,15 +2,15 @@
 <%@ include file = "header.jsp" %>
 <div class="container">
 
-    <div class="col1" style="text-align: right">
+    <div class="col1" style="text-align: right; padding-top: 10px;">
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort by
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/layoutgrid/sort/byPrice">Price</a>
-                <a class="dropdown-item" href="ByCalories">Calories</a>
-                <a class="dropdown-item" href="ByPreparingtime">Preparing time</a>
+                <a class="dropdown-item" href="/menu/sort/byPrice">Price</a>
+                <a class="dropdown-item" href="/menu/sort/ByCalories">Calories</a>
+                <a class="dropdown-item" href="/menu/sort/ByPreparingtime">Preparing time</a>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                 </div>
                     <div class="card-footer">
                         <h5 class="card-title inline">${item.price}$</h5>
-                        <a href="/addToOrder/${item.id}" class="btn btn-primary inline">Add to cart</a>
+                        <a href="/addToCart/${item.id}" class="btn btn-primary inline">Add to cart</a>
                     </div>
         </div>
         </c:forEach>
