@@ -63,14 +63,15 @@
     <hr/>
     <div class="row">
         <h5 class="col-md-4">
-            You have ${fn:length(orderItems)} items in your cart
+            You have ${fn:length(orderMap)} items in your cart
         </h5>
         <h4 class="col-md-5">
             Total amount: ${ordersTotalAmount}$
         </h4>
-        <button class="btn btn-success col-md-2" style="margin-bottom: 10%">
+        <a href="/submitOrder" class="btn btn-success col-md-2" style="margin-bottom: 10%">
             Submit All <span class="fa fa-check"></span>
-        </button>
+        </a>
+
     </div>
 
 

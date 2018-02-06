@@ -1,9 +1,7 @@
 package com.kh013j.controllers;
 
 import com.kh013j.model.repository.CategoryRepository;
-import com.kh013j.model.service.OrderServiceImpl;
 import com.kh013j.model.service.interfaces.DishService;
-import com.kh013j.model.service.DishServiceImpl;
 import com.kh013j.model.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

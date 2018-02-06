@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="en" style="position: relative; min-height: 100%">
 <head>
@@ -40,11 +41,20 @@
                     </button>
                 </li>
                 <li>
-                    <a href="/order">
-                        <button class="btn btn-info nav-button" style="margin-right:10px;">
-                           <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                        </button>
-                    </a>
+
+                    <c:if test="${not empty orderMap}">
+                        <a href="/order">
+                            <button class="btn btn-info nav-button" style="margin-right:10px;">
+                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+                             </button>
+                        </a>
+                    </c:if>
+                    <c:if test="${empty orderMap}">
+                            <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
+                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+                            </button>
+                    </c:if>
+
                 </li>
                 <li class="nav-item">
                     <form  action="#" class="nav-form">
