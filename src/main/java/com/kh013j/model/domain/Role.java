@@ -17,6 +17,6 @@ import javax.persistence.Table;
 public class Role {
   @Id
   private long id;
-  @Column(length = 50)
+  @Size(min = 2, max = 50)
   private String name;
 }

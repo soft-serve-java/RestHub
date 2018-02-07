@@ -17,6 +17,6 @@ public class Category {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  @Column(length = 50)
+  @Size(min = 2, max = 50)
   private String name;
 }

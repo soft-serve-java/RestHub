@@ -14,12 +14,12 @@ import javax.persistence.*;
 public class User {
   @Id
   private long id;
-  @Column(length = 50)
-  private String email;
-  @Column(length = 50)
+  @Size(min = 15, max = 50)
   private String login;
-  @Column(length = 50)
+  @Size(min = 8, max = 50)
   private String password;
+  @Size(min = 15, max = 50)
+  private String email;
   @ManyToOne
   @JoinColumn(name = "role_id")
   private Role role;
