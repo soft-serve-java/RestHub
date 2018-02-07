@@ -11,8 +11,20 @@ body {
     margin-right: 10px;
 }
 
+.a-nav{
+    color: darkgrey;
+}
+
+.a-nav:hover{
+    color: lightgrey;
+}
+
 .card{
     max-width: 250px;
+}
+
+.btn-nav-search{
+    margin-top: 10px;
 }
 
 .i-button {

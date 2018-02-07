@@ -56,19 +56,13 @@
                     </c:if>
 
                 </li>
-                <li class="nav-item">
-                    <form  action="#" class="nav-form">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-default btn-lg nav-button">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
-                </li>
             </ul>
+        <form action="#" class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button type="button" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <a class="nav-link a-nav" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
         </div>
 </nav>
