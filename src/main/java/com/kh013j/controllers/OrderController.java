@@ -75,7 +75,7 @@ public class OrderController {
     private Order createOrderFromMap(Map<Dish, Integer> orderMap){
         Order order = new Order();
         order.setTime(new Timestamp(new Date().getTime()));
-        order.setTableNumber(1);
+        order.setTablenumber(1);
         order.setOrderedFood(new ArrayList<>( ));
         for(Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
             OrderedDish orderedDish = new OrderedDish();

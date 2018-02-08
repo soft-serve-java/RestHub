@@ -8,9 +8,9 @@
                 Sort by
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/menu/sort/byPrice">Price</a>
-                <a class="dropdown-item" href="/menu/sort/ByCalories">Calories</a>
-                <a class="dropdown-item" href="/menu/sort/ByPreparingtime">Preparing time</a>
+                <a class="dropdown-item" href="/menu/${category}/sort/byPrice">Price</a>
+                <a class="dropdown-item" href="/menu/${category}/sort/ByCalories">Calories</a>
+                <a class="dropdown-item" href="/menu/${category}/sort/ByPreparingtime">Preparing time</a>
             </div>
         </div>
     </div>

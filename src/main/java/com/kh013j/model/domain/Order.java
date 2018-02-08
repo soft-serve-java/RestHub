@@ -25,7 +25,7 @@ public class Order {
   @ManyToOne
   @JoinColumn(name = "user_id")
   private User user;
-  private int tableNumber;
+  private int tablenumber;
   @Column(name ="close")
   private boolean isClosed;
   @OneToMany

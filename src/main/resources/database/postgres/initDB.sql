@@ -37,7 +37,7 @@ CREATE TABLE rh.order
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
   time timestamp without time zone,
-  table_number int,
+  tablenumber int,
   close boolean,
   user_id bigint,
   CONSTRAINT "user_id" FOREIGN KEY ("user_id")
