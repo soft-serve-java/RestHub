@@ -9,6 +9,6 @@ public class ViewName {
 
     public static final String ORDER = "Cart";
 
-    private ViewName() {}
+    private ViewName() { throw new UnsupportedOperationException(); }
 
 }
