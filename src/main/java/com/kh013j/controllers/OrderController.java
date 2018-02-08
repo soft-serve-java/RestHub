@@ -21,31 +21,33 @@ import java.util.*;
 public class OrderController {
 
     @Autowired
-    DishService dishService;
+    private DishService dishService;
 
     @Autowired
-    OrderService orderService;
+    private OrderService orderService;
 
     @RequestMapping(value = "/addToOrder/{id}", method = RequestMethod.GET)
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
                                      @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                      HttpServletRequest request) {
-        Dish dish = dishService.findById(id);
-        if (orderMap.containsKey(dish)) {
-            orderMap.put(dish, orderMap.get(dish) + 1);
-        } else {
-            orderMap.put(dish, 1);
-        }
+        Optional<Dish> dish = Optional.of(dishService.findById(id));
+        dish.ifPresent(d -> {
+            if (orderMap.containsKey(d)) {
+                orderMap.put(d, orderMap.get(d) + 1);
+            } else {
+                orderMap.put(d, 1);
+            }
+        });
         return new RedirectView(request.getHeader("referer"));
     }
+
 
     @RequestMapping(value="/removeFromOrder/{id}",method = RequestMethod.GET)
     public RedirectView removeFromOrder(@PathVariable(value = "id") long id,
                                         @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                         HttpServletRequest request) {
-        Dish dish = dishService.findById(id);
-
-        orderMap.remove(dish);
+        Optional<Dish> dish = Optional.of(dishService.findById(id));
+        dish.ifPresent(orderMap::remove);
         return new RedirectView(request.getHeader("referer"));
     }
 
@@ -62,7 +64,7 @@ public class OrderController {
 
 
     @ModelAttribute("orderMap")
-    public Map<Dish, Integer> getVisitor () {
+    public Map<Dish, Integer> getOrderMap() {
         return new HashMap<>();
     }
 
