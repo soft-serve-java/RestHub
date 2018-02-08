@@ -1,6 +1,5 @@
 package com.kh013j.model.domain;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.Column;
