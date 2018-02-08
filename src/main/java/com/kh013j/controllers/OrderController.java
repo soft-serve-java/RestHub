@@ -10,6 +10,8 @@ import com.kh013j.model.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,8 +60,10 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public String order(){
-        return ViewName.ORDER;
+    public ModelAndView order(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap){
+        int sumOfAllDishPrices = orderMap.entrySet()
+                .stream().mapToInt(e -> e.getKey().getPrice() * e.getValue()).sum();
+        return new ModelAndView(ViewName.ORDER, "ordersTotalAmount", sumOfAllDishPrices);
     }
 
 
