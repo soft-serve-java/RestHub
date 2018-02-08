@@ -1,6 +1,5 @@
 package com.kh013j.model.service.interfaces;
 
-import com.kh013j.model.domain.Dish;
 import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.exception.DishNotFound;
 import java.util.List;

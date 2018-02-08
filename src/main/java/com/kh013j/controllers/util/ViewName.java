@@ -1,12 +1,14 @@
 package com.kh013j.controllers.util;
 
 public class ViewName {
-    public static String MENU = "Layoutgrid";
+    public static final String MENU = "Layoutgrid";
 
-    public static String DISH_DESCRIPTION = "Dishdescription";
+    public static final String DISH_DESCRIPTION = "Dishdescription";
 
-    public static String WELCOME = "Welcome";
+    public static final String WELCOME = "Welcome";
 
-    public static String ORDER = "Cart";
+    public static final String ORDER = "Cart";
+
+    private ViewName() { throw new UnsupportedOperationException(); }
 
 }

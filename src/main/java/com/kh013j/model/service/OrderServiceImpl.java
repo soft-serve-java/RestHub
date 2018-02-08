@@ -6,7 +6,6 @@ import com.kh013j.model.repository.OrderRepository;
 import com.kh013j.model.service.interfaces.OrderService;
 import java.util.List;
 import javax.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 public class OrderServiceImpl implements OrderService {
   @Resource
