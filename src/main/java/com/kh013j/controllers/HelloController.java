@@ -2,8 +2,6 @@ package com.kh013j.controllers;
 
 import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.Category;
-import com.kh013j.model.domain.Dish;
-import com.kh013j.model.repository.CategoryRepository;
 import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
@@ -13,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Controller
@@ -54,5 +50,7 @@ public class HelloController {
         model.addAttribute("dish", dishService.findById(id));
         return ViewName.DISH_DESCRIPTION;
     }
+
+
 
 }

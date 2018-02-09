@@ -25,7 +25,7 @@ public class CategoryController {
     public List<Category> getOrderMap() {
         return categoryService.findAll();
     }
-    
+
     @RequestMapping(value = "/menu/{category}", method = RequestMethod.GET)
     public ModelAndView showCategory( @PathVariable(value = "category") String category) {
         return new ModelAndView(ViewName.MENU, "menuItems", dishService.findAllDishByCategory(
