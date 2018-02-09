@@ -26,6 +26,15 @@
                         </row>
                         <p class="text-muted">Name:</p>
                         <textarea name="comment" cols="105" rows="1">${dish.name}</textarea></p>
+
+                        <row>
+                            <p class="text-muted">Category:
+                                <input type="radio" name="Category" value="Soups"> Soups
+                                <input type="radio" name="Category" value="Meals"> Meals
+                                <input type="radio" name="Category" value="Drinks"> Drinks
+                                <input type="radio" name="Category" value="Deserts"> Deserts <br>
+                        </row>
+
                         <p class="text-muted">Components:</p>
                         <textarea name="comment" cols="105" rows="1"></textarea></p>
                         <p class="text-muted">Description:</p>
