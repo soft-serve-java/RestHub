@@ -4,16 +4,16 @@ INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, a
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
   , picture, category_id) VALUES ('White corn guacamole', 'Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.'
-  , 200, 1000, 40, 3, true, '/images/White%20corn%20guacamole.jpg', 1);
+  , 200, 1000, 40, 3, true, '/images/White%20corn%20guacamole.jpg', 3);
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
   , picture, category_id) VALUES ('Petite wedge', 'Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.'
-  , 400, 1450, 15, 3, true, '/images/White%20corn%20guacamole.jpg', 1);
+  , 400, 1450, 15, 3, true, '/images/White%20corn%20guacamole.jpg', 2);
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
   , picture, category_id) VALUES ('Arugula salad',
     'Sun-dried tomatoes, toasted almonds and shaved Parmesan served with housemade lemon vinaigrette.'
-  , 100, 1400, 2, 30, true, '/images/Arugula%20salad.jpg', 1);
+  , 100, 1400, 2, 30, true, '/images/Arugula%20salad.jpg', 2);
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
   , picture, category_id) VALUES ('Spinach artishoke dip', 'Served hot with housemade blue & white corn tortilla chips..'

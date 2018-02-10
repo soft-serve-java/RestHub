@@ -78,7 +78,6 @@ body {
     padding-top: 1pt;
 }
 
-
 .table > tbody > tr > td {
     vertical-align: middle;
     text-align: center;
@@ -86,4 +85,8 @@ body {
 
 .inline{
     display: inline;
+}
+
+.sign{
+    margin-top: 50%;
 }
