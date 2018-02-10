@@ -7,6 +7,7 @@ import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
+import com.kh013j.model.service.interfaces.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,8 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private StatusService statusService;
 
     @RequestMapping(value = "/addToOrder/{id}", method = RequestMethod.GET)
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
@@ -55,8 +58,9 @@ public class OrderController {
 
     @RequestMapping(value = "/submitOrder")
     public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap){
-        orderService.create(createOrderFromMap(orderMap));
-        return new RedirectView("/"+ ViewName.WELCOME);
+        Order newOrder = createOrderFromMap(orderMap);
+        orderService.create(newOrder);
+        return new RedirectView("/order");
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
@@ -76,16 +80,17 @@ public class OrderController {
         Order order = new Order();
         order.setTime(new Timestamp(new Date().getTime()));
         order.setTablenumber(1);
+        List<OrderedDish> orderedDishes = new ArrayList<>();
         order.setOrderedFood(new ArrayList<>( ));
         for(Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
             OrderedDish orderedDish = new OrderedDish();
             orderedDish.setDish(entry.getKey());
             orderedDish.setQuantity(entry.getValue());
-            Status status = new Status();
-            status.setName("preparing");
+            Status status = statusService.findByName("preparing");
             orderedDish.setStatus(status);
-            order.getOrderedFood().add(new OrderedDish());
+            orderedDishes.add(orderedDish);
         }
+        order.setOrderedFood(orderedDishes);
         return order;
     }
 

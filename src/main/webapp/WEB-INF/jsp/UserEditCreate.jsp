@@ -1,6 +1,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "header.jsp" %>
+<%@ include file = "Admin.jsp" %>
 <div class="container">
    <%--@elvariable id="user" type="com.kh013j.model.domain.User"--%>
    <form:form method="POST" action="/admin/user/save" modelAttribute="user">

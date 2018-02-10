@@ -1,13 +1,7 @@
 package com.kh013j;
 
-import com.kh013j.model.service.DishServiceImpl;
-import com.kh013j.model.service.OrderServiceImpl;
-import com.kh013j.model.service.RoleServiceImpl;
-import com.kh013j.model.service.UserServiceImpl;
-import com.kh013j.model.service.interfaces.DishService;
-import com.kh013j.model.service.interfaces.OrderService;
-import com.kh013j.model.service.interfaces.RoleService;
-import com.kh013j.model.service.interfaces.UserService;
+import com.kh013j.model.service.*;
+import com.kh013j.model.service.interfaces.*;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -37,5 +31,9 @@ public class CaffinoApplicationConfiguration {
   @Bean
   public RoleService roleServiceConfig(){
     return new RoleServiceImpl();
+  }
+  @Bean
+  public StatusService statusServiceConfig(){
+    return new StatusServiseImpl();
   }
 }
