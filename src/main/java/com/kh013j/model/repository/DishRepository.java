@@ -11,4 +11,5 @@ public interface  DishRepository extends JpaRepository<Dish, Long> {
   List<Dish> findByCategoryOrderByPrice(Category category);
   List<Dish> findByCategoryOrderByCalories(Category category);
   List<Dish> findByCategoryOrderByPreparingtime(Category category);
+  List<Dish> findByNameContainingIgnoreCase(String name);
 }
