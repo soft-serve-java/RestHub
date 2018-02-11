@@ -4,16 +4,24 @@ import com.kh013j.model.domain.Order;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderRepository;
 import com.kh013j.model.service.interfaces.OrderService;
+import com.kh013j.model.service.interfaces.OrderedDishService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import javax.annotation.Resource;
 
 public class OrderServiceImpl implements OrderService {
   @Resource
   OrderRepository orderRepository;
+  @Autowired
+  private OrderedDishService orderedDishService;
 
   @Override
-  public Order create(Order order) {
-    return orderRepository.save(order);
+  public void create(Order order) {
+    Order newOrder = orderRepository.save(order);
+    //orderedDishService.createAll(order.getOrderedFood(), newOrder);
+
   }
 
   @Override
@@ -27,12 +35,17 @@ public class OrderServiceImpl implements OrderService {
   }
 
   @Override
-  public Order update(Order order) throws DishNotFound {
-    return null;
+  public Order update(Order order) {
+    return orderRepository.saveAndFlush(order);
   }
 
   @Override
   public Order findById(long id) {
     return orderRepository.findOne(id);
+  }
+
+  @Override
+  public Order findByTable(int table) {
+    return orderRepository.findFirstByTablenumberAndCloseFalse(table);
   }
 }

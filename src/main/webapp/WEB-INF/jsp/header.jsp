@@ -35,14 +35,14 @@
                 </li>
                 <li>
 
-                    <c:if test="${not empty orderMap}">
+                    <c:if test="${not empty orderMap || not empty orderedList}">
                         <a href="/order">
                             <button class="btn btn-info nav-button" style="margin-right:10px;">
                                 <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                              </button>
                         </a>
                     </c:if>
-                    <c:if test="${empty orderMap}">
+                    <c:if test="${empty orderMap && empty orderedList}">
                             <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
                                 <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                             </button>

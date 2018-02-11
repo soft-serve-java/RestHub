@@ -33,7 +33,7 @@
             </form:select>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">OK</button>
+    <button type="submit" class="btn btn-primary">Apply</button>
 </form:form>
 </div>
 <%@ include file = "footer.jsp" %>

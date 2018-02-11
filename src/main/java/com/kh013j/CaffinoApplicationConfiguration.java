@@ -36,4 +36,11 @@ public class CaffinoApplicationConfiguration {
   public StatusService statusServiceConfig(){
     return new StatusServiseImpl();
   }
+  @Bean
+  public OrderedDishService orderedDishServiceConfig(){
+    return new OrderedDishServiceImpl();
+  }
+  @Bean
+  public CategoryService categoryServiceConfig(){
+    return new CategoryServiceImpl();}
 }

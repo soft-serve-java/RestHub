@@ -24,9 +24,8 @@
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var recipient = button.data('whatever');
-        var id = button.data('id');
-        var href  = $('#delete').attr('action');
-        $("#delete").attr("action", href + id);
+        var href = button.data('href');
+        $("#delete").attr("action", href);
         var modal = $(this);
         modal.find('.modal-body').text('Are you sure, that you want to delete ' + recipient +'?');
     })

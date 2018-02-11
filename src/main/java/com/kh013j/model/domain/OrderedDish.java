@@ -21,7 +21,10 @@ public class OrderedDish {
   @JoinColumn(name = "dish_id")
   private Dish dish;
   @ManyToOne
-  @JoinColumn(name = "status_id")
+  @JoinColumn(name = "order_id")
+  private Order order;
+  @ManyToOne
+  @JoinColumn(name = "status_id", nullable = false)
   private Status status;
   private int quantity;
 }

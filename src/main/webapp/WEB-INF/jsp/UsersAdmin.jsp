@@ -21,7 +21,7 @@
         <td>${user.role.name}</td>
         <td>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                    data-whatever="${user.login}" data-id = "${user.id}">Delete</button>
+                    data-whatever="${user.login}" data-href = "/admin/user/delete/${user.id}">Delete</button>
         </td>
         <td>
             <a href="/admin/user/edit/${user.id}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>

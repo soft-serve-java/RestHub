@@ -13,6 +13,10 @@ public class ViewName {
 
     public static final String SHOW_USERS = "UsersAdmin";
 
+    public static final String SHOW_CATEGORY = "CategoryAdmin";
+
+    public static final String CATEGORY_EDIT_CREATE = "CategoryEditCreate";
+
     private ViewName() { throw new UnsupportedOperationException(); }
 
 }

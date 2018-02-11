@@ -28,6 +28,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin/dish/all">Dish</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/category/all">Category</a>
+            </li>
         </ul>
         <form action="#" class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">

@@ -87,3 +87,6 @@ body {
 .inline{
     display: inline;
 }
+.ordered.tr{
+    background-color: lightgreen;
+}

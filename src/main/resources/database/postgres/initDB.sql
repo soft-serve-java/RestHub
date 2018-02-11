@@ -1,29 +1,32 @@
 DROP SCHEMA IF EXISTS rh CASCADE;
 CREATE SCHEMA rh;
-DROP SEQUENCE IF EXISTS rest_sequance CASCADE;
-CREATE SEQUENCE rest_sequance;
+DROP SEQUENCE IF EXISTS category_sequance CASCADE;
+CREATE SEQUENCE category_sequance;
 
 CREATE TABLE rh.category(
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('category_sequance'),
   name varchar(50)
 );
 
-
+DROP SEQUENCE IF EXISTS role_sequance CASCADE;
+CREATE SEQUENCE role_sequance;
 CREATE TABLE rh.role(
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('role_sequance'),
   name varchar(50)
 );
 
-
+DROP SEQUENCE IF EXISTS status_sequance CASCADE;
+CREATE SEQUENCE status_sequance;
 CREATE TABLE rh.status(
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('status_sequance'),
   name varchar(50)
 );
 
-
+DROP SEQUENCE IF EXISTS user_sequance CASCADE;
+CREATE SEQUENCE user_sequance;
 CREATE TABLE rh.user
 (
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('user_sequance'),
   email varchar(50),
   login varchar(50),
   password varchar(50),
@@ -32,10 +35,11 @@ CREATE TABLE rh.user
   REFERENCES rh.role (id) MATCH SIMPLE
 );
 
-
+DROP SEQUENCE IF EXISTS order_sequense CASCADE;
+CREATE SEQUENCE order_sequense;
 CREATE TABLE rh.order
 (
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('order_sequense'),
   time timestamp without time zone,
   tablenumber int,
   close boolean,
@@ -44,10 +48,11 @@ CREATE TABLE rh.order
   REFERENCES rh.user (id)
 );
 
-
+DROP SEQUENCE IF EXISTS dish_sequense CASCADE;
+CREATE SEQUENCE dish_sequense;
 CREATE TABLE rh.dish
 (
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('dish_sequense'),
   name varchar(50),
   description varchar(1000),
   weight int,
@@ -61,10 +66,11 @@ CREATE TABLE rh.dish
   REFERENCES rh.category (id)
 );
 
-
+DROP SEQUENCE IF EXISTS orderdish_sequense CASCADE;
+CREATE SEQUENCE orderdish_sequense;
 CREATE TABLE rh.orderdish
 (
-  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('rest_sequance'),
+  id bigint NOT NULL PRIMARY KEY DEFAULT nextval('orderdish_sequense'),
   quantity int,
   dish_id bigint,
   status_id bigint,

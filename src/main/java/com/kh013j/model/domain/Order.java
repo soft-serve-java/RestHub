@@ -1,6 +1,7 @@
 package com.kh013j.model.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -23,8 +24,8 @@ public class Order {
   private User user;
   private int tablenumber;
   @Column(name ="close")
-  private boolean isClosed;
-  @OneToMany(cascade = CascadeType.ALL)
-  private List<OrderedDish> orderedFood;
+  private boolean close;
+  @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+  private List<OrderedDish> orderedFood = new ArrayList<>();
 
 }
