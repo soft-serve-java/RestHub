@@ -1,9 +1,6 @@
 package com.kh013j.model.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,9 +14,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "orderdish" , schema = "rh")
-//@RestHubEntity(table = @Table(name="orderdish", schema = "rh"))
 public class OrderedDish {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   long id;
   @ManyToOne
   @JoinColumn(name = "dish_id")
@@ -28,7 +25,7 @@ public class OrderedDish {
   @JoinColumn(name = "order_id")
   private Order order;
   @ManyToOne
-  @JoinColumn(name = "status_id")
+  @JoinColumn(name = "status_id", nullable = false)
   private Status status;
   private int quantity;
 }

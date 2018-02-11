@@ -23,6 +23,40 @@
         </tr>
         </thead>
         <tbody>
+        <c:if test="${not empty orderedList}">
+            <c:forEach items="${orderedList}" var="orderItem">
+                <tr class="table-info">
+                    <td>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="${orderItem.dish.picture}" class="w-100">
+                            </div>
+                            <div class="col-md-6">
+                                <h4>${orderItem.dish.name}</h4>
+                                <p class="text-muted">${orderItem.dish.weight}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${orderItem.dish.price}$</td>
+                    <td>
+                        <div class="row">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-secondary" disabled="disabled">
+                                    <span class="fa fa-minus"></span>
+                                </button>
+                                <input type="text" name="quant[1]" class="form-control input-number" value="${orderItem.quantity}" min="1" max="10" disabled>
+                                <button type="button" class="btn btn-secondary" disabled>
+                                    <span class="fa fa-plus"></span>
+                                </button>
+                            </div>
+                        </div></td>
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-secondary" disabled>${orderItem.status.name}</button>
+                    </td>
+                </tr>
+            </c:forEach>
+        </c:if>
+
         <c:if test="${not empty orderMap}">
             <c:forEach items="${orderMap}" var="orderItem">
                 <tr>

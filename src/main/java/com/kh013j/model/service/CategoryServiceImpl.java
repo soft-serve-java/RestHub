@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import java.util.List;
 
 
-@Service
 public class CategoryServiceImpl implements CategoryService {
     @Resource
     private CategoryRepository categoryRepository;
@@ -20,6 +19,16 @@ public class CategoryServiceImpl implements CategoryService {
     @Transactional
     public Category create(Category category) {
         return categoryRepository.save(category);
+    }
+
+    @Override
+    public Category update(Category category) {
+        return categoryRepository.saveAndFlush(category);
+    }
+
+    @Override
+    public Category findById(long id) {
+        return categoryRepository.findOne(id);
     }
 
     @Override

@@ -14,7 +14,8 @@ import javax.persistence.*;
 //@RestHubEntity(table = @Table(name="user", schema = "rh"))
 public class User {
   @Id
-  private long id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id = -1;
   @Column(length = 50)
   private String email;
   @Column(length = 50)

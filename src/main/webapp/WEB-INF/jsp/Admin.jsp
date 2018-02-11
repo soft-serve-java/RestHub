@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html lang="en" style="position: relative; min-height: 100%">
 <head>
     <meta charset="UTF-8">
@@ -22,34 +21,17 @@
     </button>
     <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" >
-                <c:forEach items="${categoryItems}" var="item">
+        <ul class="navbar-nav mr-auto" >
                 <li class="nav-item">
-                    <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
+                    <a class="nav-link" href="/admin/user/all">Users</a>
                 </li>
-            </c:forEach>
-                <li>
-                    <button class="btn btn-success nav-button" style="margin-right:10px;">
-                        <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
-                    </button>
-                </li>
-                <li>
-
-                    <c:if test="${not empty orderMap || not empty orderedList}">
-                        <a href="/order">
-                            <button class="btn btn-info nav-button" style="margin-right:10px;">
-                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                             </button>
-                        </a>
-                    </c:if>
-                    <c:if test="${empty orderMap && empty orderedList}">
-                            <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
-                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                            </button>
-                    </c:if>
-
-                </li>
-            </ul>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/dish/all">Dish</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/category/all">Category</a>
+            </li>
+        </ul>
         <form action="#" class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
             <button type="button" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
@@ -57,5 +39,5 @@
             </button>
         </form>
         <a class="nav-link a-nav" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
-        </div>
+    </div>
 </nav>
