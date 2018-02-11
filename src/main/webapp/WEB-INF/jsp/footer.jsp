@@ -11,5 +11,7 @@
         <a href="#" class="add-text">Help</a>
     </div>
 </footer>
+</body>
+</html>
 
 

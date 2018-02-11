@@ -9,6 +9,7 @@ import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.StatusService;
+import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.persistence.NonUniqueResultException;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.*;
 
 @Controller
-@SessionAttributes(value = {"orderMap", "orderedList", "tableNumber"})
+@SessionAttributes("orderMap")
 public class OrderController {
 
     @Autowired
@@ -125,5 +125,20 @@ public class OrderController {
             orderedDishes.add(orderedDish);
         }
         return orderedDishes;
+    }
+    @RequestMapping(value = "/increase/{dishId}", method = RequestMethod.GET)
+    public RedirectView increaseQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
+                                         @PathVariable(value = "dishId") int dishId,
+                                         HttpServletRequest request) {
+        orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v + 1);
+        return new RedirectView(request.getHeader("referer"));
+    }
+
+    @RequestMapping(value = "/reduce/{dishId}", method = RequestMethod.GET)
+    public RedirectView reduceQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
+                                       @PathVariable(value = "dishId") int dishId,
+                                       HttpServletRequest request) {
+        orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v - 1);
+        return new RedirectView(request.getHeader("referer"));
     }
 }

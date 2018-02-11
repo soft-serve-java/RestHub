@@ -2,21 +2,25 @@ package com.kh013j.model.service;
 
 import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
+import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderedDishRepository;
 import com.kh013j.model.service.interfaces.OrderedDishService;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-public class OrderedDishServiceImpl implements OrderedDishService {
+@Service
+public class OrderedDishServiceImpl implements OrderedDishService{
     @Resource
-    OrderedDishRepository orderedDishRepository;
+    private OrderedDishRepository orderedDishRepository;
+
     @Override
     @Transactional
-    public OrderedDish create(OrderedDish dish) {
-        return orderedDishRepository.save(dish);
+    public OrderedDish create(OrderedDish orderedDish) {
+        return orderedDishRepository.save(orderedDish);
     }
     @Override
     public List<OrderedDish> createAll(List< OrderedDish> dishes, Order order) {
@@ -24,24 +28,40 @@ public class OrderedDishServiceImpl implements OrderedDishService {
                 forEach(orderedDish -> orderedDish.setOrder(order));
         return orderedDishRepository.save(dishes);
     }
-
     @Override
+    @Transactional(rollbackFor = CategoryNotFound.class)
     public OrderedDish delete(long id) throws DishNotFound {
-        return null;
+        OrderedDish deletedOrderedDish = orderedDishRepository.findOne(id);
+
+        if (orderedDishRepository == null)
+            throw new DishNotFound();
+
+        orderedDishRepository.delete(deletedOrderedDish);
+        return deletedOrderedDish;
     }
 
     @Override
-    public List findAll() {
-        return null;
+    @Transactional
+    public OrderedDish update(OrderedDish orderedDish){
+        OrderedDish updatedOrderedDish = orderedDishRepository.findOne(orderedDish.getId());
+
+        updatedOrderedDish.setOrder(orderedDish.getOrder());
+        updatedOrderedDish.setDish(orderedDish.getDish());
+        updatedOrderedDish.setQuantity(orderedDish.getQuantity());
+        updatedOrderedDish.setStatus(orderedDish.getStatus());
+
+        return updatedOrderedDish;
     }
 
     @Override
-    public OrderedDish update(OrderedDish dish) throws DishNotFound {
-        return null;
+    @Transactional
+    public OrderedDish findById(long id){
+        return orderedDishRepository.findOne(id);
     }
 
     @Override
-    public OrderedDish findById(long id) {
-        return null;
+    @Transactional
+    public List<OrderedDish> findAll() {
+        return orderedDishRepository.findAll();
     }
 }

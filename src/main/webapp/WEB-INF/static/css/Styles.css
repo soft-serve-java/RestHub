@@ -87,6 +87,8 @@ body {
 .inline{
     display: inline;
 }
-.ordered.tr{
-    background-color: lightgreen;
+
+
+.sign{
+    margin-top: 50%;
 }

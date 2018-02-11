@@ -44,6 +44,16 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional(rollbackFor = CategoryNotFound.class)
+    public Category update(Category category){
+        Category updatedCategory = categoryRepository.findOne(category.getId());
+
+        updatedCategory.setName(category.getName());
+
+        return updatedCategory;
+    }
+
+    @Override
     @Transactional
     public Category findCategoryByName(String name){
         return categoryRepository.findCategoryByName(name);
