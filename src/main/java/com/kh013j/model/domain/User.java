@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "user", schema = "rh")
+//@RestHubEntity(table = @Table(name="user", schema = "rh"))
 public class User {
   @Id
   private long id;

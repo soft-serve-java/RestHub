@@ -7,11 +7,11 @@ import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
+import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +28,13 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private OrderedDishService orderedDishService;
+
     @RequestMapping(value = "/addToOrder/{id}", method = RequestMethod.GET)
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
-                                     @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
-                                     HttpServletRequest request) {
+                                   @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
+                                   HttpServletRequest request) {
         Optional<Dish> dish = Optional.of(dishService.findById(id));
         dish.ifPresent(d -> {
             if (orderMap.containsKey(d)) {
@@ -43,8 +46,7 @@ public class OrderController {
         return new RedirectView(request.getHeader("referer"));
     }
 
-
-    @RequestMapping(value="/removeFromOrder/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/removeFromOrder/{id}", method = RequestMethod.GET)
     public RedirectView removeFromOrder(@PathVariable(value = "id") long id,
                                         @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                         HttpServletRequest request) {
@@ -54,13 +56,13 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/submitOrder")
-    public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap){
+    public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap) {
         orderService.create(createOrderFromMap(orderMap));
-        return new RedirectView("/"+ ViewName.WELCOME);
+        return new RedirectView("/" + ViewName.WELCOME);
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public ModelAndView order(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap){
+    public ModelAndView order(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap) {
         int sumOfAllDishPrices = orderMap.entrySet()
                 .stream().mapToInt(e -> e.getKey().getPrice() * e.getValue()).sum();
         return new ModelAndView(ViewName.ORDER, "ordersTotalAmount", sumOfAllDishPrices);
@@ -72,12 +74,12 @@ public class OrderController {
         return new HashMap<>();
     }
 
-    private Order createOrderFromMap(Map<Dish, Integer> orderMap){
+    private Order createOrderFromMap(Map<Dish, Integer> orderMap) {
         Order order = new Order();
         order.setTime(new Timestamp(new Date().getTime()));
         order.setTableNumber(1);
-        order.setOrderedFood(new ArrayList<>( ));
-        for(Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
+        order.setOrderedFood(new ArrayList<>());
+        for (Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
             OrderedDish orderedDish = new OrderedDish();
             orderedDish.setDish(entry.getKey());
             orderedDish.setQuantity(entry.getValue());
@@ -87,5 +89,27 @@ public class OrderController {
             order.getOrderedFood().add(new OrderedDish());
         }
         return order;
+    }
+
+    @RequestMapping(value = "/increase/{dishId}", method = RequestMethod.GET)
+    public RedirectView increaseQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
+                                 @PathVariable(value = "dishId") int dishId,
+                                 HttpServletRequest request) {
+        orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v + 1);
+        /*for (Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+            if (entry.getKey().getId() == dishId) {
+                orderMap.put(dishService.findById(dishId), entry.getValue() + 1);
+            }
+        }*/
+        return new RedirectView(request.getHeader("referer"));
+    }
+
+    @RequestMapping(value = "/reduce/{dishId}", method = RequestMethod.GET)
+    public RedirectView reduceQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
+                                            @PathVariable(value = "dishId") int dishId,
+                                            HttpServletRequest request) {
+        orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v - 1);
+        return new RedirectView(request.getHeader("referer"));
     }
 }

@@ -10,13 +10,14 @@ import javax.persistence.*;
 
 /*public enum Status {
   WAITING, COOKING, READY
-}*/
-
+}
+*/
 @Entity
 @Table(name = "status", schema = "rh")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//@RestHubEntity(table = @Table(name="status", schema = "rh"))
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
