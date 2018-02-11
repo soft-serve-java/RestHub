@@ -6,7 +6,7 @@
     <div class="row">
 
         <div class="col">
-            <img class="card-img-top" src="../${dish.picture}">
+            <img class="card-img-top" src="${dish.picture}">
         </div>
 
         <div class="col-md-6">
