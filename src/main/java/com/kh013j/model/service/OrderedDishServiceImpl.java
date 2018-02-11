@@ -1,5 +1,6 @@
 package com.kh013j.model.service;
 
+import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
@@ -21,7 +22,12 @@ public class OrderedDishServiceImpl implements OrderedDishService{
     public OrderedDish create(OrderedDish orderedDish) {
         return orderedDishRepository.save(orderedDish);
     }
-
+    @Override
+    public List<OrderedDish> createAll(List< OrderedDish> dishes, Order order) {
+        dishes.stream().
+                forEach(orderedDish -> orderedDish.setOrder(order));
+        return orderedDishRepository.save(dishes);
+    }
     @Override
     @Transactional(rollbackFor = CategoryNotFound.class)
     public OrderedDish delete(long id) throws DishNotFound {

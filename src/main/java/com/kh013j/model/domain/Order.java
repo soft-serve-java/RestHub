@@ -1,14 +1,9 @@
 package com.kh013j.model.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,19 +14,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "order" , schema = "rh")
-//@RestHubEntity(table = @Table(name="order", schema = "rh"))
 public class Order {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private Timestamp time;
   @ManyToOne
   @JoinColumn(name = "user_id")
   private User user;
-  private int tableNumber;
+  private int tablenumber;
   @Column(name ="close")
-  private boolean isClosed;
-  @OneToMany
-  @JoinColumn(name="id")
-  private List<OrderedDish> orderedFood;
+  private boolean close;
+  @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+  private List<OrderedDish> orderedFood = new ArrayList<>();
 
 }

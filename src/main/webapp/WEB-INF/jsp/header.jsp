@@ -23,18 +23,11 @@
     <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" >
+                <c:forEach items="${categoryItems}" var="item">
                 <li class="nav-item">
-                    <a class="nav-link" href="/menu/soups">Soups</a>
+                    <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu/meals">Meals</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu/drinks">Drinks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu/deserts">Deserts</a>
-                </li>
+            </c:forEach>
                 <li>
                     <button class="btn btn-success nav-button" style="margin-right:10px;">
                         <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
@@ -42,14 +35,14 @@
                 </li>
                 <li>
 
-                    <c:if test="${not empty orderMap}">
+                    <c:if test="${not empty orderMap || not empty orderedList}">
                         <a href="/order">
                             <button class="btn btn-info nav-button" style="margin-right:10px;">
                                 <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                              </button>
                         </a>
                     </c:if>
-                    <c:if test="${empty orderMap}">
+                    <c:if test="${empty orderMap && empty orderedList}">
                             <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
                                 <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                             </button>

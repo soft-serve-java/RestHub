@@ -14,25 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CaffinnoApplicationTests {
-    @Autowired
-		CategoryRepository categoryRepository;
-    @Autowired
-		DishRepository dishRepository;
 
 	@Test
 	public void contextLoads() {
 	}
-	@Test
-	public void newCategory(){
-		categoryRepository.save(new Category(1, "salad"));
-		Assert.assertEquals(new Category(1, "salad"),  categoryRepository.findOne(1L));
-	}
-	@Test
-	public void WATT(){
-		Assert.assertEquals(4,  categoryRepository.findAll().size());
-	}
-	@Test
-	public void insertedDishInLiqiubase(){
-Assert.assertEquals(1, dishRepository.findAll().size());
-	}
+
 }

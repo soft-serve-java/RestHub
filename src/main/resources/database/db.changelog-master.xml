@@ -24,8 +24,4 @@
     <validCheckSum>any</validCheckSum>
     <sqlFile path="database/postgres/insertDishesOneMore.sql"/>
   </changeSet>
-  <changeSet id="5" author="orasso">
-    <validCheckSum>any</validCheckSum>
-    <sqlFile path="database/postgres/insertDishesOneMore.sql"/>
-  </changeSet>
 </databaseChangeLog>
