@@ -8,12 +8,20 @@ import java.util.List;
 
 public interface DishService {
     Dish create(Dish dish);
+
     Dish delete(long id) throws DishNotFound;
+
+    Dish update(Dish dish) throws DishNotFound;
+
     List findAll();
-    //Dish update(Dish dish) throws DishNotFound;
+
     Dish findById(long id);
+
     List findAllDishByCategory(Category category);
+
     List findAllDishByCategoryOrderByPrice(Category category);
+
     List findAllDishByCategoryOrderByPreparingtime(Category category);
+
     List findAllDishByCategoryOrderByCalories(Category category);
 }

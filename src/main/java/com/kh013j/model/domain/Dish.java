@@ -14,25 +14,24 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "dish" , schema = "rh")
+@Table(name = "dish", schema = "rh")
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-//@RestHubEntity(table = @Table(name="dish", schema = "rh"))
 public class Dish {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  long id;
-  private String name;
-  private String description;
-  private int weight;
-  private int calories;
-  private String preparingtime;
-  private int price;
-  @ManyToOne
-  @JoinColumn(name = "category_id")
-  private Category category;
-  private String picture;
-  private boolean avalibility;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+    private String name;
+    private String description;
+    private int weight;
+    private int calories;
+    private String preparingtime;
+    private int price;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+    private String picture;
+    private boolean avalibility;
 }

@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.Table;
 
 @Data
@@ -16,19 +17,18 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "orderdish" , schema = "rh")
-//@RestHubEntity(table = @Table(name="orderdish", schema = "rh"))
+@Table(name = "orderdish", schema = "rh")
 public class OrderedDish {
-  @Id
-  long id;
-  @ManyToOne
-  @JoinColumn(name = "dish_id")
-  private Dish dish;
-  @ManyToOne
-  @JoinColumn(name = "order_id")
-  private Order order;
-  @ManyToOne
-  @JoinColumn(name = "status_id")
-  private Status status;
-  private int quantity;
+    @Id
+    long id;
+    @ManyToOne
+    @JoinColumn(name = "dish_id")
+    private Dish dish;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
+    private int quantity;
 }

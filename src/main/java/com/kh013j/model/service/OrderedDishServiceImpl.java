@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class OrderedDishServiceImpl implements OrderedDishService{
+public class OrderedDishServiceImpl implements OrderedDishService {
     @Resource
     private OrderedDishRepository orderedDishRepository;
 
@@ -36,7 +36,7 @@ public class OrderedDishServiceImpl implements OrderedDishService{
 
     @Override
     @Transactional
-    public OrderedDish update(OrderedDish orderedDish){
+    public OrderedDish update(OrderedDish orderedDish) {
         OrderedDish updatedOrderedDish = orderedDishRepository.findOne(orderedDish.getId());
 
         updatedOrderedDish.setOrder(orderedDish.getOrder());
@@ -49,7 +49,7 @@ public class OrderedDishServiceImpl implements OrderedDishService{
 
     @Override
     @Transactional
-    public OrderedDish findById(long id){
+    public OrderedDish findById(long id) {
         return orderedDishRepository.findOne(id);
     }
 

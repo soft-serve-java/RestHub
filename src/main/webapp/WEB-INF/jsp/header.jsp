@@ -22,41 +22,41 @@
     </button>
     <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" >
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu/soups">Soups</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu/meals">Meals</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu/drinks">Drinks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu/deserts">Deserts</a>
-                </li>
-                <li>
-                    <button class="btn btn-success nav-button" style="margin-right:10px;">
-                        <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/menu/soups">Soups</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu/meals">Meals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu/drinks">Drinks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu/deserts">Deserts</a>
+            </li>
+            <li>
+                <button class="btn btn-success nav-button" style="margin-right:10px;">
+                    <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
+                </button>
+            </li>
+            <li>
+
+                <c:if test="${not empty orderMap}">
+                    <a href="/order">
+                        <button class="btn btn-info nav-button" style="margin-right:10px;">
+                            <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+                        </button>
+                    </a>
+                </c:if>
+                <c:if test="${empty orderMap}">
+                    <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
+                        <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                     </button>
-                </li>
-                <li>
+                </c:if>
 
-                    <c:if test="${not empty orderMap}">
-                        <a href="/order">
-                            <button class="btn btn-info nav-button" style="margin-right:10px;">
-                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                             </button>
-                        </a>
-                    </c:if>
-                    <c:if test="${empty orderMap}">
-                            <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
-                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                            </button>
-                    </c:if>
-
-                </li>
-            </ul>
+            </li>
+        </ul>
         <form action="#" class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
             <button type="button" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
@@ -64,5 +64,5 @@
             </button>
         </form>
         <a class="nav-link a-nav" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
-        </div>
+    </div>
 </nav>

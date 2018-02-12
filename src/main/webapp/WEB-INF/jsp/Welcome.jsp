@@ -1,4 +1,4 @@
-<%@ include file = "header.jsp" %>
+<%@ include file="header.jsp" %>
 <div id="demo" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -40,20 +40,13 @@
     </a>
 </div>
 <div class="container">
-<div class="row">
-    <button type="button" class="btn btn-warning btn-lg btn-block">Waiter</button>
-    <button type="button" class="btn btn-warning btn-lg btn-block">Cook</button>
-    <button type="button" class="btn btn-warning btn-lg btn-block">Administrator</button>
-    <button type="button" class="btn btn-warning btn-lg btn-block">User</button>
+    <div class="row row-top">
+        <button type="button" class="btn btn-warning btn-lg btn-block">Waiter</button>
+        <button type="button" class="btn btn-warning btn-lg btn-block">Cook</button>
+        <button type="button" class="btn btn-warning btn-lg btn-block">Administrator</button>
+        <button type="button" class="btn btn-warning btn-lg btn-block">User</button>
 
+    </div>
 </div>
-</div>
-<style>
-    .row{
-        padding: 15pt;
-    }
-    .btn-block{
-        padding: 10pt;
-    }
-</style>
-<%@ include file = "footer.jsp" %>
+
+<%@ include file="footer.jsp" %>

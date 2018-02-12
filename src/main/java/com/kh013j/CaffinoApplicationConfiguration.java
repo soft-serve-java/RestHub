@@ -9,12 +9,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CaffinoApplicationConfiguration {
-  @Bean
-  public DishService dishServiceConfig(){
-    return new DishServiceImpl();
-  }
-  @Bean
-  public OrderService orderServiceConfig(){
-    return new OrderServiceImpl();
-  }
+    @Bean
+    public DishService dishServiceConfig() {
+        return new DishServiceImpl();
+    }
+
+    @Bean
+    public OrderService orderServiceConfig() {
+        return new OrderServiceImpl();
+    }
 }

@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CaffinnoApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(CaffinnoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CaffinnoApplication.class, args);
+    }
 }

@@ -7,7 +7,6 @@ import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
-import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,15 +20,11 @@ import java.util.*;
 @Controller
 @SessionAttributes("orderMap")
 public class OrderController {
-
     @Autowired
     private DishService dishService;
 
     @Autowired
     private OrderService orderService;
-
-    @Autowired
-    private OrderedDishService orderedDishService;
 
     @RequestMapping(value = "/addToOrder/{id}", method = RequestMethod.GET)
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
@@ -68,7 +63,6 @@ public class OrderController {
         return new ModelAndView(ViewName.ORDER, "ordersTotalAmount", sumOfAllDishPrices);
     }
 
-
     @ModelAttribute("orderMap")
     public Map<Dish, Integer> getOrderMap() {
         return new HashMap<>();
@@ -93,22 +87,17 @@ public class OrderController {
 
     @RequestMapping(value = "/increase/{dishId}", method = RequestMethod.GET)
     public RedirectView increaseQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
-                                 @PathVariable(value = "dishId") int dishId,
-                                 HttpServletRequest request) {
+                                         @PathVariable(value = "dishId") int dishId,
+                                         HttpServletRequest request) {
         orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v + 1);
-        /*for (Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-            if (entry.getKey().getId() == dishId) {
-                orderMap.put(dishService.findById(dishId), entry.getValue() + 1);
-            }
-        }*/
+
         return new RedirectView(request.getHeader("referer"));
     }
 
     @RequestMapping(value = "/reduce/{dishId}", method = RequestMethod.GET)
     public RedirectView reduceQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
-                                            @PathVariable(value = "dishId") int dishId,
-                                            HttpServletRequest request) {
+                                       @PathVariable(value = "dishId") int dishId,
+                                       HttpServletRequest request) {
         orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v - 1);
         return new RedirectView(request.getHeader("referer"));
     }

@@ -18,20 +18,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "order" , schema = "rh")
-//@RestHubEntity(table = @Table(name="order", schema = "rh"))
+@Table(name = "order", schema = "rh")
 public class Order {
-  @Id
-  private long id;
-  private Timestamp time;
-  @ManyToOne
-  @JoinColumn(name = "user_id")
-  private User user;
-  private int tableNumber;
-  @Column(name ="close")
-  private boolean isClosed;
-  @OneToMany
-  @JoinColumn(name="id")
-  private List<OrderedDish> orderedFood;
-
+    @Id
+    private long id;
+    private Timestamp time;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    private int tableNumber;
+    @Column(name = "close")
+    private boolean isClosed;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<OrderedDish> orderedFood;
 }

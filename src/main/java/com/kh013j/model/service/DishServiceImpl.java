@@ -6,6 +6,7 @@ import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.DishRepository;
 import com.kh013j.model.service.interfaces.DishService;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class DishServiceImpl implements DishService {
     public List findAllDishByCategoryOrderByPrice(Category category) {
         return dishRepository.findByCategoryOrderByPrice(category);
     }
+
     @Override
     public List findAllDishByCategoryOrderByPreparingtime(Category category) {
         return dishRepository.findByCategoryOrderByPreparingtime(category);
@@ -40,14 +42,14 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    @Transactional(rollbackFor=DishNotFound.class)
-    public List<Dish> findAllDishByCategory(Category category){
+    @Transactional(rollbackFor = DishNotFound.class)
+    public List<Dish> findAllDishByCategory(Category category) {
         return dishRepository.findAllByCategory(category);
     }
 
 
     @Override
-    @Transactional(rollbackFor=DishNotFound.class)
+    @Transactional(rollbackFor = DishNotFound.class)
     public Dish delete(long id) throws DishNotFound {
         Dish deletedDish = dishRepository.findOne(id);
 
@@ -64,7 +66,7 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findAll();
     }
 
-  /*  @Transactional(rollbackFor=DishNotFound.class)
+    @Transactional(rollbackFor=DishNotFound.class)
     public Dish update(Dish dish) throws DishNotFound {
         Dish updatedDish = dishRepository.findOne(dish.getId());
 
@@ -82,5 +84,5 @@ public class DishServiceImpl implements DishService {
         updatedDish.setAvalibility(dish.isAvalibility());
 
         return updatedDish;
-    }*/
+    }
 }

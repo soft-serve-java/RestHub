@@ -11,20 +11,24 @@ body {
     margin-right: 10px;
 }
 
-.a-nav{
+.a-nav {
     color: darkgrey;
 }
 
-.a-nav:hover{
+.a-nav:hover {
     color: lightgrey;
 }
 
-.card{
+.card {
     max-width: 250px;
 }
 
-.btn-nav-search{
+.btn-nav-search {
     margin-top: 10px;
+}
+
+.btn-block {
+    padding: 10pt;
 }
 
 .i-button {
@@ -35,7 +39,8 @@ body {
     background-color: white;
     margin-right: 20px;
 }
-.left-span{
+
+.left-span {
     text-align: left;
 }
 
@@ -49,32 +54,40 @@ body {
     position: absolute;
     padding-top: 10px;
     padding-bottom: 5px;
-    left:0;
-    bottom:0;
+    left: 0;
+    bottom: 0;
 }
 
-.add-text{
+.add-text {
     color: #000000;
     margin-right: 15%;
 }
 
-.col1{
+.col1 {
     padding-bottom: 1pt;
 }
 
-.card{
+.card {
     margin-top: 15pt;
 }
 
 .container {
-    /*vertical-align: middle;*/
     text-align: center;
 }
-.row{
+
+.container-text-left {
+    text-align: left;
+}
+
+.row {
     padding-top: 15pt;
 }
 
-.row1{
+.row-top {
+    padding: 15pt;
+}
+
+.row1 {
     padding-top: 1pt;
 }
 
@@ -83,10 +96,10 @@ body {
     text-align: center;
 }
 
-.inline{
+.inline {
     display: inline;
 }
 
-.sign{
+.sign {
     margin-top: 50%;
 }

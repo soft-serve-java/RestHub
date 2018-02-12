@@ -30,7 +30,6 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <img src="${orderItem.key.picture}" class="w-100">
-
                             </div>
                             <div class="col-md-6">
                                 <h4>${orderItem.key.name}</h4>
@@ -43,8 +42,7 @@
                         <div class="row">
                             <div class="input-group">
                                 <a href="/increase/${orderItem.key.id}" class="btn btn-secondary">
-                                    <!--{orderItem.value}/{orderItem.key.id}"--> <span
-                                        class="sign fa fa-plus"></span></a>
+                                    <span class="sign fa fa-minus"></span></a>
                                 <input type="text" name="quant${orderItem.key.id}" class="form-control input-number"
                                        value="${orderItem.value}" min="1" max="10">
                                 <c:if test="${orderItem.value == 1}">
@@ -54,7 +52,7 @@
                                 </c:if>
                                 <c:if test="${orderItem.value > 1}">
                                     <a href="/reduce/${orderItem.key.id}" class="btn btn-secondary">
-                                        <span class="sign fa fa-minus"></span></a>
+                                        <span class="sign fa fa-plus"></span></a>
                                 </c:if>
                             </div>
                         </div>
@@ -81,9 +79,6 @@
         <a href="/submitOrder" class="btn btn-success col-md-2" style="margin-bottom: 10%">
             Submit All <span class="fa fa-check"></span>
         </a>
-
     </div>
-
-
 </div>
 <%@ include file="footer.jsp" %>

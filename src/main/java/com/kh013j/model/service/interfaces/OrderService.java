@@ -8,11 +8,13 @@ import java.util.List;
 
 @Service
 public interface OrderService {
+    Order create(Order order);
 
-  Order create(Order order);
-  Order delete(long id) throws DishNotFound;
-  List findAll();
-  Order update(Order order) throws DishNotFound;
-  Order findById(long id);
+    Order delete(long id) throws DishNotFound;
 
+    List findAll();
+
+    Order update(Order order) throws DishNotFound;
+
+    Order findById(long id);
 }

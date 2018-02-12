@@ -6,10 +6,8 @@ import com.kh013j.model.repository.CategoryRepository;
 import com.kh013j.model.service.interfaces.CategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import java.util.List;
-
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -36,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional(rollbackFor = CategoryNotFound.class)
-    public Category update(Category category){
+    public Category update(Category category) {
         Category updatedCategory = categoryRepository.findOne(category.getId());
 
         updatedCategory.setName(category.getName());
@@ -46,7 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional
-    public Category findCategoryByName(String name){
+    public Category findCategoryByName(String name) {
         return categoryRepository.findCategoryByName(name);
     }
 

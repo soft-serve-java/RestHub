@@ -11,17 +11,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "user", schema = "rh")
-//@RestHubEntity(table = @Table(name="user", schema = "rh"))
-public class User {
-  @Id
-  private long id;
-  @Column(length = 50)
-  private String email;
-  @Column(length = 50)
-  private String login;
-  @Column(length = 50)
-  private String password;
-  @ManyToOne
-  @JoinColumn(name = "role_id")
-  private Role role;
+class User {
+    @Id
+    private long id;
+    @Column(length = 50)
+    private String email;
+    @Column(length = 50)
+    private String login;
+    @Column(length = 50)
+    private String password;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }
