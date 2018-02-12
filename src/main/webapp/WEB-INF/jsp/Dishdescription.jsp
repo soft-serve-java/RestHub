@@ -2,7 +2,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<div class="container">
+<div class="container" style="text-align: left">
     <div class="row">
 
         <div class="col">
@@ -16,21 +16,27 @@
             <p class="text-muted">Preparing time: ${dish.preparingtime} min</p>
            <!-- <p class="text-muted">Components: cauliflower, cheese, seeds, sauce</p> -->
             <p class="card-text">${dish.description}</p>
-            <div class="card-block">
+            <div class="">
                 <h5 class="card-title">${dish.price}$ <a href="/addToOrder/${dish.id}" class="btn btn-primary">Add to order</a> </h5>
             </div>
             <c:if test="${orderMap.containsKey(dish)}">
                 <span class="text-muted">Already in order (${orderMap.get(dish)})</span>
             </c:if>
         </div>
+
+        <h3>Customers who ordered this dish also ordered:</h3>
+
+        <div class="container-fluid tab-pane" style="padding-bottom: 50px">
+            <div class="d-flex flex-row flex-nowrap">
+                <c:forEach items="${populars}" var="popItem">
+                    <div class="card card-block">
+                       <a href="/dishdescription/${popItem.id}"> <img class="card-img-top"  src="${popItem.picture}" alt="${popItem.name}"></a>
+                        <h5>${popItem.name}</h5>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
     </div>
 </div>
-
-
-<style>
-    .container {
-        text-align: left;
-    }
-</style>
 
 <%@ include file = "footer.jsp" %>

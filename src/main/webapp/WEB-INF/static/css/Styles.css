@@ -78,6 +78,16 @@ body {
     padding-top: 1pt;
 }
 
+.card-block {
+    min-height: 250px;
+    min-width: 300px;
+    margin-right: 5px;
+    text-align: center;
+}
+.tab-pane{
+    overflow-y:scroll;
+    width:100%;
+}
 
 .table > tbody > tr > td {
     vertical-align: middle;
