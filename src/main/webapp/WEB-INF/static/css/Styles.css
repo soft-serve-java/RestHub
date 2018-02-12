@@ -92,6 +92,9 @@ body {
 .sign{
     margin-top: 50%;
 }
-plus-icon{
+.plus-icon{
     vertical-align: middle;
+}
+.clickable:hover{
+    color: moccasin;
 }

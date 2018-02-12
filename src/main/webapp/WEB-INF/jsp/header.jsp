@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page errorPage="error.jsp" %>
 <html lang="en" style="position: relative; min-height: 100%">
 <head>
     <meta charset="UTF-8">

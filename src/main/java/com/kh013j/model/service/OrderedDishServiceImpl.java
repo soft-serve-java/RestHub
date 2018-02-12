@@ -2,6 +2,7 @@ package com.kh013j.model.service;
 
 import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
+import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderedDishRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderedDishServiceImpl implements OrderedDishService{
@@ -59,8 +61,36 @@ public class OrderedDishServiceImpl implements OrderedDishService{
     }
 
     @Override
+    public List<OrderedDish> findAllByStatusIn(List<Status> statuses) {
+        return orderedDishRepository.findAllByStatusIn(statuses);
+    }
+    public List<OrderedDish> findAllForCooker() {
+        List<Status> statuses = new ArrayList<>();
+        statuses.add(new Status(2, "cooking"));
+        statuses.add(new Status(1, "preparing"));
+        return orderedDishRepository.findAllByStatusIn(statuses);
+    }
+
+
+    @Override
+    @Transactional
+    public void setDone(long id) {
+        OrderedDish dish = orderedDishRepository.findOne(id);
+        dish.setStatus(new Status(3,"delivery"));
+        orderedDishRepository.saveAndFlush(dish);
+    }
+
+    @Override
     @Transactional
     public List<OrderedDish> findAll() {
         return orderedDishRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void setCooking(long id){
+        OrderedDish dish = orderedDishRepository.findOne(id);
+                dish.setStatus(new Status(2,"cooking"));
+        orderedDishRepository.saveAndFlush(dish);
     }
 }

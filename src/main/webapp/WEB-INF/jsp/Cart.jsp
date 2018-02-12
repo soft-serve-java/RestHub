@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: arthurvartanyan
-  Date: 1/29/18
-  Time: 17:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -25,7 +18,15 @@
         <tbody>
         <c:if test="${not empty orderedList}">
             <c:forEach items="${orderedList}" var="orderItem">
+                <c:if test="${orderItem.status.name=='preparing'}">
                 <tr class="table-info">
+                </c:if>
+                <c:if test="${orderItem.status.name=='cooking'}">
+                    <tr class="table-warning">
+                </c:if>
+                <c:if test="${orderItem.status.name=='delivery'}">
+                    <tr class="table-success">
+                </c:if>
                     <td>
                         <div class="row">
                             <div class="col-md-4">
@@ -94,8 +95,7 @@
                         </div>
                     </td>
                     <td style="text-align: center">
-                        <a href="/" class="btn btn-success inline"><span class="fa fa-check"></span></a>
-
+                        <a href="/submitOne/${orderItem.key}" class="btn btn-success inline"><span class="fa fa-check"></span></a>
                         <a href="/removeFromOrder/${orderItem.key.id}" class="btn btn-danger inline"><span
                                 class="fa fa-times"></span></a>
                     </td>
@@ -115,9 +115,6 @@
         <a href="/submitOrder" class="btn btn-success col-md-2" style="margin-bottom: 10%">
             Submit All <span class="fa fa-check"></span>
         </a>
-
     </div>
-
-
 </div>
 <%@ include file="footer.jsp" %>

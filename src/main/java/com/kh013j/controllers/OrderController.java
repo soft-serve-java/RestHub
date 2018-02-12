@@ -75,6 +75,23 @@ public class OrderController {
         orderMap.clear();
         return new RedirectView(request.getHeader("referer"));
     }
+    @RequestMapping(value = "/submitOne/{dish}")
+    public RedirectView submitOne(@PathVariable(value = "dish") Dish dish,
+                                  @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
+                                    @ModelAttribute("orderedList")  List<OrderedDish> orderedDishes,
+                                    HttpServletRequest request ) {
+        Order order = orderService.findByTable(1);
+        if(order!=null) {
+            order.getOrderedFood().add(createOrderedDishFromDish(dish,order, orderMap.get(dish)));
+            orderService.update(order);
+        }else {
+            Order newOrder = new Order();
+            newOrder.getOrderedFood().add(createOrderedDishFromDish(dish,order, orderMap.get(dish)));
+            orderService.create(newOrder);
+        }
+        orderMap.clear();
+        return new RedirectView(request.getHeader("referer"));
+    }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ModelAndView order(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
@@ -116,15 +133,18 @@ public class OrderController {
     private List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap, Order order){
         List<OrderedDish> orderedDishes = new ArrayList<>();
         for(Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
-            OrderedDish orderedDish = new OrderedDish();
-            orderedDish.setDish(entry.getKey());
-            orderedDish.setOrder(order);
-            orderedDish.setQuantity(entry.getValue());
-            Status status = statusService.findByName("preparing");
-            orderedDish.setStatus(status);
-            orderedDishes.add(orderedDish);
+            orderedDishes.add(createOrderedDishFromDish(entry.getKey(), order, entry.getValue()));
         }
         return orderedDishes;
+    }
+    private OrderedDish createOrderedDishFromDish(Dish dish, Order order, int quantity){
+        OrderedDish orderedDish = new OrderedDish();
+        orderedDish.setDish(dish);
+        orderedDish.setOrder(order);
+        orderedDish.setQuantity(quantity);
+        Status status = statusService.findByName("preparing");
+        orderedDish.setStatus(status);
+        return orderedDish;
     }
     @RequestMapping(value = "/increase/{dishId}", method = RequestMethod.GET)
     public RedirectView increaseQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
