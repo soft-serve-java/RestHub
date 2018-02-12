@@ -45,6 +45,10 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findAllByCategory(category);
     }
 
+    @Override
+    public List<Dish> findByNameContaining(String name){
+        return dishRepository.findByNameContainingIgnoreCase(name);
+    }
 
     @Override
     @Transactional(rollbackFor=DishNotFound.class)
