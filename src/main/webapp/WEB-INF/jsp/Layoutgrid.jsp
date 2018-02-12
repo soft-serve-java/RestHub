@@ -17,12 +17,12 @@
 
     <div class="row1">
 
-    <c:forEach items="${menuItems}" step="3"  varStatus="loop">
+    <c:forEach items="${menuItems}" step="4"  varStatus="loop">
         <div class="card-deck">
-        <c:forEach items="${menuItems}" begin="${loop.index}" end="${loop.index + 3}" var="item">
+        <c:forEach items="${menuItems}" begin="${loop.index}" end="${loop.index+4}" var="item">
         <div class="card">
 
-            <a  href="/dishdescription/${item.id}"> <img class="card-img-top"  src="${item.picture}" alt="${item.name}"  ></a>
+            <a  href="/dishdescription/${item.id}"> <img class="card-img-top"  src="${item.picture}" alt="${item.name}" ></a>
 
             <c:if test="${orderMap.containsKey(item)}">
                 <div  class="card-header">

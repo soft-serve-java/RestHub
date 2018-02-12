@@ -17,4 +17,5 @@ public interface DishService {
     List findAllDishByCategoryOrderByPreparingtime(Category category);
     List findAllDishByCategoryOrderByCalories(Category category);
     List findByNameContaining(String name);
+    List findPopular(long id);
 }
