@@ -2,6 +2,11 @@ body {
     margin-bottom: 60px;
 }
 
+.tab-pane{
+    overflow-y:scroll;
+    width:100%;
+}
+
 .nav-button {
     margin-right: 10px;
     margin-bottom: 10px;
@@ -22,6 +27,7 @@ body {
 .card{
     max-width: 250px;
 }
+
 
 .btn-nav-search{
     margin-top: 10px;
@@ -76,17 +82,6 @@ body {
 
 .row1{
     padding-top: 1pt;
-}
-
-.card-block {
-    min-height: 250px;
-    min-width: 300px;
-    margin-right: 5px;
-    text-align: center;
-}
-.tab-pane{
-    overflow-y:scroll;
-    width:100%;
 }
 
 .table > tbody > tr > td {

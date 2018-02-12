@@ -23,7 +23,7 @@
                 <span class="text-muted">Already in order (${orderMap.get(dish)})</span>
             </c:if>
         </div>
-
+        <c:if test="${not empty populars}">
         <h3>Customers who ordered this dish also ordered:</h3>
 
         <div class="container-fluid tab-pane" style="padding-bottom: 50px">
@@ -36,7 +36,16 @@
                 </c:forEach>
             </div>
         </div>
+        </c:if>
     </div>
 </div>
 
+<style>
+    .card-block {
+        min-height: 250px;
+        min-width: 300px;
+        margin-right: 5px;
+        text-align: center;
+    }
+</style>
 <%@ include file = "footer.jsp" %>
