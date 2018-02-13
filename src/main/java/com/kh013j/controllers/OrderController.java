@@ -1,10 +1,7 @@
 package com.kh013j.controllers;
 
 import com.kh013j.controllers.util.ViewName;
-import com.kh013j.model.domain.Dish;
-import com.kh013j.model.domain.Order;
-import com.kh013j.model.domain.OrderedDish;
-import com.kh013j.model.domain.Status;
+import com.kh013j.model.domain.*;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
@@ -22,23 +19,16 @@ import java.sql.Timestamp;
 import java.util.*;
 
 @Controller
-@SessionAttributes("orderMap")
+@SessionAttributes({"orderMap", "orderedList", "tables"})
 public class OrderController {
-
     @Autowired
     private DishService dishService;
-
     @Autowired
     private OrderService orderService;
-    @Autowired
-    private StatusService statusService;
-    @Autowired
-    private OrderedDishService orderedDishService;
-
     @RequestMapping(value = "/addToOrder/{id}", method = RequestMethod.GET)
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
                                      @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
-                                     HttpServletRequest request) {
+                                     HttpServletRequest request){
         Optional<Dish> dish = Optional.of(dishService.findById(id));
         dish.ifPresent(d -> {
             if (orderMap.containsKey(d)) {
@@ -50,11 +40,10 @@ public class OrderController {
         return new RedirectView(request.getHeader("referer"));
     }
 
-
     @RequestMapping(value="/removeFromOrder/{id}",method = RequestMethod.GET)
     public RedirectView removeFromOrder(@PathVariable(value = "id") long id,
                                         @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
-                                        HttpServletRequest request) {
+                                        HttpServletRequest request){
         Optional<Dish> dish = Optional.of(dishService.findById(id));
         dish.ifPresent(orderMap::remove);
         return new RedirectView(request.getHeader("referer"));
@@ -63,40 +52,26 @@ public class OrderController {
     @RequestMapping(value = "/submitOrder")
     public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                     @ModelAttribute("orderedList")  List<OrderedDish> orderedDishes,
-                                    HttpServletRequest request ) {
-        Order order = orderService.findByTable(1);
-        if(order!=null) {
-            order.getOrderedFood().addAll(createOrderedDishesFromMap(orderMap,order));
-           orderService.update(order);
-        }else {
-            Order newOrder = createOrderFromMap(orderMap);
-            orderService.create(newOrder);
-        }
+                                    @ModelAttribute("tables") Table table) {
+        orderService.onSubmitOrder(table.getCurrentTable(), orderMap);
         orderMap.clear();
-        return new RedirectView(request.getHeader("referer"));
+        return new RedirectView("/order");
     }
+
     @RequestMapping(value = "/submitOne/{dish}")
     public RedirectView submitOne(@PathVariable(value = "dish") Dish dish,
                                   @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                     @ModelAttribute("orderedList")  List<OrderedDish> orderedDishes,
-                                    HttpServletRequest request ) {
+                                    HttpServletRequest request ){
         Order order = orderService.findByTable(1);
-        if(order!=null) {
-            order.getOrderedFood().add(createOrderedDishFromDish(dish,order, orderMap.get(dish)));
-            orderService.update(order);
-        }else {
-            Order newOrder = new Order();
-            newOrder.getOrderedFood().add(createOrderedDishFromDish(dish,order, orderMap.get(dish)));
-            orderService.create(newOrder);
-        }
-        orderMap.clear();
         return new RedirectView(request.getHeader("referer"));
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ModelAndView order(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
-                              @ModelAttribute("orderedList")  List<OrderedDish> orderedDishes){
-            Order order = orderService.findByTable(1);
+                              @ModelAttribute("orderedList")  List<OrderedDish> orderedDishes,
+                              @ModelAttribute("tables") Table table){
+            Order order = orderService.findByTable(table.getCurrentTable());
             if(order!=null) {
                 orderedDishes.clear();
                 orderedDishes.addAll(order.getOrderedFood());
@@ -105,51 +80,37 @@ public class OrderController {
         int sumOfAllDishPrices = orderMap.entrySet()
                 .stream().mapToInt(e -> e.getKey().getPrice() * e.getValue()).sum()
                 + orderedDishes.stream().mapToInt(ordered-> ordered.getDish().getPrice() * ordered.getQuantity()).sum();
+
         return new ModelAndView(ViewName.ORDER, "ordersTotalAmount", sumOfAllDishPrices);
     }
 
 
     @ModelAttribute("orderMap")
-    public Map<Dish, Integer> getOrderMap() {
+    public Map<Dish, Integer> getOrderMap(){
         return new HashMap<>();
     }
 
     @ModelAttribute("orderedList")
-    public List<OrderedDish> getOrdereList() {
+    public List<OrderedDish> getOrderedList(){
         return new ArrayList<>();
     }
 
-    @ModelAttribute("tableNumber")
-    public int getTableNumber() {
-        return 0;
+    @ModelAttribute("tables")
+    public Table getTableNumber(){
+        return new Table();
     }
-    private Order createOrderFromMap(Map<Dish, Integer> orderMap){
-        Order order = new Order();
-        order.setTime(new Timestamp(new Date().getTime()));
-        order.setTablenumber(1);
-        order.setOrderedFood(createOrderedDishesFromMap(orderMap, order));
-        return order;
+
+    @RequestMapping(value = "/setTableNumber", method = RequestMethod.POST)
+    public RedirectView set(@RequestParam int selectedNumber,
+                            HttpServletRequest request,  @ModelAttribute("tables") Table table){
+        table.setCurrentTable(selectedNumber);
+        return new RedirectView("/submitOrder");
     }
-    private List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap, Order order){
-        List<OrderedDish> orderedDishes = new ArrayList<>();
-        for(Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
-            orderedDishes.add(createOrderedDishFromDish(entry.getKey(), order, entry.getValue()));
-        }
-        return orderedDishes;
-    }
-    private OrderedDish createOrderedDishFromDish(Dish dish, Order order, int quantity){
-        OrderedDish orderedDish = new OrderedDish();
-        orderedDish.setDish(dish);
-        orderedDish.setOrder(order);
-        orderedDish.setQuantity(quantity);
-        Status status = statusService.findByName("preparing");
-        orderedDish.setStatus(status);
-        return orderedDish;
-    }
+
     @RequestMapping(value = "/increase/{dishId}", method = RequestMethod.GET)
     public RedirectView increaseQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                          @PathVariable(value = "dishId") int dishId,
-                                         HttpServletRequest request) {
+                                         HttpServletRequest request){
         orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v + 1);
         return new RedirectView(request.getHeader("referer"));
     }
@@ -157,8 +118,9 @@ public class OrderController {
     @RequestMapping(value = "/reduce/{dishId}", method = RequestMethod.GET)
     public RedirectView reduceQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                        @PathVariable(value = "dishId") int dishId,
-                                       HttpServletRequest request) {
+                                       HttpServletRequest request){
         orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v - 1);
         return new RedirectView(request.getHeader("referer"));
     }
+
 }
