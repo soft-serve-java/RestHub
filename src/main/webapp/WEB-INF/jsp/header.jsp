@@ -50,12 +50,13 @@
 
                 </li>
             </ul>
-        <form action="#" class="form-inline">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button type="button" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
+            <form action="/menu/search" method="get" class="form-inline">
+                <input class="form-control mr-sm-2" name="searchField" type="text" placeholder="Search dish"/>
+                <button type="submit" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+
         <a class="nav-link a-nav" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
         </div>
 </nav>

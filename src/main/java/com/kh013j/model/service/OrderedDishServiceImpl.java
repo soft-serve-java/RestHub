@@ -7,7 +7,6 @@ import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderedDishRepository;
 import com.kh013j.model.service.interfaces.OrderedDishService;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;

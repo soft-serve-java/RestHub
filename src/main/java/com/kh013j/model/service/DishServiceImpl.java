@@ -45,6 +45,10 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findAllByCategory(category);
     }
 
+    @Override
+    public List<Dish> findByNameContaining(String name){
+        return dishRepository.findByNameContainingIgnoreCase(name);
+    }
 
     @Override
     @Transactional(rollbackFor=DishNotFound.class)
@@ -64,7 +68,12 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findAll();
     }
 
-  /*  @Transactional(rollbackFor=DishNotFound.class)
+    @Override
+    public List<Dish> findPopular(long id) {
+        return dishRepository.findDishByPopularCustomQuery(id);
+    }
+
+    /*  @Transactional(rollbackFor=DishNotFound.class)
     public Dish update(Dish dish) throws DishNotFound {
         Dish updatedDish = dishRepository.findOne(dish.getId());
 

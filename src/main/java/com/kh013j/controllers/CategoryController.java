@@ -6,10 +6,7 @@ import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -22,8 +19,13 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
     @ModelAttribute("categoryItems")
-    public List<Category> getOrderMap() {
+    public List<Category> getCategoryItems() {
         return categoryService.findAll();
+    }
+
+    @RequestMapping(value = "/menu/search")
+    public ModelAndView search(@RequestParam String searchField){
+                return new ModelAndView(ViewName.MENU, "menuItems", dishService.findByNameContaining(searchField));
     }
 
     @RequestMapping(value = "/menu/{category}", method = RequestMethod.GET)
@@ -31,6 +33,7 @@ public class CategoryController {
         return new ModelAndView(ViewName.MENU, "menuItems", dishService.findAllDishByCategory(
                 categoryService.findCategoryByName(category)));
     }
+
     @RequestMapping(value = "/menu/{category}/sort/{criteria}", method = RequestMethod.GET)
     public ModelAndView layoutgridSortBy(@PathVariable(value="criteria") String criteria,
                                          @PathVariable(value = "category") String category){

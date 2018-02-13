@@ -21,6 +21,10 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.save(category);
     }
 
+    @Override
+    public Category update(Category category) {
+        return categoryRepository.saveAndFlush(category);
+    }
 
     @Override
     public Category findById(long id) {
@@ -39,13 +43,6 @@ public class CategoryServiceImpl implements CategoryService {
         return deletedCategory;
     }
 
-    @Override
-    @Transactional(rollbackFor = CategoryNotFound.class)
-    public Category update(Category category){
-        Category updatedCategory = categoryRepository.findOne(category.getId());
-        updatedCategory.setName(category.getName());
-        return categoryRepository.saveAndFlush(updatedCategory);
-    }
 
     @Override
     @Transactional
