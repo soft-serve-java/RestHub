@@ -1,0 +1,107 @@
+body {
+    margin-bottom: 60px;
+}
+
+.tab-pane {
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.nav-button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.nav-form {
+    margin-right: 10px;
+}
+
+.a-nav {
+    color: darkgrey;
+}
+
+.a-nav:hover {
+    color: lightgrey;
+}
+
+.card {
+    max-width: 250px;
+}
+
+.btn-nav-search {
+    margin-top: 10px;
+}
+
+.i-button {
+    width: 30px;
+    height: 30px;
+    border: solid black 2px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 20px;
+}
+
+.left-span {
+    text-align: left;
+}
+
+.footer {
+    height: auto;
+    background-color: white;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    left: 0;
+    bottom: 0;
+}
+
+.add-text {
+    color: #000000;
+    margin-right: 15%;
+}
+
+.col1 {
+    padding-bottom: 1pt;
+}
+
+.card {
+    margin-top: 15pt;
+}
+
+.container {
+    /*vertical-align: middle;*/
+    text-align: center;
+}
+
+.row {
+    padding-top: 15pt;
+}
+
+.row1 {
+    padding-top: 1pt;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.inline {
+    display: inline;
+}
+
+.sign {
+    margin-top: 50%;
+}
+
+.plus-icon {
+    vertical-align: middle;
+}
+
+.clickable:hover {
+    color: cornflowerblue;
+}

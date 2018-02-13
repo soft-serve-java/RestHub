@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="database/postgres/initDB.sql"/>
+    <include file="database/postgres/populateDB.sql"/>
+
+    <changeSet id="1" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/initDB.sql"/>
+    </changeSet>
+    <changeSet id="2" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/populateDB.sql"/>
+    </changeSet>
+    <changeSet id="3" author="orasso">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/insertDishes.sql"/>
+    </changeSet>
+    <changeSet id="4" author="orasso">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/insertDishesOneMore.sql"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,21 +1,21 @@
-# CaffInno</br>
-This is site for reustarant service improvement by automatisation of some processes in there.</br>
+# RestHub</br>
+This is site for restaurant service improvement by the automatization of some processes in there.</br>
 There are four roles in our project such as User, Cook, Waiter and Administrator.</br>
 Their functionality is given below.</br>
 </br></br>
   User abilities:</br>
--look through reustarant menu and see detailed information about reustarant dishes like ingredients, callories, price, photo;</br>
+-look through restaurant menu and see detailed information about restaurant dishes like ingredients, calories, price, photo;</br>
 -add preferable dishes from menu into the bucket;</br>
 -correct the count of added in the bucket dishes;</br>
 -delete dishes from the bucket; </br>
 -call a waiter;</br>
--sort reustarant menu;</br>
+-sort restaurant menu;</br>
 -make an order;</br>
 -see order status such as "in the order queue", "cooking", "ready", "on it's way", "delivered";</br>
 -see time before serving of their dishes;</br>
 -pay for dishes;</br>
--estimate the the reustarant if they wish;</br>
--make a feedback about the reustarant if they wish.</br>
+-estimate the the restaurant if they wish;</br>
+-make a feedback about the restaurant if they wish.</br>
 </br></br>
   Cook abilities:</br>
 -see the optimised queue of orders;</br>
@@ -26,10 +26,10 @@ Their functionality is given below.</br>
 -change the order status from "on it's way" to "delivered".</br>
 </br></br>
   Administrator abilities:</br>
--add new dishes in reustarant menu;</br>
--edit some dishes in reustarant menu;</br>
--remove some dishes in reustarant menu;</br>
--forbid some dishes for servimg because of products lack;</br>
+-add new dishes in restaurant menu;</br>
+-edit some dishes in restaurant menu;</br>
+-remove some dishes in restaurant menu;</br>
+-forbid some dishes for serving because of products lack;</br>
 -see the feedbacks and estimates from users.</br>
 </br></br>
 # Prerequisites</br>
