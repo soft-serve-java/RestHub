@@ -1,14 +1,15 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: arthurvartanyan
+  Date: 1/29/18
+  Time: 17:46
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="header.jsp" %>
-<script>
-    function fresh() {
-        location.reload();
-    }
-    setInterval("fresh()",25000);
-</script>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="container py-2" style="width: 50rem">
@@ -24,7 +25,6 @@
         <tbody>
         <c:if test="${not empty orderedList}">
             <c:forEach items="${orderedList}" var="orderItem">
-                <c:if test="${orderItem.status.name=='preparing'}">
                 <tr class="table-info">
                 </c:if>
                 <c:if test="${orderItem.status.name=='cooking'}">
@@ -118,23 +118,29 @@
         <h4 class="col-md-5">
             Total amount: ${ordersTotalAmount}$
         </h4>
-       <!-- <a href="/submitOrder" class="btn btn-success col-md-2" style="margin-bottom: 10%">
-            Submit All <span class="fa fa-check"></span>
-        </a>-->
-        <c:if test="${tables.currentTable!=0}">
-        <button type="button" class="btn btn-primary col-md-2" style="margin-bottom: 10%"
-                data-toggle="modal" data-target="#exampleModal" >
-            Submit All
-        </button>
+        <c:if test="${not empty orderMap}">
+            <c:if test="${tables.currentTable!=0}">
+                <button type="button" class="btn btn-primary col-md-2" style="margin-bottom: 10%"
+                        data-toggle="modal" data-target="#exampleModal" >
+                    Submit All
+                </button>
+            </c:if>
+            <c:if test="${tables.currentTable==0}">
+                <button type="button" class="btn btn-primary col-md-2" style="margin-bottom: 10%"
+                        data-toggle="modal" data-target="#exampleModal2">
+                    Submit All
+                </button>
+            </c:if>
+
         </c:if>
-        <c:if test="${tables.currentTable==0}">
-            <button type="button" class="btn btn-primary col-md-2" style="margin-bottom: 10%"
-                    data-toggle="modal" data-target="#exampleModal2">
-                Submit All
-            </button>
+        <c:if test="${empty orderMap}">
+            <a href="/submitOrder" class="btn btn-success col-md-2 disabled" style="margin-bottom: 10%">
+                Submit All <span class="fa fa-check"></span>
+            </a>
         </c:if>
 
     </div>
+
+
 </div>
-<%@ include file="ModalTableSelect.jsp" %>
 <%@ include file="footer.jsp" %>
