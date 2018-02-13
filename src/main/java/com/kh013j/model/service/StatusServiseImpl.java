@@ -13,7 +13,7 @@ public class StatusServiseImpl implements StatusService{
     StatusRepositiry statusRepositiry;
     @Override
     public Status create(Status status) {
-        return null;
+        return statusRepositiry.save(status);
     }
 
     @Override
@@ -23,17 +23,17 @@ public class StatusServiseImpl implements StatusService{
 
     @Override
     public List findAll() {
-        return null;
-    }
+            return statusRepositiry.findAll();
+        }
 
     @Override
     public Status update(Status status){
-        return null;
+        return statusRepositiry.saveAndFlush(status);
     }
 
     @Override
     public Status findById(long id) {
-        return null;
+        return statusRepositiry.findOne(id);
     }
 
     @Override

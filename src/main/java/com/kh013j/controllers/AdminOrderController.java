@@ -30,12 +30,12 @@ public class AdminOrderController {
 
     @RequestMapping(value = "admin/order/new", method = RequestMethod.GET)
     public ModelAndView orderCreate(){
-        return new ModelAndView("OrderAdd", "order", new Order());
+        return new ModelAndView("OrderAddCreate", "order", new Order());
     }
 
     @RequestMapping(value = "/admin/order/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editCategory(@PathVariable(value = "id") long id) {
-        return new ModelAndView("OrderEdit", "order", orderService.findById(id));
+        return new ModelAndView("OrderAddCreate", "order", orderService.findById(id));
     }
 
     @RequestMapping(value = "/admin/order/delete/{id}", method = RequestMethod.POST)

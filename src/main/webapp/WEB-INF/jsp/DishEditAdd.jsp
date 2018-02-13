@@ -25,14 +25,19 @@
             <div class="form-row">
                 <label>Category:</label>
                 <form:select path="category" multiple="false" class="form-control">
-                    <form:options items="${Category}" itemValue="id" itemLabel="name"/>
+
+<%--                    <c:forEach items="${Category}" var="category">
+                <td>${category.id}</td>
+                <td>${category.name}</td>
+
+                    </c:forEach>--%>
                 </form:select>
             </div>
 
-           <div class="form-row">
+<%--           <div class="form-row">
                 <label>Picture: </label>
 
-            </div>
+            </div>--%>
 
             <div class="form-row">
                 <label>Calories: </label>

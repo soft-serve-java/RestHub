@@ -1,43 +1,3 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "Admin.jsp" %>
-
-
-
-<div class="container py-2" style="width: 50rem">
-    <form:form method="POST" action="/admin/status/save" modelAttribute="status">
-        <table class="table table-hover">
-            <tbody>
-            <h4 >Edit status</h4>
-            <div class="form-row">
-                <form:input path="id" type="hidden"/>
-                <label>Name: </label>
-                <form:textarea  class="form-control" cols="105" rows="1" text="${status.name}" path="name" />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Save</button>
-        </table>
-    </form:form>
-</div>
-<%@ include file = "footer.jsp" %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%--
 
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -53,11 +13,10 @@
 
             <h4 >Edit status</h4>
                 <form:input path="id" type="hidden"/>
-                <form:textarea name="comment" path="name" cols="20" rows="1" text="${status.name}"/>
-            <p class="text-muted">Status:</p>
+                <form:textarea name="comment" path="name" cols="20" rows="1" text="${status.name}" class="form-control"/>
             <button type="submit" class="btn btn-primary">Save</button>
         </table>
     </form:form>
 </div>
 
-<%@ include file = "footer.jsp" %>--%>
+<%@ include file = "footer.jsp" %>

@@ -3,6 +3,7 @@ package com.kh013j.controllers;
 import com.kh013j.model.domain.Role;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.DishNotFound;
+import com.kh013j.model.exception.StatusNotFound;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -36,6 +38,7 @@ public class AdminStatusController {
 
     @RequestMapping(value = "/admin/status/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editCategory(@PathVariable(value = "id") long id) {
+
         return new ModelAndView("StatusEdit", "status", statusService.findById(id));
     }
 
@@ -47,7 +50,7 @@ public class AdminStatusController {
     }
 
     @RequestMapping(value = "/admin/status/save", method = RequestMethod.POST)
-    public String  SaveNewStatus(@Valid @ModelAttribute("status") Status status, BindingResult statusResult) {
+    public String  statusNewOrder(@Valid @ModelAttribute("order") Status status, BindingResult orderResult) {
         statusService.update(status);
         return "redirect:/admin/status";
     }

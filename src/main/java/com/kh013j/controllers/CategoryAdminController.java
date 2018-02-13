@@ -46,7 +46,7 @@ public class CategoryAdminController {
 
     @RequestMapping(value = "/admin/category/save", method = RequestMethod.POST)
     public String  categorySaveNew(@Valid @ModelAttribute("category" )Category category, BindingResult userResult,
-                               HttpServletResponse response) throws DishNotFound, IOException {
+                                   HttpServletResponse response) throws DishNotFound, IOException {
         categoryService.update(category);
         return "redirect:/admin/category/all";
 

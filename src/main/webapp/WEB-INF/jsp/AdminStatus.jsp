@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file = "header.jsp" %>
 <div class="container">
+
     <table class="table table-hover">
         <thead>
         <tr style="text-align: center;">

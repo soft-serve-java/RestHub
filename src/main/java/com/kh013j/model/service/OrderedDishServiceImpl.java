@@ -26,6 +26,7 @@ public class OrderedDishServiceImpl implements OrderedDishService{
                 forEach(orderedDish -> orderedDish.setOrder(order));
         return orderedDishRepository.save(dishes);
     }
+
     @Override
     @Transactional(rollbackFor = CategoryNotFound.class)
     public OrderedDish delete(long id) throws DishNotFound {

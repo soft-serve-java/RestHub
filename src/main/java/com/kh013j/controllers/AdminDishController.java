@@ -40,7 +40,6 @@ public class AdminDishController {
 
     @RequestMapping(value = "/admin/dish/edit/{id}", method = RequestMethod.GET)
     public ModelAndView dishEdit(@PathVariable(value = "id") long id) {
-        //Dish dish = dishService.findById(id);
         return new ModelAndView("DishEditAdd", "dish", dishService.findById(id));
     }
 
