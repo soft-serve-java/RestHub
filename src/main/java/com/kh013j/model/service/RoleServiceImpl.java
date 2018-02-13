@@ -18,7 +18,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void delete(long id) throws DishNotFound {
+    public void delete(long id){
         roleRepository.delete(id);
     }
 
@@ -28,7 +28,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role update(Role role) throws DishNotFound {
+    public Role update(Role role){
         return roleRepository.saveAndFlush(role);
     }
 

@@ -8,11 +8,11 @@ import java.util.List;
 public interface RoleService {
     Role create(Role role);
 
-    void delete(long id) throws DishNotFound;
+    void delete(long id);
 
     List findAll();
 
-    Role update(Role role) throws DishNotFound;
+    Role update(Role role);
 
     Role findById(long id);
 }

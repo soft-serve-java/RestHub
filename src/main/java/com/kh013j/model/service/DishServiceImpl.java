@@ -54,12 +54,8 @@ public class DishServiceImpl implements DishService {
 
     @Override
     @Transactional(rollbackFor = DishNotFound.class)
-    public Dish delete(long id) throws DishNotFound {
+    public Dish delete(long id)  {
         Dish deletedDish = dishRepository.findOne(id);
-
-        if (deletedDish == null)
-            throw new DishNotFound();
-
         dishRepository.delete(deletedDish);
         return deletedDish;
     }
@@ -75,23 +71,11 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findDishByPopularCustomQuery(id);
     }
 
-    /*  @Transactional(rollbackFor=DishNotFound.class)
+
+    @Override
     public Dish update(Dish dish) throws DishNotFound {
-        Dish updatedDish = dishRepository.findOne(dish.getId());
+        return dishRepository.saveAndFlush(dish);
+    }
 
-        if (updatedDish == null)
-            throw new DishNotFound();
 
-        updatedDish.setName(dish.getName());
-        updatedDish.setDescription(dish.getDescription());
-        updatedDish.setWeight(dish.getWeight());
-        updatedDish.setCalories(dish.getCalories());
-        updatedDish.setPreparingtime(dish.getPreparingtime());
-        updatedDish.setPrice(dish.getPrice());
-        updatedDish.setCategory(dish.getCategory());
-        updatedDish.setPicture(dish.getPicture());
-        updatedDish.setAvalibility(dish.isAvalibility());
-
-        return updatedDish;
-    }*/
 }

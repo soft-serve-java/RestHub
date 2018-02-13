@@ -34,6 +34,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin/order/all">Order</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/role/all">Role</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/status/all">Status</a>
+            </li>
         </ul>
         <form action="#" class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">

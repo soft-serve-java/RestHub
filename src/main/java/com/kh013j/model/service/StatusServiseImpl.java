@@ -14,27 +14,27 @@ public class StatusServiseImpl implements StatusService {
 
     @Override
     public Status create(Status status) {
-        return null;
+        return statusRepositiry.save(status);
     }
 
     @Override
-    public void delete(long id) throws DishNotFound {
-
+    public void delete(long id){
+        statusRepositiry.delete(id);
     }
 
     @Override
     public List findAll() {
-        return null;
-    }
+            return statusRepositiry.findAll();
+        }
 
     @Override
-    public Status update(Status status) throws DishNotFound {
-        return null;
+    public Status update(Status status){
+        return statusRepositiry.saveAndFlush(status);
     }
 
     @Override
     public Status findById(long id) {
-        return null;
+        return statusRepositiry.findOne(id);
     }
 
     @Override
