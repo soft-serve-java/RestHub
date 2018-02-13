@@ -11,6 +11,7 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService {
     @Resource
     RoleRepository roleRepository;
+
     @Override
     public Role create(Role role) {
         return roleRepository.save(role);

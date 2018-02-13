@@ -8,9 +8,10 @@ import com.kh013j.model.service.interfaces.StatusService;
 import javax.annotation.Resource;
 import java.util.List;
 
-public class StatusServiseImpl implements StatusService{
+public class StatusServiseImpl implements StatusService {
     @Resource
     StatusRepositiry statusRepositiry;
+
     @Override
     public Status create(Status status) {
         return statusRepositiry.save(status);
