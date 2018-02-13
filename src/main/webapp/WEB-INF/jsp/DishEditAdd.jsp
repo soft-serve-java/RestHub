@@ -12,11 +12,6 @@
                 <label>Name: </label>
                 <form:textarea  class="form-control" cols="105" rows="1" text="${dish.name}" path="name" />
             </div>
-
-<%--            <div class="form-row">
-                <label>Avalibility: </label>
-            </div>--%>
-
             <div class="form-row">
                 <label>Description: </label>
                 <form:textarea class="form-control" cols="105" rows="2" text="${dish.description}" path="description" />
@@ -25,19 +20,9 @@
             <div class="form-row">
                 <label>Category:</label>
                 <form:select path="category" multiple="false" class="form-control">
-
-<%--                    <c:forEach items="${Category}" var="category">
-                <td>${category.id}</td>
-                <td>${category.name}</td>
-
-                    </c:forEach>--%>
+                    <form:options items="${category}" itemValue="id" itemLabel="name"/>
                 </form:select>
             </div>
-
-<%--           <div class="form-row">
-                <label>Picture: </label>
-
-            </div>--%>
 
             <div class="form-row">
                 <label>Calories: </label>

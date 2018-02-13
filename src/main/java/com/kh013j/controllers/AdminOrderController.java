@@ -22,7 +22,6 @@ public class AdminOrderController {
   @Autowired
   private OrderService orderService;
 
-
     @RequestMapping(value = "/admin/order", method = RequestMethod.GET)
     public ModelAndView showOrder(){
         return new ModelAndView("AdminOrder", "order", orderService.findAll() );

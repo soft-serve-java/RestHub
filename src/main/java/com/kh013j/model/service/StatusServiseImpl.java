@@ -19,7 +19,7 @@ public class StatusServiseImpl implements StatusService {
 
     @Override
     public void delete(long id){
-
+        statusRepositiry.delete(id);
     }
 
     @Override

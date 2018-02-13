@@ -23,7 +23,7 @@ public class AdminRoleController {
   private RoleService roleService;
 
 
-    @RequestMapping(value = "/admin/role", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/role/all", method = RequestMethod.GET)
     public ModelAndView showRole(){
         return new ModelAndView("AdminRole", "role", roleService.findAll() );
     }
@@ -42,12 +42,12 @@ public class AdminRoleController {
     @RequestMapping(value = "/admin/role/delete/{id}", method = RequestMethod.POST)
     public String deleteRole(@PathVariable(value = "id") long id) {
         roleService.delete(id);
-        return "redirect:/admin/role";
+        return "redirect:/admin/role/all";
     }
 
     @RequestMapping(value = "/admin/role/save", method = RequestMethod.POST)
     public String  SaveNewRole(@Valid @ModelAttribute("role") Role role, BindingResult roleResult) {
         roleService.update(role);
-        return "redirect:/admin/role";
+        return "redirect:/admin/role/all";
     }
 }

@@ -1,6 +1,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "header.jsp" %>
+<%@ include file = "Admin.jsp" %>
 <div class="container">
     <table class="table table-hover">
         <thead>
@@ -17,8 +17,9 @@
                 <td>${role.id}</td>
                 <td>${role.name}</td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalDish"
-                            data-whatever="${role.name}" data-id = "${role.id}">Delete</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                            data-whatever="${role.name}" data-href="/admin/role/delete/${role.id}">Delete
+                    </button>
                 </td>
                 <td>
                     <a href="/admin/role/edit/${role.id}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>
@@ -28,5 +29,5 @@
         </tbody>
     </table>
 </div>
-
+<%@ include file = "Modal.jsp" %>
 <%@ include file = "footer.jsp" %>

@@ -9,7 +9,7 @@ import java.util.List;
 public interface DishService {
     Dish create(Dish dish);
 
-    Dish delete(long id) throws DishNotFound;
+    Dish delete(long id);
 
     List findAll();
 
@@ -27,4 +27,6 @@ public interface DishService {
     List findByNameContaining(String name);
 
     List findPopular(long id);
+
+    Dish update(Dish dish) throws DishNotFound;
 }

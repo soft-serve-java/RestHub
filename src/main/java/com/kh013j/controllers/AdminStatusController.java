@@ -25,14 +25,14 @@ public class AdminStatusController {
   private StatusService statusService;
 
 
-    @RequestMapping(value = "/admin/status", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/status/all", method = RequestMethod.GET)
     public ModelAndView showStatus(){
         return new ModelAndView("AdminStatus", "status", statusService.findAll() );
     }
 
     @RequestMapping(value = "admin/status/new", method = RequestMethod.GET)
     public ModelAndView createStatus(){
-        return new ModelAndView("StatusAdd", "status", new Status())
+        return new ModelAndView("StatusEdit", "status", new Status())
                 .addObject("status", new Status());
     }
 
@@ -46,12 +46,12 @@ public class AdminStatusController {
     @RequestMapping(value = "/admin/status/delete/{id}", method = RequestMethod.POST)
     public String deleteStatus(@PathVariable(value = "id") long id) {
         statusService.delete(id);
-        return "redirect:/admin/status";
+        return "redirect:/admin/status/all";
     }
 
     @RequestMapping(value = "/admin/status/save", method = RequestMethod.POST)
     public String  statusNewOrder(@Valid @ModelAttribute("order") Status status, BindingResult orderResult) {
         statusService.update(status);
-        return "redirect:/admin/status";
+        return "redirect:/admin/status/all";
     }
 }

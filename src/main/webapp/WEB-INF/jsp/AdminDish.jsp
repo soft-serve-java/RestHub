@@ -1,5 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ include file = "header.jsp" %>
+<%@ include file = "Admin.jsp" %>
 
 <div class="container">
     <table class="table table-hover">
@@ -17,8 +17,9 @@
                 <td>${dish.id}</td>
                 <td>${dish.name}</td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalDish"
-                            data-whatever="${dish.name}" data-id = "${dish.id}">Delete</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                            data-whatever="${dish.name}" data-href="/admin/dish/delete/${dish.id}">Delete
+                    </button>
                 </td>
                 <td>
                     <a href="/admin/dish/edit/${dish.id}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>
