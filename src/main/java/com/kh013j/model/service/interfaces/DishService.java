@@ -10,7 +10,7 @@ public interface DishService {
     Dish create(Dish dish);
     Dish delete(long id) throws DishNotFound;
     List findAll();
-    //Dish update(Dish dish) throws DishNotFound;
+    Dish update(Dish dish) throws DishNotFound;
     Dish findById(long id);
     List findAllDishByCategory(Category category);
     List findAllDishByCategoryOrderByPrice(Category category);

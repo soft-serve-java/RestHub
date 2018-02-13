@@ -73,6 +73,13 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findDishByPopularCustomQuery(id);
     }
 
+
+    @Override
+    public Dish update(Dish dish) throws DishNotFound {
+        return dishRepository.saveAndFlush(dish);
+    }
+
+
     /*  @Transactional(rollbackFor=DishNotFound.class)
     public Dish update(Dish dish) throws DishNotFound {
         Dish updatedDish = dishRepository.findOne(dish.getId());
