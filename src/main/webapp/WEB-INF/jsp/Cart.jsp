@@ -25,6 +25,7 @@
         <tbody>
         <c:if test="${not empty orderedList}">
             <c:forEach items="${orderedList}" var="orderItem">
+                <c:if test="${orderItem.status.name=='preparing'}">
                 <tr class="table-info">
                 </c:if>
                 <c:if test="${orderItem.status.name=='cooking'}">
@@ -63,7 +64,6 @@
                 </tr>
             </c:forEach>
         </c:if>
-
         <c:if test="${not empty orderMap}">
             <c:forEach items="${orderMap}" var="orderItem">
                 <tr>
@@ -113,22 +113,22 @@
     <hr/>
     <div class="row">
         <h5 class="col-md-4">
-            You have ${fn:length(orderMap)} items in your cart
+            You have ${fn:length(orderMap) + fn:length(orderedList)} items in your cart
         </h5>
         <h4 class="col-md-5">
             Total amount: ${ordersTotalAmount}$
         </h4>
         <c:if test="${not empty orderMap}">
             <c:if test="${tables.currentTable!=0}">
-                <button type="button" class="btn btn-primary col-md-2" style="margin-bottom: 10%"
+                <button type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%"
                         data-toggle="modal" data-target="#exampleModal" >
-                    Submit All
+                    Submit All<span class="fa fa-check"></span>
                 </button>
             </c:if>
             <c:if test="${tables.currentTable==0}">
-                <button type="button" class="btn btn-primary col-md-2" style="margin-bottom: 10%"
+                <button type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%"
                         data-toggle="modal" data-target="#exampleModal2">
-                    Submit All
+                    Submit All<span class="fa fa-check"></span>
                 </button>
             </c:if>
 
@@ -138,9 +138,7 @@
                 Submit All <span class="fa fa-check"></span>
             </a>
         </c:if>
-
     </div>
-
-
 </div>
+<%@ include file="ModalTableSelect.jsp" %>
 <%@ include file="footer.jsp" %>
