@@ -2,9 +2,9 @@ body {
     margin-bottom: 60px;
 }
 
-.tab-pane{
-    overflow-y:scroll;
-    width:100%;
+.tab-pane {
+    overflow-y: scroll;
+    width: 100%;
 }
 
 .nav-button {
@@ -16,20 +16,19 @@ body {
     margin-right: 10px;
 }
 
-.a-nav{
+.a-nav {
     color: darkgrey;
 }
 
-.a-nav:hover{
+.a-nav:hover {
     color: lightgrey;
 }
 
-.card{
+.card {
     max-width: 250px;
 }
 
-
-.btn-nav-search{
+.btn-nav-search {
     margin-top: 10px;
 }
 
@@ -41,7 +40,8 @@ body {
     background-color: white;
     margin-right: 20px;
 }
-.left-span{
+
+.left-span {
     text-align: left;
 }
 
@@ -55,20 +55,20 @@ body {
     position: absolute;
     padding-top: 10px;
     padding-bottom: 5px;
-    left:0;
-    bottom:0;
+    left: 0;
+    bottom: 0;
 }
 
-.add-text{
+.add-text {
     color: #000000;
     margin-right: 15%;
 }
 
-.col1{
+.col1 {
     padding-bottom: 1pt;
 }
 
-.card{
+.card {
     margin-top: 15pt;
 }
 
@@ -76,11 +76,12 @@ body {
     /*vertical-align: middle;*/
     text-align: center;
 }
-.row{
+
+.row {
     padding-top: 15pt;
 }
 
-.row1{
+.row1 {
     padding-top: 1pt;
 }
 
@@ -89,11 +90,18 @@ body {
     text-align: center;
 }
 
-.inline{
+.inline {
     display: inline;
 }
 
-
-.sign{
+.sign {
     margin-top: 50%;
+}
+
+.plus-icon {
+    vertical-align: middle;
+}
+
+.clickable:hover {
+    color: cornflowerblue;
 }

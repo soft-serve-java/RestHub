@@ -17,6 +17,12 @@ public class ViewName {
 
     public static final String CATEGORY_EDIT_CREATE = "CategoryEditCreate";
 
-    private ViewName() { throw new UnsupportedOperationException(); }
+    public static final String SHOW_ORDERS = "OrderAdmin";
+
+    public static final String COOKER = "Cooker";
+
+    private ViewName() {
+        throw new UnsupportedOperationException();
+    }
 
 }
