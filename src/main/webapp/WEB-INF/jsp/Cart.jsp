@@ -29,10 +29,12 @@
                     <td>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="${orderItem.dish.picture}" class="w-100">
+                                <a href="/dishdescription/${orderItem.dish.id}">
+                                    <img src="${orderItem.dish.picture}" class="w-100">
+                                </a>
                             </div>
                             <div class="col-md-6">
-                                <h4>${orderItem.dish.name}</h4>
+                               <h4>${orderItem.dish.name}</h4>
                                 <p class="text-muted">${orderItem.dish.weight}</p>
                             </div>
                         </div>
@@ -107,15 +109,21 @@
     <hr/>
     <div class="row">
         <h5 class="col-md-4">
-            You have ${fn:length(orderMap)} items in your cart
+            You have ${fn:length(orderMap) + fn:length(orderedList)} items in your order
         </h5>
         <h4 class="col-md-5">
             Total amount: ${ordersTotalAmount}$
         </h4>
-        <a href="/submitOrder" class="btn btn-success col-md-2" style="margin-bottom: 10%">
-            Submit All <span class="fa fa-check"></span>
-        </a>
-
+        <c:if test="${not empty orderMap}">
+            <a href="/submitOrder" class="btn btn-success col-md-2" style="margin-bottom: 10%">
+                Submit All <span class="fa fa-check"></span>
+            </a>
+        </c:if>
+        <c:if test="${empty orderMap}">
+            <a href="/submitOrder" class="btn btn-success col-md-2 disabled" style="margin-bottom: 10%">
+                Submit All <span class="fa fa-check"></span>
+            </a>
+        </c:if>
     </div>
 
 
