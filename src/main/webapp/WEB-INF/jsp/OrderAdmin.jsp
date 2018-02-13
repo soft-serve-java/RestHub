@@ -13,7 +13,7 @@
         </thead>
         <tbody>
         <c:forEach items="${Orders}" var="order">
-        <tr data-toggle="collapse" data-target="#accordion" class="clickable">
+        <tr data-toggle="collapse" data-target="#accordion${order.id}" class="clickable">
             <td>${order.id}</td>
             <td>${order.time}</td>
             <td>${order.tablenumber}</td>
@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td colspan="5">
-                <div id="accordion" class="collapse">
+                <div id="accordion${order.id}" class="collapse">
                     <table class="table">
                         <thead>
                         <tr style="text-align: center;">

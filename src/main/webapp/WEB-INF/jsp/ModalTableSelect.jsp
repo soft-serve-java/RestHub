@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal2">No</button>
-                <a href="/submitOrder" class="btn btn-success col-md-2">Yes (Submit)</a>
+                <a href="/submitOrder" class="btn btn-success col-md-2">Yes</a>
             </div>
         </div>
     </div>
@@ -45,8 +45,3 @@
         </div>
     </div>
 </div>
-<!--<script>
-    $('selectTable').on('submit',function(){
-        $("#selectTable").attr("action", '/submitOrder/');
-    })
-</script>-->

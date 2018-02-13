@@ -52,7 +52,7 @@ public class OrderController {
     @RequestMapping(value = "/submitOrder")
     public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                     @ModelAttribute("orderedList")  List<OrderedDish> orderedDishes,
-                                    @ModelAttribute("tables") Table table) {
+                                    @ModelAttribute("tables") Tables table) {
         orderService.onSubmitOrder(table.getCurrentTable(), orderMap);
         orderMap.clear();
         return new RedirectView("/order");
@@ -70,7 +70,7 @@ public class OrderController {
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ModelAndView order(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                               @ModelAttribute("orderedList")  List<OrderedDish> orderedDishes,
-                              @ModelAttribute("tables") Table table){
+                              @ModelAttribute("tables") Tables table){
             Order order = orderService.findByTable(table.getCurrentTable());
             if(order!=null) {
                 orderedDishes.clear();
@@ -96,13 +96,13 @@ public class OrderController {
     }
 
     @ModelAttribute("tables")
-    public Table getTableNumber(){
-        return new Table();
+    public Tables getTableNumber(){
+        return new Tables();
     }
 
     @RequestMapping(value = "/setTableNumber", method = RequestMethod.POST)
     public RedirectView set(@RequestParam int selectedNumber,
-                            HttpServletRequest request,  @ModelAttribute("tables") Table table){
+                            HttpServletRequest request,  @ModelAttribute("tables") Tables table){
         table.setCurrentTable(selectedNumber);
         return new RedirectView("/submitOrder");
     }
