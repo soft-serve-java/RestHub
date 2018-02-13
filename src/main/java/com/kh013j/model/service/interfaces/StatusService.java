@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface StatusService {
     Status create(Status role);
-    void delete(long id) throws DishNotFound;
+    void delete(long id);
     List findAll();
-    Status update(Status role) throws DishNotFound;
+    Status update(Status role);
     Status findById(long id);
     Status findByName(String name);
 }

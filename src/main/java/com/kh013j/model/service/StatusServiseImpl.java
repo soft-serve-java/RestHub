@@ -17,7 +17,7 @@ public class StatusServiseImpl implements StatusService{
     }
 
     @Override
-    public void delete(long id) throws DishNotFound {
+    public void delete(long id){
 
     }
 
@@ -27,7 +27,7 @@ public class StatusServiseImpl implements StatusService{
     }
 
     @Override
-    public Status update(Status status) throws DishNotFound {
+    public Status update(Status status){
         return null;
     }
 
