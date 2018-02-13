@@ -10,7 +10,7 @@ import java.util.List;
 public interface OrderService {
 
   void create(Order order);
-  Order delete(long id) throws DishNotFound;
+  Order delete(long id) ;
   List findAll();
   Order update(Order order);
   Order findById(long id);
