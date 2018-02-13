@@ -19,8 +19,10 @@ import java.util.List;
 public class HelloController {
     @Autowired
     DishService dishService;
+
     @Autowired
     OrderService orderService;
+
     @Autowired
     CategoryService categoryService;
 
@@ -30,28 +32,27 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String sayHello(){
+    public String sayHello() {
         return "Hello";
     }
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String welcome(){
+    public String welcome() {
         return "Welcome";
     }
 
     @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
-    public ModelAndView layoutgrid(){
+    public ModelAndView layoutgrid() {
         return new ModelAndView(ViewName.MENU, "menuItems",
-            dishService.findAll());
+                dishService.findAll());
     }
 
     @RequestMapping(value = "/dishdescription/{id}", method = RequestMethod.GET)
-    public String dishdescription(Model model, @PathVariable(value="id") long id){
+    public String dishdescription(Model model, @PathVariable(value = "id") long id) {
         model.addAttribute("dish", dishService.findById(id));
         model.addAttribute("populars", dishService.findPopular(id));
         return ViewName.DISH_DESCRIPTION;
     }
-
 
 
 }

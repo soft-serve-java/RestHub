@@ -22,41 +22,41 @@
     </button>
     <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" >
-                <c:forEach items="${categoryItems}" var="item">
+        <ul class="navbar-nav mr-auto">
+            <c:forEach items="${categoryItems}" var="item">
                 <li class="nav-item">
                     <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
                 </li>
             </c:forEach>
-                <li>
-                    <button class="btn btn-success nav-button" style="margin-right:10px;">
-                        <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
-                    </button>
-                </li>
-                <li>
-
-                    <c:if test="${not empty orderMap || not empty orderedList}">
-                        <a href="/order">
-                            <button class="btn btn-info nav-button" style="margin-right:10px;">
-                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                             </button>
-                        </a>
-                    </c:if>
-                    <c:if test="${empty orderMap && empty orderedList}">
-                            <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
-                                <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                            </button>
-                    </c:if>
-
-                </li>
-            </ul>
-            <form action="/menu/search" method="get" class="form-inline">
-                <input class="form-control mr-sm-2" name="searchField" type="text" placeholder="Search dish"/>
-                <button type="submit" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
-                    <i class="fa fa-search"></i>
+            <li>
+                <button class="btn btn-success nav-button" style="margin-right:10px;">
+                    <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
                 </button>
-            </form>
+            </li>
+            <li>
+
+                <c:if test="${not empty orderMap || not empty orderedList}">
+                    <a href="/order">
+                        <button class="btn btn-info nav-button" style="margin-right:10px;">
+                            <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+                        </button>
+                    </a>
+                </c:if>
+                <c:if test="${empty orderMap && empty orderedList}">
+                    <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
+                        <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+                    </button>
+                </c:if>
+
+            </li>
+        </ul>
+        <form action="/menu/search" method="get" class="form-inline">
+            <input class="form-control mr-sm-2" name="searchField" type="text" placeholder="Search dish"/>
+            <button type="submit" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
 
         <a class="nav-link a-nav" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
-        </div>
+    </div>
 </nav>

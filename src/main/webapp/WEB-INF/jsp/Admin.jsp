@@ -21,10 +21,10 @@
     </button>
     <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" >
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/user/all">Users</a>
-                </li>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/user/all">Users</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/dish/all">Dish</a>
             </li>

@@ -1,6 +1,6 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "Admin.jsp" %>
+<%@ include file="Admin.jsp" %>
 <div class="container">
     <%--@elvariable id="category" type="com.kh013j.model.domain.Category"--%>
     <form:form method="POST" action="/admin/category/save" modelAttribute="category">
@@ -12,9 +12,9 @@
             </div>
 
             <div class="col-md-2 align-self-center">
-            <button type="submit" class="btn btn-primary">Apply</button>
+                <button type="submit" class="btn btn-primary">Apply</button>
             </div>
         </div>
     </form:form>
 </div>
-<%@ include file = "footer.jsp" %>
+<%@ include file="footer.jsp" %>

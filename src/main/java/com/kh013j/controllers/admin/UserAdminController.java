@@ -1,9 +1,9 @@
 package com.kh013j.controllers.admin;
 
 import com.kh013j.controllers.util.ViewName;
-import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.exception.DishNotFound;
+import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,11 +27,12 @@ public class UserAdminController {
     RoleService roleService;
 
     @RequestMapping(value = "/admin/user/all", method = RequestMethod.GET)
-    public ModelAndView showUsers(){
-        return new ModelAndView(ViewName.SHOW_USERS, "Users", userService.findAll() );
+    public ModelAndView showUsers() {
+        return new ModelAndView(ViewName.SHOW_USERS, "Users", userService.findAll());
     }
+
     @RequestMapping(value = "admin/user/new", method = RequestMethod.GET)
-    public ModelAndView userCreate(){
+    public ModelAndView userCreate() {
         return new ModelAndView(ViewName.USER_EDIT_CREATE, "user", new User())
                 .addObject("Roles", roleService.findAll());
     }
@@ -42,6 +43,7 @@ public class UserAdminController {
         return new ModelAndView(ViewName.USER_EDIT_CREATE, "user",
                 userService.findById(id)).addObject("Roles", roleService.findAll());
     }
+
     @RequestMapping(value = "/admin/user/delete/{id}", method = RequestMethod.POST)
     public String userDelete(@PathVariable(value = "id") long id) throws DishNotFound {
         userService.delete(id);
@@ -49,9 +51,9 @@ public class UserAdminController {
     }
 
     @RequestMapping(value = "/admin/user/save", method = RequestMethod.POST)
-    public String  userSaveNew(@Valid @ModelAttribute("user" )User user, BindingResult userResult,
-                            HttpServletResponse response) throws DishNotFound, IOException {
-            userService.update(user);
+    public String userSaveNew(@Valid @ModelAttribute("user") User user, BindingResult userResult,
+                              HttpServletResponse response) throws DishNotFound, IOException {
+        userService.update(user);
         return "redirect:/admin/user/all";
 
     }

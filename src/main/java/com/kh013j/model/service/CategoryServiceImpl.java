@@ -4,7 +4,6 @@ import com.kh013j.model.domain.Category;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.repository.CategoryRepository;
 import com.kh013j.model.service.interfaces.CategoryService;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -46,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional
-    public Category findCategoryByName(String name){
+    public Category findCategoryByName(String name) {
         return categoryRepository.findCategoryByName(name);
     }
 

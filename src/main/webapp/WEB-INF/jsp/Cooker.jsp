@@ -1,5 +1,5 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ include file = "header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="header.jsp" %>
 <div class="container">
     <table class="table">
         <thead>
@@ -11,23 +11,23 @@
         </thead>
         <tbody>
         <c:forEach items="${Dishes}" var="dish">
-        <tr>
-            <td>${dish.dish.name}</td>
-            <td>${dish.dish.weight}</td>
-            <td>
-                <c:if test="${dish.status.name=='preparing'}">
-                    <a href="/cooker/gotit/${dish.id}" class="btn btn-warning" style="margin-bottom: 10%">
-                        Got it!<span class="fa fa-check"></span></a>
-                    </a>
-                </c:if>
-                <c:if test="${dish.status.name=='cooking'}">
-                    <a href="/cooker/done/${dish.id}" class="btn btn-success" style="margin-bottom: 10%">
-                        Done<span class="fa fa-check"></span></a>
-                </c:if>
-            </td>
-        </tr>
+            <tr>
+                <td>${dish.dish.name}</td>
+                <td>${dish.dish.weight}</td>
+                <td>
+                    <c:if test="${dish.status.name=='preparing'}">
+                        <a href="/cooker/gotit/${dish.id}" class="btn btn-warning" style="margin-bottom: 10%">
+                            Got it!<span class="fa fa-check"></span></a>
+                        </a>
+                    </c:if>
+                    <c:if test="${dish.status.name=='cooking'}">
+                        <a href="/cooker/done/${dish.id}" class="btn btn-success" style="margin-bottom: 10%">
+                            Done<span class="fa fa-check"></span></a>
+                    </c:if>
+                </td>
+            </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
-<%@ include file = "footer.jsp" %>
+<%@ include file="footer.jsp" %>

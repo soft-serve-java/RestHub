@@ -21,6 +21,8 @@ public class ViewName {
 
     public static final String COOKER = "Cooker";
 
-    private ViewName() { throw new UnsupportedOperationException(); }
+    private ViewName() {
+        throw new UnsupportedOperationException();
+    }
 
 }

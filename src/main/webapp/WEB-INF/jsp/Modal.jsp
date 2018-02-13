@@ -1,4 +1,5 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -27,6 +28,6 @@
         var href = button.data('href');
         $("#delete").attr("action", href);
         var modal = $(this);
-        modal.find('.modal-body').text('Are you sure, that you want to delete ' + recipient +'?');
+        modal.find('.modal-body').text('Are you sure, that you want to delete ' + recipient + '?');
     })
 </script>

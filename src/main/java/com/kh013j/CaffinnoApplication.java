@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAutoConfiguration
 public class CaffinnoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CaffinnoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CaffinnoApplication.class, args);
+    }
 }

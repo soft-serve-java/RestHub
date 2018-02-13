@@ -5,18 +5,19 @@
   Time: 17:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page contentType="text/html;charset=UTF-8"%>
-<%@ include file = "header.jsp" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="header.jsp" %>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="container py-2" style="width: 50rem">
     <table class="table table-hover">
         <tbody>
         <tr>
             <td>
-                <h4 >Add new dish</h4>
+                <h4>Add new dish</h4>
                 <div class="row">
                     <div class="col">
                         <row>
@@ -61,4 +62,4 @@
     </table>
 </div>
 
-<%@ include file = "footer.jsp" %>
+<%@ include file="footer.jsp" %>

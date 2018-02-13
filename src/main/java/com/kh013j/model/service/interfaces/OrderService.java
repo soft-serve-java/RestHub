@@ -11,12 +11,19 @@ import java.util.Map;
 @Service
 public interface OrderService {
 
-  void create(Order order);
-  Order delete(long id) throws DishNotFound;
-  List findAll();
-  Order update(Order order);
-  Order findById(long id);
-  Order findByTable(int table);
-  Order createOrderFromMap(Map<Dish, Integer> orderMap, int tableNumber);
-  void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap);
+    void create(Order order);
+
+    Order delete(long id) throws DishNotFound;
+
+    List findAll();
+
+    Order update(Order order);
+
+    Order findById(long id);
+
+    Order findByTable(int table);
+
+    Order createOrderFromMap(Map<Dish, Integer> orderMap, int tableNumber);
+
+    void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap);
 }
