@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "role", schema = "rh")
-class Role {
+public class Role {
     @Id
     private long id;
     @Column(length = 50)

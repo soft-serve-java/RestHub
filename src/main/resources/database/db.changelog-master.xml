@@ -5,9 +5,6 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-  <include file="database/postgres/initDB.sql"/>
-  <include file="database/postgres/populateDB.sql"/>
-
     <changeSet id="1" author="me">
     <validCheckSum>any</validCheckSum>
     <sqlFile path="database/postgres/initDB.sql"/>
