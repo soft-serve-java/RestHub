@@ -85,20 +85,22 @@
                     <td>
                         <div class="row">
                             <div class="input-group">
-                                <a href="/increase/${orderItem.key.id}" class="btn btn-secondary">
-                                    <!--{orderItem.value}/{orderItem.key.id}"--> <span
-                                        class="sign fa fa-minus"></span></a>
-                                <input type="text" name="quant${orderItem.key.id}" class="form-control input-number"
-                                       value="${orderItem.value}" min="1" max="10">
+                                <c:if test="${orderItem.value > 1}">
+                                <a href="/reduce/${orderItem.key.id}" class="btn btn-secondary">
+                                    <span class="sign fa fa-minus"></span>
+                                </a>
+                                </c:if>
                                 <c:if test="${orderItem.value == 1}">
                                     <a href="/reduce/${orderItem.key.id}" class="btn btn-secondary disabled"
                                        style="cursor: not-allowed">
-                                        <span class="sign fa fa-plus"></span></a>
+                                        <span class="sign fa fa-minus"></span>
+                                    </a>
                                 </c:if>
-                                <c:if test="${orderItem.value > 1}">
-                                    <a href="/reduce/${orderItem.key.id}" class="btn btn-secondary">
-                                        <span class="sign fa fa-minus"></span></a>
-                                </c:if>
+                                <input type="text" name="quant${orderItem.key.id}" class="form-control input-number"
+                                       value="${orderItem.value}" min="1" max="10">
+                                    <a href="/increase/${orderItem.key.id}" class="btn btn-secondary">
+                                        <span class="sign fa fa-plus"></span>
+                                    </a>
                             </div>
                         </div>
                     </td>
