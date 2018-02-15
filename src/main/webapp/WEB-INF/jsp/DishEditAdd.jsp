@@ -10,7 +10,7 @@
             <div class="form-row">
                 <form:input path="id" type="hidden"/>
                 <label>Name: </label>
-                <form:textarea  class="form-control" cols="105" rows="1" text="${dish.name}" path="name" />
+                <form:input  class="form-control" cols="105" rows="1" text="${dish.name}" path="name" />
             </div>
             <div class="form-row">
                 <label>Description: </label>
@@ -26,17 +26,17 @@
 
             <div class="form-row">
                 <label>Calories: </label>
-                <form:textarea class="form-control" cols="20" rows="1" text="${dish.calories}" path="calories" />
+                <form:input class="form-control" cols="20" rows="1" text="${dish.calories}" path="calories" />
             </div>
 
             <div class="form-row">
                 <label>Preparing time: </label>
-                <form:textarea class="form-control" cols="20" rows="1" text="${dish.preparingtime}" path="preparingtime" />
+                <form:input class="form-control" cols="20" rows="1" text="${dish.preparingtime}" path="preparingtime" />
             </div>
 
             <div class="form-row">
                 <label>Price: </label>
-                <form:textarea class="form-control" cols="20" rows="1" text="${dish.price}" path="price" />
+                <form:input class="form-control" cols="20" rows="1" text="${dish.price}" path="price" />
             </div>
 
 
