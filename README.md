@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/soft-serve-java/RestHub.png)](https://travis-ci.org/soft-serve-java/RestHub)
-[![Dependency Status][depstat-image]][depstat-url]
 # RestHub</br>
 This is site for restaurant service improvement by the automatization of some processes in there.</br>
 There are four roles in our project such as User, Cook, Waiter and Administrator.</br>
