@@ -26,8 +26,8 @@
 
 
             <div class="form-row">
-                <label>Image: </label><p></p>
-                <input type="file" name="pic" accept="image/*">
+                <label>Image: </label>
+                <input class="form-control" type="file" name="pic" accept="image/*">
             </div>
 
 
