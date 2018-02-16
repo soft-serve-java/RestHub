@@ -12,12 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
+import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 
-import java.sql.Timestamp;
+import java.io.IOException;
+import java.sql.*;
+
+import static com.sun.org.apache.xerces.internal.util.FeatureState.is;
+import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class OrderDishRepositoryTest {
+public class OrderedDishRepositoryTest {
     @Autowired
     private OrderRepository orderRepository;
 
@@ -25,6 +30,29 @@ public class OrderDishRepositoryTest {
     private OrderService orderService;
 
     private Order order = new Order();
+
+    public static void main(String[] args) throws IOException, SQLException {
+        // starting Postgres
+ /*       final EmbeddedPostgres postgres = new EmbeddedPostgres(V10);
+// predefined data directory
+// final EmbeddedPostgres postgres = new EmbeddedPostgres(V9_6, "/path/to/predefined/data/directory");
+        final String url = postgres.start("localhost", 5432, "test", "cat", "1234");
+
+// connecting to a running Postgres and feeding up the database
+        final Connection conn = DriverManager.getConnection(url);
+
+      //  conn.createStatement().execute("CREATE TABLE films (code char(5));");
+        conn.createStatement().execute("INSERT INTO films VALUES ('movie');");
+
+        // performing some assertions
+        final Statement statement = conn.createStatement();
+        Assert.isTrue(statement.execute("SELECT * FROM films;"));
+
+        // close db connection
+        conn.close();
+// stop Postgres
+        postgres.stop();*/
+    }
 
     @Test
     public void isOrderAdded() {
