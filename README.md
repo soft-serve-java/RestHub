@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/soft-serve-java/RestHub.png)](https://travis-ci.org/soft-serve-java/RestHub)
-![codecov.io](https://codecov.io/github/cainus/codecov.io/coverage.svg?branch=dev)](https://codecov.io/github/cainus/codecov.io?branch=master)
 [![Dependency Status][depstat-image]][depstat-url]
 # RestHub</br>
 This is site for restaurant service improvement by the automatization of some processes in there.</br>
