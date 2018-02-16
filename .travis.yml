@@ -1,0 +1,16 @@
+language: java
+language: java
+sudo: true
+dist: trusty
+jdk: oraclejdk9
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+before_install:
+  - chmod +x mvnw
+  - jdk_switcher use oraclejdk8
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database rh;' -U postgres

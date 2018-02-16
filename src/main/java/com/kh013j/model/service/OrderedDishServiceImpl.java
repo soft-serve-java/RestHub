@@ -52,12 +52,10 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     @Transactional
     public OrderedDish update(OrderedDish orderedDish) {
         OrderedDish updatedOrderedDish = orderedDishRepository.findOne(orderedDish.getId());
-
         updatedOrderedDish.setOrder(orderedDish.getOrder());
         updatedOrderedDish.setDish(orderedDish.getDish());
         updatedOrderedDish.setQuantity(orderedDish.getQuantity());
         updatedOrderedDish.setStatus(orderedDish.getStatus());
-
         return updatedOrderedDish;
     }
 
@@ -73,10 +71,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     }
 
     public List<OrderedDish> findAllForCooker() {
-        List<Status> statuses = new ArrayList<>();
-        statuses.add(new Status(2, "cooking"));
-        statuses.add(new Status(1, "preparing"));
-        return orderedDishRepository.findAllByStatusIn(statuses);
+        return orderedDishRepository.findAllByStatusIn(statusService.cookersStatuses());
     }
 
 
@@ -84,7 +79,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     @Transactional
     public void setDone(long id) {
         OrderedDish dish = orderedDishRepository.findOne(id);
-        dish.setStatus(new Status(3, "delivery"));
+        dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
     }
 
@@ -98,7 +93,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     @Transactional
     public void setCooking(long id) {
         OrderedDish dish = orderedDishRepository.findOne(id);
-        dish.setStatus(new Status(2, "cooking"));
+        dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
     }
 
@@ -115,7 +110,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         orderedDish.setDish(dish);
         orderedDish.setOrder(order);
         orderedDish.setQuantity(quantity);
-        Status status = statusService.findByName("preparing");
+        Status status = statusService.create();
         orderedDish.setStatus(status);
         return orderedDish;
     }
