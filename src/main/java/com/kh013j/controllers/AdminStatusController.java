@@ -20,7 +20,7 @@ import javax.validation.Valid;
 
 @Controller
 public class AdminStatusController {
-
+/*
   @Autowired
   private StatusService statusService;
 
@@ -54,4 +54,5 @@ public class AdminStatusController {
         statusService.update(status);
         return "redirect:/admin/status/all";
     }
+    */
 }

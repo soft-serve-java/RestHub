@@ -6,39 +6,41 @@ import com.kh013j.model.repository.StatusRepositiry;
 import com.kh013j.model.service.interfaces.StatusService;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StatusServiseImpl implements StatusService {
     @Resource
     StatusRepositiry statusRepositiry;
-
     @Override
-    public Status create(Status status) {
-        return statusRepositiry.save(status);
+    public Status create() {
+        return statusRepositiry.findFirstByName(Status.PREPARING);
     }
 
     @Override
-    public void delete(long id){
-        statusRepositiry.delete(id);
-    }
-
-    @Override
-    public List findAll() {
-            return statusRepositiry.findAll();
+    public Status nextStatus(Status status) {
+        switch (status.getName()){
+            case Status.PREPARING:
+                return statusRepositiry.findFirstByName(Status.COOKING);
+            case Status.COOKING:
+                return statusRepositiry.findFirstByName(Status.DELIVERY);
+                default:
+                    throw new UnsupportedOperationException();
         }
-
-    @Override
-    public Status update(Status status){
-        return statusRepositiry.saveAndFlush(status);
     }
 
     @Override
-    public Status findById(long id) {
-        return statusRepositiry.findOne(id);
+    public List<Status> cookersStatuses() {
+        List<Status> statuses = new ArrayList<>();
+        statuses.add(statusRepositiry.findFirstByName(Status.COOKING));
+        statuses.add(statusRepositiry.findFirstByName(Status.PREPARING));
+        return statuses;
     }
 
     @Override
-    public Status findByName(String name) {
-        return statusRepositiry.findFirstByName(name);
+    public List<Status> waiterStatuses() {
+        List<Status> statuses = new ArrayList<>();
+        statuses.add(statusRepositiry.findFirstByName(Status.DELIVERY));
+        return statuses;
     }
 }

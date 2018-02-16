@@ -3,6 +3,7 @@ package com.kh013j.model.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
@@ -16,11 +17,18 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@RestHubEntity(table = @Table(name="status", schema = "rh"))
+//@Cacheable
+//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(length = 50)
     private String name;
+    @Transient
+    public static final String PREPARING = "preparing";
+    @Transient
+    public static final String COOKING = "cooking";
+    @Transient
+    public static final String DELIVERY = "delivery";
 }
