@@ -16,22 +16,17 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-/*    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }*/
-
-/*    @Autowired
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("adminLogin").password("1111").roles("ADMINISTRATOR");
         auth.inMemoryAuthentication().withUser("cookLogin").password("1111").roles("COOK");
         auth.inMemoryAuthentication().withUser("waiterLogin").password("1111").roles("WAITER");
         auth.inMemoryAuthentication().withUser("userLogin").password("1111").roles("USER");
-    }*/
+    }
 
 
 
-    @Autowired
+  /*  @Autowired
     DataSource dataSource;
 
     @Autowired
@@ -41,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //.authoritiesByUsernameQuery("SELECT \"user\".login, \"user\".password, \"role\".name FROM rh.\"user\", rh.role WHERE \"user\".role_id = \"role\".id and \"user\".login = ?"); //and "user".login = 'adminLogin'
                 .authoritiesByUsernameQuery("SELECT \"user\".login, \"role\".name FROM rh.\"user\", rh.role WHERE \"user\".role_id = \"role\".id and \"user\".login = ?");
         ;
-    }
+    }*/
 
     //.csrf() is optional, enabled by default, if using WebSecurityConfigurerAdapter constructor
     @Override
