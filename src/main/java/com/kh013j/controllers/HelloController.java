@@ -36,8 +36,8 @@ public class HelloController {
         return "Hello";
     }
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String welcome() {
+    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+    public String welcomePage() {
         return "Welcome";
     }
 
