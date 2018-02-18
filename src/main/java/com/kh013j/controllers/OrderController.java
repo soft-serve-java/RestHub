@@ -25,7 +25,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/addToOrder/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/addToOrder/{id}")
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
                                    @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                    HttpServletRequest request) {
@@ -40,7 +40,7 @@ public class OrderController {
         return new RedirectView(request.getHeader("referer"));
     }
 
-    @RequestMapping(value = "/removeFromOrder/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/removeFromOrder/{id}")
     public RedirectView removeFromOrder(@PathVariable(value = "id") long id,
                                         @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                         HttpServletRequest request) {
@@ -49,7 +49,7 @@ public class OrderController {
         return new RedirectView(request.getHeader("referer"));
     }
 
-    @RequestMapping(value = "/submitOrder")
+    @GetMapping(value = "/submitOrder")
     public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                     @ModelAttribute("orderedList") List<OrderedDish> orderedDishes,
                                     @ModelAttribute("tables") Tables table) {
@@ -58,7 +58,7 @@ public class OrderController {
         return new RedirectView("/order");
     }
 
-    @RequestMapping(value = "/submitOne/{dish}")
+    @GetMapping(value = "/submitOne/{dish}")
     public RedirectView submitOne(@PathVariable(value = "dish") Dish dish,
                                   @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                   @ModelAttribute("orderedList") List<OrderedDish> orderedDishes,
@@ -67,7 +67,7 @@ public class OrderController {
         return new RedirectView(request.getHeader("referer"));
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    @GetMapping(value = "/order")
     public ModelAndView order(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                               @ModelAttribute("orderedList") List<OrderedDish> orderedDishes,
                               @ModelAttribute("tables") Tables table) {
@@ -100,14 +100,14 @@ public class OrderController {
         return new Tables();
     }
 
-    @RequestMapping(value = "/setTableNumber", method = RequestMethod.POST)
+    @GetMapping(value = "/setTableNumber")
     public RedirectView set(@RequestParam int selectedNumber,
                             HttpServletRequest request, @ModelAttribute("tables") Tables table) {
         table.setCurrentTable(selectedNumber);
         return new RedirectView("/submitOrder");
     }
 
-    @RequestMapping(value = "/increase/{dishId}", method = RequestMethod.GET)
+    @GetMapping(value = "/increase/{dishId}")
     public RedirectView increaseQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                          @PathVariable(value = "dishId") int dishId,
                                          HttpServletRequest request) {
@@ -115,7 +115,7 @@ public class OrderController {
         return new RedirectView(request.getHeader("referer"));
     }
 
-    @RequestMapping(value = "/reduce/{dishId}", method = RequestMethod.GET)
+    @GetMapping(value = "/reduce/{dishId}")
     public RedirectView reduceQuantity(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                        @PathVariable(value = "dishId") int dishId,
                                        HttpServletRequest request) {

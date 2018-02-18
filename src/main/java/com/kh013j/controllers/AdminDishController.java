@@ -24,37 +24,37 @@ public class AdminDishController {
 
   @Autowired
   private CategoryService categoryService;
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    @GetMapping(value = "/admin")
     public String admin(){
         return "Admin";
     }
 
 
-    @RequestMapping(value = "/admin/dish/all", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/dish/all")
     public ModelAndView showDish(){
         return new ModelAndView("AdminDish", "dish", dishService.findAll() );
     }
 
 
-    @RequestMapping(value = "admin/dish/new", method = RequestMethod.GET)
+    @GetMapping(value = "admin/dish/new")
     public ModelAndView dishCreate(){
         return new ModelAndView("DishEditAdd", "dish", new Dish())
                 .addObject("category",categoryService.findAll() );
     }
 
 
-    @RequestMapping(value = "/admin/dish/edit/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/dish/edit/{id}")
     public ModelAndView dishEdit(@PathVariable(value = "id") long id) {
         return new ModelAndView("DishEditAdd", "dish", dishService.findById(id));
     }
 
-    @RequestMapping(value = "/admin/dish/delete/{id}", method = RequestMethod.POST)
-    public String dishDelete(@PathVariable(value = "id") long id) throws DishNotFound {
+    @GetMapping(value = "/admin/dish/delete/{id}")
+    public String dishDelete(@PathVariable(value = "id") long id) {
         dishService.delete(id);
         return "redirect:/admin/dish/all";
     }
 
-    @RequestMapping(value = "/admin/dish/save", method = RequestMethod.POST)
+    @GetMapping(value = "/admin/dish/save")
     public String  dishSaveNew(@Valid @ModelAttribute("dish" )Dish dish, BindingResult dishResult,
                                @RequestParam("pic") MultipartFile file,
                                HttpServletResponse response) throws Exception {

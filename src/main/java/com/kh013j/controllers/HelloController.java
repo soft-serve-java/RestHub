@@ -31,23 +31,23 @@ public class HelloController {
         return categoryService.findAll();
     }
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @GetMapping(value = "/hello")
     public String sayHello() {
         return "Hello";
     }
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    @GetMapping(value = "/welcome")
     public String welcome() {
         return "Welcome";
     }
 
-    @RequestMapping(value = "/layoutgrid", method = RequestMethod.GET)
+    @GetMapping(value = "/layoutgrid")
     public ModelAndView layoutgrid() {
         return new ModelAndView(ViewName.MENU, "menuItems",
                 dishService.findAll());
     }
 
-    @RequestMapping(value = "/dishdescription/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/dishdescription/{id}")
     public String dishdescription(Model model, @PathVariable(value = "id") long id) {
         model.addAttribute("dish", dishService.findById(id));
         model.addAttribute("populars", dishService.findPopular(id));

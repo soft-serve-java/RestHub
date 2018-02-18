@@ -23,29 +23,29 @@ public class AdminRoleController {
   private RoleService roleService;
 
 
-    @RequestMapping(value = "/admin/role/all", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/role/all")
     public ModelAndView showRole(){
         return new ModelAndView("AdminRole", "role", roleService.findAll() );
     }
 
-    @RequestMapping(value = "admin/role/new", method = RequestMethod.GET)
+    @GetMapping(value = "admin/role/new")
     public ModelAndView createRole(){
         return new ModelAndView("RoleAdd", "role", new Role())
                 .addObject("role", new Role());
     }
 
-    @RequestMapping(value = "/admin/role/edit/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/role/edit/{id}")
     public ModelAndView editCategory(@PathVariable(value = "id") long id) {
         return new ModelAndView("RoleEdit", "role", roleService.findById(id));
     }
 
-    @RequestMapping(value = "/admin/role/delete/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/role/delete/{id}")
     public String deleteRole(@PathVariable(value = "id") long id) {
         roleService.delete(id);
         return "redirect:/admin/role/all";
     }
 
-    @RequestMapping(value = "/admin/role/save", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/role/save")
     public String  SaveNewRole(@Valid @ModelAttribute("role") Role role, BindingResult roleResult) {
         roleService.update(role);
         return "redirect:/admin/role/all";
