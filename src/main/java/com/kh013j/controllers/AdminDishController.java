@@ -7,6 +7,7 @@ import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.Map;
 
 
 @Controller
@@ -36,7 +38,7 @@ public class AdminDishController {
     }
 
 
-    @GetMapping(value = "admin/dish/new")
+    @GetMapping(value = "/admin/dish/new")
     public ModelAndView dishCreate(){
         return new ModelAndView("DishEditAdd", "dish", new Dish())
                 .addObject("category",categoryService.findAll() );
@@ -45,7 +47,8 @@ public class AdminDishController {
 
     @GetMapping(value = "/admin/dish/edit/{id}")
     public ModelAndView dishEdit(@PathVariable(value = "id") long id) {
-        return new ModelAndView("DishEditAdd", "dish", dishService.findById(id));
+        return new ModelAndView("DishEditAdd", "dish", dishService.findById(id))
+                .addObject("category",categoryService.findAll() );
     }
 
     @GetMapping(value = "/admin/dish/delete/{id}")
@@ -54,11 +57,13 @@ public class AdminDishController {
         return "redirect:/admin/dish/all";
     }
 
-    @GetMapping(value = "/admin/dish/save")
-    public String  dishSaveNew(@Valid @ModelAttribute("dish" )Dish dish, BindingResult dishResult,
-                               @RequestParam("pic") MultipartFile file,
-                               HttpServletResponse response) throws Exception {
-
+    @PostMapping(value = "/admin/dish/save")
+    public String dishSaveNew(@Valid @ModelAttribute("dish" )Dish dish, BindingResult dishResult,
+                               @RequestParam("pic") MultipartFile file, Model model) throws Exception {
+        if (dishResult.hasErrors()) {
+            model.addAttribute("category",categoryService.findAll());
+            return "DishEditAdd";
+        }
         if (file != null && !file.isEmpty()) {
             dish.setPicture(ImgurImageService.uploadImage(file.getBytes()));
         }

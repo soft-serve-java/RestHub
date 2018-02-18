@@ -10,6 +10,7 @@
                 <form:hidden path="id"/>
                 <label for="inputEmail4">Email</label>
                 <form:input path="email" type="email" class="form-control" id="inputEmail4" placeholder="Email"/>
+                <form:errors path="email" class="control-label"/>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Password</label>

@@ -7,6 +7,7 @@ import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +40,6 @@ public class UserAdminController {
 
     @RequestMapping(value = "/admin/user/edit/{id}", method = RequestMethod.GET)
     public ModelAndView userEdit(@PathVariable(value = "id") long id) {
-        User user = userService.findById(id);
         return new ModelAndView(ViewName.USER_EDIT_CREATE, "user",
                 userService.findById(id)).addObject("Roles", roleService.findAll());
     }
@@ -52,7 +52,11 @@ public class UserAdminController {
 
     @RequestMapping(value = "/admin/user/save", method = RequestMethod.POST)
     public String userSaveNew(@Valid @ModelAttribute("user") User user, BindingResult userResult,
-                              HttpServletResponse response) throws DishNotFound, IOException {
+                              Model model) throws DishNotFound, IOException {
+        if (userResult.hasErrors()) {
+            model.addAttribute("Roles", roleService.findAll());
+            return ViewName.USER_EDIT_CREATE;
+        }
         userService.update(user);
         return "redirect:/admin/user/all";
 
