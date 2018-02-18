@@ -1,5 +1,4 @@
-DROP SCHEMA IF EXISTS rh CASCADE;
-CREATE SCHEMA rh;
+CREATE SCHEMA IF NOT EXISTS rh;
 DROP SEQUENCE IF EXISTS category_sequance CASCADE;
 CREATE SEQUENCE category_sequance;
 
@@ -48,8 +47,7 @@ CREATE TABLE rh.order
   REFERENCES rh.user (id)
 );
 
-DROP SEQUENCE IF EXISTS dish_sequense CASCADE;
-CREATE SEQUENCE dish_sequense;
+
 CREATE TABLE rh.dish
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('dish_sequense'),
