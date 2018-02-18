@@ -106,6 +106,3 @@ CREATE TABLE rh.orderdish
   CONSTRAINT "order_id" FOREIGN KEY ("order_id")
   REFERENCES rh.order (id)
 );
-
---DROP DATABASE test;
--- DROP USER my;
