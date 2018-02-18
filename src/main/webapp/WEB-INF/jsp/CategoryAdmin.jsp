@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="Admin.jsp" %>
 <div class="container">
     <table class="table table-hover">
@@ -6,10 +7,6 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th>Name</th>
-            <th colspan="2"><a href="/admin/category/new">
-                <button type="submit" class="btn btn-primary">New Category</button>
-            </a>
-            </th>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +27,22 @@
         </c:forEach>
         </tbody>
     </table>
+
+    <hr>
+    <form:form method="POST" action="/admin/category/save" modelAttribute="category">
+        <div class="form-row align-items-center">
+            <form:hidden path="id"/>
+            <div class="form-group col-md-6">
+                <label for="inputName">Name</label>
+                <form:input path="name" type="text" class="form-control" id="inputName" placeholder="Name of new category"/>
+                <form:errors path="name" class="control-label"/>
+            </div>
+
+            <div class="col-md-2 align-items-center">
+                <button type="submit" class="btn btn-primary">Add New Category</button>
+            </div>
+        </div>
+    </form:form>
 </div>
 <%@ include file="Modal.jsp" %>
 <%@ include file="footer.jsp" %>
