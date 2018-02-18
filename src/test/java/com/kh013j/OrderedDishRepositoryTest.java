@@ -5,13 +5,17 @@ import com.kh013j.model.domain.Role;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderRepository;
+import com.kh013j.model.service.CaffinoApplicationTestConfiguration;
 import com.kh013j.model.service.interfaces.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
+import org.springframework.web.context.ContextLoader;
 import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 
 import java.io.IOException;
@@ -21,7 +25,7 @@ import static com.sun.org.apache.xerces.internal.util.FeatureState.is;
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 public class OrderedDishRepositoryTest {
     @Autowired
     private OrderRepository orderRepository;
@@ -31,17 +35,24 @@ public class OrderedDishRepositoryTest {
 
     private Order order = new Order();
 
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+        CaffinoApplicationTestConfiguration caffinoApplicationTestConfiguration = new CaffinoApplicationTestConfiguration();
+        caffinoApplicationTestConfiguration.startPostgres();
+        // get embedded database.postgres bean from application context
+
+        //create db test
+
+
         // starting Postgres
- /*       final EmbeddedPostgres postgres = new EmbeddedPostgres(V10);
+/*       final EmbeddedPostgres database.postgres = new EmbeddedPostgres(V10);
 // predefined data directory
-// final EmbeddedPostgres postgres = new EmbeddedPostgres(V9_6, "/path/to/predefined/data/directory");
-        final String url = postgres.start("localhost", 5432, "test", "cat", "1234");
+// final EmbeddedPostgres database.postgres = new EmbeddedPostgres(V9_6, "/path/to/predefined/data/directory");
+        final String url = database.postgres.start("localhost", 5433, "test", "cat", "1234");
 
 // connecting to a running Postgres and feeding up the database
-        final Connection conn = DriverManager.getConnection(url);
+       /* final Connection conn = DriverManager.getConnection(url);
 
-      //  conn.createStatement().execute("CREATE TABLE films (code char(5));");
+        //  conn.createStatement().execute("CREATE TABLE films (code char(5));");
         conn.createStatement().execute("INSERT INTO films VALUES ('movie');");
 
         // performing some assertions
@@ -51,7 +62,7 @@ public class OrderedDishRepositoryTest {
         // close db connection
         conn.close();
 // stop Postgres
-        postgres.stop();*/
+        database.postgres.stop();*/
     }
 
     @Test
@@ -75,5 +86,4 @@ public class OrderedDishRepositoryTest {
 
         Assert.isTrue(order.equals(orderRepository.findOne(2L)));
     }
-
 }

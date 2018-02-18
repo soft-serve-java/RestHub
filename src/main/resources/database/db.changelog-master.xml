@@ -7,22 +7,22 @@
 
     <changeSet id="1" author="me">
     <validCheckSum>any</validCheckSum>
-    <sqlFile path="database/postgres/initDB.sql"/>
+    <sqlFile path="database/database.postgres/initDB.sql"/>
   </changeSet>
   <changeSet id="2" author="me">
     <validCheckSum>any</validCheckSum>
-    <sqlFile path="database/postgres/populateDB.sql"/>
+    <sqlFile path="database/database.postgres/populateDB.sql"/>
   </changeSet>
   <changeSet id="3" author="orasso">
     <validCheckSum>any</validCheckSum>
-    <sqlFile path="database/postgres/insertDishes.sql"/>
+    <sqlFile path="database/database.postgres/insertDishes.sql"/>
   </changeSet>
   <changeSet id="4" author="orasso">
     <validCheckSum>any</validCheckSum>
-    <sqlFile path="database/postgres/insertDishesOneMore.sql"/>
+    <sqlFile path="database/database.postgres/insertDishesOneMore.sql"/>
   </changeSet>
   <changeSet id="5" author="orasso">
     <validCheckSum>any</validCheckSum>
-    <sqlFile path="database/postgres/insertDishesOneMore.sql"/>
+    <sqlFile path="database/database.postgres/insertDishesOneMore.sql"/>
   </changeSet>
 </databaseChangeLog>

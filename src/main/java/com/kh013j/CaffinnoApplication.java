@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 
 
 @PropertySource(value = "classpath:application.properties")
-@PropertySource(value = "file:src/test/resources/test.properties")
+@PropertySource(value = "file:src/test/resources/application.properties")
 
 @SpringBootApplication
 public class CaffinnoApplication {
