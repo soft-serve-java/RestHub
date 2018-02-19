@@ -23,7 +23,6 @@ public class Dish {
     @Size(min = 3, max = 50)
     private String name;
     private String description;
-    @Min(2) @Max(10000)
     private int weight;
     @Max(5000)
     private int calories;
