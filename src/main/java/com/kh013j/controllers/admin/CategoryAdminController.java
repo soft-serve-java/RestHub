@@ -3,7 +3,6 @@ package com.kh013j.controllers.admin;
 import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.exception.CategoryNotFound;
-import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.service.interfaces.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,14 +11,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.IOException;
 
 @Controller
 public class CategoryAdminController {
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/admin/category/all", method = RequestMethod.GET)
     public ModelAndView showCategories() {

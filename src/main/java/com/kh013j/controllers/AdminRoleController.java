@@ -1,26 +1,19 @@
 package com.kh013j.controllers;
 
-import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Role;
-import com.kh013j.model.exception.CategoryNotFound;
-import com.kh013j.model.exception.DishNotFound;
-import com.kh013j.model.exception.RoleNotFound;
-import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.management.relation.RoleNotFoundException;
 import javax.validation.Valid;
 
 @Controller
 public class AdminRoleController {
 
-  @Autowired
-  private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
 
     @GetMapping(value = "/admin/role/all")
