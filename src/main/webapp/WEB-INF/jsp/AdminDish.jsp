@@ -13,9 +13,18 @@
         </thead>
         <tbody>
         <c:forEach items="${dish}" var="dish">
-            <tr>
+            <c:if test="${!dish.avalibility}"><tr class="table-warning"></c:if>
+            <c:if test="${dish.avalibility}"><tr></c:if>
                 <td>${dish.id}</td>
                 <td>${dish.name}</td>
+                <td>
+                    <a class="btn btn-info" href="/admin/dish/tweakAvail/${dish.id}">
+                        <c:choose>
+                            <c:when test="${dish.avalibility}">Remove from menu</c:when>
+                            <c:otherwise>Add to menu</c:otherwise>
+                        </c:choose>
+                    </a>
+                </td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
                             data-whatever="${dish.name}" data-href="/admin/dish/delete/${dish.id}">Delete
