@@ -10,11 +10,12 @@
             <div class="form-row">
                 <form:input path="id" type="hidden"/>
                 <label>Name: </label>
-                <form:input  class="form-control" text="${dish.name}" path="name" />
+                <form:input class="form-control" text="${dish.name}" path="name"/>
+                <form:errors path="name" class="control-label"/>
             </div>
             <div class="form-row">
                 <label>Description: </label>
-                <form:textarea class="form-control" text="${dish.description}" path="description" />
+                <form:textarea class="form-control" text="${dish.description}" path="description"/>
             </div>
 
             <div class="form-row">
@@ -33,17 +34,20 @@
 
             <div class="form-row">
                 <label>Calories: </label>
-                <form:input class="form-control" text="${dish.calories}" path="calories" />
+                <form:input type="number" class="form-control" text="${dish.calories}" path="calories" />
+                <form:errors path="calories" class="control-label"/>
             </div>
 
             <div class="form-row">
                 <label>Preparing time: </label>
-                <form:input class="form-control" text="${dish.preparingtime}" path="preparingtime" />
+                <form:input type="number" class="form-control" text="${dish.preparingtime}" path="preparingtime" />
+                <form:errors path="preparingtime" class="control-label"/>
             </div>
 
             <div class="form-row">
                 <label>Price: </label>
-                <form:input class="form-control" text="${dish.price}" path="price" />
+                <form:input type="number" class="form-control" text="${dish.price}" path="price" />
+                <form:errors path="price" class="control-label"/>
             </div>
 
 

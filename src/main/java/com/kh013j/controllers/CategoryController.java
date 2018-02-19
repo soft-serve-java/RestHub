@@ -25,18 +25,18 @@ public class CategoryController {
         return categoryService.findAll();
     }
 
-    @RequestMapping(value = "/menu/search")
+    @GetMapping(value = "/menu/search")
     public ModelAndView search(@RequestParam String searchField) {
         return new ModelAndView(ViewName.MENU, "menuItems", dishService.findByNameContaining(searchField));
     }
 
-    @RequestMapping(value = "/menu/{category}", method = RequestMethod.GET)
+    @GetMapping(value = "/menu/{category}")
     public ModelAndView showCategory(@PathVariable(value = "category") String category) {
         return new ModelAndView(ViewName.MENU, "menuItems", dishService.findAllDishByCategory(
                 categoryService.findCategoryByName(category)));
     }
 
-    @RequestMapping(value = "/menu/{category}/sort/{criteria}", method = RequestMethod.GET)
+    @GetMapping(value = "/menu/{category}/sort/{criteria}")
     public ModelAndView layoutgridSortBy(@PathVariable(value = "criteria") String criteria,
                                          @PathVariable(value = "category") String category) {
         switch (criteria) {
