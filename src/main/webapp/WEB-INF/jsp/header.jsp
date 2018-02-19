@@ -57,6 +57,6 @@
             </button>
         </form>
 
-        <a class="nav-link a-nav" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+        <a class="nav-link a-nav" href="/logout">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
     </div>
 </nav>

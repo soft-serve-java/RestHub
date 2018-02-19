@@ -13,11 +13,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "role", schema = "rh")
-//@RestHubEntity(table = @Table(name="role", schema = "rh"))
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(length = 50)
+        @Column(length = 50)
     private String name;
 }
