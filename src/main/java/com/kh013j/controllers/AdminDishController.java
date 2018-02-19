@@ -1,6 +1,7 @@
 package com.kh013j.controllers;
 
 import com.kh013j.model.domain.Dish;
+import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.service.ImgurImageService;
 import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
@@ -63,7 +64,7 @@ public class AdminDishController {
 
     @PostMapping(value = "/admin/dish/save")
     public String dishSaveNew(@Valid @ModelAttribute("dish" )Dish dish, BindingResult dishResult,
-                               @RequestParam("pic") MultipartFile file, Model model) throws Exception {
+                               @RequestParam("pic") MultipartFile file, Model model) throws DishNotFound {
         if (dishResult.hasErrors()) {
             model.addAttribute("category",categoryService.findAll());
             return "DishEditAdd";
