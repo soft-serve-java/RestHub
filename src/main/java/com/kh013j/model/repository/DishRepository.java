@@ -25,7 +25,7 @@ public interface DishRepository extends JpaRepository<Dish, Long> {
     //Change to nativequery = false, so that would work for any DB;
     @Query(value = "SELECT rh.dish.* from rh.dish" +
             "  INNER JOIN rh.orderdish ON rh.orderdish.dish_id = rh.dish.id" +
-            "  WHERE rh.orderdish.order_id = ALL(SELECT rh.order.id  FROM rh.order" +
+            "  WHERE rh.orderdish.order_id = SOME(SELECT rh.order.id  FROM rh.order" +
             "  INNER JOIN rh.orderdish ON rh.orderdish.order_id = rh.order.id" +
             "  WHERE rh.orderdish.dish_id = ?1) AND rh.dish.id != ?1 " +
             "  GROUP BY rh.dish.id" +
