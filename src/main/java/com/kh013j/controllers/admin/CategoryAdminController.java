@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -42,13 +39,13 @@ public class CategoryAdminController {
                 "Categories", categoryService.findAll()).addObject("category", category);
     }
 
-    @RequestMapping(value = "/admin/category/delete/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/category/delete/{id}")
     public String categoryDelete(@PathVariable(value = "id") long id) throws CategoryNotFound {
         categoryService.delete(id);
         return "redirect:/admin/category/all";
     }
 
-    @RequestMapping(value = "/admin/category/save", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/category/save")
     public String categorySaveNew(@Valid @ModelAttribute("category") Category category, BindingResult userResult, Model model) {
         if (!userResult.hasErrors()) {
             categoryService.update(category);

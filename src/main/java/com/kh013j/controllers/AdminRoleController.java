@@ -46,7 +46,7 @@ public class AdminRoleController {
     }
 
     @PostMapping(value = "/admin/role/save")
-    public String  SaveNewRole(@Valid @ModelAttribute("role") Role role, BindingResult roleResult) {
+    public String  saveNewRole(@Valid @ModelAttribute("role") Role role, BindingResult roleResult) {
         roleService.update(role);
         return "redirect:/admin/role/all";
     }

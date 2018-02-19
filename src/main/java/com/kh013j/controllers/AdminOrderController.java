@@ -34,14 +34,14 @@ public class AdminOrderController {
         return new ModelAndView("OrderAddCreate", "order", orderService.findById(id));
     }
 
-    @GetMapping(value = "/admin/order/delete/{id}")
+    @PostMapping(value = "/admin/order/delete/{id}")
     public String deleteOrder(@PathVariable(value = "id") long id) throws DishNotFound {
         orderService.delete(id);
         return "redirect:/admin/order";
     }
 
-    @GetMapping(value = "/admin/order/save")
-    public String  SaveNewOrder(@Valid @ModelAttribute("order") Order order, BindingResult orderResult) {
+    @PostMapping(value = "/admin/order/save")
+    public String saveNewOrder(@Valid @ModelAttribute("order") Order order, BindingResult orderResult) {
         orderService.update(order);
         return "redirect:/admin/order";
     }

@@ -100,7 +100,7 @@ public class OrderController {
         return new Tables();
     }
 
-    @GetMapping(value = "/setTableNumber")
+    @PostMapping(value = "/setTableNumber")
     public RedirectView set(@RequestParam int selectedNumber,
                             HttpServletRequest request, @ModelAttribute("tables") Tables table) {
         table.setCurrentTable(selectedNumber);

@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -44,13 +41,13 @@ public class UserAdminController {
                 userService.findById(id)).addObject("Roles", roleService.findAll());
     }
 
-    @RequestMapping(value = "/admin/user/delete/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/user/delete/{id}")
     public String userDelete(@PathVariable(value = "id") long id) throws DishNotFound {
         userService.delete(id);
         return "redirect:/admin/user/all";
     }
 
-    @RequestMapping(value = "/admin/user/save", method = RequestMethod.POST)
+    @PostMapping(value = "/admin/user/save")
     public String userSaveNew(@Valid @ModelAttribute("user") User user, BindingResult userResult,
                               Model model) throws DishNotFound, IOException {
         if (userResult.hasErrors()) {
