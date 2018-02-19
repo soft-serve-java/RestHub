@@ -23,7 +23,7 @@
                 <c:forEach items="${menuItems}" begin="${loop.index}" end="${loop.index+3}" var="item">
                     <div class="card">
 
-                        <a href="/dishdescription/${item.id}"> <img class="card-img-top" src="${item.picture}"
+                        <a href="/dish/${item.id}"> <img class="card-img-top" src="${item.picture}"
                                                                     alt="${item.name}"></a>
 
                         <c:if test="${orderMap.containsKey(item)}">

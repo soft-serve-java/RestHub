@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class OrderAdminController {
     @Autowired
-    OrderService orderService;
+    private OrderService orderService;
 
     @RequestMapping(value = "/admin/order/all", method = RequestMethod.GET)
     public ModelAndView showUsers() {

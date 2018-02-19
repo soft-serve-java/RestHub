@@ -45,9 +45,9 @@ public class ImgurImageService{
         return link;
     }
 
-    public static String uploadImage(byte[] imageBytes){
+    public static String uploadImage(byte[] imageBytes) throws IOException{
         byte[] imageBase64 = java.util.Base64.getEncoder().encode(imageBytes);
-        String link = "";
+        String link;
 
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             HttpPost httpPost = new HttpPost(UPLOAD_IMAGE_URL);
@@ -65,17 +65,8 @@ public class ImgurImageService{
             }
 
             response.getEntity().getContent();
-
-        } catch (IOException e) {
-            //TODO: handle the exception;
-            e.printStackTrace();
         }
 
         return link;
-    }
-
-
-    private static void remover() {
-
     }
 }

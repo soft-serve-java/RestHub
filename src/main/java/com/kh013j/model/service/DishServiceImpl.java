@@ -27,29 +27,29 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List findAllDishByCategoryOrderByPrice(Category category) {
-        return dishRepository.findByCategoryOrderByPrice(category);
+    public List findAllAvailableDishByCategoryOrderByPrice(Category category) {
+        return dishRepository.findByCategoryAndAvalibilityOrderByPrice(category, true);
     }
 
     @Override
-    public List findAllDishByCategoryOrderByPreparingtime(Category category) {
-        return dishRepository.findByCategoryOrderByPreparingtime(category);
+    public List findAllAvailableDishByCategoryOrderByPreparingtime(Category category) {
+        return dishRepository.findByCategoryAndAvalibilityOrderByPreparingtime(category,true);
     }
 
     @Override
-    public List findAllDishByCategoryOrderByCalories(Category category) {
-        return dishRepository.findByCategoryOrderByCalories(category);
+    public List findAllAvailableDishByCategoryOrderByCalories(Category category) {
+        return dishRepository.findByCategoryAndAvalibilityOrderByCalories(category, true);
     }
 
     @Override
     @Transactional(rollbackFor = DishNotFound.class)
-    public List<Dish> findAllDishByCategory(Category category) {
-        return dishRepository.findAllByCategory(category);
+    public List<Dish> findAllAvailableDishByCategory(Category category) {
+        return dishRepository.findAllByCategoryAndAvalibility(category, true);
     }
 
     @Override
-    public List<Dish> findByNameContaining(String name) {
-        return dishRepository.findByNameContainingIgnoreCase(name);
+    public List<Dish> findByAvailableAndNameContaining(String name) {
+        return dishRepository.findByNameContainingIgnoreCaseAndAvalibility(name, true);
     }
 
     @Override
@@ -67,6 +67,11 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
+    public List findAllAvailable() {
+        return dishRepository.findAllByAvalibility(true);
+    }
+
+    @Override
     public List<Dish> findPopular(long id) {
         return dishRepository.findDishByPopularCustomQuery(id);
     }
@@ -77,5 +82,14 @@ public class DishServiceImpl implements DishService {
         return dishRepository.saveAndFlush(dish);
     }
 
-
+    @Override
+    public Dish tweakAvailability(long id) {
+        Dish dish = dishRepository.findOne(id);
+        if (dish == null) {
+            return null;
+        }
+        dish.setAvalibility(!dish.isAvalibility());
+        dishRepository.saveAndFlush(dish);
+        return dish;
+    }
 }

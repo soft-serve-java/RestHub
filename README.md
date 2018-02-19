@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/soft-serve-java/RestHub.png)](https://travis-ci.org/soft-serve-java/RestHub)
+[![codebeat badge](https://codebeat.co/badges/bfb1ac21-3318-4cff-8ae0-b7a1b30eb8cb)](https://codebeat.co/projects/github-com-soft-serve-java-resthub-dev)
 # RestHub</br>
 This is site for restaurant service improvement by the automatization of some processes in there.</br>
 There are four roles in our project such as User, Cook, Waiter and Administrator.</br>
