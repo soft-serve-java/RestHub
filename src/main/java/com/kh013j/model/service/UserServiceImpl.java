@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
     @Resource
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public User create(User user) {

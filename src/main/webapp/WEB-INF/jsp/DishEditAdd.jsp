@@ -3,18 +3,20 @@
 <%@ include file = "Admin.jsp" %>
 
 <div class="container py-2" style="width: 50rem">
-    <form:form method="POST" action="/admin/dish/save" modelAttribute="dish">
+    <form:form method="POST" action="/admin/dish/save" modelAttribute="dish" enctype="multipart/form-data">
         <table class="table table-hover">
             <tbody>
             <h4 >Edit dish</h4>
             <div class="form-row">
                 <form:input path="id" type="hidden"/>
                 <label>Name: </label>
-                <form:textarea  class="form-control" cols="105" rows="1" text="${dish.name}" path="name" />
+                <form:input class="form-control" text="${dish.name}" path="name"/>
+                <form:errors path="name" class="control-label"/>
             </div>
             <div class="form-row">
                 <label>Description: </label>
-                <form:textarea class="form-control" cols="105" rows="2" text="${dish.description}" path="description" />
+                <form:textarea class="form-control" text="${dish.description}" path="description"/>
+                <form:errors path="description" class="control-label"/>
             </div>
 
             <div class="form-row">
@@ -24,19 +26,29 @@
                 </form:select>
             </div>
 
+
+            <div class="form-row">
+                <label>Image: </label>
+                <input class="form-control" type="file" name="pic" accept="image/*">
+            </div>
+
+
             <div class="form-row">
                 <label>Calories: </label>
-                <form:textarea class="form-control" cols="20" rows="1" text="${dish.calories}" path="calories" />
+                <form:input type="number" class="form-control" text="${dish.calories}" path="calories" />
+                <form:errors path="calories" class="control-label"/>
             </div>
 
             <div class="form-row">
                 <label>Preparing time: </label>
-                <form:textarea class="form-control" cols="20" rows="1" text="${dish.preparingtime}" path="preparingtime" />
+                <form:input type="number" class="form-control" text="${dish.preparingtime}" path="preparingtime" />
+                <form:errors path="preparingtime" class="control-label"/>
             </div>
 
             <div class="form-row">
                 <label>Price: </label>
-                <form:textarea class="form-control" cols="20" rows="1" text="${dish.price}" path="price" />
+                <form:input type="number" class="form-control" text="${dish.price}" path="price" />
+                <form:errors path="price" class="control-label"/>
             </div>
 
 

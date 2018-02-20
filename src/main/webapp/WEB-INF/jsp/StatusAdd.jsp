@@ -11,7 +11,7 @@
             <tbody>
             <h4 >Add new status</h4>
 
-                <form:input path="name" type="name" class="form-control" placeholder="name"/>
+                <form:input path="name" type="text" class="form-control" placeholder="name"/>
 
                 <button type="submit" class="btn btn-primary">Save</button>
 

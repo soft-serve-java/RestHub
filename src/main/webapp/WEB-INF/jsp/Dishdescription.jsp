@@ -32,7 +32,7 @@
                 <div class="d-flex flex-row flex-nowrap">
                     <c:forEach items="${populars}" var="popItem">
                         <div class="card card-block">
-                            <a href="/dishdescription/${popItem.id}"> <img class="card-img-top" src="${popItem.picture}"
+                            <a href="/dish/${popItem.id}"> <img class="card-img-top" src="${popItem.picture}"
                                                                            alt="${popItem.name}"></a>
                             <h5>${popItem.name}</h5>
                             <p class="text-muted">${popItem.price}$</p>

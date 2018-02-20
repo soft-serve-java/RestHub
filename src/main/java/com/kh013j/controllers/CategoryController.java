@@ -7,6 +7,7 @@ import com.kh013j.model.service.interfaces.DishService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,33 +26,40 @@ public class CategoryController {
         return categoryService.findAll();
     }
 
-    @RequestMapping(value = "/menu/search")
+    @GetMapping(value = "/menu/search")
     public ModelAndView search(@RequestParam String searchField) {
-        return new ModelAndView(ViewName.MENU, "menuItems", dishService.findByNameContaining(searchField));
+        return new ModelAndView(ViewName.MENU, "menuItems", dishService.findByAvailableAndNameContaining(searchField));
     }
 
-    @RequestMapping(value = "/menu/{category}", method = RequestMethod.GET)
+    @GetMapping(value = "/menu/{category}")
     public ModelAndView showCategory(@PathVariable(value = "category") String category) {
-        return new ModelAndView(ViewName.MENU, "menuItems", dishService.findAllDishByCategory(
+        return new ModelAndView(ViewName.MENU, "menuItems", dishService.findAllAvailableDishByCategory(
                 categoryService.findCategoryByName(category)));
     }
 
-    @RequestMapping(value = "/menu/{category}/sort/{criteria}", method = RequestMethod.GET)
+    @GetMapping(value = "/menu/{category}/sort/{criteria}")
     public ModelAndView layoutgridSortBy(@PathVariable(value = "criteria") String criteria,
                                          @PathVariable(value = "category") String category) {
         switch (criteria) {
             case "byPrice":
                 return new ModelAndView(ViewName.MENU, "menuItems",
-                        dishService.findAllDishByCategoryOrderByPrice(categoryService.findCategoryByName(category)));
+                        dishService.findAllAvailableDishByCategoryOrderByPrice(categoryService.findCategoryByName(category)));
             case "ByPreparingtime":
                 return new ModelAndView(ViewName.MENU, "menuItems",
-                        dishService.findAllDishByCategoryOrderByPreparingtime(categoryService.findCategoryByName(category)));
+                        dishService.findAllAvailableDishByCategoryOrderByPreparingtime(categoryService.findCategoryByName(category)));
             case "ByCalories":
                 return new ModelAndView(ViewName.MENU, "menuItems",
-                        dishService.findAllDishByCategoryOrderByCalories(categoryService.findCategoryByName(category)));
+                        dishService.findAllAvailableDishByCategoryOrderByCalories(categoryService.findCategoryByName(category)));
 
         }
         return new ModelAndView(ViewName.MENU, "menuItems",
-                dishService.findAll());
+                dishService.findAllAvailable());
+    }
+
+    @GetMapping(value = "/dish/{id}")
+    public String dishdescription(Model model, @PathVariable(value = "id") long id) {
+        model.addAttribute("dish", dishService.findById(id));
+        model.addAttribute("populars", dishService.findPopular(id));
+        return ViewName.DISH_DESCRIPTION;
     }
 }

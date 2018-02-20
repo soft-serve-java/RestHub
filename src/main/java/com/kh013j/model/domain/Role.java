@@ -7,16 +7,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "role", schema = "rh")
+//@RestHubEntity(table = @Table(name="role", schema = "rh"))
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-        @Column(length = 50)
+    @Min(2) @Max(50)
     private String name;
 }
