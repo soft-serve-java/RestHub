@@ -16,10 +16,10 @@ INSERT INTO rh.status (name) VALUES ('cooking');
 INSERT INTO rh.status (name) VALUES ('delivery');
 
 
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('admin@i.ua', '1111', 'admin', 1);
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('cook@i.ua', '1111', 'cook', 2);
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('waiter@i.ua', '1111', 'waiter', 3);
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('user@i.ua', '1111', 'user', 4);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('admin@i.ua', '111111', 'admin', 1);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('cook@i.ua', '111111', 'cook', 2);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('waiter@i.ua', '111111', 'waiter', 3);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('user@i.ua', '111111', 'user', 4);
 
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
