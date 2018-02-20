@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class OrderServiceImpl implements OrderService {
     @Resource
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
     @Autowired
     private OrderedDishService orderedDishService;

@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -21,15 +22,12 @@ public class Dish {
     long id;
     @Size(min = 3, max = 50)
     private String name;
-    @Max(100)
     private String description;
-    @Min(2) @Max(10)
     private int weight;
     @Max(5000)
     private int calories;
-    @Min(0) @Max(3)
+    @Min(0)
     private String preparingtime;
-    @NotEmpty
     @Max(100000)
     private int price;
     @ManyToOne

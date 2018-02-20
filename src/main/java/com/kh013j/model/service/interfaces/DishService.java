@@ -13,20 +13,24 @@ public interface DishService {
 
     List findAll();
 
+    List findAllAvailable();
+
     //Dish update(Dish dish) throws DishNotFound;
     Dish findById(long id);
 
-    List findAllDishByCategory(Category category);
+    List findAllAvailableDishByCategory(Category category);
 
-    List findAllDishByCategoryOrderByPrice(Category category);
+    List findAllAvailableDishByCategoryOrderByPrice(Category category);
 
-    List findAllDishByCategoryOrderByPreparingtime(Category category);
+    List findAllAvailableDishByCategoryOrderByPreparingtime(Category category);
 
-    List findAllDishByCategoryOrderByCalories(Category category);
+    List findAllAvailableDishByCategoryOrderByCalories(Category category);
 
-    List findByNameContaining(String name);
+    List findByAvailableAndNameContaining(String name);
 
     List findPopular(long id);
+
+    Dish tweakAvailability(long id);
 
     Dish update(Dish dish) throws DishNotFound;
 }

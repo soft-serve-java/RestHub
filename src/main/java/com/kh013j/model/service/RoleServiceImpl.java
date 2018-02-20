@@ -1,7 +1,6 @@
 package com.kh013j.model.service;
 
 import com.kh013j.model.domain.Role;
-import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.RoleRepository;
 import com.kh013j.model.service.interfaces.RoleService;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class RoleServiceImpl implements RoleService {
     @Resource
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Override
     public Role create(Role role) {

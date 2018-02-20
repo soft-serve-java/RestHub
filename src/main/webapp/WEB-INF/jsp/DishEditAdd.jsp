@@ -16,6 +16,7 @@
             <div class="form-row">
                 <label>Description: </label>
                 <form:textarea class="form-control" text="${dish.description}" path="description"/>
+                <form:errors path="description" class="control-label"/>
             </div>
 
             <div class="form-row">

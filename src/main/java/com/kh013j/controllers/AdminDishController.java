@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Map;
+import java.io.IOException;
 
 
 @Controller
@@ -51,21 +50,32 @@ public class AdminDishController {
                 .addObject("category",categoryService.findAll() );
     }
 
-    @GetMapping(value = "/admin/dish/delete/{id}")
+    @PostMapping(value = "/admin/dish/delete/{id}")
     public String dishDelete(@PathVariable(value = "id") long id) {
         dishService.delete(id);
         return "redirect:/admin/dish/all";
     }
 
+    @GetMapping(value = "/admin/dish/tweakAvail/{id}")
+    public String tweakAvailability(@PathVariable(value = "id") long id) {
+        dishService.tweakAvailability(id);
+        return "redirect:/admin/dish/all";
+    }
+
     @PostMapping(value = "/admin/dish/save")
     public String dishSaveNew(@Valid @ModelAttribute("dish" )Dish dish, BindingResult dishResult,
-                               @RequestParam("pic") MultipartFile file, Model model) throws Exception {
+                               @RequestParam("pic") MultipartFile file, Model model) throws DishNotFound {
         if (dishResult.hasErrors()) {
             model.addAttribute("category",categoryService.findAll());
             return "DishEditAdd";
         }
         if (file != null && !file.isEmpty()) {
-            dish.setPicture(ImgurImageService.uploadImage(file.getBytes()));
+            try {
+                dish.setPicture(ImgurImageService.uploadImage(file.getBytes()));
+            } catch (IOException e) {
+                //TODO: handle exception;
+                e.printStackTrace();
+            }
         }
         dishService.update(dish);
         return "redirect:/admin/dish/all";

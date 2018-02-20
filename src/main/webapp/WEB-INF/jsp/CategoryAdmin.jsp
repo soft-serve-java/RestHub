@@ -29,20 +29,6 @@
     </table>
 
     <hr>
-    <form:form method="POST" action="/admin/category/save" modelAttribute="category">
-        <div class="form-row align-items-center">
-            <form:hidden path="id"/>
-            <div class="form-group col-md-6">
-                <label for="inputName">Name</label>
-                <form:input path="name" type="text" class="form-control" id="inputName" placeholder="Name of new category"/>
-                <form:errors path="name" class="control-label"/>
-            </div>
-
-            <div class="col-md-2 align-items-center">
-                <button type="submit" class="btn btn-primary">Add New Category</button>
-            </div>
-        </div>
-    </form:form>
 </div>
 <%@ include file="Modal.jsp" %>
 <%@ include file="footer.jsp" %>
