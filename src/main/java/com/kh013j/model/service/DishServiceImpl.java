@@ -81,7 +81,7 @@ public class DishServiceImpl implements DishService {
         updatedDish.setPrice(dish.getPrice());
         updatedDish.setCategory(dish.getCategory());
         updatedDish.setPicture(dish.getPicture());
-        updatedDish.setAvalibility(dish.isAvalibility());
+        updatedDish.setAvailability(dish.isAvailability());
 
         return updatedDish;
     }
