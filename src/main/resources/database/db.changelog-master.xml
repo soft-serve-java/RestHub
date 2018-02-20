@@ -16,12 +16,4 @@
         <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/populateDB.sql"/>
     </changeSet>
-    <changeSet id="3" author="orasso">
-        <validCheckSum>any</validCheckSum>
-        <sqlFile path="database/postgres/insertDishes.sql"/>
-    </changeSet>
-    <changeSet id="4" author="orasso">
-        <validCheckSum>any</validCheckSum>
-        <sqlFile path="database/postgres/insertDishesOneMore.sql"/>
-    </changeSet>
 </databaseChangeLog>
