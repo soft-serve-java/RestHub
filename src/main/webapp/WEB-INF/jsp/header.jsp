@@ -43,10 +43,19 @@
                 </li>
             </c:forEach>
             <li>
-                <button class="btn btn-success nav-button" style="margin-right:10px;">
-                    <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
+<%-- WORKING        <button class="btn btn-success nav-button" style="margin-right:10px;">
+                    <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>--%>
+
+
+
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                            data-whatever="${order.login}" data-href = "/admin/order/delete/${order.id}">Call a waiter </button>
                 </button>
             </li>
+
+<%--            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal3"
+                    data-whatever="${dish.name}" data-href="/admin/dish/delete/${dish.id}">Delete
+            </button>--%>
             <li>
 
                 <c:if test="${not empty orderMap || not empty orderedList}">
@@ -78,6 +87,11 @@
             </h6>
         </c:if>
 
-<%--        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>--%>
+        <c:if test="${pageContext.request.userPrincipal.name == null}">
+            <h6 style="color: lightgrey">
+                <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+            </h6>
+        </c:if>
+
     </div>
 </nav>
