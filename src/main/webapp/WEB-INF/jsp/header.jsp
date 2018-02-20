@@ -11,6 +11,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="/js/ng-stomp.standalone.min.js"></script>
+    <script>
+        function doPOSTonCallWaiter() {
+            $.ajax({
+                url: '/callWaiterClient',
+                type: 'POST',
+                data:{"table":1},
+                success: function () {
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
     <link rel='stylesheet' type="text/css" href="/css/Styles.css">
 </head>
 <body>
@@ -42,10 +57,9 @@
                     <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
                 </li>
             </c:forEach>
-            <li>
-                <button class="btn btn-success nav-button" style="margin-right:10px;">
-                    <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
-                </button>
+            <button onclick="doPOSTonCallWaiter()" class="btn btn-success nav-button" style="margin-right:10px;">
+                <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
+            </button>
             </li>
             <li>
 
@@ -77,7 +91,7 @@
                 <a href="javascript:formSubmit()"> Logout</a>
             </h6>
         </c:if>
-
-<%--        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>--%>
+        <c:if test="${pageContext.request.userPrincipal.name == null}">
+        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
     </div>
 </nav>
