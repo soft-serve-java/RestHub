@@ -16,8 +16,8 @@
             <h3>RestHub new User</h3>
 
             <p>
-                <label>Enter login</label>
-                <form:input path="login" type="login" class="form-control" placeholder="login"/>
+                <label>Enter email</label>
+                <form:input path="email" type="email" class="form-control" placeholder="email"/>
             </p>
 
             <p>
