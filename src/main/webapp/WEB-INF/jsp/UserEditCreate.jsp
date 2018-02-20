@@ -10,26 +10,23 @@
                 <form:hidden path="id"/>
                 <label for="inputEmail4">Email</label>
                 <form:input path="email" type="email" class="form-control" id="inputEmail4" placeholder="Email"/>
-                <form:errors path="email" class="control-label"/>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Password</label>
-                <c:if test="${null==user.login}">
+                <c:if test="${null==user.email}">
                     <form:input path="password" type="password" class="form-control" id="inputPassword4"
                                 placeholder="Password"/>
-                    <form:errors path="password" class="control-label"/>
                 </c:if>
-                <c:if test="${null!=user.login}">
-                    <input disabled type="password" class="form-control" id="inputPassword4" placeholder="Enter the password"/>
+                <c:if test="${null!=user.email}">
+                    <input disabled type="password" class="form-control" id="inputPassword4" placeholder="Password"/>
                 </c:if>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
+<%--            <div class="form-group col-md-6">
                 <label for="inputLogin">Login</label>
-                <form:input path="login" type="text" class="form-control" placeholder="Enter your login" id="inputLogin"/>
-                <form:errors path="login" class="control-label"/>
-            </div>
+                <form:input path="login" type="text" class="form-control" id="inputLogin"/>
+            </div>--%>
             <div class="form-group col-md-4">
                 <label for="inputState">Role</label>
                 <form:select path="role" multiple="false" id="inputState" class="form-control">

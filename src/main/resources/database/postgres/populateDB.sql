@@ -1,3 +1,4 @@
+
 INSERT INTO rh.role (name) VALUES ('administrator');
 INSERT INTO rh.role (name) VALUES ('cook');
 INSERT INTO rh.role (name) VALUES ('waiter');
@@ -15,10 +16,38 @@ INSERT INTO rh.status (name) VALUES ('cooking');
 INSERT INTO rh.status (name) VALUES ('delivery');
 
 
-INSERT INTO rh.user(email, login, password, role_id) VALUES ('feed@ukr.net', 'beefoot', 'asegfa254', 1);
-INSERT INTO rh.user(email, login, password, role_id) VALUES ('newest@ukr.net', 'misterpister', '147qwerty', 2);
-INSERT INTO rh.user(email, login, password, role_id) VALUES ('albinos@gmail.com', 'bigbro', '123456a', 3);
-INSERT INTO rh.user(email, login, password, role_id) VALUES ('header@i.ua', 'campid', '15962be23', 4);
-INSERT INTO rh.user(email, login, password, role_id) VALUES ('news@ukr.net', 'reporter', 'qwertrty', 4);
-INSERT INTO rh.user(email, login, password, role_id) VALUES ('intuit@i.ua', 'ititit', 'mkoijnb', 4);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('admin@i.ua', '1111', 'admin', 1);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('cook@i.ua', '1111', 'cook', 2);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('waiter@i.ua', '1111', 'waiter', 3);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('user@i.ua', '1111', 'user', 4);
 
+
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+, picture, category_id) VALUES ('Spicy buffalo Cauliflower', 'Fresh cauliflower florets buttermilk-battered and fried to a golden brown, then tossed in housemade Sriracha buffalo sauce and topped with a salad of celery, Gorgonzola and cilantro.'
+, 300, 1200, 3, 130, true, '/images/Spicy%20buffalo%20Cauliflower.jpg', 1);
+
+
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+, picture, category_id) VALUES ('Shaved mushroom & spinach flatbread', 'Cremini mushrooms, sauteed spinach and California Olive Ranch extra virgin olive oil with Romano and Parmesan.'
+  , 100, 1400, 25, 3, true, '/images/Shaved%20mushroom%20&%20spinach%20flatbread.jpg', 1);
+
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+  , picture, category_id) VALUES ('White corn guacamole', 'Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.'
+  , 200, 1000, 40, 3, true, '/images/White%20corn%20guacamole.jpg', 3);
+
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+  , picture, category_id) VALUES ('Petite wedge', 'Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.'
+  , 400, 1450, 15, 3, true, '/images/White%20corn%20guacamole.jpg', 2);
+
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+  , picture, category_id) VALUES ('Arugula salad',
+    'Sun-dried tomatoes, toasted almonds and shaved Parmesan served with housemade lemon vinaigrette.'
+  , 100, 1400, 2, 30, true, '/images/Arugula%20salad.jpg', 2);
+
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+  , picture, category_id) VALUES ('Spinach artishoke dip', 'Served hot with housemade blue & white corn tortilla chips..'
+  , 100, 1400, 2, 30, true, '/images/Spinach%20artishoke%20dip.jpg', 1);
+
+INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
+  , picture, category_id) VALUES ('Shaved mushroom & spinach flatbread', 'Cremini mushrooms, sauteed spinach and California Olive Ranch extra virgin olive oil with Romano and Parmesan.'
+  , 100, 1400, 2, 30, true, '/images/Shaved%20mushroom%20&%20spinach%20flatbread.jpg', 1);
