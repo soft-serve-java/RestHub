@@ -18,13 +18,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
 
-    @Min(5) @Max(50)
+    //@Min(5) @Max(50)
     private String login;
 
-    @Min(6) @Max(50)
+    //@Min(6) @Max(50)
     private String password;
 
-    @Min(6) @Max(50)
+    //@Min(6) @Max(50)
     private String name;
 
 

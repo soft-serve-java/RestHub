@@ -1,5 +1,6 @@
 package com.kh013j.configuration;
 
+import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +8,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 
 import javax.sql.DataSource;
 
@@ -16,35 +21,33 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+/*    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("adminLogin").password("1111").roles("ADMINISTRATOR");
         auth.inMemoryAuthentication().withUser("cookLogin").password("1111").roles("COOK");
         auth.inMemoryAuthentication().withUser("waiterLogin").password("1111").roles("WAITER");
         auth.inMemoryAuthentication().withUser("userLogin").password("1111").roles("USER");
-    }
-
-
-
-  /*  @Autowired
-    DataSource dataSource;
-
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select id, login, password, name, role_id from rh.user where login=?")
-                //.authoritiesByUsernameQuery("SELECT \"user\".login, \"user\".password, \"role\".name FROM rh.\"user\", rh.role WHERE \"user\".role_id = \"role\".id and \"user\".login = ?"); //and "user".login = 'adminLogin'
-                .authoritiesByUsernameQuery("SELECT \"user\".login, \"role\".name FROM rh.\"user\", rh.role WHERE \"user\".role_id = \"role\".id and \"user\".login = ?");
-        ;
     }*/
 
-    //.csrf() is optional, enabled by default, if using WebSecurityConfigurerAdapter constructor
+    @Bean(name="passwordEncoder")
+    public PasswordEncoder passwordencoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Autowired
+    private UserDetailsService userService;
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService);
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMINISTRATOR')")
-                .antMatchers("/cooker/**").access("hasRole('ROLE_COOK')")
-                .antMatchers("/waiter/**").access("hasRole('ROLE_WAITER')")
+                .antMatchers("/admin/**").access("hasAuthority('ADMINISTRATOR')")
+                .antMatchers("/cooker/**").access("hasAuthority('COOK')")
+                .antMatchers("/waiter/**").access("hasAuthority('WAITER')")
                 //.antMatchers("/user/**").hasAnyRole("USER")
 
                 .and()
