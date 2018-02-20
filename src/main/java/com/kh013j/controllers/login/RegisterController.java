@@ -2,7 +2,9 @@ package com.kh013j.controllers.login;
 
 
 import com.kh013j.model.domain.User;
+import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +19,10 @@ import javax.validation.Valid;
 @Controller
 public class RegisterController {
 
+    @Autowired
+    RoleService roleService;
+
+    @Autowired
     UserService userService;
 
     @RequestMapping(value = "/403")
@@ -30,28 +36,9 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String categorySaveNew(@Valid @ModelAttribute("registration") User user, BindingResult userResult, HttpServletResponse response){
+    public String userSaveNew(@Valid @ModelAttribute("registration") User user, BindingResult userResult, HttpServletResponse response){
+        user.setRole(roleService.findByName("user"));
         userService.create(user);
         return "redirect:/welcome";
     }
-
-
-
-/*    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String addEmployee(@ModelAttribute(value = "registration") User user, BindingResult result) {
-        userService.create(user);
-        return "redirect:/welcome";
-    }*/
-
-/*    @RequestMapping(value ="/registration" ,method=RequestMethod.POST)
-    public ModelAndView registerSuccess(@Valid @ModelAttribute("registration") User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            return new ModelAndView("registration");
-        }
-        userService.create(user);
-        ModelAndView modelAndView = new ModelAndView("welcome");
-        modelAndView.addObject("user", user);
-        return modelAndView;
-    }*/
-
 }
