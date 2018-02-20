@@ -30,7 +30,7 @@ CREATE SEQUENCE user_sequance;
 CREATE TABLE rh.user
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('user_sequance'),
-  login varchar(50),
+  email varchar(50),
   password varchar(50),
   name varchar(50),
   role_id bigint,

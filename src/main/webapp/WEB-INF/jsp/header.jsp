@@ -14,6 +14,20 @@
     <link rel='stylesheet' type="text/css" href="/css/Styles.css">
 </head>
 <body>
+
+<c:url value="/logout" var="logoutUrl" />
+
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
+</form>
+
+<script>
+    function formSubmit() {
+        document.getElementById("logoutForm").submit();
+    }
+</script>
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -57,6 +71,13 @@
             </button>
         </form>
 
-        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <h6 style="color: lightgrey">
+                Hi, ${pageContext.request.userPrincipal.name}
+                <a href="javascript:formSubmit()"> Logout</a>
+            </h6>
+        </c:if>
+
+<%--        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>--%>
     </div>
 </nav>

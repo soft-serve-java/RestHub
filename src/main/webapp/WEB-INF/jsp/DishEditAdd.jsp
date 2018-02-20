@@ -50,8 +50,6 @@
                 <form:errors path="price" class="control-label"/>
             </div>
 
-
-
             <button type="submit" class="btn btn-primary">Save</button>
         </table>
     </form:form>
