@@ -5,8 +5,8 @@
         <thead>
         <tr style="text-align: center;">
             <th>#</th>
-            <th>Login</th>
             <th>Email</th>
+            <th>Password</th>
             <th>Role</th>
             <th colspan="2"><a href="/admin/user/new">
                 <button type="submit" class="btn btn-primary">New User</button>
@@ -18,12 +18,12 @@
         <c:forEach items="${Users}" var="user">
             <tr>
                 <td>${user.id}</td>
-                <td>${user.login}</td>
                 <td>${user.email}</td>
+                <td>${user.password}</td>
                 <td>${user.role.name}</td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                            data-whatever="${user.login}" data-href="/admin/user/delete/${user.id}">Delete
+                            data-whatever="${user.email}" data-href="/admin/user/delete/${user.id}">Delete
                     </button>
                 </td>
                 <td>

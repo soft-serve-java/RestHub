@@ -43,7 +43,7 @@
     <div class="row">
         <button type="button" class="btn btn-warning btn-lg btn-block">Waiter</button>
         <a href="\cooker" class="btn btn-warning btn-lg btn-block">Cook</a>
-        <a href="\admin\user\all" class="btn btn-warning btn-lg btn-block">Administrator</a>
+        <a href="\admin" class="btn btn-warning btn-lg btn-block">Administrator</a>
         <a href="\menu\soups" class="btn btn-warning btn-lg btn-block">User</a>
 
     </div>

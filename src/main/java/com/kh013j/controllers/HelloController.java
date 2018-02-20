@@ -35,7 +35,7 @@ public class HelloController {
         return "Hello";
     }
 
-    @GetMapping(value = "/welcome")
+    @GetMapping(value = { "/", "/welcome**" })
     public String welcome() {
         return "Welcome";
     }

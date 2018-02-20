@@ -14,17 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByLogin(username);
+        User user = userRepository.findByEmail(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet();
         grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().getName().toUpperCase()));
-        return new org.springframework.security.core.userdetails.User(user.getLogin(),
-                user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
     }
 }

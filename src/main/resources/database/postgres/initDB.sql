@@ -1,4 +1,6 @@
-CREATE SCHEMA IF NOT EXISTS rh;
+DROP SCHEMA IF EXISTS rh CASCADE;
+CREATE SCHEMA rh;
+
 DROP SEQUENCE IF EXISTS category_sequance CASCADE;
 CREATE SEQUENCE category_sequance;
 
@@ -21,17 +23,19 @@ CREATE TABLE rh.status(
   name varchar(50)
 );
 
+
+
 DROP SEQUENCE IF EXISTS user_sequance CASCADE;
 CREATE SEQUENCE user_sequance;
 CREATE TABLE rh.user
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('user_sequance'),
   email varchar(50),
-  login varchar(50),
   password varchar(50),
+  name varchar(50),
   role_id bigint,
-  CONSTRAINT "role_id" FOREIGN KEY ("role_id")
-  REFERENCES rh.role (id) MATCH SIMPLE
+  CONSTRAINT role_id FOREIGN KEY (role_id)
+  REFERENCES rh.role (id)
 );
 
 DROP SEQUENCE IF EXISTS order_sequense CASCADE;
@@ -47,7 +51,8 @@ CREATE TABLE rh.order
   REFERENCES rh.user (id)
 );
 
-
+DROP SEQUENCE IF EXISTS dish_sequense CASCADE;
+CREATE SEQUENCE dish_sequense;
 CREATE TABLE rh.dish
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('dish_sequense'),

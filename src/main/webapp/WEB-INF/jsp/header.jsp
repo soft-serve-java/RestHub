@@ -4,36 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="_csrf" content="${_csrf.token}"/>
-    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="/js/ng-stomp.standalone.min.js"></script>
-    <!--  <script src="http://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>-->
-      <script>
-          function doPOSTonCallWaiter() {
-              $.ajax({
-                  url: '/callWaiterClient',
-                  type: 'POST',
-                  data:{"table":1},
-                  success: function () {
-                  },
-                  error: function () {
-                  }
-              });
-          }
-      </script>
     <link rel='stylesheet' type="text/css" href="/css/Styles.css">
 </head>
 <body>
+
+<c:url value="/logout" var="logoutUrl" />
+
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
+</form>
+
+<script>
+    function formSubmit() {
+        document.getElementById("logoutForm").submit();
+    }
+</script>
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -49,7 +43,7 @@
                 </li>
             </c:forEach>
             <li>
-                <button onclick="doPOSTonCallWaiter(1)" class="btn btn-success nav-button" style="margin-right:10px;">
+                <button class="btn btn-success nav-button" style="margin-right:10px;">
                     <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
                 </button>
             </li>
@@ -76,6 +70,14 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-        <a class="nav-link a-nav" href="/logout">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <h6 style="color: lightgrey">
+                Hi, ${pageContext.request.userPrincipal.name}
+                <a href="javascript:formSubmit()"> Logout</a>
+            </h6>
+        </c:if>
+
+<%--        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>--%>
     </div>
 </nav>
