@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
@@ -17,13 +20,13 @@ public class User {
     private long id = -1;
 
     @Email
-    //@Min(5) @Max(50)
+    @Size(min=(5), max=50)
     private String email;
 
-    //@Min(6) @Max(50)
+    @Size(min=(5), max=50)
     private String password;
 
-    //@Min(6) @Max(50)
+    @Size(min=(5), max=50)
     private String name;
 
 
