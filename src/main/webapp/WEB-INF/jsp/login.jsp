@@ -33,6 +33,10 @@
 						value="submit" /></td>
 				</tr>
 
+                <a href="/registration" />
+                <button type="button" class="btn btn-primary">registration</button>
+
+
 			</table>
 
 			<input type="hidden" name="${_csrf.parameterName}"
