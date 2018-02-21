@@ -7,9 +7,7 @@ import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,17 +23,17 @@ public class RegisterController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/403")
+    @GetMapping(value = "/403")
     public String asdv() {
         return "403";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    @GetMapping(value = "/registration")
     public ModelAndView show() {
         return new ModelAndView("registration", "registration", new User());
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    @PostMapping(value = "/registration")
     public String userSaveNew(@Valid @ModelAttribute("registration") User user, BindingResult userResult, HttpServletResponse response){
         user.setRole(roleService.findByName("user"));
         userService.create(user);
