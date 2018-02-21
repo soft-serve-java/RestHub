@@ -16,10 +16,10 @@ INSERT INTO rh.status (name) VALUES ('cooking');
 INSERT INTO rh.status (name) VALUES ('delivery');
 
 
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('admin@i.ua', '1111', 'admin', 1);
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('cook@i.ua', '1111', 'cook', 2);
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('waiter@i.ua', '1111', 'waiter', 3);
-INSERT INTO rh.user(email, password, name, role_id) VALUES ('user@i.ua', '1111', 'user', 4);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('admin@i.ua', '$2a$10$tkXKWLaylsMChogk6Ros.OXHjp5BDVpNlkuVFyrTJNjxjNtpu/6Gu', 'admin', 1);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('cook@i.ua', '$2a$10$OU/O/OYT7iOrwBNCs9ZRFOIS4qQs6Y34.z4kR3ddqql2uXNh2D8.u', 'cook', 2);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('waiter@i.ua', '$2a$10$ReL9IZ/AfhaNqV4NgK1KR.Jn6294C0WbSDOD3M1Xy2IRX0px4ApYq', 'waiter', 3);
+INSERT INTO rh.user(email, password, name, role_id) VALUES ('user@i.ua', '$2a$10$SpDt2DfR05gV97lmQ881l.FpwpAD6167RsJw8GNqVUynZojhPwQNq', 'user', 4);
 
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, avalibility
