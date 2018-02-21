@@ -43,13 +43,13 @@ public class CategoryServiceImplTest {
         Assert.assertNull(categoryService.findCategoryByName(deletedCategory.getName()));
     }
 
-    @Test(expected = CategoryNotFound.class)
+    @Test(expected = Exception.class)
     public void tryToDelete() throws CategoryNotFound {
         categoryService.delete(-1L);
     }
 
     @Test
-    public void update() throws CategoryNotFound {
+    public void update() {
         String name = "Pancakes";
 
         Category category = new Category();
@@ -68,7 +68,7 @@ public class CategoryServiceImplTest {
     }
 
     @Test
-    public void tryToUpdate() throws CategoryNotFound {
+    public void tryToUpdate() {
         String name = "Pancakes";
 
         Category category = new Category(2, name);

@@ -87,7 +87,7 @@ public class DishServiceImplTest {
     }
 
     @Test
-    public void create() throws Exception {
+    public void create() {
         Dish dish = new Dish();
 
         // creating a dish without id
@@ -113,7 +113,7 @@ public class DishServiceImplTest {
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findById() {
         Dish dish = new Dish();
 
         dish.setName("Mexico Tekila");
@@ -139,7 +139,7 @@ public class DishServiceImplTest {
     }
 
     @Test
-    public void findAllDishByCategoryOrderByPrice() throws Exception {
+    public void findAllDishByCategoryOrderByPrice() {
         for (Category category : categories) {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category);
 
@@ -152,7 +152,7 @@ public class DishServiceImplTest {
     }
 
     @Test
-    public void findAllDishByCategoryOrderByPreparingtime() throws Exception {
+    public void findAllDishByCategoryOrderByPreparingtime() {
         for (Category category : categories) {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category);
 
@@ -165,7 +165,7 @@ public class DishServiceImplTest {
     }
 
     @Test
-    public void findAllDishByCategoryOrderByCalories() throws Exception {
+    public void findAllDishByCategoryOrderByCalories() {
         for (Category category : categories) {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByCalories(category);
 
@@ -178,7 +178,7 @@ public class DishServiceImplTest {
     }
 
     @Test
-    public void findAllDishByCategory() throws Exception {
+    public void findAllDishByCategory() {
         Assert.assertFalse(dishService.findAllAvailableDishByCategory(soupsCategory).isEmpty());
 
         Assert.assertNotNull(dishService.findAllAvailableDishByCategory(mealsCategory));
@@ -189,7 +189,7 @@ public class DishServiceImplTest {
     }
 
     @Test
-    public void delete() throws DishNotFound {
+    public void delete() {
         Dish lastDish = new Dish(dishes.size()+1, "Guaca", "Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.",
                 200, 1000, 40, 3, desertsCategory, "/images/White%20corn%20guacamole.jpg", true);
 
@@ -200,14 +200,14 @@ public class DishServiceImplTest {
         Assert.assertNull(dishService.findById(deletedDish.getId()));
     }
 
-    @Test(expected = DishNotFound.class)
-    public void tryToDelete() throws DishNotFound {
+    @Test(expected = Exception.class)
+    public void tryToDelete() {
         dishService.delete(-1);
     }
 
     @Test
-    public void findAll() throws Exception {
-        Assert.assertTrue(dishService.findAll().size() > 0);
+    public void findAll() {
+        Assert.assertFalse(dishService.findAll().isEmpty());
     }
 
     @Test
@@ -224,7 +224,7 @@ public class DishServiceImplTest {
         Assert.assertThat(updatedDish.getName(), is(equalTo(name)));
     }
 
-    @Test(expected = DishNotFound.class)
+    @Test(expected = Exception.class)
     public void tryToUpdate() throws DishNotFound {
         Dish updatedDish = dishService.findById(3L);
         updatedDish.setId(-1L);
@@ -233,7 +233,7 @@ public class DishServiceImplTest {
     }
 
     @Test(expected = Exception.class)
-    public void tryWrongPrice() throws DishNotFound {
+    public void tryWrongPrice() {
         Dish dish = new Dish();
 
         dish.setName("Red vine");
@@ -298,6 +298,6 @@ public class DishServiceImplTest {
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
 
-        dishService.create(dish);
+       dishService.create(dish);
     }
 }
