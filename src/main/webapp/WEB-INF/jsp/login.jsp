@@ -1,14 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<head>
-<title>Login Page</title>
+<%@ include file="header.jsp" %>
+<div id="login-box">
 
-</head>
-<body onload='document.loginForm.username.focus();'>
-
-	<div id="login-box">
-
-		<h3>RestHub Login Form</h3>
 
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -16,31 +8,28 @@
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
 		</c:if>
-
-		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
-
-			<table>
-				<tr>
-					<td>User:</td>
-					<td><input type='text' name='username' value=''></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='password' /></td>
-				</tr>
-				<tr>
-					<td colspan='2'><input name="submit" type="submit"
-						value="submit" /></td>
-				</tr>
-
-                <a href="/registration" />
-                <button type="button" class="btn btn-primary">registration</button>
-
-
-			</table>
-
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
+	<div class="form">
+		<form class="form-horizontal" action="<c:url value='/login' />" role="form" method="POST">
+			<div class="form-group">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="E-mail" name='username'>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" placeholder="Password" name="password">
+					</div>
+				</div>
+				<div class="btn-group">
+						<button type="submit" class="btn btn-default">Submit</button>
+						<a href="/registration" class="btn btn-primary">Registration</a>						
+				</div>
+				<input type="hidden" name="${_csrf.parameterName}"
+					   value="${_csrf.token}" />
+			</div>
 		</form>
 	</div>
     <style>
@@ -74,5 +63,4 @@
             border: 1px solid #000;
         }
     </style>
-</body>
-</html>
+<%@ include file="footer.jsp" %>

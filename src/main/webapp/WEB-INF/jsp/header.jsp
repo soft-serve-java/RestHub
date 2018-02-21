@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type="text/css" href="/css/Styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -26,9 +27,8 @@
             });
         }
     </script>
-    <link rel='stylesheet' type="text/css" href="/css/Styles.css">
 </head>
-<body>
+<body onload='document.loginForm.username.focus();'>
 
 <c:url value="/logout" var="logoutUrl" />
 
@@ -93,5 +93,6 @@
         </c:if>
         <c:if test="${pageContext.request.userPrincipal.name == null}">
         <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+        </c:if>
     </div>
 </nav>

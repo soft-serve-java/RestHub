@@ -31,7 +31,7 @@ public class LiveCallWaiterController {
     }
     @GetMapping("/waiter/tab")
     public ModelAndView getWaiter(){
-        return  new ModelAndView("Notify");
+        return  new ModelAndView("Notify", "tables", new Tables());
     }
 
     //https://stackoverflow.com/questions/10902775/spring-shutdown-event-that-fires-immediately-before-applicationcontext-is-destro
@@ -44,6 +44,7 @@ public class LiveCallWaiterController {
     }
 
     @PostMapping("/acceptCalling")
+    @ResponseBody
     public void acceptCalling(@RequestParam int table){
         service.mackAsClosed(table, new User());
     }

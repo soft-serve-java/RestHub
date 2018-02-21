@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Tables {
-    static int quantityOfTables = 5;
+    int quantityOfTables = 8;
     @NonNull
     int currentTable;
 }

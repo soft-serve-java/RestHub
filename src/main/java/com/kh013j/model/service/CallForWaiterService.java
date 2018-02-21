@@ -33,6 +33,12 @@ public class CallForWaiterService {
             closed.clear();
         }
     }
+    public boolean add(CallForWaiter callForWaiter){
+        if (!callForWaiters.contains(callForWaiter)){
+            return callForWaiters.add(callForWaiter);
+        }
+        return false;
+    }
 
     private CallForWaiter findByTableNumber(int tablenumber) {
         return callForWaiters.stream().
