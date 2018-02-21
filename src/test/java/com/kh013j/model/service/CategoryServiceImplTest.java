@@ -3,30 +3,20 @@ package com.kh013j.model.service;
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.service.interfaces.CategoryService;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CategoryServiceImplTest {
-    private static EmbeddedPostgres embeddedPostgres;
-
     @Autowired
     private CategoryService categoryService;
-
-    @BeforeClass
-    public static void setUp() throws Exception {
-        CaffinoApplicationTestConfiguration caffinoApplicationTestConfiguration = new CaffinoApplicationTestConfiguration();
-        embeddedPostgres = caffinoApplicationTestConfiguration.startPostgres();
-    }
 
     @Test
     public void create() {
@@ -38,21 +28,23 @@ public class CategoryServiceImplTest {
     }
 
     @Test(expected = Exception.class)
-    public void tryCreate() {
+    public void tryToCreate() {
         categoryService.create(new Category());
     }
 
     @Test
     public void delete() throws CategoryNotFound {
-        Category firstCategory = new Category(1, "Soups");
+        Category category = new Category(5, "Summer menu");
 
-        Category deletedCategory = categoryService.delete(1L);
+        Category createdCategory = categoryService.create(category);
 
-        assertEquals(firstCategory, deletedCategory);
+        Category deletedCategory = categoryService.delete(createdCategory.getId());
+
+        Assert.assertNull(categoryService.findCategoryByName(deletedCategory.getName()));
     }
 
     @Test(expected = CategoryNotFound.class)
-    public void tryDelete() throws CategoryNotFound {
+    public void tryToDelete() throws CategoryNotFound {
         categoryService.delete(-1L);
     }
 
@@ -60,14 +52,23 @@ public class CategoryServiceImplTest {
     public void update() throws CategoryNotFound {
         String name = "Pancakes";
 
-        Category category = new Category(2, name);
-        Category updatedCategory = categoryService.update(category);
+        Category category = new Category();
+        category.setName(name);
 
-        assertEquals(updatedCategory.getName(), name);
+        categoryService.create(category);
+
+        Category foundCategory = categoryService.findCategoryByName(name);
+        foundCategory.setName("Vegetarian");
+
+        Category updatedCategory = categoryService.update(foundCategory);
+
+        Category foundUpdatedCategory = categoryService.findCategoryByName(updatedCategory.getName());
+
+        assertEquals(foundCategory, foundUpdatedCategory);
     }
 
     @Test
-    public void tryUpdate() throws CategoryNotFound {
+    public void tryToUpdate() throws CategoryNotFound {
         String name = "Pancakes";
 
         Category category = new Category(2, name);
@@ -78,25 +79,24 @@ public class CategoryServiceImplTest {
 
     @Test
     public void findCategoryByName() {
-        String name = "Meals";
-        Category category = new Category(2, name);
+        // create in before
+        String name = "Bakery";
+        Category category = new Category();
+        category.setName(name);
+
+        Category createdCategory = categoryService.create(category);
 
         Category foundCategory = categoryService.findCategoryByName(name);
 
-        assertEquals(foundCategory, category);
+        assertEquals(foundCategory, createdCategory);
     }
 
-    @Test
-    public void tryFindCategoryByName(){
-
+    public void tryToFindCategoryByName(){
+        Assert.assertNull(categoryService.findCategoryByName(""));
     }
 
     @Test
     public void findAll() {
-    }
-
-    @AfterClass
-    public static void tearDown() throws Exception {
-        embeddedPostgres.stop();
+        Assert.assertTrue(categoryService.findAll().size() >= 4);
     }
 }

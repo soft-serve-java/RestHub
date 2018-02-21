@@ -3,20 +3,17 @@ package com.kh013j.model.service;
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.exception.DishNotFound;
-import com.kh013j.model.service.comparator.CaloriesComparator;
-import com.kh013j.model.service.comparator.PreparingTimeComparator;
-import com.kh013j.model.service.comparator.PriceComparator;
 import com.kh013j.model.service.interfaces.DishService;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -27,8 +24,6 @@ import static org.junit.Assert.assertNull;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DishServiceImplTest {
-    private static EmbeddedPostgres embeddedPostgres;
-
     @Autowired
     private DishService dishService;
 
@@ -37,12 +32,62 @@ public class DishServiceImplTest {
     private Category drinksCategory = new Category(3, "Drinks");
     private Category desertsCategory = new Category(4, "Deserts");
 
+    private List<Category> categories = Arrays.asList(soupsCategory, mealsCategory, drinksCategory, desertsCategory);
     private List<Dish> categoryDishes;
+    private List<Dish> dishes = new ArrayList<>();
 
-    @BeforeClass
-    public static void setUp() throws Exception {
-        CaffinoApplicationTestConfiguration caffinoApplicationTestConfiguration = new CaffinoApplicationTestConfiguration();
-        embeddedPostgres = caffinoApplicationTestConfiguration.startPostgres();
+    public void setUp() {
+
+    }
+
+    public void initialize() {
+        dishes.addAll(Arrays.asList(
+                (new Dish(1L, "White corn guacamole",
+                        "Diced avocado, sweet white corn, black beans.",
+                        200, 1000, 40, 3, soupsCategory, "guacamole.jpg", true)),
+                (new Dish(2L, "Camole",
+                        "Diced avocado, sweet white corn, black beans.",
+                        250, 1200, 10, 33, soupsCategory, "pic.jpg", true)),
+                (new Dish(3L, "Guacamole",
+                        "Black beans.",
+                        430, 1400, 20, 56, soupsCategory, "pop.jpg", true)),
+                (new Dish(4L, "Gua mole",
+                        "Red beans.",
+                        230, 1348, 23, 39, mealsCategory, "po.jpg", true)),
+                (new Dish(5L, "Mole",
+                        "Beans.",
+                        530, 1906, 22, 6, mealsCategory, "op.jpg", true)),
+                (new Dish(6L, "Dishy-Issy",
+                        "Different beans.",
+                        730, 1409, 25, 66, mealsCategory, "p.jpg", true)),
+                (new Dish(7L, "Milk shake",
+                        "Tasty drink",
+                        521, 1317, 13, 8, drinksCategory, "milk.jpg", true)),
+                (new Dish(8L, "Strawberry cocktail",
+                        "Tasty strawberry flavour",
+                        580, 1005, 14, 9, drinksCategory, "straw.jpg", true)),
+                (new Dish(9L, "Blackberry cocktail",
+                        "Tasty blackberry flavour",
+                        570, 1404, 12, 11, drinksCategory, "black.jpg", true)),
+                (new Dish(10L, "Tiramisu",
+                        "Soft.",
+                        730, 1341, 26, 39, desertsCategory, "p.jpg", true)),
+                (new Dish(11L, "Tortinni",
+                        "Delicious.",
+                        330, 1909, 27, 60, desertsCategory, "op.jpg", true)),
+                (new Dish(12L, "Our desert",
+                        "From love",
+                        230, 1467, 29, 34, desertsCategory, "h.jpg", true))));
+
+        for (Dish dish : dishes) {
+            dishService.create(dish);
+        }
+    }
+
+    public void clean() throws DishNotFound {
+        for (Dish dish : dishes) {
+            dishService.delete(dish.getId());
+        }
     }
 
     @Test
@@ -99,96 +144,43 @@ public class DishServiceImplTest {
 
     @Test
     public void findAllDishByCategoryOrderByPrice() throws Exception {
-        categoryDishes = dishService.findAllDishByCategory(soupsCategory);
-        categoryDishes.sort(new PriceComparator());
-        // check min price
-        Assert.assertTrue(categoryDishes.get(0).getPrice() == 70);
-        // check max price
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPrice() == 80);
+        for (Category category : categories) {
+            categoryDishes = dishService.findAllDishByCategoryOrderByPrice(category);
 
-        categoryDishes = dishService.findAllDishByCategory(mealsCategory);
-        categoryDishes.sort(new PriceComparator());
-        // check min price
-        Assert.assertTrue(categoryDishes.get(0).getPrice() == 10);
-        // check max price
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPrice() == 93);
+            Dish minPriceDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPrice)).get();
+            assertEquals(categoryDishes.get(0), minPriceDish);
 
-        categoryDishes = dishService.findAllDishByCategory(drinksCategory);
-        categoryDishes.sort(new PriceComparator());
-        // check min price
-        Assert.assertTrue(categoryDishes.get(0).getPrice() == 10);
-        // check max price
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPrice() == 12);
-
-        categoryDishes = dishService.findAllDishByCategory(desertsCategory);
-        categoryDishes.sort(new PriceComparator());
-        System.out.println();
-        // check min price
-        Assert.assertTrue(categoryDishes.get(0).getPrice() == 6);
-        // check max price
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPrice() == 35);
+            Dish maxPriceDish = categoryDishes.stream().max(Comparator.comparing(Dish::getPrice)).get();
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxPriceDish);
+        }
     }
 
     @Test
     public void findAllDishByCategoryOrderByPreparingtime() throws Exception {
-        categoryDishes = dishService.findAllDishByCategory(soupsCategory);
-        categoryDishes.sort(new PreparingTimeComparator());
-        // check min preparing time
-        Assert.assertTrue(categoryDishes.get(0).getPreparingtime() == 2);
-        // check max preparing time
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPreparingtime() == 28);
+        for (Category category : categories) {
+            categoryDishes = dishService.findAllDishByCategoryOrderByPreparingtime(category);
 
-        categoryDishes = dishService.findAllDishByCategory(mealsCategory);
-        categoryDishes.sort(new PreparingTimeComparator());
-        // check min preparing time
-        Assert.assertTrue(categoryDishes.get(0).getPreparingtime() == 12);
-        // check max preparing time
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPreparingtime() == 20);
+            Dish minPreparingTimeDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPreparingtime)).get();
+            assertEquals(categoryDishes.get(0), minPreparingTimeDish);
 
-        categoryDishes = dishService.findAllDishByCategory(drinksCategory);
-        categoryDishes.sort(new PreparingTimeComparator());
-        // check min preparing time
-        Assert.assertTrue(categoryDishes.get(0).getPreparingtime() == 5); //create method worked
-        // check max preparing time
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPreparingtime() == 25);
+            Dish maxPreparingTimeDish = categoryDishes.stream().max(Comparator.comparing(Dish::getPreparingtime)).get();
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxPreparingTimeDish);
+        }
 
-        categoryDishes = dishService.findAllDishByCategory(desertsCategory);
-        categoryDishes.sort(new PreparingTimeComparator());
-        // check min preparing time
-        Assert.assertTrue(categoryDishes.get(0).getPreparingtime() == 15);
-        // check max preparing time
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getPreparingtime() == 40);
+        clean();
     }
 
     @Test
     public void findAllDishByCategoryOrderByCalories() throws Exception {
-        categoryDishes = dishService.findAllDishByCategory(soupsCategory);
-        categoryDishes.sort(new CaloriesComparator());
-        // check min calories
-        Assert.assertTrue(categoryDishes.get(0).getCalories() == 400);
-        // check max calories
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getCalories() == 1010);
+        for (Category category : categories) {
+            categoryDishes = dishService.findAllDishByCategoryOrderByCalories(category);
 
-        categoryDishes = dishService.findAllDishByCategory(mealsCategory);
-        categoryDishes.sort(new CaloriesComparator());
-        // check min calories
-        Assert.assertTrue(categoryDishes.get(0).getCalories() == 1300);
-        // check max calories
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getCalories() == 1400);
+            Dish minCaloriesDish = categoryDishes.stream().min(Comparator.comparing(Dish::getCalories)).get();
+            assertEquals(categoryDishes.get(0), minCaloriesDish);
 
-        categoryDishes = dishService.findAllDishByCategory(drinksCategory);
-        categoryDishes.sort(new CaloriesComparator());
-        // check min calories
-        Assert.assertTrue(categoryDishes.get(0).getCalories() == 500); // create method worked
-        // check max calories
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getCalories() == 950);
-
-        categoryDishes = dishService.findAllDishByCategory(desertsCategory);
-        categoryDishes.sort(new CaloriesComparator());
-        // check min price
-        Assert.assertTrue(categoryDishes.get(0).getCalories() == 1000);
-        // check max price
-        Assert.assertTrue(categoryDishes.get(categoryDishes.size() - 1).getCalories() == 1450);
+            Dish maxCaloriesDish = categoryDishes.stream().max(Comparator.comparing(Dish::getCalories)).get();
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxCaloriesDish);
+        }
     }
 
     @Test
@@ -199,17 +191,19 @@ public class DishServiceImplTest {
 
         Assert.assertNotNull(dishService.findAllDishByCategory(drinksCategory));
 
-        Assert.assertTrue(dishService.findAllDishByCategory(desertsCategory).size() >= 1);
+        Assert.assertTrue(dishService.findAllDishByCategory(desertsCategory).size() == 3);
     }
 
     @Test
     public void delete() throws DishNotFound {
-        Dish firstDish = new Dish(1L, "White corn guacamole", "Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.",
+        Dish lastDish = new Dish(10L, "Guaca", "Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.",
                 200, 1000, 40, 3, desertsCategory, "/images/White%20corn%20guacamole.jpg", true);
 
-        Dish deletedDish = dishService.delete(1L);
+        Dish createdDish = dishService.create(lastDish);
 
-        assertEquals(deletedDish, firstDish);
+        Dish deletedDish = dishService.delete(createdDish.getId());
+
+        Assert.assertNull(dishService.findById(deletedDish.getId()));
     }
 
     @Test(expected = DishNotFound.class)
@@ -245,7 +239,7 @@ public class DishServiceImplTest {
     }
 
     @Test(expected = Exception.class)
-    public void tryWrongPrice(){
+    public void tryWrongPrice() throws DishNotFound {
         Dish dish = new Dish();
 
         dish.setName("Red vine");
@@ -259,11 +253,13 @@ public class DishServiceImplTest {
         dish.setAvailability(true);
 
         dishService.create(dish);
+
+        clean();
     }
 
     // data validation
     @Test(expected = Exception.class)
-    public void tryWrongWeight(){
+    public void tryWrongWeight() {
         Dish dish = new Dish();
 
         dish.setName("Red vine");
@@ -280,7 +276,8 @@ public class DishServiceImplTest {
     }
 
     @Test(expected = Exception.class)
-    public void tryWrongPreparingTime(){
+    public void tryWrongPreparingTime() {
+        initialize();
         Dish dish = new Dish();
 
         dish.setName("Red vine");
@@ -297,7 +294,7 @@ public class DishServiceImplTest {
     }
 
     @Test(expected = Exception.class)
-    public void tryWrongCalories(){
+    public void tryWrongCalories() {
         Dish dish = new Dish();
 
         dish.setName("Red vine");
@@ -311,10 +308,5 @@ public class DishServiceImplTest {
         dish.setAvailability(true);
 
         dishService.create(dish);
-    }
-
-    @AfterClass
-    public static void tearDown() throws Exception {
-        embeddedPostgres.stop();
     }
 }

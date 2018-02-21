@@ -47,7 +47,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         return updatedOrderedDish;
     }
 
-    @Override
+    //@Override
     @Transactional
     public OrderedDish findById(long id) {
         return orderedDishRepository.findOne(id);

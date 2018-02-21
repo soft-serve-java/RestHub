@@ -25,6 +25,10 @@ public class CategoryServiceImpl implements CategoryService {
     public Category delete(long id) throws CategoryNotFound {
         Category deletedCategory = categoryRepository.findOne(id);
 
+        if(deletedCategory == null){
+            throw new CategoryNotFound();
+        }
+
         if (categoryRepository == null)
             throw new CategoryNotFound();
 

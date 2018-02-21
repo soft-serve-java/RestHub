@@ -24,18 +24,18 @@ DROP SEQUENCE orderdish_sequence;
 CREATE SEQUENCE orderdish_sequence;
 
 CREATE TABLE rh.category (
-  id   BIGINT NOT NULL UNIQUE PRIMARY KEY DEFAULT nextval('category_sequence'),
-  name VARCHAR(50)
+  id   BIGINT      NOT NULL UNIQUE PRIMARY KEY DEFAULT nextval('category_sequence'),
+  name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE rh.role (
-  id   BIGINT NOT NULL UNIQUE PRIMARY KEY DEFAULT nextval('role_sequence'),
-  name VARCHAR(50)
+  id   BIGINT      NOT NULL UNIQUE PRIMARY KEY DEFAULT nextval('role_sequence'),
+  name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE rh.status (
-  id   BIGINT NOT NULL UNIQUE PRIMARY KEY DEFAULT nextval('status_sequence'),
-  name VARCHAR(50)
+  id   BIGINT      NOT NULL UNIQUE PRIMARY KEY DEFAULT nextval('status_sequence'),
+  name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE rh.user
@@ -62,20 +62,20 @@ CREATE TABLE rh.order
 
 CREATE TABLE rh.dish
 (
-  id            BIGINT                                              NOT NULL PRIMARY KEY UNIQUE DEFAULT nextval(
+  id            BIGINT                                                NOT NULL PRIMARY KEY UNIQUE DEFAULT nextval(
       'dish_sequence'),
-  name          VARCHAR(50)                                         NOT NULL UNIQUE,
-  description   VARCHAR(1000)                                       NOT NULL,
-  weight        INT CHECK (CAST(weight AS INT) > 0)                 NOT NULL,
+  name          VARCHAR(50)                                           NOT NULL UNIQUE,
+  description   VARCHAR(1000)                                         NOT NULL,
+  weight        INT CHECK (CAST(weight AS INT) > 0)                   NOT NULL,
   calories      INT
-    CHECK (CAST(calories AS INT) > 0)                               NOT NULL,
+    CHECK (CAST(calories AS INT) > 0)                                 NOT NULL,
   preparingtime INT
-    CHECK (CAST(preparingtime AS INT) > 0)                          NOT NULL,
+    CHECK (CAST(preparingtime AS INT) > 0)                            NOT NULL,
   price         INT
-    CHECK (CAST(price AS INT) > 0)                                  NOT NULL,
-  availability  BOOLEAN                                             NOT NULL,
-  picture       VARCHAR(100)                                        NOT NULL,
-  category_id   BIGINT                                              NOT NULL,
+    CHECK (CAST(price AS INT) > 0)                                    NOT NULL,
+  availability  BOOLEAN                                               NOT NULL,
+  picture       VARCHAR(100)                                          NOT NULL,
+  category_id   BIGINT                                                NOT NULL,
   FOREIGN KEY ("category_id")
   REFERENCES rh.category (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -83,7 +83,7 @@ CREATE TABLE rh.dish
 CREATE TABLE rh.orderdish
 (
   id        BIGINT NOT NULL PRIMARY KEY UNIQUE DEFAULT nextval('orderdish_sequence'),
-  quantity  INT    NOT NULL,
+  quantity  INT    NOT NULL  CHECK (CAST(quantity AS INT) > 0)              ,
   dish_id   BIGINT NOT NULL,
   status_id BIGINT NOT NULL,
   order_id  BIGINT NOT NULL,

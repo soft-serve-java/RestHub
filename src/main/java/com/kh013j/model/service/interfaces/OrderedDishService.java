@@ -13,6 +13,4 @@ public interface OrderedDishService {
     List findAll();
 
     OrderedDish update(OrderedDish dish) throws DishNotFound;
-
-    OrderedDish findById(long id);
 }
