@@ -23,8 +23,8 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
     private int tablenumber;
-    @Column(name = "close")
-    private boolean close;
+    @Column(name = "closed")
+    private boolean closed;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderedDish> orderedFood = new ArrayList<>();
 

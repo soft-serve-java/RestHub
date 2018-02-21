@@ -119,6 +119,11 @@
             <artifactId>ehcache-core</artifactId>
             <version>2.4.2</version>
         </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.embed</groupId>
+            <artifactId>postgresql-embedded</artifactId>
+            <version>2.6</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
