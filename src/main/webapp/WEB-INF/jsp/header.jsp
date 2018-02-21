@@ -78,6 +78,6 @@
             </h6>
         </c:if>
 
-<%--        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>--%>
+        <%--        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>--%>
     </div>
 </nav>
