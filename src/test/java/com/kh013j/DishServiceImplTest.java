@@ -249,7 +249,6 @@ public class DishServiceImplTest {
         dishService.create(dish);
     }
 
-    // data validation
     @Test(expected = Exception.class)
     public void tryWrongWeight() {
         Dish dish = new Dish();
