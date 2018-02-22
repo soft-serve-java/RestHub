@@ -1,4 +1,11 @@
-<%@ include file="header.jsp" %>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hours</title>
+</head>
+<body>
 <div id="demo" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -57,4 +64,5 @@
         padding: 10pt;
     }
 </style>
-<%@ include file="footer.jsp" %>
+</body>
+</html>
