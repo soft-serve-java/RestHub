@@ -4,7 +4,6 @@ import com.kh013j.model.domain.User;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.UserRepository;
 import com.kh013j.model.service.interfaces.UserService;
-
 import javax.annotation.Resource;
 import java.util.List;
 
