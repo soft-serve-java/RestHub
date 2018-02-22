@@ -16,4 +16,4 @@ before_script:
   - psql -c "create database test;" -U postgres
   - psql -c "create user my with password '1234';" -U postgres
   - psql -c "GRANT ALL PRIVILEGES ON DATABASE test TO my;" -U postgres
-script: sudo - E env "PATH=$PATH" go test
+script: sudo -E env "PATH=$PATH" go test
