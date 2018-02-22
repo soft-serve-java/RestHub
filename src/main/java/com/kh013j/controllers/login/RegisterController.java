@@ -5,12 +5,11 @@ import com.kh013j.model.domain.User;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 
@@ -34,7 +33,8 @@ public class RegisterController {
     }
 
     @PostMapping(value = "/registration")
-    public String userSaveNew(@Valid @ModelAttribute("registration") User user, BindingResult userResult, HttpServletResponse response){
+    public String userSaveNew(@Valid @ModelAttribute("registration") User user, BCryptPasswordEncoder bCryptPasswordEncoder){
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole(roleService.findByName("user"));
         userService.create(user);
         return "redirect:/welcome";
