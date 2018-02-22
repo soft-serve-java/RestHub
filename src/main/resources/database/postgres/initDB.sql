@@ -23,8 +23,6 @@ CREATE TABLE rh.status(
   name varchar(50)
 );
 
-
-
 DROP SEQUENCE IF EXISTS user_sequance CASCADE;
 CREATE SEQUENCE user_sequance;
 CREATE TABLE rh.user

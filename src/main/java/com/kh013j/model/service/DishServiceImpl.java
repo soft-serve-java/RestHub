@@ -28,28 +28,28 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List findAllAvailableDishByCategoryOrderByPrice(Category category) {
-        return dishRepository.findByCategoryAndAvalibilityOrderByPrice(category, true);
+        return dishRepository.findByCategoryAndAvailabilityOrderByPrice(category, true);
     }
 
     @Override
     public List findAllAvailableDishByCategoryOrderByPreparingtime(Category category) {
-        return dishRepository.findByCategoryAndAvalibilityOrderByPreparingtime(category,true);
+        return dishRepository.findByCategoryAndAvailabilityOrderByPreparingtime(category,true);
     }
 
     @Override
     public List findAllAvailableDishByCategoryOrderByCalories(Category category) {
-        return dishRepository.findByCategoryAndAvalibilityOrderByCalories(category, true);
+        return dishRepository.findByCategoryAndAvailabilityOrderByCalories(category, true);
     }
 
     @Override
     @Transactional(rollbackFor = DishNotFound.class)
     public List<Dish> findAllAvailableDishByCategory(Category category) {
-        return dishRepository.findAllByCategoryAndAvalibility(category, true);
+        return dishRepository.findAllByCategoryAndAvailability(category, true);
     }
 
     @Override
     public List<Dish> findByAvailableAndNameContaining(String name) {
-        return dishRepository.findByNameContainingIgnoreCaseAndAvalibility(name, true);
+        return dishRepository.findByNameContainingIgnoreCaseAndAvailability(name, true);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List findAllAvailable() {
-        return dishRepository.findAllByAvalibility(true);
+        return dishRepository.findAllByAvailability(true);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class DishServiceImpl implements DishService {
         if (dish == null) {
             return null;
         }
-        dish.setAvalibility(!dish.isAvalibility());
+        dish.setAvailability(!dish.isAvailability());
         dishRepository.saveAndFlush(dish);
         return dish;
     }
