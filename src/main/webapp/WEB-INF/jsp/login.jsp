@@ -1,7 +1,5 @@
 <%@ include file="header.jsp" %>
 <div id="login-box">
-
-
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
 		</c:if>
@@ -25,7 +23,7 @@
 				</div>
 				<div class="btn-group">
 						<button type="submit" class="btn btn-default">Submit</button>
-						<a href="/registration" class="btn btn-primary">Registration</a>						
+						<a href="/registration" class="btn btn-primary">Registration</a>
 				</div>
 				<input type="hidden" name="${_csrf.parameterName}"
 					   value="${_csrf.token}" />
