@@ -38,7 +38,7 @@ public class OrderDishRepositoryTest {
 
     @Test
     public void isOrdersEqual() {
-        User user = new User(1, "amely.honey@gmail.com", "Kitten", "fghj", new Role(1, "Admin"));
+        User user = new User(1, "amely.honey@gmail.com", "Kitten", "fghj", "confirmationtoken77777", true, new Role(1, "Admin"));
 
         Timestamp time = new Timestamp(22L);
 
