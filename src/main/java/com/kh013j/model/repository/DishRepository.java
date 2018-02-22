@@ -10,17 +10,17 @@ import java.util.List;
 
 @Repository
 public interface DishRepository extends JpaRepository<Dish, Long> {
-    List<Dish> findAllByCategoryAndAvalibility(Category category, Boolean availability);
+    List<Dish> findAllByCategoryAndAvailability(Category category, Boolean availability);
 
-    List<Dish> findByCategoryAndAvalibilityOrderByPrice(Category category, Boolean availability);
+    List<Dish> findByCategoryAndAvailabilityOrderByPrice(Category category, Boolean availability);
 
-    List<Dish> findByCategoryAndAvalibilityOrderByCalories(Category category, Boolean availability);
+    List<Dish> findByCategoryAndAvailabilityOrderByCalories(Category category, Boolean availability);
 
-    List<Dish> findByCategoryAndAvalibilityOrderByPreparingtime(Category category, Boolean availability);
+    List<Dish> findByCategoryAndAvailabilityOrderByPreparingtime(Category category, Boolean availability);
 
-    List<Dish> findByNameContainingIgnoreCaseAndAvalibility(String name, Boolean availability);
+    List<Dish> findByNameContainingIgnoreCaseAndAvailability(String name, Boolean availability);
 
-    List<Dish> findAllByAvalibility(Boolean availability);
+    List<Dish> findAllByAvailability(Boolean availability);
 
     //Change to nativequery = false, so that would work for any DB;
     @Query(value = "SELECT rh.dish.* from rh.dish" +
