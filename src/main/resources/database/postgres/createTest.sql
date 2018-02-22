@@ -2,25 +2,25 @@ DROP SCHEMA IF EXISTS rh CASCADE;
 
 CREATE SCHEMA rh;
 
-DROP SEQUENCE category_sequence;
+DROP SEQUENCE IF EXISTS category_sequence;
 CREATE SEQUENCE category_sequence;
 
-DROP SEQUENCE role_sequence;
+DROP SEQUENCE IF EXISTS role_sequence;
 CREATE SEQUENCE role_sequence;
 
-DROP SEQUENCE status_sequence;
+DROP SEQUENCE IF EXISTS status_sequence;
 CREATE SEQUENCE status_sequence;
 
-DROP SEQUENCE user_sequence;
+DROP SEQUENCE IF EXISTS user_sequence;
 CREATE SEQUENCE user_sequence;
 
-DROP SEQUENCE order_sequence;
+DROP SEQUENCE IF EXISTS order_sequence;
 CREATE SEQUENCE order_sequence;
 
-DROP SEQUENCE dish_sequence;
+DROP SEQUENCE IF EXISTS dish_sequence;
 CREATE SEQUENCE dish_sequence;
 
-DROP SEQUENCE orderdish_sequence;
+DROP SEQUENCE IF EXISTS orderdish_sequence;
 CREATE SEQUENCE orderdish_sequence;
 
 CREATE TABLE rh.category (
