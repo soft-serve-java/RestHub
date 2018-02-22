@@ -1,4 +1,4 @@
-package com.kh013j.controllers;
+package com.kh013j.controllers.admin;
 
 import com.kh013j.model.domain.Role;
 import com.kh013j.model.service.interfaces.RoleService;

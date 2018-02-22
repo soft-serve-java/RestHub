@@ -13,7 +13,6 @@ import javax.validation.constraints.Size;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-//@RestHubEntity(table = @Table(name="dish", schema = "rh"))
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

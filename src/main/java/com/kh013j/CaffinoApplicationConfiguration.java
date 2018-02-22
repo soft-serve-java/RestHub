@@ -4,6 +4,8 @@ import com.kh013j.model.service.*;
 import com.kh013j.model.service.interfaces.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 public class CaffinoApplicationConfiguration {
@@ -40,5 +42,10 @@ public class CaffinoApplicationConfiguration {
     @Bean
     public CategoryService categoryServiceConfig() {
         return new CategoryServiceImpl();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsServiceConfig(){
+        return new UserDetailsServiceImpl();
     }
 }

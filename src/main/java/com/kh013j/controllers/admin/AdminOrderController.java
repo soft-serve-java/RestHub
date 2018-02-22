@@ -1,4 +1,4 @@
-package com.kh013j.controllers;
+package com.kh013j.controllers.admin;
 
 import com.kh013j.model.domain.Order;
 import com.kh013j.model.exception.DishNotFound;

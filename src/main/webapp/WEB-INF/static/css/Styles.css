@@ -105,3 +105,11 @@ body {
 .clickable:hover {
     color: cornflowerblue;
 }
+.footer .footer-widget{
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+.callingTable{
+    background-color: palegreen;
+}
