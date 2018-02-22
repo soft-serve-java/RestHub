@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @EnableAutoConfiguration
 @SpringBootTest
 public class CaffinnoApplicationTests {
-
     @Test
     public void contextLoads() {
     }
