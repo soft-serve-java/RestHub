@@ -13,4 +13,5 @@ before_install:
 services:
   - postgresql
 before_script:
-  - psql -c "CREATE USER my WITH PASSWORD '1234';" -U postgres
+  - psql -c 'create database test;' -U postgres
+  - psql -c "create user my with password '1234';" -U postgres
