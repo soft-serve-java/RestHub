@@ -12,5 +12,5 @@ before_install:
   - jdk_switcher use oraclejdk8
 services:
   - postgresql
-  before_script:
-    - psql -c "CREATE USER my WITH PASSWORD '1234';" -U postgres
+before_script:
+  - psql -c "CREATE USER my WITH PASSWORD '1234';" -U postgres
