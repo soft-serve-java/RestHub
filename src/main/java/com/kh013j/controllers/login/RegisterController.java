@@ -22,6 +22,9 @@ public class RegisterController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @GetMapping(value = "/403")
     public String asdv() {
         return "403";
