@@ -11,7 +11,7 @@ import java.util.Map;
 @Service
 public interface OrderService {
 
-    void create(Order order);
+    Order create(Order order);
 
     Order delete(long id) throws DishNotFound;
 

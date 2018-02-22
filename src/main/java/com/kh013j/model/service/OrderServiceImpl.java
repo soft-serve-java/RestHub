@@ -22,8 +22,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderedDishService orderedDishService;
 
     @Override
-    public void create(Order order) {
-        Order newOrder = orderRepository.save(order);
+    public Order create(Order order) {
+        return orderRepository.save(order);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order findByTable(int table) {
-        return orderRepository.findFirstByTablenumberAndCloseFalse(table);
+        return orderRepository.findFirstByTablenumberAndClosedFalse(table);
     }
 
     @Override

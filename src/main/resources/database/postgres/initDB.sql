@@ -23,15 +23,13 @@ CREATE TABLE rh.status(
   name varchar(50)
 );
 
-
-
 DROP SEQUENCE IF EXISTS user_sequance CASCADE;
 CREATE SEQUENCE user_sequance;
 CREATE TABLE rh.user
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('user_sequance'),
   email varchar(50),
-  password varchar(50),
+  password varchar(100),
   name varchar(50),
   role_id bigint,
   CONSTRAINT role_id FOREIGN KEY (role_id)
