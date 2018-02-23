@@ -12,15 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
-
 @Controller
 public class RegisterController {
 
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -37,7 +36,7 @@ public class RegisterController {
 
     @PostMapping(value = "/registration")
     public String userSaveNew(@Valid @ModelAttribute("registration") User user, BCryptPasswordEncoder bCryptPasswordEncoder){
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPsword(bCryptPasswordEncoder.encode(user.getPsword()));
         user.setRole(roleService.findByName("user"));
         userService.create(user);
         return "redirect:/welcome";
