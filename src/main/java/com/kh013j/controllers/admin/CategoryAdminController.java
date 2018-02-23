@@ -18,18 +18,18 @@ public class CategoryAdminController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/admin/category/all", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/category/all")
     public ModelAndView showCategories() {
         return new ModelAndView(ViewName.SHOW_CATEGORY,
                 "Categories", categoryService.findAll()).addObject("category", new Category());
     }
 
-    @RequestMapping(value = "admin/category/new", method = RequestMethod.GET)
+    @GetMapping(value = "admin/category/new")
     public ModelAndView categoryCreate() {
         return new ModelAndView(ViewName.CATEGORY_EDIT_CREATE, "category", new Category());
     }
 
-    @RequestMapping(value = "/admin/category/edit/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/category/edit/{id}")
     public ModelAndView categoryEdit(@PathVariable(value = "id") long id) {
         Category category = categoryService.findById(id);
         return new ModelAndView(ViewName.SHOW_CATEGORY,

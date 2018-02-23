@@ -23,18 +23,18 @@ public class UserAdminController {
     @Autowired
     private RoleService roleService;
 
-    @RequestMapping(value = "/admin/user/all", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/user/all")
     public ModelAndView showUsers() {
         return new ModelAndView(ViewName.SHOW_USERS, "Users", userService.findAll());
     }
 
-    @RequestMapping(value = "admin/user/new", method = RequestMethod.GET)
+    @GetMapping(value = "admin/user/new")
     public ModelAndView userCreate() {
         return new ModelAndView(ViewName.USER_EDIT_CREATE, "user", new User())
                 .addObject("Roles", roleService.findAll());
     }
 
-    @RequestMapping(value = "/admin/user/edit/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/admin/user/edit/{id}")
     public ModelAndView userEdit(@PathVariable(value = "id") long id) {
         return new ModelAndView(ViewName.USER_EDIT_CREATE, "user",
                 userService.findById(id)).addObject("Roles", roleService.findAll());

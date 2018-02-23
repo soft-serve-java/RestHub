@@ -34,6 +34,8 @@ CREATE TABLE rh.user
   email varchar(50),
   psword varchar(100),
   name varchar(50),
+  enabled boolean,
+  confirmationtoken varchar(100),
   role_id bigint,
   CONSTRAINT role_id FOREIGN KEY (role_id)
   REFERENCES rh.role (id)

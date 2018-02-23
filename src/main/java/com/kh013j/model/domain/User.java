@@ -27,6 +27,9 @@ public class User {
     @Size(min=(2), max=50)
     private String name;
 
+    private String confirmationtoken;
+
+    private boolean enabled;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
