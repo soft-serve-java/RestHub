@@ -27,8 +27,11 @@ public class LiveCallWaiterController {
     @MessageMapping("/waiterCall")
     @SendTo("waiter/tables")
     public List<CallForWaiter> getWaitingTables() {
+        //get tables by stream return List<Integer>
+        //Make List Of Tables?
         return service.findAll();
     }
+
     @GetMapping("/waiter/tab")
     public ModelAndView getWaiter(){
         return  new ModelAndView("Notify", "tables", new Tables());
@@ -40,7 +43,8 @@ public class LiveCallWaiterController {
     @ResponseBody
     public void callForWaiter(@RequestParam int table) {
         List<CallForWaiter> callForWaiterList = service.findAll();
-        callForWaiterList.add(new CallForWaiter(new Tables(table), new Timestamp(System.currentTimeMillis())));
+        callForWaiterList.add(new CallForWaiter(new Tables(table),
+                new Timestamp(System.currentTimeMillis())));
     }
 
     @PostMapping("/acceptCalling")

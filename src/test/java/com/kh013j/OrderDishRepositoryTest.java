@@ -42,7 +42,7 @@ public class OrderDishRepositoryTest {
 
         Timestamp time = new Timestamp(22L);
 
-        order = new Order(2, time, user, 1, false, null);
+        order = new Order(2, time, user, 1, false, null, new User());
         orderService.create(order);
 
         Assert.isTrue(order.equals(orderRepository.findOne(2L)));

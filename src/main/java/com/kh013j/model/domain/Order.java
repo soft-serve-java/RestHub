@@ -29,5 +29,13 @@ public class Order {
     private boolean closed;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderedDish> orderedFood = new ArrayList<>();
+    @Transient
+    User waiter;
+
+    public boolean hasFoodForDeliver(){
+        long countOfFoodOnDelivery = orderedFood.stream()
+                .filter(orderedDish -> orderedDish.getStatus().getName()==Status.DELIVERY).count();
+        return countOfFoodOnDelivery>0;
+    }
 
 }

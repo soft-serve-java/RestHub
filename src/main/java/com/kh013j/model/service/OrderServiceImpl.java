@@ -1,7 +1,6 @@
 package com.kh013j.model.service;
 
-import com.kh013j.model.domain.Dish;
-import com.kh013j.model.domain.Order;
+import com.kh013j.model.domain.*;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderRepository;
 import com.kh013j.model.service.interfaces.OrderService;
@@ -13,6 +12,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OrderServiceImpl implements OrderService {
     @Resource
@@ -69,6 +69,26 @@ public class OrderServiceImpl implements OrderService {
             order = createOrderFromMap(orderMap, tablenumber);
         }
         orderRepository.saveAndFlush(order);
+    }
+
+    @Override
+    public List<Tables> findNullWaiterTables() {
+        //TODO:implement
+        return null;
+    }
+
+    @Override
+    public List<Tables> findTablesByWaiter(User waiter) {
+        //TODO:implement
+        return null;
+    }
+
+    @Override
+    public List<Tables> findTablesInDeliveryStatus() {
+        return orderRepository.findAll().stream()
+                .filter(order -> order.hasFoodForDeliver()).
+                       map(order -> new Tables( order.getTablenumber(),TableStatus.IS_ON_DELIVERY))
+               .collect(Collectors.toList());
     }
 }
 
