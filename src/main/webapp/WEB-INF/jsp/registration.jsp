@@ -1,3 +1,4 @@
+<%@ include file="header.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
@@ -7,8 +8,8 @@
 
 <body>
 
-<div id="login-box">
-
+<%--<div id="login-box">--%>
+${alreadyRegisteredMessage}
 <div class="container py-2" style="width: 50rem">
     <form:form method="POST" action="/registration" modelAttribute="registration">
         <table class="table table-hover">
@@ -18,17 +19,20 @@
             <p>
                 <label>Enter email</label>
                 <form:input path="email" type="email" class="form-control" placeholder="email"/>
+                <form:errors path="email" class="control-label"/>
             </p>
 
             <p>
                 <label>Enter password</label>
                 <form:input path="password" type="password" class="form-control" placeholder="password"/>
+                <form:errors path="password" class="control-label"/>
             </p>
 
 
             <p>
                 <label>Enter name</label>
                 <form:input path="name" type="name" class="form-control" placeholder="name"/>
+                <form:errors path="name" class="control-label"/>
             </p>
 
             <button type="submit" class="btn btn-primary">Save</button>
@@ -36,7 +40,7 @@
         </table>
     </form:form>
 </div>
-</div>
+
 
 <style>
     .error {
