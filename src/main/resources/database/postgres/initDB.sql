@@ -1,7 +1,6 @@
 DROP SCHEMA IF EXISTS rh CASCADE;
 CREATE SCHEMA rh;
 
-DROP SEQUENCE IF EXISTS category_sequence CASCADE; /*don't delete this*/
 DROP SEQUENCE IF EXISTS category_sequance CASCADE;
 CREATE SEQUENCE category_sequance;
 CREATE TABLE rh.category(
@@ -9,7 +8,6 @@ CREATE TABLE rh.category(
   name varchar(50)
 );
 
-DROP SEQUENCE IF EXISTS role_sequence CASCADE; /*don't delete this*/
 DROP SEQUENCE IF EXISTS role_sequance CASCADE;
 CREATE SEQUENCE role_sequance;
 CREATE TABLE rh.role(
@@ -17,7 +15,6 @@ CREATE TABLE rh.role(
   name varchar(50)
 );
 
-DROP SEQUENCE IF EXISTS status_sequence CASCADE; /*don't delete this*/
 DROP SEQUENCE IF EXISTS status_sequance CASCADE;
 CREATE SEQUENCE status_sequance;
 CREATE TABLE rh.status(
@@ -25,7 +22,6 @@ CREATE TABLE rh.status(
   name varchar(50)
 );
 
-DROP SEQUENCE IF EXISTS user_sequence CASCADE; /*don't delete this*/
 DROP SEQUENCE IF EXISTS user_sequance CASCADE;
 CREATE SEQUENCE user_sequance;
 CREATE TABLE rh.user
@@ -41,7 +37,6 @@ CREATE TABLE rh.user
   REFERENCES rh.role (id)
 );
 
-DROP SEQUENCE IF EXISTS order_sequence CASCADE;
 DROP SEQUENCE IF EXISTS order_sequense CASCADE;
 CREATE SEQUENCE order_sequense;
 CREATE TABLE rh.order
@@ -55,7 +50,6 @@ CREATE TABLE rh.order
   REFERENCES rh.user (id)
 );
 
-DROP SEQUENCE IF EXISTS dish_sequence CASCADE;
 DROP SEQUENCE IF EXISTS dish_sequense CASCADE;
 CREATE SEQUENCE dish_sequense;
 CREATE TABLE rh.dish

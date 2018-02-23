@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="liquibase-docs" id="addUniqueConstraintCategoryName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="category"
+        />
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintRoleName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             constraintName="const_rolename"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="role"
+        />
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintStatusName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="status"
+        />
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintEmail">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="email"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="user"
+        />
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintDishName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="dish"
+        />
+    </changeSet>
+</databaseChangeLog>
