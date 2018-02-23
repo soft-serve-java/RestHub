@@ -12,10 +12,12 @@
         <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/initDB.sql"/>
     </changeSet>
+
     <changeSet id="2" author="me">
         <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/populateDB.sql"/>
     </changeSet>
+
     <changeSet author="meow" id="renameAvailability">
         <renameColumn columnDataType="boolean"
                       newColumnName="availability"
@@ -23,6 +25,7 @@
                       schemaName="rh"
                       tableName="dish"/>
     </changeSet>
+
     <changeSet author="meow" id="renameClosed">
         <renameColumn columnDataType="boolean"
                       newColumnName="closed"
@@ -30,10 +33,359 @@
                       schemaName="rh"
                       tableName="order"/>
     </changeSet>
+
     <changeSet author="meow" id="modifyDataTypePreparingTime">
         <modifyDataType columnName="preparingtime"
                         newDataType="int"
                         schemaName="rh"
                         tableName="dish"/>
     </changeSet>
+
+    <!-- category table changes -->
+    <changeSet id="renameCategorySequence" author="meow">
+        <sql>ALTER SEQUENCE category_sequance RENAME TO category_sequence</sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintCategoryName">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="category"/>
+    </changeSet>
+    <changeSet author="liquibase-docs" id="addUniqueConstraintCategoryName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="category"
+        />
+    </changeSet>
+    <!-- end of category table changes -->
+
+    <!-- role table changes -->
+    <changeSet id="renameRoleSequence" author="meow">
+        <sql>ALTER SEQUENCE role_sequance RENAME TO role_sequence</sql>
+    </changeSet>
+    <changeSet id="meow" author="restartRoleSequence">
+        <sql>ALTER SEQUENCE role_sequence RESTART WITH 1</sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintRoleName">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="role"/>
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintRoleName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             constraintName="const_rolename"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="role"
+        />
+    </changeSet>
+    <!-- end of role table changes -->
+
+    <!-- status table changes -->
+    <changeSet id="renameStatusSequence" author="meow">
+        <sql>ALTER SEQUENCE status_sequance RENAME TO status_sequence</sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintStatusName">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="status"/>
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintStatusName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="status"
+        />
+    </changeSet>
+    <!-- end of status table changes -->
+
+    <!-- user table changes -->
+    <changeSet id="renameUserSequence" author="meow">
+        <sql>ALTER SEQUENCE user_sequance RENAME TO user_sequence</sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintEmail">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="email"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintEmail">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="email"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="user"
+        />
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintPsword">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="psword"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintUserName">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintRoleId">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="role_id"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+    <!-- end of user table changes -->
+
+    <!-- order table changes -->
+    <changeSet id="renameOrderSequence" author="meow">
+        <sql>ALTER SEQUENCE order_sequense RENAME TO order_sequence</sql>
+    </changeSet>
+    <!-- add constraint that it's not past -->
+    <changeSet author="meow" id="addNotNullConstraintTime">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="timestamp"
+                              columnName="time"
+                              schemaName="rh"
+                              tableName="order"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintTableNumber">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="int"
+                              columnName="tablenumber"
+                              schemaName="rh"
+                              tableName="order"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintClosed">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="boolean"
+                              columnName="closed"
+                              schemaName="rh"
+                              tableName="order"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintUserId">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="user_id"
+                              schemaName="rh"
+                              tableName="order"/>
+    </changeSet>
+    <!-- end of order table changes -->
+
+    <!-- dish table changes -->
+    <changeSet id="renameDishSequence" author="meow">
+        <sql>ALTER SEQUENCE dish_sequense RENAME TO dish_sequence</sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintDishName">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="meow" id="addUniqueConstraintDishName">
+        <validCheckSum>any</validCheckSum>
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="dish"
+        />
+    </changeSet>
+    <changeSet author="meow" id="modifyLengthDishName">
+        <modifyDataType columnName="name"
+                        newDataType="varchar(255)"
+                        schemaName="rh"
+                        tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintDishDescription">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="varchar(1000)"
+                              columnName="description"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintWeight">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="int"
+                              columnName="weight"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="meow" id="dropCheckWeightConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS weightChecker
+        </sql>
+    </changeSet>
+    <changeSet author="meow" id="addCheckWeightConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT weightChecker
+            CHECK (CAST(weight AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintCalories">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="int"
+                              columnName="calories"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="dropCheckCaloriesConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS caloriesChecker
+        </sql>
+    </changeSet>
+    <changeSet author="meow" id="addCheckCaloriesConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT caloriesChecker
+            CHECK (CAST(calories AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintPreparingTime">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="int"
+                              columnName="preparingtime"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="dropCheckPreparingTimeConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS preparingTimeChecker
+        </sql>
+    </changeSet>
+    <changeSet author="meow" id="addCheckPreparingTimeConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT preparingTimeChecker
+            CHECK (CAST(preparingtime AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="meow" id="modifyDataTypePrice">
+        <modifyDataType columnName="price"
+                        newDataType="decimal"
+                        schemaName="rh"
+                        tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintPrice">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="decimal"
+                              columnName="price"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="dropCheckPriceConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS priceChecker
+        </sql>
+    </changeSet>
+    <changeSet author="meow" id="addCheckPriceConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT priceChecker
+            CHECK (CAST(price AS DECIMAL) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintAvailability">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="boolean"
+                              columnName="availability"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintCategoryId">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="category_id"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <!-- end of dish table changes -->
+
+    <!-- orderdish table changes -->
+    <changeSet id="renameDishSequence" author="meow">
+        <sql>ALTER SEQUENCE orderdish_sequense RENAME TO orderdish_sequence</sql>
+    </changeSet>
+
+    <changeSet author="meow" id="dropCheckQuantityConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.orderdish DROP CONSTRAINT IF EXISTS quantityChecker
+        </sql>
+    </changeSet>
+    <changeSet author="meow" id="addCheckQuantityConstraint">
+        <sql>
+            ALTER TABLE rh.orderdish ADD CONSTRAINT quantityChecker
+            CHECK (CAST(quantity AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintQuantity">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="int"
+                              columnName="quantity"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintDishId">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="dish_id"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintStatusId">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="status_id"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+
+    <changeSet author="meow" id="addNotNullConstraintOrderId">
+        <validCheckSum>any</validCheckSum>
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="order_id"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+    <!-- orderdish table changes -->
+
 </databaseChangeLog>
