@@ -37,7 +37,7 @@
                 <td>
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="${orderItem.dish.picture}" class="w-100">
+                            <img src="${orderItem.dish.images[0].url}" class="w-100">
                         </div>
                         <div class="col-md-6">
                             <h4>${orderItem.dish.name}</h4>
@@ -72,7 +72,7 @@
                     <td>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="${orderItem.key.picture}" class="w-100">
+                                <img src="${orderItem.key.images[0].url}" class="w-100">
 
                             </div>
                             <div class="col-md-6">

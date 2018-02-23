@@ -29,7 +29,21 @@
 
             <div class="form-row">
                 <label>Image: </label>
-                <input class="form-control" type="file" name="pic" accept="image/*">
+                <input class="form-control" type="file" name="pic" accept="image/*" multiple>
+                <c:if test="${dish != null}">
+                      <div class="row justify-content-md-start">
+                    <c:forEach items="${dish.images}" var="img">
+                    <div class="col-md-2">
+                              <img src="${img.url}" alt="image" width="100%"/>
+                              <div class="row">
+                                  <div class="col">
+                                      <a href="/admin/dish/${dish.id}/removeImage/${img.id}">remove</a>
+                                  </div>
+                              </div>
+                          </div>
+                    </c:forEach>
+                      </div>
+                </c:if>
             </div>
 
 
