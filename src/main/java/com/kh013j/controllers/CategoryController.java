@@ -55,11 +55,4 @@ public class CategoryController {
         return new ModelAndView(ViewName.MENU, "menuItems",
                 dishService.findAllAvailable());
     }
-
-    @GetMapping(value = "/dish/{id}")
-    public String dishdescription(Model model, @PathVariable(value = "id") long id) {
-        model.addAttribute("dish", dishService.findById(id));
-        model.addAttribute("populars", dishService.findPopular(id));
-        return ViewName.DISH_DESCRIPTION;
-    }
 }
