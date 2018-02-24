@@ -13,8 +13,8 @@
         </thead>
         <tbody>
         <c:forEach items="${dish}" var="dish">
-            <c:if test="${!dish.avalibility}"><tr class="table-warning"></c:if>
-            <c:if test="${dish.avalibility}"><tr></c:if>
+            <c:if test="${!dish.availability}"><tr class="table-warning"></c:if>
+            <c:if test="${dish.availability}"><tr></c:if>
                 <td>${dish.id}</td>
                 <td>${dish.name}</td>
                 <td>

@@ -8,10 +8,12 @@ import com.kh013j.model.domain.CallForWaiter;
 import com.kh013j.model.domain.Tables;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.service.CallForWaiterService;
+import com.kh013j.model.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,12 +26,12 @@ public class LiveCallWaiterController {
     @Autowired
     private CallForWaiterService service;
 
+    @Autowired
+    private OrderService orderService;
     @MessageMapping("/waiterCall")
     @SendTo("waiter/tables")
-    public List<CallForWaiter> getWaitingTables() {
-        //get tables by stream return List<Integer>
-        //Make List Of Tables?
-        return service.findAll();
+    public List<Tables> getWaitingTables(@AuthenticationPrincipal User user){
+        return orderService.findTableInfoForWaiter(user);
     }
 
     @GetMapping("/waiter/tab")
@@ -49,7 +51,7 @@ public class LiveCallWaiterController {
 
     @PostMapping("/acceptCalling")
     @ResponseBody
-    public void acceptCalling(@RequestParam int table){
-        service.mackAsClosed(table, new User());
+    public void acceptCalling(@RequestParam int table, @AuthenticationPrincipal User user){
+        service.mackAsClosed(table, user);
     }
 }

@@ -29,7 +29,8 @@ public class Order {
     private boolean closed;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderedDish> orderedFood = new ArrayList<>();
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "waiter")
     User waiter;
 
     public boolean hasFoodForDeliver(){

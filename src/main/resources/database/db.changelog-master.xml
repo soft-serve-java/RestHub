@@ -36,4 +36,15 @@
                         schemaName="rh"
                         tableName="dish"/>
     </changeSet>
+  <!--  <changeSet author="orasso" id="addWaiterForOrder">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="oder"
+                                 constraintName="fk_order_user"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+    </changeSet>-->
 </databaseChangeLog>

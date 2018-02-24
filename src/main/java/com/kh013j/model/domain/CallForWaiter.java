@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import java.sql.Timestamp;
 
 @Data
+//TODO: in DB
 @RequiredArgsConstructor
 public class CallForWaiter {
     @NonNull

@@ -7,7 +7,6 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th>Order</th>
-
             <%--<th colspan="2" >
                 <a href="/admin/order/new"><button type="submit" class="btn btn-primary">New order</button> </a>
             </th>--%>

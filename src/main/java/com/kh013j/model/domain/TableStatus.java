@@ -6,7 +6,8 @@ public enum TableStatus implements Serializable {
     HAS_NULL_WAITER,
     IS_OF_CURRENT_WAITER,
     IS_ON_DELIVERY,
-    FREE;
+    CALLING_WAITER,
+    HAS_WAITER;
 
     public String getStatus() {
         return this.name();
