@@ -92,7 +92,7 @@ public class AdminDishController {
                 dish.setImages(new ArrayList<>());
             }
 
-            files.forEach(file -> {
+            files.parallelStream().forEach(file -> {
                 Image image = new Image();
                 try {
                     image.setUrl(ImgurImageService.uploadImage(file.getBytes()));
