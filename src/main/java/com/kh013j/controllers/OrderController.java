@@ -37,7 +37,7 @@ public class OrderController {
                 orderMap.put(d, 1);
             }
         });
-        return new RedirectView(request.getHeader("referer"));
+        return new RedirectView(request.getHeader("referer")+"#" + dish.orElse(new Dish()).getId());
     }
 
     @GetMapping(value = "/removeFromOrder/{id}")

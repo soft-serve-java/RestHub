@@ -1,8 +1,10 @@
 package com.kh013j.model.service;
 
 import com.kh013j.model.domain.Category;
+import com.kh013j.model.domain.Review;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.exception.DishNotFound;
+import com.kh013j.model.repository.ReviewRepository;
 import com.kh013j.model.repository.DishRepository;
 import com.kh013j.model.service.interfaces.DishService;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +15,9 @@ import java.util.List;
 public class DishServiceImpl implements DishService {
     @Resource
     private DishRepository dishRepository;
+
+    @Resource
+    private ReviewRepository reviewRepository;
 
     @Override
     @Transactional
@@ -91,5 +96,10 @@ public class DishServiceImpl implements DishService {
         dish.setAvailability(!dish.isAvailability());
         dishRepository.saveAndFlush(dish);
         return dish;
+    }
+
+    @Override
+    public List<Review> getReviews(Dish dish) {
+        return reviewRepository.findAllByDishAndApproved(dish, true);
     }
 }

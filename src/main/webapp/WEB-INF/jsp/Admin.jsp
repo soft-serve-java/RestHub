@@ -57,6 +57,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/status/all">Status</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/reviews">Reviews</a>
+                </li>
             </ul>
             <form action="#" class="form-inline">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">

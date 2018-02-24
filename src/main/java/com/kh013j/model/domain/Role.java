@@ -1,7 +1,5 @@
 package com.kh013j.model.domain;
 
-//import com.kh013j.model.annotation.RestHubEntity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

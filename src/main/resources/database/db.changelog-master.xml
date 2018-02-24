@@ -36,4 +36,8 @@
                         schemaName="rh"
                         tableName="dish"/>
     </changeSet>
+    <changeSet id="6" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/imageReviewEntities.sql"/>
+    </changeSet>
 </databaseChangeLog>
