@@ -15,4 +15,6 @@ public interface UserService {
     User update(User order) throws DishNotFound;
 
     User findById(long id);
+
+    User findByEmail(String email);
 }

@@ -1,8 +1,7 @@
 <%@ include file="header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <div class="container" style="text-align: left">
     <div class="row">
 
@@ -60,15 +59,70 @@
                 </div>
             </div>
         </c:if>
+                <div class="col-sm-10 col-sm-offset-1" >
+                    <div class="page-header">
+                        <h3 class="reviews">Leave your comment</h3>
+                    </div>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active text-uppercase reviews" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="true">Comments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-uppercase reviews" id="addcomment-tab" data-toggle="tab" href="#addcomment" role="tab" aria-controls="addcomment" aria-selected="false">Add Comment</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+
+                                <c:forEach items="${reviews}" var="review">
+                                <div class="card">
+                                    <div class="card-header text-uppercase reviews">
+                                        ${review.user.name}
+                                    </div>
+                                    <div class="card-block">
+                                        <p class="card-text">${review.commentText}</p>
+                                        <p class="card-text"><small class="text-muted">${review.date}</small></p>
+                                    </div>
+                                </div>
+                                </c:forEach>
+                            </div>
+                            <div class="tab-pane fade" id="addcomment" role="tabpanel" aria-labelledby="addcomment-tab">
+                                <form action="/dish/${dish.id}/addReview" method="get" class="form-horizontal" id="commentForm" role="form">
+                                    <div class="form-group">
+                                        <label for="commentArea" class="col-sm-2 control-label">Comment</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" name="review" id="commentArea" rows="5" maxlength="1000"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
     </div>
 </div>
 
-<style>
-    .card-block {
-        min-height: 250px;
-        min-width: 300px;
-        margin-right: 5px;
-        text-align: center;
+<style type="text/css">
+    .reviews {
+        color: #555;
+        font-weight: bold;
     }
+    .card-block{
+        margin-top: 5px;
+        margin-left: 18px;
+        margin-bottom: 5px;
+    }
+
+    .tab-content {
+        padding: 50px 15px;
+        border: 1px solid #ddd;
+        border-top: 0;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
 </style>
 <%@ include file="footer.jsp" %>

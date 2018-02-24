@@ -1,6 +1,7 @@
 package com.kh013j.model.service.interfaces;
 
 import com.kh013j.model.domain.Category;
+import com.kh013j.model.domain.Review;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.exception.DishNotFound;
 
@@ -33,4 +34,7 @@ public interface DishService {
     Dish tweakAvailability(long id);
 
     Dish update(Dish dish) throws DishNotFound;
+
+    List<Review> getComments(Dish dish);
+
 }
