@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Data
@@ -26,6 +28,10 @@ public class User {
 
     @Size(min=2, max=50)
     private String name;
+
+    private String confirmationtoken;
+
+    private boolean enabled;
 
     @ManyToOne
     @JoinColumn(name = "role_id")

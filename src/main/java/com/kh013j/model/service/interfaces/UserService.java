@@ -17,4 +17,6 @@ public interface UserService {
     User findById(long id);
 
     User findByEmail(String email);
+
+    User findByConfirmationtoken(String token);
 }
