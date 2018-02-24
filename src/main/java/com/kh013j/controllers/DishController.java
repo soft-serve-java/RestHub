@@ -33,12 +33,7 @@ public class DishController {
 
     @GetMapping(value = "/dish/{id}")
     public String dishdescription(Principal principal, Model model, @PathVariable(value = "id") long id) {
-        if (principal == null) {
-            model.addAttribute("canComment", false);
-        } else {
-            User user = userService.findByEmail(principal.getName());
-        }
-
+        model.addAttribute("canComment", principal != null);
         model.addAttribute("dish", dishService.findById(id));
         model.addAttribute("populars", dishService.findPopular(id));
         model.addAttribute("reviews", dishService.getReviews(dishService.findById(id)));

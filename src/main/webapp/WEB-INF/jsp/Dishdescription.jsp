@@ -61,14 +61,14 @@
         </c:if>
                 <div class="col-sm-10 col-sm-offset-1" >
                     <div class="page-header">
-                        <h3 class="reviews">Leave your comment</h3>
+                        <h3 class="reviews">Leave your Review</h3>
                     </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active text-uppercase reviews" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="true">Comments</a>
+                                <a class="nav-link active text-uppercase reviews" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="true">Reviews</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-uppercase reviews" id="addcomment-tab" data-toggle="tab" href="#addcomment" role="tab" aria-controls="addcomment" aria-selected="false">Add Comment</a>
+                                <a class="nav-link text-uppercase reviews" id="addcomment-tab" data-toggle="tab" href="#addcomment" role="tab" aria-controls="addcomment" aria-selected="false">Add Review</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -88,14 +88,28 @@
                             <div class="tab-pane fade" id="addcomment" role="tabpanel" aria-labelledby="addcomment-tab">
                                 <form action="/dish/${dish.id}/addReview" method="get" class="form-horizontal" id="commentForm" role="form">
                                     <div class="form-group">
-                                        <label for="commentArea" class="col-sm-2 control-label">Comment</label>
+                                        <label for="commentArea" class="col-sm-2 control-label">Review</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="review" id="commentArea" rows="5" maxlength="1000"></textarea>
+                                            <c:choose>
+                                                <c:when test="${canComment}">
+                                                    <textarea class="form-control" name="review" id="commentArea" rows="5" maxlength="1000"></textarea>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <textarea class="form-control" placeholder="You have to sign in to add reviews" disabled name="review" id="commentArea" rows="5" maxlength="1000"></textarea>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                            <c:choose>
+                                                <c:when test="${canComment}">
+                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit Review</button>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <button class="btn btn-success btn-circle text-uppercase disabled" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit Review</button>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                     </div>
                                 </form>
