@@ -8,9 +8,9 @@
 
 <body>
 
-<%--<div id="login-box">--%>
+<div id="login-box">
 ${alreadyRegisteredMessage}
-<div class="container py-2" style="width: 50rem">
+<div class="container py-2">
     <form:form method="POST" action="/registration" modelAttribute="registration">
         <table class="table table-hover">
             <tbody>
@@ -18,7 +18,7 @@ ${alreadyRegisteredMessage}
 
             <p>
                 <label>Enter email</label>
-                <form:input path="email" type="email" class="form-control" placeholder="email"/>
+                <form:input path="email" type="email" class="form-control" placeholder="email" value="${registration.email}"/>
                 <form:errors path="email" class="control-label"/>
             </p>
 
@@ -31,7 +31,7 @@ ${alreadyRegisteredMessage}
 
             <p>
                 <label>Enter name</label>
-                <form:input path="name" type="name" class="form-control" placeholder="name"/>
+                <form:input path="name" type="name" class="form-control" placeholder="name" value="${registration.name}"/>
                 <form:errors path="name" class="control-label"/>
             </p>
 
@@ -40,7 +40,7 @@ ${alreadyRegisteredMessage}
         </table>
     </form:form>
 </div>
-
+</div>
 
 <style>
     .error {
