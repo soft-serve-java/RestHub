@@ -73,6 +73,14 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                               <c:if test="${newCommentAdded}">
+                                   <div class="card">
+                                       <div class="card-header text-uppercase reviews">
+                                               Your review will be added after moderation.
+                                       </div>
+                                   </div>
+                               </c:if>
+
                                 <c:forEach items="${reviews}" var="review">
                                 <div class="card">
                                     <div class="card-header text-uppercase reviews">
@@ -104,10 +112,10 @@
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <c:choose>
                                                 <c:when test="${canComment}">
-                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit Review</button>
+                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Submit Review</button>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <button class="btn btn-success btn-circle text-uppercase disabled" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit Review</button>
+                                                    <button class="btn btn-success btn-circle text-uppercase disabled" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Submit Review</button>
                                                 </c:otherwise>
                                             </c:choose>
                                         </div>
