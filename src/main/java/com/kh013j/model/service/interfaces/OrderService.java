@@ -29,6 +29,6 @@ public interface OrderService {
 
     void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap);
 
-    List<Tables> findTableInfoForWaiter(User waiter);
+    List<Tables> findTableInfoForWaiter();
 
 }

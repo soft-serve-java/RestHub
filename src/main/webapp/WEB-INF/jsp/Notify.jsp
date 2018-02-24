@@ -5,15 +5,14 @@
     app.controller('LiveController', function ($stomp, $scope) {
         $scope.myres = [];
         $scope.tables = [];
-        $scope.getStatus = function(table){
-            //****get Status by number of table*****
-            /*var indexOfRole = $scope.tables.indexOf(table); // or whatever your object is instead of $scope.roles
-            if (indexOfRole === -1)
-                return false;
-            else {
-                return true;
-
-            }*/
+        $scope.isCalling = function(table){
+            angular.forEach( $scope.tables, function (value) {
+                console.log(value);
+                if (value.currentTable==table&&value.tableStatus=='CALLING_WAITER'){
+                    return true;
+                }
+            });
+            return false;
         };
         $stomp.connect('/call', {})
             .then(function (frame) {
@@ -23,7 +22,8 @@
                         $scope.$apply($scope.myres);
                         $scope.tables = [];
                         angular.forEach( $scope.myres, function(value, key) {
-                                $scope.tables.push(value.currentTable);
+                                $scope.tables.push(value);
+                            console.log(value);
                         });
                     });
                 $stomp.send('app/waiterCall', '');
@@ -54,7 +54,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="card" style="width: 18rem;">
                         <div onclick="doPOSTonCloseCalling(${loop.index})
-                                "ng-class="{'callingTable ':isCalling(${loop.index})}">
+                                "ng-class="{'callingTable':isCalling(${loop.index})}">
                         <div class="card-body">
                             <div class="animated pulse">
                             <h1 class="card-title">${loop.index}</h1>

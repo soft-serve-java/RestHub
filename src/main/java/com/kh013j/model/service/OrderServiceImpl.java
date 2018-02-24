@@ -6,9 +6,12 @@ import com.kh013j.model.repository.OrderRepository;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.annotation.Resource;
+import javax.jws.soap.SOAPBinding;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +20,7 @@ import static com.kh013j.model.domain.TableStatus.*;
 public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderRepository orderRepository;
-
+    @Autowired
     private CallForWaiterService callForWaiterService;
 
     @Autowired
@@ -73,40 +76,36 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.saveAndFlush(order);
     }
 
-    private List<Tables> findNullWaiterTables() {
-        return orderRepository.findAllByWaiterNullAndClosedFalse().stream()
+    private List<Tables> findNullWaiterTables(List<Order> orders) {
+        return orders.stream().filter(order -> order.getWaiter()==null)
                 .map(order -> new Tables(order.getTablenumber(),HAS_NULL_WAITER))
                 .collect(Collectors.toList());
     }
 
-    private List<Tables> findTablesByWaiter(User waiter) {
-        return orderRepository.findAllByWaiterAndClosedFalse(waiter).stream()
-                .map(order -> new Tables(order.getTablenumber(),IS_OF_CURRENT_WAITER))
-                .collect(Collectors.toList());
-    }
-
-    private List<Tables> findTablesInDeliveryStatus() {
-        return orderRepository.findAll().stream()
+    private List<Tables> findTablesInDeliveryStatus(List<Order> orders) {
+        return orders.stream()
                 .filter(Order::hasFoodForDeliver)
                 .map(order -> new Tables(order.getTablenumber(),IS_ON_DELIVERY))
                .collect(Collectors.toList());
     }
-    private List<Tables> findNotThisWaiterTables(User waiter) {
-        return orderRepository.findAllByWaiterNotAndClosedFalse(waiter).stream()
+
+    private List<Tables> findNotThisWaiterTables(List<Order> orders) {
+        return orders.stream().filter(order -> order.getWaiter()!=null)
                 .map(order -> new Tables(order.getTablenumber(),HAS_WAITER))
                 .collect(Collectors.toList());
     }
 
-        @Override
-    public List<Tables> findTableInfoForWaiter(User waiter){
-        //TODO:Try to call DB only one time;
-        List<Tables> tablesForWaiter = callForWaiterService.findAll().stream()
-                .map(callForWaiter -> new Tables(callForWaiter.getTable().getCurrentTable(),CALLING_WAITER))
-                .collect(Collectors.toList());
-        tablesForWaiter.addAll(findTablesByWaiter(waiter));
-        tablesForWaiter.addAll(findNotThisWaiterTables(waiter));
-        tablesForWaiter.addAll(findTablesInDeliveryStatus());
-        tablesForWaiter.addAll(findNullWaiterTables());
+    @Override
+    public List<Tables> findTableInfoForWaiter(){
+        List<Order> orders = orderRepository.findAllByClosedFalse();
+        List<Tables> tablesForWaiter = new ArrayList<>();
+        tablesForWaiter.addAll(findNullWaiterTables(orders));
+        tablesForWaiter.addAll(findTablesInDeliveryStatus(orders));
+        tablesForWaiter.addAll(findNotThisWaiterTables(orders));
+        tablesForWaiter.addAll(callForWaiterService.findAll().stream()
+                .map(callForWaiter -> new Tables(callForWaiter.getTable()
+                        .getCurrentTable(),CALLING_WAITER))
+                .collect(Collectors.toList()));
         return tablesForWaiter;
     }
 }

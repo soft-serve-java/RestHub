@@ -4,6 +4,8 @@ import com.kh013j.model.service.*;
 import com.kh013j.model.service.interfaces.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationTrustResolver;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -48,4 +50,5 @@ public class CaffinoApplicationConfiguration {
     public UserDetailsService userDetailsServiceConfig(){
         return new UserDetailsServiceImpl();
     }
+
 }

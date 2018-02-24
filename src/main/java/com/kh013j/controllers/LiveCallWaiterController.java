@@ -30,8 +30,8 @@ public class LiveCallWaiterController {
     private OrderService orderService;
     @MessageMapping("/waiterCall")
     @SendTo("waiter/tables")
-    public List<Tables> getWaitingTables(@AuthenticationPrincipal User user){
-        return orderService.findTableInfoForWaiter(user);
+    public List<Tables> getWaitingTables(){
+        return orderService.findTableInfoForWaiter();
     }
 
     @GetMapping("/waiter/tab")

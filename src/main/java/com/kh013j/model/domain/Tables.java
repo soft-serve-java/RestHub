@@ -14,8 +14,8 @@ public class Tables {
     int quantityOfTables = 8;
     @NonNull
     int currentTable;
-    TableStatus tableStatus;
-    public Tables(int currentTable, TableStatus tableStatus){
+    String tableStatus;
+    public Tables(int currentTable, String tableStatus){
         this.currentTable = currentTable;
         this.tableStatus = tableStatus;
     }

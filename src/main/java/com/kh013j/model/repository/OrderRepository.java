@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
     Order findFirstByTablenumberAndClosedFalse(int tablenumber);
-    List<Order> findAllByWaiterNullAndClosedFalse();
-    List<Order> findAllByWaiterAndClosedFalse(User waiter);
-    List<Order> findAllByWaiterNotAndClosedFalse(User waiter);
+    List<Order> findAllByClosedFalse();
 }
