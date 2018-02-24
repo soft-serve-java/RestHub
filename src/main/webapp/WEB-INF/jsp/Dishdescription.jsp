@@ -73,7 +73,6 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-
                                 <c:forEach items="${reviews}" var="review">
                                 <div class="card">
                                     <div class="card-header text-uppercase reviews">
@@ -106,10 +105,6 @@
 </div>
 
 <style type="text/css">
-    .reviews {
-        color: #555;
-        font-weight: bold;
-    }
     .card-block{
         margin-top: 5px;
         margin-left: 18px;

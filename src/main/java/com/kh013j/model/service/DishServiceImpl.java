@@ -17,7 +17,7 @@ public class DishServiceImpl implements DishService {
     private DishRepository dishRepository;
 
     @Resource
-    private ReviewRepository commentRepository;
+    private ReviewRepository reviewRepository;
 
     @Override
     @Transactional
@@ -99,7 +99,9 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<Review> getComments(Dish dish) {
-        return commentRepository.findAllByDish(dish);
+    public List<Review> getReviews(Dish dish) {
+        return reviewRepository.findAllByDish(dish);
     }
+
+
 }

@@ -9,7 +9,6 @@ CREATE TABLE rh.image
   REFERENCES rh.dish (id)
 );
 
-
 DROP SEQUENCE IF EXISTS review_sequence CASCADE;
 CREATE SEQUENCE review_sequence;
 CREATE TABLE rh.review
@@ -17,6 +16,7 @@ CREATE TABLE rh.review
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('review_sequence'),
   comment_text VARCHAR(1000),
   date TIMESTAMP,
+  approved BOOLEAN,
   dish_id bigint,
   user_id bigint,
   CONSTRAINT "dish_id" FOREIGN KEY ("dish_id")

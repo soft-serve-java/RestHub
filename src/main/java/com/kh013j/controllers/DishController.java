@@ -1,5 +1,6 @@
-package com.kh013j.controllers.util;
+package com.kh013j.controllers;
 
+import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.Review;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.exception.DishNotFound;
@@ -17,7 +18,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 
 @Controller
 public class DishController {
@@ -32,10 +32,16 @@ public class DishController {
     private ReviewService reviewService;
 
     @GetMapping(value = "/dish/{id}")
-    public String dishdescription(Model model, @PathVariable(value = "id") long id) {
+    public String dishdescription(Principal principal, Model model, @PathVariable(value = "id") long id) {
+        if (principal == null) {
+            model.addAttribute("canComment", false);
+        } else {
+            User user = userService.findByEmail(principal.getName());
+        }
+
         model.addAttribute("dish", dishService.findById(id));
         model.addAttribute("populars", dishService.findPopular(id));
-        model.addAttribute("reviews", dishService.getComments(dishService.findById(id)));
+        model.addAttribute("reviews", dishService.getReviews(dishService.findById(id)));
         return ViewName.DISH_DESCRIPTION;
     }
 

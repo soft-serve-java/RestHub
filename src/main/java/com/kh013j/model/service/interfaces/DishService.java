@@ -35,6 +35,6 @@ public interface DishService {
 
     Dish update(Dish dish) throws DishNotFound;
 
-    List<Review> getComments(Dish dish);
+    List<Review> getReviews(Dish dish);
 
 }

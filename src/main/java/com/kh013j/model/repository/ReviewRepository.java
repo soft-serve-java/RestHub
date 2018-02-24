@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
     List<Review> findAllByDish(Dish dish);
+
+    List<Review> findAllByOrderByIdDesc();
 }
