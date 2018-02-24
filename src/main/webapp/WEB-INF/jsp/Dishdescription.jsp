@@ -50,7 +50,7 @@
                 <div class="d-flex flex-row flex-nowrap">
                     <c:forEach items="${populars}" var="popItem">
                         <div class="card card-block">
-                            <a href="/dish/${popItem.id}"> <img class="card-img-top" src="${popItem.picture}"
+                            <a href="/dish/${popItem.id}"> <img class="card-img-top" src="${popItem.images[0].url}"
                                                                            alt="${popItem.name}"></a>
                             <h5>${popItem.name}</h5>
                             <p class="text-muted">${popItem.price}$</p>
@@ -80,6 +80,13 @@
                                        </div>
                                    </div>
                                </c:if>
+                                <c:if test="${empty reviews}">
+                                    <div class="card">
+                                        <div class="card-header text-uppercase reviews">
+                                            There is no reviews yet
+                                        </div>
+                                    </div>
+                                </c:if>
 
                                 <c:forEach items="${reviews}" var="review">
                                 <div class="card">
