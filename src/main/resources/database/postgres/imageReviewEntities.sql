@@ -24,3 +24,14 @@ CREATE TABLE rh.review
   CONSTRAINT "user_id" FOREIGN KEY ("user_id")
   REFERENCES rh.user (id)
 );
+
+ALTER TABLE rh.dish
+  DROP COLUMN picture;
+
+INSERT INTO rh.image (url, dish_id) VALUES ('/images/Spicy%20buffalo%20Cauliflower.jpg', 1);
+INSERT INTO rh.image (url, dish_id) VALUES ('/images/Shaved%20mushroom%20&%20spinach%20flatbread.jpg', 2);
+INSERT INTO rh.image (url, dish_id) VALUES ('/images/White%20corn%20guacamole.jpg', 3);
+INSERT INTO rh.image (url, dish_id) VALUES ('/images/White%20corn%20guacamole.jpg', 4);
+INSERT INTO rh.image (url, dish_id) VALUES ('/images/Arugula%20salad.jpg', 5);
+INSERT INTO rh.image (url, dish_id) VALUES ('/images/Spinach%20artishoke%20dip.jpg', 6);
+INSERT INTO rh.image (url, dish_id) VALUES ('/images/Shaved%20mushroom%20&%20spinach%20flatbread.jpg', 7);
