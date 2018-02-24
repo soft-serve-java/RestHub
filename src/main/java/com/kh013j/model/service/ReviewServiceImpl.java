@@ -23,13 +23,13 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review tweakApproved(long id, boolean approved) {
+    public void tweakApproved(long id, boolean approved) {
         Review review = reviewRepository.findOne(id);
         if (review.getApproved() == null){
             review.setApproved(approved);
         } else {
             review.setApproved(!review.getApproved());
         }
-        return reviewRepository.save(review);
+        reviewRepository.save(review);
     }
 }

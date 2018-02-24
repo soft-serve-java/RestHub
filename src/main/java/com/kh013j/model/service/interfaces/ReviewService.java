@@ -12,5 +12,5 @@ public interface ReviewService {
 
     List<Review> findAllDesc();
 
-    Review tweakApproved(long id, boolean approved);
+    void tweakApproved(long id, boolean approved);
 }
