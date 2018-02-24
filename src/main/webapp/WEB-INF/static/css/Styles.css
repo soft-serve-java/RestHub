@@ -113,3 +113,8 @@ body {
 .callingTable{
     background-color: palegreen;
 }
+
+.reviews {
+    color: #555;
+    font-weight: bold;
+}
