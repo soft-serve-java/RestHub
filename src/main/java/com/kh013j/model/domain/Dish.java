@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "dish", schema = "rh")
 @Data
+@EqualsAndHashCode(exclude = {"images"})
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -49,4 +50,6 @@ public class Dish {
         this.images = new ArrayList<>(dish.getImages());
         this.availability = dish.isAvailability();
     }
+
+
 }
