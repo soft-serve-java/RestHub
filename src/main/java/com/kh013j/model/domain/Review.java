@@ -22,6 +22,7 @@ public class Review {
     @Size(max = 1000)
     private String commentText;
     private Timestamp date;
+    private boolean approved;
     @ManyToOne
     @JoinColumn(name = "dish_id")
     private Dish dish;
