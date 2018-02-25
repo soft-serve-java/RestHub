@@ -9,9 +9,30 @@
                 Sort by
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/menu/${category}/sort/byPrice">Price</a>
-                <a class="dropdown-item" href="/menu/${category}/sort/ByCalories">Calories</a>
-                <a class="dropdown-item" href="/menu/${category}/sort/ByPreparingtime">Preparing time</a>
+                <c:choose>
+                    <c:when test="${direction == 'ASC'}">
+                        <a class="dropdown-item" href="/menu/${category}/byPrice?direction=DESC">Price <i class="fa fa-sort-amount-desc"></i></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="dropdown-item" href="/menu/${category}/byPrice?direction=ASC">Price <i class="fa fa-sort-amount-asc"></i></a>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${direction == 'ASC'}">
+                        <a class="dropdown-item" href="/menu/${category}/ByCalories?direction=DESC">Calories <i class="fa fa-sort-amount-desc"></i></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="dropdown-item" href="/menu/${category}/ByCalories?direction=ASC">Calories <i class="fa fa-sort-amount-asc"></i></a>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${direction == 'ASC'}">
+                        <a class="dropdown-item" href="/menu/${category}/ByPreparingtime?direction=DESC">Preparing time <i class="fa fa-sort-amount-desc"></i></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="dropdown-item" href="/menu/${category}/ByPreparingtime?direction=ASC">Preparing time <i class="fa fa-sort-amount-asc"></i></a>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
@@ -76,7 +97,7 @@
                         <li class="page-item">
                     </c:otherwise>
                 </c:choose>
-                    <a class="page-link" href="/menu/${category}?page=${page-1}" aria-label="Previous">
+                    <a class="page-link" href="/menu/${category}/${criteria}?page=${page-1}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -90,7 +111,7 @@
                             <li class="page-item">
                         </c:otherwise>
                     </c:choose>
-                        <a class="page-link" href="/menu/${category}?page=${loop.index}">${loop.index}</a>
+                        <a class="page-link" href="/menu/${category}/${criteria}?page=${loop.index}">${loop.index}</a>
                     </li>
                 </c:forEach>
                 <c:choose>
@@ -101,7 +122,7 @@
                         <li class="page-item">
                     </c:otherwise>
                 </c:choose>
-                    <a class="page-link" href="/menu/${category}?page=${page+1}" aria-label="Next">
+                    <a class="page-link" href="/menu/${category}/${criteria}?page=${page+1}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>

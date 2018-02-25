@@ -22,11 +22,11 @@ public interface DishService {
 
     Page<Dish> findAllAvailableDishByCategory(Category category, Integer pageNumber);
 
-    Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber, String sortingDirection);
 
-    Page<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category, Integer pageNumber);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category, Integer pageNumber, String sortingDirection);
 
-    Page<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category, Integer pageNumber);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category, Integer pageNumber, String sortingDirection);
 
     List<Dish>  findByAvailableAndNameContaining(String name);
 

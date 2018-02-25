@@ -40,23 +40,23 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber) {
+    public Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber, String sortingDirection) {
         PageRequest request =
-                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "price");
+                new PageRequest(pageNumber - 1, PAGE_SIZE, getSortingDirection(sortingDirection), "price");
         return dishRepository.findAllByCategoryAndAvailabilityTrue(category, request);
     }
 
     @Override
-    public Page<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category, Integer pageNumber) {
+    public Page<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category, Integer pageNumber, String sortingDirection) {
         PageRequest request =
-                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "preparingtime");
+                new PageRequest(pageNumber - 1, PAGE_SIZE, getSortingDirection(sortingDirection), "preparingtime");
         return dishRepository.findAllByCategoryAndAvailabilityTrue(category, request);
     }
 
     @Override
-    public Page<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category, Integer pageNumber) {
+    public Page<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category, Integer pageNumber, String sortingDirection) {
         PageRequest request =
-                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "calories");
+                new PageRequest(pageNumber - 1, PAGE_SIZE, getSortingDirection(sortingDirection), "calories");
         return dishRepository.findAllByCategoryAndAvailabilityTrue(category, request);
     }
 
@@ -117,5 +117,13 @@ public class DishServiceImpl implements DishService {
     @Override
     public List<Review> getReviews(Dish dish) {
         return reviewRepository.findAllByDishAndApprovedTrue(dish);
+    }
+
+    private Sort.Direction getSortingDirection(String direction){
+        if (direction.equalsIgnoreCase("DESC")){
+            return Sort.Direction.DESC;
+        } else {
+            return Sort.Direction.ASC;
+        }
     }
 }

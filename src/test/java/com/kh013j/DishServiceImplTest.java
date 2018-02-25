@@ -147,7 +147,7 @@ public class DishServiceImplTest {
     @Test
     public void findAllDishByCategoryOrderByPrice() {
         for (Category category : categories) {
-            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category,1).getContent();
+            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category,1, "DESC").getContent();
 
             Dish minPriceDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPrice)).get();
             assertEquals(categoryDishes.get(0), minPriceDish);
@@ -160,7 +160,7 @@ public class DishServiceImplTest {
     @Test
     public void findAllDishByCategoryOrderByPreparingtime() {
         for (Category category : categories) {
-            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category, 1).getContent();
+            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category, 1, "DESC").getContent();
 
             Dish minPreparingTimeDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPreparingtime)).get();
             assertEquals(categoryDishes.get(0), minPreparingTimeDish);
@@ -173,7 +173,7 @@ public class DishServiceImplTest {
     @Test
     public void findAllDishByCategoryOrderByCalories() {
         for (Category category : categories) {
-            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByCalories(category,1).getContent();
+            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByCalories(category,1, "DESC").getContent();
 
             Dish minCaloriesDish = categoryDishes.stream().min(Comparator.comparing(Dish::getCalories)).get();
             assertEquals(categoryDishes.get(0), minCaloriesDish);
