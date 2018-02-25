@@ -27,8 +27,8 @@ public class CategoryController {
         return categoryService.findAll();
     }
 
-    @GetMapping(value = "/menu/search")
-    public ModelAndView search(@RequestParam String searchField) {
+    @GetMapping(value = "/menu")
+    public ModelAndView search(@RequestParam("search") String searchField) {
         return new ModelAndView(ViewName.MENU, "menuItems", dishService.findByAvailableAndNameContaining(searchField));
     }
 
