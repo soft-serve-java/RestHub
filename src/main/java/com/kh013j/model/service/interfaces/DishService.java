@@ -4,6 +4,7 @@ import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Review;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.exception.DishNotFound;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -19,13 +20,13 @@ public interface DishService {
     //Dish update(Dish dish) throws DishNotFound;
     Dish findById(long id);
 
-    List<Dish> findAllAvailableDishByCategory(Category category);
+    Page<Dish> findAllAvailableDishByCategory(Category category, Integer pageNumber);
 
-    List<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber);
 
-    List<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category, Integer pageNumber);
 
-    List<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category, Integer pageNumber);
 
     List<Dish>  findByAvailableAndNameContaining(String name);
 

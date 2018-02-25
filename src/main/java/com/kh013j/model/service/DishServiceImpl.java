@@ -7,6 +7,9 @@ import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.ReviewRepository;
 import com.kh013j.model.repository.DishRepository;
 import com.kh013j.model.service.interfaces.DishService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -18,6 +21,8 @@ public class DishServiceImpl implements DishService {
 
     @Resource
     private ReviewRepository reviewRepository;
+
+    private static final int PAGE_SIZE = 10;
 
     @Override
     @Transactional
@@ -32,24 +37,32 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category) {
-        return dishRepository.findByCategoryAndAvailabilityTrueOrderByPrice(category);
+    public Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber) {
+        PageRequest request =
+                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "price");
+        return dishRepository.findAllByCategoryAndAvailabilityTrue(category, request);
     }
 
     @Override
-    public List<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category) {
-        return dishRepository.findByCategoryAndAvailabilityTrueOrderByPreparingtime(category);
+    public Page<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category, Integer pageNumber) {
+        PageRequest request =
+                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "preparingtime");
+        return dishRepository.findAllByCategoryAndAvailabilityTrue(category, request);
     }
 
     @Override
-    public List<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category) {
-        return dishRepository.findByCategoryAndAvailabilityTrueOrderByCalories(category);
+    public Page<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category, Integer pageNumber) {
+        PageRequest request =
+                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "calories");
+        return dishRepository.findAllByCategoryAndAvailabilityTrue(category, request);
     }
 
     @Override
     @Transactional(rollbackFor = DishNotFound.class)
-    public List<Dish> findAllAvailableDishByCategory(Category category) {
-        return dishRepository.findAllByCategoryAndAvailabilityTrue(category);
+    public Page<Dish> findAllAvailableDishByCategory(Category category, Integer pageNumber) {
+        PageRequest request =
+                new PageRequest(pageNumber - 1, PAGE_SIZE);
+        return dishRepository.findAllByCategoryAndAvailabilityTrue(category, request);
     }
 
     @Override
