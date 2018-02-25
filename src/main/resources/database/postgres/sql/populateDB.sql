@@ -1,4 +1,3 @@
-
 INSERT INTO rh.role (name) VALUES ('administrator');
 INSERT INTO rh.role (name) VALUES ('cook');
 INSERT INTO rh.role (name) VALUES ('waiter');
@@ -16,7 +15,7 @@ INSERT INTO rh.status (name) VALUES ('cooking');
 INSERT INTO rh.status (name) VALUES ('delivery');
 
 
-INSERT INTO rh.user(email, psword, name, confirmationtoken, enabled, role_id) VALUES ('admin@i.ua', '$2a$10$tkXKWLaylsMChogk6Ros.OXHjp5BDVpNlkuVFyrTJNjxjNtpu/6Gu',
+/*INSERT INTO rh.user(email, psword, name, confirmationtoken, enabled, role_id) VALUES ('admin@i.ua', '$2a$10$tkXKWLaylsMChogk6Ros.OXHjp5BDVpNlkuVFyrTJNjxjNtpu/6Gu',
 'admin', '123456', TRUE,  1);
 INSERT INTO rh.user(email, psword, name, confirmationtoken, enabled, role_id) VALUES ('cook@i.ua', '$2a$10$OU/O/OYT7iOrwBNCs9ZRFOIS4qQs6Y34.z4kR3ddqql2uXNh2D8.u',
  'cook', '123456', TRUE, 2);
@@ -24,7 +23,7 @@ INSERT INTO rh.user(email, psword, name, confirmationtoken, enabled, role_id) VA
 'waiter', '123456', TRUE, 3);
 INSERT INTO rh.user(email, psword, name, confirmationtoken, enabled, role_id) VALUES ('user@i.ua', '$2a$10$SpDt2DfR05gV97lmQ881l.FpwpAD6167RsJw8GNqVUynZojhPwQNq',
 'user', '123456', TRUE, 4);
-
+*/
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, availability
 , picture, category_id) VALUES ('Spicy buffalo Cauliflower', 'Fresh cauliflower florets buttermilk-battered and fried to a golden brown, then tossed in housemade Sriracha buffalo sauce and topped with a salad of celery, Gorgonzola and cilantro.'

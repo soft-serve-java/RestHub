@@ -37,7 +37,7 @@ public class RegisterController {
     @PostMapping(value = "/registration")
     public String userSaveNew(@Valid @ModelAttribute("registration") User user, BCryptPasswordEncoder bCryptPasswordEncoder){
         user.setPsword(bCryptPasswordEncoder.encode(user.getPsword()));
-        user.setRole(roleService.findByName("user"));
+        user.getRoles().add(roleService.findByName("user")); // changes because of a few user's roles
         userService.create(user);
         return "redirect:/welcome";
     }
