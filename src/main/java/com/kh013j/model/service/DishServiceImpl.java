@@ -32,17 +32,17 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List findAllAvailableDishByCategoryOrderByPrice(Category category) {
+    public List<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category) {
         return dishRepository.findByCategoryAndAvailabilityOrderByPrice(category, true);
     }
 
     @Override
-    public List findAllAvailableDishByCategoryOrderByPreparingtime(Category category) {
+    public List<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category) {
         return dishRepository.findByCategoryAndAvailabilityOrderByPreparingtime(category,true);
     }
 
     @Override
-    public List findAllAvailableDishByCategoryOrderByCalories(Category category) {
+    public List<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category) {
         return dishRepository.findByCategoryAndAvailabilityOrderByCalories(category, true);
     }
 
@@ -72,7 +72,7 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List findAllAvailable() {
+    public List<Dish>  findAllAvailable() {
         return dishRepository.findAllByAvailability(true);
     }
 

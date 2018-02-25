@@ -12,24 +12,24 @@ public interface DishService {
 
     Dish delete(long id);
 
-    List findAll();
+    List<Dish>  findAll();
 
-    List findAllAvailable();
+    List<Dish>  findAllAvailable();
 
     //Dish update(Dish dish) throws DishNotFound;
     Dish findById(long id);
 
-    List findAllAvailableDishByCategory(Category category);
+    List<Dish> findAllAvailableDishByCategory(Category category);
 
-    List findAllAvailableDishByCategoryOrderByPrice(Category category);
+    List<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category);
 
-    List findAllAvailableDishByCategoryOrderByPreparingtime(Category category);
+    List<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category);
 
-    List findAllAvailableDishByCategoryOrderByCalories(Category category);
+    List<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category);
 
-    List findByAvailableAndNameContaining(String name);
+    List<Dish>  findByAvailableAndNameContaining(String name);
 
-    List findPopular(long id);
+    List<Dish>  findPopular(long id);
 
     Dish tweakAvailability(long id);
 
