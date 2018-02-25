@@ -22,7 +22,10 @@ public class DishServiceImpl implements DishService {
     @Resource
     private ReviewRepository reviewRepository;
 
-    private static final int PAGE_SIZE = 10;
+    /**
+     * Number of dishes in one page
+     */
+    private static final int PAGE_SIZE = 4;
 
     @Override
     @Transactional
