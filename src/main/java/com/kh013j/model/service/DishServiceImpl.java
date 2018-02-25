@@ -116,6 +116,6 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List<Review> getReviews(Dish dish) {
-        return reviewRepository.findAllByDishAndApproved(dish, true);
+        return reviewRepository.findAllByDishAndApprovedTrue(dish);
     }
 }
