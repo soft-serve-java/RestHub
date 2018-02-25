@@ -7,9 +7,8 @@ import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.support.PagedListHolder;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,20 +36,14 @@ public class CategoryController {
     public ModelAndView showCategory(@PathVariable(value = "category") String category,
                                      @RequestParam(value = "page", required = false) Integer pageNumber) {
         ModelAndView modelAndView = new ModelAndView(ViewName.MENU);
-        PagedListHolder<Dish> pagedListHolder = new PagedListHolder<>(
-                                            dishService.findAllAvailableDishByCategory(
-                                            categoryService.findCategoryByName(category)));
-        pagedListHolder.setPageSize(1);
-        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
-
-        if(pageNumber == null || pageNumber < 1 || pageNumber > pagedListHolder.getPageCount()) {
+        if(pageNumber == null || pageNumber < 1) {
             pageNumber = 1;
-            pagedListHolder.setPage(0);
-            modelAndView.addObject("menuItems", pagedListHolder.getPageList());
-        } else if(pageNumber <= pagedListHolder.getPageCount()) {
-            pagedListHolder.setPage(pageNumber-1);
-            modelAndView.addObject("menuItems", pagedListHolder.getPageList());
         }
+
+        Page<Dish> dishPage = dishService.findAllAvailableDishByCategory(categoryService.findCategoryByName(category), pageNumber);
+
+        modelAndView.addObject("maxPages", dishPage.getTotalPages());
+        modelAndView.addObject("menuItems", dishPage.getContent());
         modelAndView.addObject("page", pageNumber);
         modelAndView.addObject("category", category);
 
@@ -59,20 +52,37 @@ public class CategoryController {
 
     @GetMapping(value = "/menu/{category}/sort/{criteria}")
     public ModelAndView layoutgridSortBy(@PathVariable(value = "criteria") String criteria,
-                                         @PathVariable(value = "category") String category) {
+                                         @PathVariable(value = "category") String categoryName,
+                                         @RequestParam(value = "page", required = false) Integer pageNumber) {
+        ModelAndView modelAndView = new ModelAndView(ViewName.MENU);
+
+        if(pageNumber == null || pageNumber < 1) {
+            pageNumber = 1;
+        }
+
+        Category category = categoryService.findCategoryByName(categoryName);
+
+        Page<Dish> dishPage;
+
         switch (criteria) {
             case "byPrice":
-                return new ModelAndView(ViewName.MENU, "menuItems",
-                        dishService.findAllAvailableDishByCategoryOrderByPrice(categoryService.findCategoryByName(category)));
+                dishPage = dishService.findAllAvailableDishByCategoryOrderByPrice(category, pageNumber);
+                break;
             case "ByPreparingtime":
-                return new ModelAndView(ViewName.MENU, "menuItems",
-                        dishService.findAllAvailableDishByCategoryOrderByPreparingtime(categoryService.findCategoryByName(category)));
+                dishPage = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category, pageNumber);
+                break;
             case "ByCalories":
-                return new ModelAndView(ViewName.MENU, "menuItems",
-                        dishService.findAllAvailableDishByCategoryOrderByCalories(categoryService.findCategoryByName(category)));
-
+               dishPage = dishService.findAllAvailableDishByCategoryOrderByCalories(category, pageNumber);
+               break;
+            default:
+                dishPage = dishService.findAllAvailableDishByCategory(category, pageNumber);
         }
-        return new ModelAndView(ViewName.MENU, "menuItems",
-                dishService.findAllAvailable());
+
+        modelAndView.addObject("maxPages", dishPage.getTotalPages());
+        modelAndView.addObject("menuItems", dishPage.getContent());
+        modelAndView.addObject("page", pageNumber);
+        modelAndView.addObject("category", category.getName());
+
+        return modelAndView;
     }
 }
