@@ -1,18 +1,19 @@
 <%@ include file="header.jsp" %>
 <script type="text/javascript">
-    $('.callingTable').fadeTo(100, 0.3, function() { $(this).fadeTo(500, 1.0); });
     var app = angular.module('liveCall', ['ngStomp']);
     app.controller('LiveController', function ($stomp, $scope) {
         $scope.myres = [];
         $scope.tables = [];
         $scope.isCalling = function(table){
+            var i = false;
             angular.forEach( $scope.tables, function (value) {
-                console.log(value);
                 if (value.currentTable==table&&value.tableStatus=='CALLING_WAITER'){
-                    return true;
+                    console.log("true");
+                    i =  true;
                 }
             });
-            return false;
+            console.log(i);
+            return i;
         };
         $stomp.connect('/call', {})
             .then(function (frame) {
@@ -22,24 +23,23 @@
                         $scope.$apply($scope.myres);
                         $scope.tables = [];
                         angular.forEach( $scope.myres, function(value, key) {
-                                $scope.tables.push(value);
-                            console.log(value);
+                            $scope.tables.push(value);
                         });
                     });
                 $stomp.send('app/waiterCall', '');
             });
     });
     function doPOSTonCloseCalling(table, $scope) {
-            console.log("POST");
-            $.ajax({
-                url: '/acceptCalling',
-                type: 'POST',
-                data: {"table": table},
-                success: function () {
-                },
-                error: function () {
-                }
-            });
+        console.log("POST");
+        $.ajax({
+            url: '/acceptCalling',
+            type: 'POST',
+            data: {"table": table},
+            success: function () {
+            },
+            error: function () {
+            }
+        });
     }
 </script>
 <div class="container" >
@@ -53,12 +53,9 @@
             <c:forEach begin="1" end="${tables.quantityOfTables}" varStatus="loop">
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="card" style="width: 18rem;">
-                        <div onclick="doPOSTonCloseCalling(${loop.index})
-                                "ng-class="{'callingTable':isCalling(${loop.index})}">
+                        <div onclick="doPOSTonCloseCalling(${loop.index})" ng-class="{'callingTable':isCalling(${loop.index})}">
                         <div class="card-body">
-                            <div class="animated pulse">
                             <h1 class="card-title">${loop.index}</h1>
-                            </div>
                         </div>
                         </div>
                     </div>
