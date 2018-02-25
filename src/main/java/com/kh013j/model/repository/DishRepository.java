@@ -2,6 +2,8 @@ package com.kh013j.model.repository;
 
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,13 +12,7 @@ import java.util.List;
 
 @Repository
 public interface DishRepository extends JpaRepository<Dish, Long> {
-    List<Dish> findAllByCategoryAndAvailabilityTrue(Category category);
-
-    List<Dish> findByCategoryAndAvailabilityTrueOrderByPrice(Category category);
-
-    List<Dish> findByCategoryAndAvailabilityTrueOrderByCalories(Category category);
-
-    List<Dish> findByCategoryAndAvailabilityTrueOrderByPreparingtime(Category category);
+    Page<Dish> findAllByCategoryAndAvailabilityTrue(Category category, Pageable pageable);
 
     List<Dish> findByNameContainingIgnoreCaseAndAvailabilityTrue(String name);
 
