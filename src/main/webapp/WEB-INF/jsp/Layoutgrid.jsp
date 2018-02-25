@@ -65,20 +65,43 @@
             </div>
         </c:forEach>
     </div>
-    <div style="width: 200px; margin:0 auto; padding-top: 15px;">
-        <nav aria-label="Page navigation example">
+    <div class="menuPagination">
+        <nav aria-label="RestHub menu pagination">
             <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                <c:choose>
+                    <c:when test="${page == 1}">
+                        <li class="page-item disabled">
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                    </c:otherwise>
+                </c:choose>
+                    <a class="page-link" href="/menu/${category}?page=${page-1}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
                 <c:forEach begin="1" end="${maxPages}" varStatus="loop">
-                    <li class="page-item"><a class="page-link" href="/menu/${category}?page=${loop.index}">${loop.index}</a></li>
+                    <c:choose>
+                        <c:when test="${page == loop.index}">
+                            <li class="page-item active">
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                        </c:otherwise>
+                    </c:choose>
+                        <a class="page-link" href="/menu/${category}?page=${loop.index}">${loop.index}</a>
+                    </li>
                 </c:forEach>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                <c:choose>
+                    <c:when test="${page == maxPages}">
+                        <li class="page-item disabled">
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                    </c:otherwise>
+                </c:choose>
+                    <a class="page-link" href="/menu/${category}?page=${page+1}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>

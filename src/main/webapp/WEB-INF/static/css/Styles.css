@@ -118,3 +118,9 @@ body {
     color: #555;
     font-weight: bold;
 }
+
+.menuPagination{
+    width: min-content;
+    margin:0 auto;
+    padding-top: 15px;
+}
