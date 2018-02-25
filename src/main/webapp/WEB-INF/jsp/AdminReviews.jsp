@@ -19,8 +19,8 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/admin/reviews">All</a>
                 <a class="dropdown-item" href="/admin/reviews?show=new">New</a>
-                <a class="dropdown-item" href="/admin/reviews?show=approved">Approved</a>
-                <a class="dropdown-item" href="/admin/reviews?show=rejected">Rejected</a>
+                <a class="dropdown-item" href="/admin/reviews?show=approved">Approved <i class="fa fa-thumbs-up"></i></a>
+                <a class="dropdown-item" href="/admin/reviews?show=rejected">Rejected <i class="fa fa-thumbs-down"></i></a>
             </div>
         </div>
     </div>
@@ -38,20 +38,20 @@
                 <c:choose>
                     <c:when test="${review.approved}">
                      <div class="card-footer text-right bg-success">
-                        <a class="btn btn-success disabled" href="/">Approve</a>
-                        <a class="btn btn-danger" href="/admin/reviews/${review.id}/tweak?approved=false">Reject</a>
+                        <a class="btn btn-success disabled" href="/">Approve <i class="fa fa-thumbs-up"></i></a>
+                        <a class="btn btn-danger" href="/admin/reviews/${review.id}/tweak?approved=false">Reject <i class="fa fa-thumbs-down"></i></a>
                      </div>
                     </c:when>
                     <c:when test="${review.approved == null}">
                         <div class="card-footer text-right">
-                            <a class="btn btn-success" href="/admin/reviews/${review.id}/tweak?approved=true">Approve</a>
-                            <a class="btn btn-danger" href="/admin/reviews/${review.id}/tweak?approved=false">Reject</a>
+                            <a class="btn btn-success" href="/admin/reviews/${review.id}/tweak?approved=true">Approve <i class="fa fa-thumbs-up"></i></a>
+                            <a class="btn btn-danger" href="/admin/reviews/${review.id}/tweak?approved=false">Reject <i class="fa fa-thumbs-down"></i></a>
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div class="card-footer text-right bg-danger">
-                            <a class="btn btn-success" href="/admin/reviews/${review.id}/tweak?approved=true">Approve</a>
-                            <a class="btn btn-danger disabled" href="/">Reject</a>
+                            <a class="btn btn-success" href="/admin/reviews/${review.id}/tweak?approved=true">Approve <i class="fa fa-thumbs-up"></i></a>
+                            <a class="btn btn-danger disabled" href="/">Reject <i class="fa fa-thumbs-down"></i></a>
                         </div>
                     </c:otherwise>
                 </c:choose>
