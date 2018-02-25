@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 public class DishServiceImplTest {
     @Autowired
     private DishService dishService;

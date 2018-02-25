@@ -22,7 +22,7 @@
 
             <p>
                 <label>Enter password</label>
-                <form:input path="password" type="password" class="form-control" placeholder="password"/>
+                <form:input path="psword" type="password" class="form-control" placeholder="password"/>
             </p>
 
 
