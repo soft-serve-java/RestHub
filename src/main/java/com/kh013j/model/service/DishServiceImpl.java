@@ -33,28 +33,28 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category) {
-        return dishRepository.findByCategoryAndAvailabilityOrderByPrice(category, true);
+        return dishRepository.findByCategoryAndAvailabilityTrueOrderByPrice(category);
     }
 
     @Override
     public List<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category) {
-        return dishRepository.findByCategoryAndAvailabilityOrderByPreparingtime(category,true);
+        return dishRepository.findByCategoryAndAvailabilityTrueOrderByPreparingtime(category);
     }
 
     @Override
     public List<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category) {
-        return dishRepository.findByCategoryAndAvailabilityOrderByCalories(category, true);
+        return dishRepository.findByCategoryAndAvailabilityTrueOrderByCalories(category);
     }
 
     @Override
     @Transactional(rollbackFor = DishNotFound.class)
     public List<Dish> findAllAvailableDishByCategory(Category category) {
-        return dishRepository.findAllByCategoryAndAvailability(category, true);
+        return dishRepository.findAllByCategoryAndAvailabilityTrue(category);
     }
 
     @Override
     public List<Dish> findByAvailableAndNameContaining(String name) {
-        return dishRepository.findByNameContainingIgnoreCaseAndAvailability(name, true);
+        return dishRepository.findByNameContainingIgnoreCaseAndAvailabilityTrue(name);
     }
 
     @Override

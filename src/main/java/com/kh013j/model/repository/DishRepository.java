@@ -10,15 +10,15 @@ import java.util.List;
 
 @Repository
 public interface DishRepository extends JpaRepository<Dish, Long> {
-    List<Dish> findAllByCategoryAndAvailability(Category category, Boolean availability);
+    List<Dish> findAllByCategoryAndAvailabilityTrue(Category category);
 
-    List<Dish> findByCategoryAndAvailabilityOrderByPrice(Category category, Boolean availability);
+    List<Dish> findByCategoryAndAvailabilityTrueOrderByPrice(Category category);
 
-    List<Dish> findByCategoryAndAvailabilityOrderByCalories(Category category, Boolean availability);
+    List<Dish> findByCategoryAndAvailabilityTrueOrderByCalories(Category category);
 
-    List<Dish> findByCategoryAndAvailabilityOrderByPreparingtime(Category category, Boolean availability);
+    List<Dish> findByCategoryAndAvailabilityTrueOrderByPreparingtime(Category category);
 
-    List<Dish> findByNameContainingIgnoreCaseAndAvailability(String name, Boolean availability);
+    List<Dish> findByNameContainingIgnoreCaseAndAvailabilityTrue(String name);
 
     List<Dish> findAllByAvailability(Boolean availability);
 
