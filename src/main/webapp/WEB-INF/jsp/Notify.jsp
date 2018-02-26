@@ -13,11 +13,14 @@
                               isNotOfCurrentWaiter:isNotOfCurrentWaiter(${loop.index}, ${pageContext.request.userPrincipal.name})-->
                         <div onclick="doPOSTonCloseCalling(${loop.index})"
                              ng-class="{callingTable:isCalling(${loop.index}),
-                             isOfCurrentWaiter:getCurrentWaiter(${loop.index})=='${pageContext.request.userPrincipal.name}'}">
-                        <div class="card-body">
+                             isOfCurrentWaiter:getCurrentWaiter(${loop.index})=='${pageContext.request.userPrincipal.name}',
+                            isOfOtherWaiter:'isOfOtherWaiter(${loop.index}, ${pageContext.request.userPrincipal.name})'}">
+
+                            <div class="card-body">
                             <h1 class="card-title">${loop.index}</h1>
                         </div>
                         </div>
+                        <div ng-if="hasNullWaiter(${loop.index})">Has Null Waiter</div>
                         <img ng-if="isOnDelivery(${loop.index})" class="imageforDelivery" src="/images/delivery.jpg"/>
                     </div>
                 </div>
@@ -36,8 +39,10 @@
     .isOnDelivery{
 
     }
-    .isNotOfCurrentWaiter{
-
+    .isOfOtherWaiter{
+        pointer-events: none;
+        opacity: 0.4;
+        background: gainsboro;
     }
     .imageforDelivery{
         margin-top: -25%;

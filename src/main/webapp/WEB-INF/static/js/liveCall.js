@@ -34,6 +34,18 @@ app.controller('LiveController', function ($stomp, $scope) {
         console.log(i);
         return true;
     };
+    $scope.isOfOtherWaiter = function(table, waiter){
+        var i = false;
+        angular.forEach( $scope.tables, function (value) {
+            console.log(value.currentWaiter.email)
+            if (value.currentTable==table&&value.tableStatus=='HAS_WAITER'&&waiter==value.currentWaiter.email){
+                i =  true;
+                console.log(value.currentWaiter.email)
+            }
+        });
+        console.log(i);
+        return true;
+    };
     $scope.hasNullWaiter = function(table){
         var i = false;
         angular.forEach( $scope.tables, function (value) {
