@@ -18,7 +18,7 @@
     <changeSet id="renameRoleSequence" author="emaxi">
         <sql>ALTER SEQUENCE role_sequance RENAME TO role_sequence</sql>
     </changeSet>
-    <changeSet id="emaxi" author="restartRoleSequence">
+    <changeSet id="restartRoleSequence" author="emaxi">
         <sql>ALTER SEQUENCE role_sequence RESTART WITH 1</sql>
     </changeSet>
 

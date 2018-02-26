@@ -9,11 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-
-/*public enum Status {
-  WAITING, COOKING, READY
-}
-*/
 @Entity
 @Table(name = "status", schema = "rh")
 @Data
@@ -25,7 +20,7 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Min(3) @Max(50)
+  //  @Min(3) @Max(50)
     private String name;
     @Transient
     public static final String PREPARING = "preparing";
