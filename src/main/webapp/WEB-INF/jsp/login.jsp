@@ -1,4 +1,7 @@
 <%@ include file="header.jsp" %>
+<div class="container">
+	<div class="row">
+	<div class="col-md-2">
 <div id="login-box">
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -30,6 +33,16 @@
 			</div>
 		</form>
 	</div>
+</div>
+</div>
+	<div class="col-md-6">
+		<div class="imgWithContent">
+
+		</div>
+
+	</div>
+	</div>
+</div>
     <style>
         .error {
             padding: 15px;
@@ -50,15 +63,8 @@
             background-color: #d9edf7;
             border-color: #bce8f1;
         }
-
-        #login-box {
-            width: 300px;
-            padding: 20px;
-            margin: 100px auto;
-            background: #fff;
-            -webkit-border-radius: 2px;
-            -moz-border-radius: 2px;
-            border: 1px solid #000;
-        }
+		.imgWithContent{
+			background-color: #31708f;
+		}
     </style>
 <%@ include file="footer.jsp" %>

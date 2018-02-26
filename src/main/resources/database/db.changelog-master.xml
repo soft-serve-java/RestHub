@@ -36,15 +36,10 @@
                         schemaName="rh"
                         tableName="dish"/>
     </changeSet>
-  <!--  <changeSet author="orasso" id="addWaiterForOrder">
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="oder"
-                                 constraintName="fk_order_user"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
-                                 referencedColumnNames="id"
-                                 referencedTableName="user"/>
-    </changeSet>-->
+   <changeSet author="orasso" id="addWaiterForOrder">
+       <!--	ALTER TABLE rh."order"
+			ADD CONSTRAINT waiter
+			FOREIGN KEY (waiter) REFERENCES rh."user" (id)
+-->
+    </changeSet>
 </databaseChangeLog>

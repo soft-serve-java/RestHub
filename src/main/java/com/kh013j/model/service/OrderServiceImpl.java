@@ -91,7 +91,7 @@ public class OrderServiceImpl implements OrderService {
 
     private List<Tables> findNotThisWaiterTables(List<Order> orders) {
         return orders.stream().filter(order -> order.getWaiter()!=null)
-                .map(order -> new Tables(order.getTablenumber(),HAS_WAITER))
+                .map(order -> new Tables(order.getTablenumber(),HAS_WAITER, order.getWaiter()))
                 .collect(Collectors.toList());
     }
 

@@ -15,8 +15,15 @@ public class Tables {
     @NonNull
     int currentTable;
     String tableStatus;
+    User currentWaiter;
     public Tables(int currentTable, String tableStatus){
         this.currentTable = currentTable;
         this.tableStatus = tableStatus;
+    }
+
+    public Tables(int currentTable, String tableStatus, User currentWaiter){
+        this.currentTable = currentTable;
+        this.tableStatus = tableStatus;
+        this.currentWaiter = currentWaiter;
     }
 }
