@@ -11,11 +11,14 @@
                               isOfCurrentWaiter:isOfCurrentWaiter(${loop.index},${pageContext.request.userPrincipal.name}),
                               hasNullWaiter:hasNullWaiter(${loop.index}),
                               isNotOfCurrentWaiter:isNotOfCurrentWaiter(${loop.index}, ${pageContext.request.userPrincipal.name})-->
-                        <div onclick="doPOSTonCloseCalling(${loop.index})"
-                             ng-class="{callingTable:isCalling(${loop.index}),
-                             isOfCurrentWaiter:getCurrentWaiter(${loop.index})=='${pageContext.request.userPrincipal.name}',
-                            isOfOtherWaiter:'isOfOtherWaiter(${loop.index}, ${pageContext.request.userPrincipal.name})'}">
 
+                        <div onclick="doPOSTonCloseCalling(${loop.index})"
+                             ng-class="{hasNullWaiter:hasNullWaiter(${loop.index}),
+                             isOfCurrentWaiter:getCurrentWaiter(${loop.index})=='${pageContext.request.userPrincipal.name}',
+                            isOfOtherWaiter:isOfOtherWaiter(${loop.index}+'${pageContext.request.userPrincipal.name}')}">
+                            <div ng-if="isCalling(${loop.index})">
+                                <i class="fa fa-bell fa-3x" aria-hidden="true"></i>
+                            </div>
                             <div class="card-body">
                             <h1 class="card-title">${loop.index}</h1>
                         </div>
@@ -34,7 +37,7 @@
         background-color: sandybrown;
     }
     .hasNullWaiter{
-
+        background-color: palegreen;
     }
     .isOnDelivery{
 

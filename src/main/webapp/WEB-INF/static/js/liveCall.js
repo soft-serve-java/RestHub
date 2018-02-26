@@ -18,7 +18,6 @@ app.controller('LiveController', function ($stomp, $scope) {
         var i = false;
         angular.forEach( $scope.tables, function (value) {
             if (value.currentTable==table&&value.tableStatus=='CALLING_WAITER'){
-                console.log(value);
                 i =  true;
             }
         });
@@ -28,30 +27,29 @@ app.controller('LiveController', function ($stomp, $scope) {
         var i = "no";
         angular.forEach( $scope.tables, function (value) {
             if (value.currentTable==table&&value.tableStatus=='HAS_WAITER'){
-                i =  value.currentWaiter;
+                i = value.currentWaiter.email;
             }
         });
-        console.log(i);
-        return true;
+        return i;
     };
-    $scope.isOfOtherWaiter = function(table, waiter){
+    $scope.isOfOtherWaiter = function(tableWaiter){
         var i = false;
+        var table = Number(tableWaiter.substring(0,1));
         angular.forEach( $scope.tables, function (value) {
-            console.log(value.currentWaiter.email)
-            if (value.currentTable==table&&value.tableStatus=='HAS_WAITER'&&waiter==value.currentWaiter.email){
-                i =  true;
-                console.log(value.currentWaiter.email)
+            var test = "";
+            if (table==value.currentTable&&value.tableStatus=='HAS_WAITER'){
+                var test =  table+value.currentWaiter.email;
+                if(test!=tableWaiter) {
+                    i = true;
+                }
             }
         });
-        console.log(i);
-        return true;
+        return i;
     };
     $scope.hasNullWaiter = function(table){
         var i = false;
         angular.forEach( $scope.tables, function (value) {
-            console.log($scope.currentUser);
             if (value.currentTable==table&&value.tableStatus=='HAS_NULL_WAITER'){
-                console.log("HasNullWaiter");
                 i =  true;
             }
         });
@@ -60,13 +58,10 @@ app.controller('LiveController', function ($stomp, $scope) {
     $scope.isOnDelivery = function(table){
         var i = false;
         angular.forEach( $scope.tables, function (value) {
-            console.log($scope.currentUser);
             if (value.currentTable==table&&value.tableStatus=='IS_ON_DELIVERY'){
-                console.log("onDelivery");
                 i =  true;
             }
         });
-        console.log(i);
         return i;
     };
     $stomp.connect('/call', {})
