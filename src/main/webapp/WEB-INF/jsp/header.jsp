@@ -78,8 +78,8 @@
 
             </li>
         </ul>
-        <form action="/menu/search" method="get" class="form-inline">
-            <input class="form-control mr-sm-2" name="searchField" type="text" placeholder="Search dish"/>
+        <form action="/menu" method="get" class="form-inline">
+            <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search dish"/>
             <button type="submit" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
                 <i class="fa fa-search"></i>
             </button>
