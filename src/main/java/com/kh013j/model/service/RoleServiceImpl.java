@@ -22,7 +22,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List findAll() {
+    public List<Role> findAll() {
         return roleRepository.findAll();
     }
 

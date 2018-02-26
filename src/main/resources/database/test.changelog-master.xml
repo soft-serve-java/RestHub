@@ -12,5 +12,5 @@
     <changeSet id="2" author="miu" runAlways="true">
         <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/populateTest.sql"/>
-    </changeSet> 
+    </changeSet>
 </databaseChangeLog>

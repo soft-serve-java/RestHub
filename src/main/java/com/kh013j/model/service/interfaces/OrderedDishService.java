@@ -18,7 +18,7 @@ public interface OrderedDishService {
 
     OrderedDish delete(long id) throws DishNotFound;
 
-    List findAll();
+    List<OrderedDish> findAll();
 
     OrderedDish update(OrderedDish dish) throws DishNotFound;
 

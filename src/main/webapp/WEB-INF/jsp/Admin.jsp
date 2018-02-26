@@ -49,13 +49,13 @@
                     <a class="nav-link" href="/admin/category/all">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/order/all">Order</a>
+                    <a class="nav-link" href="/admin/order">Order</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/role/all">Role</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/status/all">Status</a>
+                    <a class="nav-link" href="/admin/reviews">Reviews</a>
                 </li>
             </ul>
             <form action="#" class="form-inline">
