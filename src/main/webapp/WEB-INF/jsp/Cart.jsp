@@ -1,14 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: arthurvartanyan
-  Date: 1/29/18
-  Time: 17:46
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ include file="header.jsp" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -146,4 +138,3 @@
     </div>
 </div>
 <%@ include file="ModalTableSelect.jsp" %>
-<%@ include file="footer.jsp" %>

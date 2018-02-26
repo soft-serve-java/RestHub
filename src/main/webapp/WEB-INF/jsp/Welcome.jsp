@@ -1,4 +1,3 @@
-<%@ include file="header.jsp" %>
 <div id="demo" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -57,4 +56,3 @@
         padding: 10pt;
     }
 </style>
-<%@ include file="footer.jsp" %>

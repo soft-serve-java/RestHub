@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    <decorator name="main" page="user_pages_template.jsp">
+        <!-- Mapping for USER-pages -->
+        <pattern>/welcome</pattern><!-- Welcome.jsp -->
+        <pattern>/order</pattern><!-- Cart.jsp -->
+        <pattern>/login</pattern><!-- login.jsp -->
+        <pattern>/menu/*</pattern><!-- Layoutgrid.jsp -->
+        <pattern>/hello</pattern><!-- Hello.jsp -->
+        <pattern>/dish/*</pattern><!-- Dishdescription.jsp -->
+
+    </decorator>
+</decorators>
