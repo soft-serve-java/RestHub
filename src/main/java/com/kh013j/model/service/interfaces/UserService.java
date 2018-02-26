@@ -10,7 +10,7 @@ public interface UserService {
 
     void delete(long id) throws DishNotFound;
 
-    List findAll();
+    List<User> findAll();
 
     User update(User order) throws DishNotFound;
 

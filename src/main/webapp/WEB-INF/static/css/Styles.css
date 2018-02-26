@@ -110,5 +110,22 @@ body {
     margin: 0 auto;
     margin-bottom: 40px;
 }
-.callingTable{
+
+
+.reviews {
+    color: #555;
+    font-weight: bold;
+}
+
+.menuPagination{
+    width: min-content;
+    margin:0 auto;
+    padding-top: 15px;
+}
+
+.container-fluid .card-block {
+    min-height: 250px;
+    min-width: 300px;
+    margin-right: 5px;
+    text-align: center;
 }

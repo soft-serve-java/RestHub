@@ -26,13 +26,13 @@ public class User implements UserDetails {
     private long id = -1;
 
     @Email
-    @Size(min=(5), max=50)
+    @Size(min=5, max=50)
     private String email;
 
-    @Size(min=(5), max=100)
+    @Size(min=5, max=100)
     private String password;
 
-    @Size(min=(2), max=50)
+    @Size(min=2, max=50)
     private String name;
 
     private String confirmationtoken;

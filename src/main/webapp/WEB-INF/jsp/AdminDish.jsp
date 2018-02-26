@@ -20,7 +20,7 @@
                 <td>
                     <a class="btn btn-info" href="/admin/dish/tweakAvail/${dish.id}">
                         <c:choose>
-                            <c:when test="${dish.avalibility}">Remove from menu</c:when>
+                            <c:when test="${dish.availability}">Remove from menu</c:when>
                             <c:otherwise>Add to menu</c:otherwise>
                         </c:choose>
                     </a>
