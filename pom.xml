@@ -114,11 +114,6 @@
             <artifactId>hibernate-ehcache</artifactId>
         </dependency>
         <dependency>
-            <groupId>opensymphony</groupId>
-            <artifactId>sitemesh</artifactId>
-            <version>2.4.2</version>
-        </dependency>
-        <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-core</artifactId>
             <version>2.4.2</version>
