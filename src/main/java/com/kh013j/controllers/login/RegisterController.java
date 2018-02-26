@@ -64,10 +64,9 @@ public class RegisterController {
 
             Random random = new Random();
             //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword() + String.valueOf(random.nextInt())));
-            user.setPassword(user.getPassword() + String.valueOf(random.nextInt()));
-            user.setRole(roleService.findByName("user")); // ADD
+            user.setPassword(user.getPassword());
+            user.setRole(roleService.findByName("user"));
             user.setEnabled(false);
-            // Generate random 36-character string token for confirmation link
             user.setConfirmationtoken(UUID.randomUUID().toString());
             userService.create(user);
 
@@ -79,8 +78,6 @@ public class RegisterController {
                     + appUrl + ":8080/confirm?token=" + user.getConfirmationtoken());
             registrationEmail.setFrom("noreply@domain.com");
             emailService.sendEmail(registrationEmail);
-
-            //modelAndView.addObject("confirmationMessage", "A confirmation e-mail has been sent to " + user.getEmail());
             modelAndView.setViewName("confirmByEmail");
         }
         return modelAndView;
@@ -89,19 +86,6 @@ public class RegisterController {
     // Process confirmation link
     @RequestMapping(value="/confirm", method = RequestMethod.GET)
     public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, @RequestParam("token") String token) {
-        User user = userService.findByConfirmationtoken(requestParams.get("token"));
-        if (user == null) { // No token found in DB
-            modelAndView.addObject("invalidToken", "Oops! This is an invalid confirmation link.");
-        } else { // Token found
-            modelAndView.addObject("confirmationToken", user.getConfirmationtoken());
-        }
-        //user.setEnabled(true);
-        modelAndView.setViewName("confirmDone");
-        return modelAndView;
-    }
-
-    @RequestMapping(value="/confirm", method = RequestMethod.POST)
-    public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams) {
         User user = userService.findByConfirmationtoken(requestParams.get("token"));
         user.setEnabled(true);
         userService.create(user);
