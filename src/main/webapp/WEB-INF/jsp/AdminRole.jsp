@@ -1,6 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "Admin.jsp" %>
 <div class="container">
     <table class="table table-hover">
         <thead>
@@ -30,4 +29,3 @@
     </table>
 </div>
 <%@ include file = "Modal.jsp" %>
-<%@ include file = "footer.jsp" %>
