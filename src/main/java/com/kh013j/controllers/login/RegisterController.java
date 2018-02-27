@@ -43,7 +43,7 @@ public class RegisterController {
     }
 
     // Process form input data
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    @PostMapping(value = "/registration")
     public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
         User userExists = userService.findByEmail(user.getEmail());
         modelAndView.addObject("registration", user);
@@ -80,7 +80,7 @@ public class RegisterController {
     }
 
     // Process confirmation link
-    @RequestMapping(value="/confirm", method = RequestMethod.GET)
+   @GetMapping(value="/confirm")
     public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, @RequestParam("token") String token) {
         User user = userService.findByConfirmationtoken(requestParams.get("token"));
         user.setEnabled(true);
