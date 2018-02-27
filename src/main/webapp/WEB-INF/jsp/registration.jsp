@@ -10,6 +10,8 @@
 
 <div id="login-box">
 ${alreadyRegisteredMessage}
+${IncorrectPassword}
+${IncorrectName}
 <div class="container py-2">
     <form:form method="POST" action="/registration" modelAttribute="registration">
         <table class="table table-hover">

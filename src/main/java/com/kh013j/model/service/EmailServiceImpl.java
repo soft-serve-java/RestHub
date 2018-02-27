@@ -1,22 +1,24 @@
 package com.kh013j.model.service;
 
+import com.kh013j.model.service.interfaces.EmailService;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 
-@Service("emailService")
-public class EmailService {
+@NoArgsConstructor
+//@Service("emailService")
+public class EmailServiceImpl implements EmailService{
 
 	private JavaMailSender mailSender;
 	
 	@Autowired
-	public EmailService(JavaMailSender mailSender) {
+	public EmailServiceImpl(JavaMailSender mailSender) {
 		this.mailSender = mailSender;
 	}
-	
-	@Async
+
+    @Async
 	public void sendEmail(SimpleMailMessage email) {
 		mailSender.send(email);
 	}
