@@ -60,4 +60,9 @@ public class CaffinoApplicationConfiguration {
     public Filter sitemesh(){
         return new SiteMeshFilter();
     }
+
+    @Bean EmailService emailServiceConfig(){
+        return new EmailServiceImpl();
+    }
+
 }

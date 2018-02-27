@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="container py-2" style="width: 50rem">
+    <h1>Order details about table ${table}</h1>
     <table class="table table-hover">
         <thead class="thead-light">
         <tr>
@@ -62,17 +63,19 @@
     </table>
     <hr/>
     <div class="row">
-        <h5 class="col-md-4">
-            Customer has ${fn:length(order)} items in your cart
+        <h5 class="col-md-6">
+            Customer has ${fn:length(order)} items in his cart
         </h5>
-        <h4 class="col-md-5">
+        <h4 class="col-md-4">
             Total amount: ${ordersTotalAmount}$
         </h4>
-        <h4 class="col-md-5">
+        <c:if test="${user!=null}">
+        <h4 class="col-md-3">
          Customer's name: ${user.name}
         </h4>
-            <a href="/waiter/pay" class="btn btn-success col-md-2" style="margin-bottom: 10%">
-                Close this order <span class="fa fa-check"></span>
-            </a>
+        </c:if>
     </div>
+    <a href="/waiter/pay" class="btn btn-danger btn-block" style="margin-bottom: 10%">
+        Close this order</span>
+    </a>
 </div>

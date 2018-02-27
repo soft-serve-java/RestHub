@@ -78,10 +78,16 @@ public class LiveCallWaiterController {
     public ModelAndView odrerDetails(@PathVariable(value = "table") int table){
         Order order = orderService.findByTable(table);
         ModelAndView modelAndView = new ModelAndView(ViewName.WAITER_ORDERS, "order", order.getOrderedFood());
-        long sumOfAllDishPrices = order.getOrderedFood().stream().map(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice()).count();
+        int sumOfAllDishPrices = order.getOrderedFood().stream().mapToInt(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice()).sum();
         modelAndView.addObject("ordersTotalAmount", sumOfAllDishPrices);
         modelAndView.addObject("user", order.getUser());
+        modelAndView.addObject("table", table);
         return modelAndView;
 
+    }
+    @PostMapping("waiter/close/{table}")
+    public String closeOrder(@PathVariable(value = "table") int table){
+        orderService.closeOrder(table);
+        return "Notify";
     }
 }
