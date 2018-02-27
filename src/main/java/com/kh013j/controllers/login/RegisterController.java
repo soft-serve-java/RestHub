@@ -64,7 +64,7 @@ public class RegisterController {
 
             Random random = new Random();
             //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword() + String.valueOf(random.nextInt())));
-            user.setPassword(user.getPassword());
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             user.setRole(roleService.findByName("user"));
             user.setEnabled(false);
             user.setConfirmationtoken(UUID.randomUUID().toString());
