@@ -13,8 +13,4 @@
         <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/populateTest.sql"/>
     </changeSet>
-    <changeSet id="3" author="me" runAlways="true">
-        <validCheckSum>any</validCheckSum>
-        <sqlFile path="database/postgres/comments.sql"/>
-    </changeSet>
 </databaseChangeLog>

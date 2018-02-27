@@ -8,9 +8,30 @@
                 Sort by
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/menu/${category}/sort/byPrice">Price</a>
-                <a class="dropdown-item" href="/menu/${category}/sort/ByCalories">Calories</a>
-                <a class="dropdown-item" href="/menu/${category}/sort/ByPreparingtime">Preparing time</a>
+                <c:choose>
+                    <c:when test="${direction == 'ASC'}">
+                        <a class="dropdown-item" href="/menu/${category}/byPrice?direction=DESC">Price <i class="fa fa-sort-amount-desc"></i></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="dropdown-item" href="/menu/${category}/byPrice?direction=ASC">Price <i class="fa fa-sort-amount-asc"></i></a>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${direction == 'ASC'}">
+                        <a class="dropdown-item" href="/menu/${category}/ByCalories?direction=DESC">Calories <i class="fa fa-sort-amount-desc"></i></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="dropdown-item" href="/menu/${category}/ByCalories?direction=ASC">Calories <i class="fa fa-sort-amount-asc"></i></a>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${direction == 'ASC'}">
+                        <a class="dropdown-item" href="/menu/${category}/ByPreparingtime?direction=DESC">Preparing time <i class="fa fa-sort-amount-desc"></i></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="dropdown-item" href="/menu/${category}/ByPreparingtime?direction=ASC">Preparing time <i class="fa fa-sort-amount-asc"></i></a>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
@@ -63,5 +84,49 @@
                 </c:forEach>
             </div>
         </c:forEach>
+    </div>
+    <div class="menuPagination">
+        <nav aria-label="RestHub menu pagination">
+            <ul class="pagination">
+                <c:choose>
+                    <c:when test="${page == 1}">
+                        <li class="page-item disabled">
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                    </c:otherwise>
+                </c:choose>
+                    <a class="page-link" href="/menu/${category}/${criteria}?page=${page-1}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <c:forEach begin="1" end="${maxPages}" varStatus="loop">
+                    <c:choose>
+                        <c:when test="${page == loop.index}">
+                            <li class="page-item active">
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                        </c:otherwise>
+                    </c:choose>
+                        <a class="page-link" href="/menu/${category}/${criteria}?page=${loop.index}">${loop.index}</a>
+                    </li>
+                </c:forEach>
+                <c:choose>
+                    <c:when test="${page == maxPages}">
+                        <li class="page-item disabled">
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                    </c:otherwise>
+                </c:choose>
+                    <a class="page-link" href="/menu/${category}/${criteria}?page=${page+1}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>

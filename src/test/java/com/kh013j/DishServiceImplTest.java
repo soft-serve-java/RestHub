@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,7 +24,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+
 public class DishServiceImplTest {
     @Autowired
     private DishService dishService;
@@ -144,7 +147,7 @@ public class DishServiceImplTest {
     @Test
     public void findAllDishByCategoryOrderByPrice() {
         for (Category category : categories) {
-            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category);
+            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category,1, "DESC").getContent();
 
             Dish minPriceDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPrice)).get();
             assertEquals(categoryDishes.get(0), minPriceDish);
@@ -157,7 +160,7 @@ public class DishServiceImplTest {
     @Test
     public void findAllDishByCategoryOrderByPreparingtime() {
         for (Category category : categories) {
-            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category);
+            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category, 1, "DESC").getContent();
 
             Dish minPreparingTimeDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPreparingtime)).get();
             assertEquals(categoryDishes.get(0), minPreparingTimeDish);
@@ -170,7 +173,7 @@ public class DishServiceImplTest {
     @Test
     public void findAllDishByCategoryOrderByCalories() {
         for (Category category : categories) {
-            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByCalories(category);
+            categoryDishes = dishService.findAllAvailableDishByCategoryOrderByCalories(category,1, "DESC").getContent();
 
             Dish minCaloriesDish = categoryDishes.stream().min(Comparator.comparing(Dish::getCalories)).get();
             assertEquals(categoryDishes.get(0), minCaloriesDish);
@@ -182,13 +185,13 @@ public class DishServiceImplTest {
 
     @Test
     public void findAllDishByCategory() {
-        Assert.assertFalse(dishService.findAllAvailableDishByCategory(soupsCategory).isEmpty());
+        Assert.assertFalse(dishService.findAllAvailableDishByCategory(soupsCategory, 1).getContent().isEmpty());
 
-        Assert.assertNotNull(dishService.findAllAvailableDishByCategory(mealsCategory));
+        Assert.assertNotNull(dishService.findAllAvailableDishByCategory(mealsCategory, 1));
 
-        Assert.assertNotNull(dishService.findAllAvailableDishByCategory(drinksCategory));
+        Assert.assertNotNull(dishService.findAllAvailableDishByCategory(drinksCategory, 1));
 
-        Assert.assertTrue(dishService.findAllAvailableDishByCategory(desertsCategory).size() == 3);
+        Assert.assertTrue(dishService.findAllAvailableDishByCategory(desertsCategory, 1).getContent().size() == 3);
     }
 
     @Test
