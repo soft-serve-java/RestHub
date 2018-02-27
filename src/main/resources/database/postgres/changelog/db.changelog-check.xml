@@ -65,7 +65,7 @@
         </sql>
     </changeSet>
 
-    <changeSet author="emaxi" id="dropCheckQuantityConstraintIfExists">
+    <changeSet author="emaxi" id="dropCheckTimeConstraintIfExists">
         <sql>
             ALTER TABLE rh.order DROP CONSTRAINT IF EXISTS timeChecker
         </sql>
