@@ -30,6 +30,7 @@ app.controller('LiveController', function ($stomp, $scope) {
                 i = value.currentWaiter.email;
             }
         });
+        console.log(i);
         return i;
     };
     $scope.isOfOtherWaiter = function(tableWaiter){
@@ -79,9 +80,19 @@ app.controller('LiveController', function ($stomp, $scope) {
         });
 });
 function doPOSTonCloseCalling(table, $scope) {
-    console.log("POST");
     $.ajax({
         url: '/acceptCalling',
+        type: 'POST',
+        data: {"table": table},
+        success: function () {
+        },
+        error: function () {
+        }
+    });
+}
+function doPOSTonGettingTable(table) {
+    $.ajax({
+        url: '/getTable',
         type: 'POST',
         data: {"table": table},
         success: function () {

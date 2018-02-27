@@ -31,4 +31,5 @@ public interface OrderService {
 
     List<Tables> findTableInfoForWaiter();
 
+    void setWaiter(int table, User waiter);
 }

@@ -36,14 +36,59 @@
                         schemaName="rh"
                         tableName="dish"/>
     </changeSet>
-   <changeSet author="orasso" id="addWaiterForOrder">
+   <!--<changeSet author="orasso" id="addWaiterForOrder">
        <sql>ALTER TABLE rh."order"
 			ADD CONSTRAINT waiter
 			FOREIGN KEY (waiter) REFERENCES rh."user" (id)
        </sql>
-   </changeSet>
+   </changeSet>-->
+    <changeSet author="orasso" id="addWaiter">
+        <addColumn schemaName="rh"
+                   tableName="order">
+            <column name="waiter" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="orasso" id="addForeignKeyWaiter">
+        <addForeignKeyConstraint baseColumnNames="waiter"
+                                 baseTableName="order"
+                                 baseTableSchemaName="rh"
+                                 constraintName="waiter_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"
+                                 referencedTableSchemaName="rh"
+        />
+    </changeSet>
     <changeSet id="6" author="me">
         <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/imageReviewEntities.sql"/>
+    </changeSet>
+    <changeSet author="orasso" id="7">
+        <createTable remarks="A String"
+                     schemaName="rh"
+                     tableName="callforwaiter">
+            <column name="id" type="bigint"/>
+            <column name="table" type="int"/>
+            <column name="waiter_id" type="bigint"/>
+            <column name="time_create" type="timestamp"/>
+            <column name="time_close" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="orasso" id="8">
+        <addForeignKeyConstraint baseColumnNames="waiter_id"
+                                 baseTableName="callforwaiter"
+                                 baseTableSchemaName="rh"
+                                 constraintName="waiter_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"
+                                 referencedTableSchemaName="rh"
+        />
     </changeSet>
 </databaseChangeLog>

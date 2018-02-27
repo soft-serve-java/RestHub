@@ -50,5 +50,6 @@ public class CaffinoApplicationConfiguration {
     public UserDetailsService userDetailsServiceConfig(){
         return new UserDetailsServiceImpl();
     }
-
+    @Bean
+    public ReviewService reviewServiceConfig() {return new ReviewServiceImpl(); }
 }

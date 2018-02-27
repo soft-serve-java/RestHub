@@ -9,11 +9,14 @@ import com.kh013j.model.domain.Tables;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.service.CallForWaiterService;
 import com.kh013j.model.service.interfaces.OrderService;
+import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +31,8 @@ public class LiveCallWaiterController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private UserService userService;
     @MessageMapping("/waiterCall")
     @SendTo("waiter/tables")
     public List<Tables> getWaitingTables(){
@@ -51,7 +56,20 @@ public class LiveCallWaiterController {
 
     @PostMapping("/acceptCalling")
     @ResponseBody
-    public void acceptCalling(@RequestParam int table, @AuthenticationPrincipal User user){
-        service.mackAsClosed(table, user);
+    public void acceptCalling(@RequestParam int table){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            User user = userService.findByEmail(auth.getName());
+            service.mackAsClosed(table, user);
+        }
+    }
+    @PostMapping("/getTable")
+    @ResponseBody
+    public void getTable(@RequestParam int table){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+           User user = userService.findByEmail(auth.getName());
+            orderService.setWaiter(table, user);
+        }
     }
 }

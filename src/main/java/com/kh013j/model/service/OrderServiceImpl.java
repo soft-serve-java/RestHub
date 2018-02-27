@@ -108,5 +108,12 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toList()));
         return tablesForWaiter;
     }
+
+    @Override
+    public void setWaiter(int table, User waiter) {
+        Order order = orderRepository.findFirstByTablenumberAndClosedFalse(table);
+        order.setWaiter(waiter);
+        update(order);
+    }
 }
 
