@@ -13,7 +13,7 @@
     <changeSet author="emaxi" id="addCheckWeightConstraint">
         <sql>
             ALTER TABLE rh.dish ADD CONSTRAINT weightChecker
-            CHECK (CAST(weight AS INT) > 0)
+            CHECK (CAST(rh.dish.weight AS INT) > 0)
         </sql>
     </changeSet>
 
@@ -25,7 +25,7 @@
     <changeSet author="emaxi" id="addCheckCaloriesConstraint">
         <sql>
             ALTER TABLE rh.dish ADD CONSTRAINT caloriesChecker
-            CHECK (CAST(calories AS INT) > 0)
+            CHECK (CAST(rh.dish.calories AS INT) > 0)
         </sql>
     </changeSet>
 
@@ -37,7 +37,7 @@
     <changeSet author="emaxi" id="addCheckPreparingTimeConstraint">
         <sql>
             ALTER TABLE rh.dish ADD CONSTRAINT preparingTimeChecker
-            CHECK (CAST(preparingtime AS INT) > 0)
+            CHECK (CAST(rh.dish.preparingtime AS INT) > 0)
         </sql>
     </changeSet>
 
@@ -49,7 +49,7 @@
     <changeSet author="emaxi" id="addCheckPriceConstraint">
         <sql>
             ALTER TABLE rh.dish ADD CONSTRAINT priceChecker
-            CHECK (CAST(price AS DECIMAL) > 0)
+            CHECK (CAST(rh.dish.price AS DECIMAL) > 0)
         </sql>
     </changeSet>
 
@@ -61,7 +61,19 @@
     <changeSet author="emaxi" id="addCheckQuantityConstraint">
         <sql>
             ALTER TABLE rh.orderdish ADD CONSTRAINT quantityChecker
-            CHECK (CAST(quantity AS INT) > 0)
+            CHECK (CAST(rh.orderdish.quantity AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropCheckQuantityConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.order DROP CONSTRAINT IF EXISTS timeChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckTimeConstraint">
+        <sql>
+            ALTER TABLE rh.order ADD CONSTRAINT timeChecker
+            CHECK ((EXTRACT(DAYS FROM NOW() - rh.order.time))>=0)
         </sql>
     </changeSet>
 </databaseChangeLog>

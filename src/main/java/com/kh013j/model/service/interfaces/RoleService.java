@@ -10,7 +10,7 @@ public interface RoleService {
 
     void delete(long id);
 
-    List findAll();
+    List<Role> findAll();
 
     Role update(Role role);
 

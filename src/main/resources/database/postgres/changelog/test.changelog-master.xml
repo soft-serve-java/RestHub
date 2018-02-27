@@ -38,6 +38,18 @@
         />
     </changeSet>
 
+    <changeSet author="emaxi" id="dropCheckQuantityConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.order DROP CONSTRAINT IF EXISTS timeChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckTimeConstraint">
+        <sql>
+            ALTER TABLE rh.order ADD CONSTRAINT timeChecker
+            CHECK ((EXTRACT(DAYS FROM NOW() - rh.order.time))>=0)
+        </sql>
+    </changeSet>
+
     <include file="database/postgres/sql/populateTest.sql"/>
 
 </databaseChangeLog>

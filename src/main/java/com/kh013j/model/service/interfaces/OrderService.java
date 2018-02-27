@@ -15,7 +15,7 @@ public interface OrderService {
 
     Order delete(long id) throws DishNotFound;
 
-    List findAll();
+    List<Order> findAll();
 
     Order update(Order order);
 

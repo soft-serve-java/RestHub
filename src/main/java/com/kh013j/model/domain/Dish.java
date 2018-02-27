@@ -7,10 +7,13 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "dish", schema = "rh")
 @Data
+@EqualsAndHashCode(exclude = {"images"})
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,12 +30,13 @@ public class Dish {
     @Min(0)
     private int preparingtime;
     @Max(100000)
-    // change price type!
     private BigDecimal price;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    private String picture;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="dish_id")
+    private List<Image> images;
     private boolean availability;
 
     public Dish(Dish dish) {
@@ -44,7 +48,9 @@ public class Dish {
         this.preparingtime = dish.getPreparingtime();
         this.price = dish.getPrice();
         this.category = dish.getCategory();
-        this.picture = dish.getPicture();
+        this.images = new ArrayList<>(dish.getImages());
         this.availability = dish.isAvailability();
     }
+
+
 }

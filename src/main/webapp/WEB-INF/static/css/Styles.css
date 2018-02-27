@@ -24,7 +24,7 @@ body {
     color: lightgrey;
 }
 
-.card {
+.card-deck .card {
     max-width: 250px;
 }
 
@@ -112,4 +112,22 @@ body {
 }
 .callingTable{
     background-color: palegreen;
+}
+
+.reviews {
+    color: #555;
+    font-weight: bold;
+}
+
+.menuPagination{
+    width: min-content;
+    margin:0 auto;
+    padding-top: 15px;
+}
+
+.container-fluid .card-block {
+    min-height: 250px;
+    min-width: 300px;
+    margin-right: 5px;
+    text-align: center;
 }

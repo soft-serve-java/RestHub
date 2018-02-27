@@ -37,7 +37,7 @@ public class OrderController {
                 orderMap.put(d, 1);
             }
         });
-        return new RedirectView(request.getHeader("referer"));
+        return new RedirectView(request.getHeader("referer")+"#" + dish.orElse(new Dish()).getId());
     }
 
     @GetMapping(value = "/removeFromOrder/{id}")
@@ -78,7 +78,7 @@ public class OrderController {
         }
         //TODO:Решить, что делать с заказами на один стол, поле для ввода номера стола.
         double sumOfAllDishPrices = orderMap.entrySet()
-                .stream().mapToDouble(e -> e.getKey().getPrice().doubleValue() * e.getValue()).sum()
+                .stream().mapToDouble(e -> e.getKey().getPrice().doubleValue() * e.getValue().doubleValue()).sum()
                 + orderedDishes.stream().mapToDouble(ordered -> ordered.getDish().getPrice().doubleValue() * ordered.getQuantity()).sum();
 
         return new ModelAndView(ViewName.ORDER, "ordersTotalAmount", sumOfAllDishPrices);
