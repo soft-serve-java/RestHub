@@ -1,6 +1,6 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page errorPage="error.jsp" %>
+<%@ page errorPage="/WEB-INF/jsp/error.jsp" %>
 <html lang="en" style="position: relative; min-height: 100%">
 <head>
     <meta charset="UTF-8">
