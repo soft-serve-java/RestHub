@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
+import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.CallForWaiter;
 import com.kh013j.model.domain.Tables;
 import com.kh013j.model.domain.User;
@@ -71,5 +72,10 @@ public class LiveCallWaiterController {
            User user = userService.findByEmail(auth.getName());
             orderService.setWaiter(table, user);
         }
+    }
+    @GetMapping("waiter/orderdetails/{table}")
+    public ModelAndView odrerDetails(@PathVariable(value = "table") int table){
+        return new ModelAndView(ViewName.MENU, "menuItems", orderService.findByTable(table));
+
     }
 }

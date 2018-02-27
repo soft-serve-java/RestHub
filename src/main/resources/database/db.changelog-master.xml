@@ -36,12 +36,6 @@
                         schemaName="rh"
                         tableName="dish"/>
     </changeSet>
-   <!--<changeSet author="orasso" id="addWaiterForOrder">
-       <sql>ALTER TABLE rh."order"
-			ADD CONSTRAINT waiter
-			FOREIGN KEY (waiter) REFERENCES rh."user" (id)
-       </sql>
-   </changeSet>-->
     <changeSet author="orasso" id="addWaiter">
         <addColumn schemaName="rh"
                    tableName="order">
