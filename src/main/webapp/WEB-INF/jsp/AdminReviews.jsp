@@ -8,7 +8,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ include file = "Admin.jsp" %>
 <div class="container">
     <c:forEach items="${reviews}" var="review">
         <div class="card">
@@ -43,4 +42,3 @@
         </div>
     </c:forEach>
 </div>
-<%@ include file = "footer.jsp" %>
