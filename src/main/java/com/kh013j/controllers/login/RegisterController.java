@@ -1,6 +1,5 @@
 package com.kh013j.controllers.login;
 
-
 import com.kh013j.model.domain.User;
 import com.kh013j.model.service.interfaces.EmailService;
 import com.kh013j.model.service.interfaces.RoleService;
@@ -12,15 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
-
 
 @Controller
 public class RegisterController {
@@ -51,16 +46,17 @@ public class RegisterController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
         User userExists = userService.findByEmail(user.getEmail());
-        //System.out.println(userExists);
         modelAndView.addObject("registration", user);
         if (userExists != null) {
-            modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
+            modelAndView.addObject("alreadyRegisteredMessage", "There is already a user registered with the email provided.");
             modelAndView.setViewName("registration");
             bindingResult.reject("email");
         }
         if (bindingResult.hasErrors()) {
+            modelAndView.addObject("IncorrectPassword", "Password length min 6 symbols");
             modelAndView.setViewName("registration");
-        } else { // new user so we create user and send confirmation e-mail
+        }
+        else { // new user so we create user and send confirmation e-mail
 
             Random random = new Random();
             //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword() + String.valueOf(random.nextInt())));
