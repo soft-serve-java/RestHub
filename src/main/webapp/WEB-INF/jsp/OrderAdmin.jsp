@@ -16,7 +16,7 @@
                 <td>${order.id}</td>
                 <td>${order.time}</td>
                 <td>${order.tablenumber}</td>
-                <td>${order.close}</td>
+                <td>${order.closed}</td>
                 <td>
                 <span class="plus-icon">
                 <i class="sign fa fa-plus fa-2x" style="margin-top: -4px;"></i>

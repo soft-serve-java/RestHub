@@ -5,6 +5,8 @@ import com.kh013j.model.service.interfaces.*;
 import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationTrustResolver;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -51,7 +53,6 @@ public class CaffinoApplicationConfiguration {
     public UserDetailsService userDetailsServiceConfig(){
         return new UserDetailsServiceImpl();
     }
-
     @Bean
     public ReviewService reviewServiceConfig() {return new ReviewServiceImpl(); }
 
@@ -59,4 +60,9 @@ public class CaffinoApplicationConfiguration {
     public Filter sitemesh(){
         return new SiteMeshFilter();
     }
+
+    @Bean EmailService emailServiceConfig(){
+        return new EmailServiceImpl();
+    }
+
 }

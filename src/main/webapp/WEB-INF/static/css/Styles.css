@@ -24,7 +24,7 @@ body {
     color: lightgrey;
 }
 
-.card-deck .card {
+.card {
     max-width: 250px;
 }
 
@@ -110,9 +110,7 @@ body {
     margin: 0 auto;
     margin-bottom: 40px;
 }
-.callingTable{
-    background-color: palegreen;
-}
+
 
 .reviews {
     color: #555;

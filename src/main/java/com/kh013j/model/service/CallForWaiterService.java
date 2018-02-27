@@ -2,16 +2,22 @@ package com.kh013j.model.service;
 
 import com.kh013j.model.domain.CallForWaiter;
 import com.kh013j.model.domain.User;
+import com.kh013j.model.repository.CallForWaiterRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 @Component
 public class CallForWaiterService {
-    List<CallForWaiter> callForWaiters = new ArrayList<>();
-    List<CallForWaiter> closed = new ArrayList<>();
+    @Resource
+    CallForWaiterRepository callForWaiterRepository;
+    private  List<CallForWaiter> callForWaiters = new ArrayList<>();
+    private List<CallForWaiter> closed = new ArrayList<>();
+    private final static int BUFFER = 1;
 
     public CallForWaiter create(CallForWaiter callForWaiter){
         callForWaiters.add(callForWaiter);
@@ -28,10 +34,11 @@ public class CallForWaiterService {
         call.setWaiter(waiter);
         call.setTimeClose(new Timestamp(System.currentTimeMillis()));
         closed.add(call);
-        if(closed.size() == 10){
-            //flush it in db with future
+        if(closed.size() == BUFFER){
+            CompletableFuture.runAsync(()-> callForWaiterRepository.save(callForWaiters));
             closed.clear();
         }
+
     }
     public boolean add(CallForWaiter callForWaiter){
         if (!callForWaiters.contains(callForWaiter)){
