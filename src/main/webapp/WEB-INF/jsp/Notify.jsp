@@ -1,4 +1,8 @@
-<%@ include file="header.jsp" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+
 <script src="/js/liveCall.js"></script>
 <div class="container" >
 <div class="row">
@@ -56,4 +60,3 @@
         margin-left: 80%;
     }
 </style>
-<%@ include file="footer.jsp" %>

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.CallForWaiter;
+import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.Tables;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.service.CallForWaiterService;
@@ -75,7 +76,12 @@ public class LiveCallWaiterController {
     }
     @GetMapping("waiter/orderdetails/{table}")
     public ModelAndView odrerDetails(@PathVariable(value = "table") int table){
-        return new ModelAndView(ViewName.MENU, "menuItems", orderService.findByTable(table));
+        Order order = orderService.findByTable(table);
+        ModelAndView modelAndView = new ModelAndView(ViewName.WAITER_ORDERS, "order", order.getOrderedFood());
+        long sumOfAllDishPrices = order.getOrderedFood().stream().map(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice()).count();
+        modelAndView.addObject("ordersTotalAmount", sumOfAllDishPrices);
+        modelAndView.addObject("user", order.getUser());
+        return modelAndView;
 
     }
 }
