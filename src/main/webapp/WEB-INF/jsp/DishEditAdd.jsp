@@ -1,6 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "Admin.jsp" %>
 
 <div class="container py-2" style="width: 50rem">
     <form:form method="POST" action="/admin/dish/save" modelAttribute="dish" enctype="multipart/form-data">
@@ -69,4 +68,3 @@
         </table>
     </form:form>
 </div>
-<%@ include file = "footer.jsp" %>

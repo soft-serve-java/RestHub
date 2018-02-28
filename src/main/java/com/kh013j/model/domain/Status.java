@@ -28,4 +28,6 @@ public class Status {
     public static final String COOKING = "cooking";
     @Transient
     public static final String DELIVERY = "delivery";
+    @Transient
+    public static final String DONE = "done";
 }

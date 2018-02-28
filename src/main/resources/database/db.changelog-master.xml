@@ -1,0 +1,87 @@
+
+    <include file="database/postgres/initDB.sql"/>
+    <include file="database/postgres/populateDB.sql"/>
+
+    <changeSet id="1" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/initDB.sql"/>
+    </changeSet>
+    <changeSet id="2" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/populateDB.sql"/>
+    </changeSet>
+    <changeSet author="meow" id="renameAvailability">
+        <renameColumn columnDataType="boolean"
+                      newColumnName="availability"
+                      oldColumnName="avalibility"
+                      schemaName="rh"
+                      tableName="dish"/>
+    </changeSet>
+    <changeSet author="meow" id="renameClosed">
+        <renameColumn columnDataType="boolean"
+                      newColumnName="closed"
+                      oldColumnName="close"
+                      schemaName="rh"
+                      tableName="order"/>
+    </changeSet>
+    <changeSet author="meow" id="modifyDataTypePreparingTime">
+        <modifyDataType columnName="preparingtime"
+                        newDataType="int"
+                        schemaName="rh"
+                        tableName="dish"/>
+    </changeSet>
+    <changeSet author="orasso" id="addWaiter">
+        <addColumn schemaName="rh"
+                   tableName="order">
+            <column name="waiter" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="orasso" id="addForeignKeyWaiter">
+        <addForeignKeyConstraint baseColumnNames="waiter"
+                                 baseTableName="order"
+                                 baseTableSchemaName="rh"
+                                 constraintName="waiter_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"
+                                 referencedTableSchemaName="rh"
+        />
+    </changeSet>
+    <changeSet id="6" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/imageReviewEntities.sql"/>
+    </changeSet>
+    <changeSet author="orasso" id="7">
+        <createTable remarks="A String"
+                     schemaName="rh"
+                     tableName="callforwaiter">
+            <column name="id" type="bigint"/>
+            <column name="table" type="int"/>
+            <column name="waiter_id" type="bigint"/>
+            <column name="time_create" type="timestamp"/>
+            <column name="time_close" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="orasso" id="8">
+        <addForeignKeyConstraint baseColumnNames="waiter_id"
+                                 baseTableName="callforwaiter"
+                                 baseTableSchemaName="rh"
+                                 constraintName="waiter_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"
+                                 referencedTableSchemaName="rh"
+        />
+    </changeSet>
+    <changeSet id="9" author="orasso">
+        <insert tableName="status" schemaName="rh">
+            <column name="name" value="done"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

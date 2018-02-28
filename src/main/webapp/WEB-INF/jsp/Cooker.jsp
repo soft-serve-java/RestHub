@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="header.jsp" %>
 <div class="container">
     <table class="table">
         <thead>
@@ -11,6 +10,7 @@
         </thead>
         <tbody>
         <c:forEach items="${Dishes}" var="dish">
+            <c:forEach begin = "1" end="${dish.quantity}">
             <tr>
                 <td>${dish.dish.name}</td>
                 <td>${dish.dish.weight}</td>
@@ -26,8 +26,8 @@
                     </c:if>
                 </td>
             </tr>
+            </c:forEach>
         </c:forEach>
         </tbody>
     </table>
 </div>
-<%@ include file="footer.jsp" %>

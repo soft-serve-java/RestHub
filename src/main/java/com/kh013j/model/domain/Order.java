@@ -29,7 +29,15 @@ public class Order {
     private int tablenumber;
     @Column(name = "closed")
     private boolean closed;
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<OrderedDish> orderedFood = new ArrayList<>();
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "waiter")
+    User waiter;
 
+    public boolean hasFoodForDeliver(){
+        long countOfFoodOnDelivery = orderedFood.stream()
+                .filter(orderedDish -> orderedDish.getStatus().getName().equals(Status.DELIVERY)).count();
+        return countOfFoodOnDelivery>0;
+    }
 }

@@ -1,5 +1,6 @@
 package com.kh013j.model.domain;
 
+//import com.kh013j.model.annotation.RestHubEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +20,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    //@Min(2) @Max(50)
+    @Min(2) @Max(50)
     private String name;
 
     @ManyToMany(mappedBy = "roles")

@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="header.jsp" %>
 <div class="container">
 
     <div class="col1" style="text-align: right; padding-top: 10px;">
@@ -131,5 +130,3 @@
         </nav>
     </div>
 </div>
-
-<%@ include file="footer.jsp" %>

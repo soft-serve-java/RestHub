@@ -1,7 +1,6 @@
 package com.kh013j.model.service;
 
 import com.kh013j.model.domain.User;
-import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.UserRepository;
 import com.kh013j.model.service.interfaces.UserService;
 import javax.annotation.Resource;
@@ -16,9 +15,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    @Override
-    public void delete(long id) throws DishNotFound {
+    /*    @Override
+    public void delete(long id){
         userRepository.delete(id);
+    }*/
+
+    @Override
+    public User delete(long id){
+       User deletedUser = userRepository.findOne(id);
+       userRepository.delete(deletedUser);
+       return deletedUser;
     }
 
     @Override
@@ -27,7 +33,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User user) throws DishNotFound {
+    public User update(User user){
         return userRepository.saveAndFlush(user);
     }
 
