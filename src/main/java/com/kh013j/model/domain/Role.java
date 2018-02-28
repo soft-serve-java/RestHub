@@ -22,7 +22,4 @@ public class Role {
     private long id;
     @Min(2) @Max(50)
     private String name;
-
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
 }

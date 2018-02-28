@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "dish", schema = "rh")
@@ -44,7 +46,7 @@ public class Dish {
         this.preparingtime = dish.getPreparingtime();
         this.price = dish.getPrice();
         this.category = dish.getCategory();
-        this.images = new ArrayList<>(dish.getImages());
+        this.images = dish.getImages();
         this.availability = dish.isAvailability();
     }
 }

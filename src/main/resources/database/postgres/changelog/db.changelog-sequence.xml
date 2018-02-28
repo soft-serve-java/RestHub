@@ -28,14 +28,6 @@
     <changeSet id="renameStatusSequence" author="emaxi">
         <sql>ALTER SEQUENCE status_sequance RENAME TO status_sequence</sql>
     </changeSet>
-
-    <changeSet id="dropUserSequenceIfExists" author="emaxi">
-        <sql>DROP SEQUENCE IF EXISTS user_sequence CASCADE</sql>
-    </changeSet>
-    <changeSet id="renameUserSequence" author="emaxi">
-        <sql>ALTER SEQUENCE user_sequance RENAME TO user_sequence</sql>
-    </changeSet>
-
     <changeSet id="dropOrderSequenceIfExists" author="emaxi">
         <sql>DROP SEQUENCE IF EXISTS order_sequence CASCADE</sql>
     </changeSet>

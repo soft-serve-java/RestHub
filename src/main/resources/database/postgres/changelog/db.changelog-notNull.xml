@@ -47,10 +47,10 @@
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
-    <changeSet author="emaxi" id="addNotNullConstraintPsword">
+    <changeSet author="emaxi" id="addNotNullConstraintPassword">
         <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
-                              columnName="psword"
+                              columnName="password"
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>

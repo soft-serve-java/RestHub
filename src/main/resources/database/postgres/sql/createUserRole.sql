@@ -1,3 +1,5 @@
+DROP SEQUENCE IF EXISTS userrole_sequence CASCADE;
+CREATE SEQUENCE userrole_sequence;
 CREATE TABLE rh.userrole
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('userrole_sequence'),
