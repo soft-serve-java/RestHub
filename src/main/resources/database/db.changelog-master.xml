@@ -85,4 +85,9 @@
                                  referencedTableSchemaName="rh"
         />
     </changeSet>
+    <changeSet id="9" author="orasso">
+        <insert tableName="status" schemaName="rh">
+            <column name="name" value="done"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

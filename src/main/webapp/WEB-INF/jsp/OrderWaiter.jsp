@@ -53,9 +53,17 @@
                         </div>
                     </div>
                 </td>
-                <td style="text-align: center">
-                    <button type="button" class="btn btn-secondary" disabled>${orderItem.status.name}</button>
-                </td>
+                <c:if  test="${orderItem.status.name!='delivery'}">
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-secondary" disabled>${orderItem.status.name}</button>
+                    </td>
+                </c:if>
+                <c:if  test="${orderItem.status.name=='delivery'}">
+                    <td style="text-align: center">
+                        <a href="/waiter/deliver/${orderItem.id}" type="button" class="btn btn-secondary">${orderItem.status.name}</a>
+                    </td>
+                </c:if>
+
                 </tr>
             </c:forEach>
         </c:if>
@@ -75,7 +83,7 @@
         </h4>
         </c:if>
     </div>
-    <a href="/waiter/pay" class="btn btn-danger btn-block" style="margin-bottom: 10%">
+    <a href="/waiter/close/${table}" class="btn btn-danger btn-block" style="margin-bottom: 10%">
         Close this order</span>
     </a>
 </div>
