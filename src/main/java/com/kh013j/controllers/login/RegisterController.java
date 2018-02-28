@@ -52,8 +52,15 @@ public class RegisterController {
             modelAndView.setViewName("registration");
             bindingResult.reject("email");
         }
+        if (user.getPassword().length() <= 4) {
+            modelAndView.addObject("IncorrectPassword", "Password length min 5, max 100 symbols ");
+            modelAndView.setViewName("registration");
+        }
+        if (user.getName().length() <= 1) {
+            modelAndView.addObject("IncorrectName", "Name length min 2, max 50 symbols ");
+            modelAndView.setViewName("registration");
+        }
         if (bindingResult.hasErrors()) {
-            modelAndView.addObject("IncorrectPassword", "Password length min 6 symbols");
             modelAndView.setViewName("registration");
         }
         else { // new user so we create user and send confirmation e-mail
