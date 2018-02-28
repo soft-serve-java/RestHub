@@ -9,11 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.Constraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -27,18 +25,27 @@ public class User implements UserDetails {
     private long id = -1;
 
     @Email
-    @Size(min=5, max=50)
+    @Size(min = 5, max = 50)
     private String email;
 
-    @Size(min=5, max=100)
+    @Size(min = 5, max = 100)
     private String password;
 
-    @Size(min=2, max=50)
+    @Size(min = 2, max = 50)
     private String name;
 
     private String confirmationtoken;
 
     private boolean enabled;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            schema = "rh",
+            name = "userrole",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
+    private Set<Role> roles;
 
     public User(User user) {
         this.email = user.email;
@@ -46,12 +53,8 @@ public class User implements UserDetails {
         this.name = user.name;
         this.confirmationtoken = user.confirmationtoken;
         this.enabled = user.enabled;
-        this.role = user.role;
+        this.roles = user.roles;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,5 +1,6 @@
 package com.kh013j.controllers.admin;
 
+import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.domain.Image;
 import com.kh013j.model.exception.DishNotFound;
@@ -47,14 +48,14 @@ public class AdminDishController {
 
     @GetMapping(value = "/admin/dish/new")
     public ModelAndView dishCreate(){
-        return new ModelAndView("DishEditAdd", "dish", new Dish())
+        return new ModelAndView(ViewName.DISH_EDIT_ADD, "dish", new Dish())
                 .addObject("category",categoryService.findAll() );
     }
 
 
     @GetMapping(value = "/admin/dish/edit/{id}")
     public ModelAndView dishEdit(@PathVariable(value = "id") long id) {
-        return new ModelAndView("DishEditAdd", "dish", dishService.findById(id))
+        return new ModelAndView(ViewName.DISH_EDIT_ADD, "dish", dishService.findById(id))
                 .addObject("category",categoryService.findAll() );
     }
 
@@ -84,7 +85,7 @@ public class AdminDishController {
                               @RequestParam("pic") List<MultipartFile> files, Model model) throws DishNotFound {
         if (dishResult.hasErrors()) {
             model.addAttribute("category",categoryService.findAll());
-            return "DishEditAdd";
+            return ViewName.DISH_EDIT_ADD;
         }
         if (files != null && !files.isEmpty()) {
 

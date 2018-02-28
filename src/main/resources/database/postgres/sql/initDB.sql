@@ -3,7 +3,6 @@ CREATE SCHEMA rh;
 
 DROP SEQUENCE IF EXISTS category_sequance CASCADE;
 CREATE SEQUENCE category_sequance;
-
 CREATE TABLE rh.category(
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('category_sequance'),
   name varchar(50)

@@ -23,6 +23,8 @@ public class ViewName {
     public static final String WAITER_ORDERS = "OrderWaiter";
 
 
+    public static final String DISH_EDIT_ADD = "DishEditAdd";
+
     private ViewName() {
         throw new UnsupportedOperationException();
     }

@@ -24,7 +24,7 @@ body {
     color: lightgrey;
 }
 
-.card {
+.card-deck .card {
     max-width: 250px;
 }
 

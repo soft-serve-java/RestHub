@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Past
     private Timestamp time;
     @ManyToOne
     @JoinColumn(name = "user_id")

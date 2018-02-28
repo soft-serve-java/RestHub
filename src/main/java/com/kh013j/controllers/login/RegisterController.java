@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -68,7 +69,10 @@ public class RegisterController {
             Random random = new Random();
             //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword() + String.valueOf(random.nextInt())));
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            user.setRole(roleService.findByName("user"));
+            if (user.getRoles() == null) {
+                user.setRoles(new HashSet<>());
+            }
+            user.getRoles().add(roleService.findByName("user")); // changes because of a few user's roles
             user.setEnabled(false);
             user.setConfirmationtoken(UUID.randomUUID().toString());
             userService.create(user);

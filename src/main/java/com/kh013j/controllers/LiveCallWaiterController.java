@@ -80,7 +80,7 @@ public class LiveCallWaiterController {
     public ModelAndView odrerDetails(@PathVariable(value = "table") int table){
         Order order = orderService.findByTable(table);
         ModelAndView modelAndView = new ModelAndView(ViewName.WAITER_ORDERS, "order", order.getOrderedFood());
-        int sumOfAllDishPrices = order.getOrderedFood().stream().mapToInt(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice()).sum();
+        double sumOfAllDishPrices = order.getOrderedFood().stream().mapToDouble(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice().doubleValue()).sum();
         modelAndView.addObject("ordersTotalAmount", sumOfAllDishPrices);
         modelAndView.addObject("user", order.getUser());
         modelAndView.addObject("table", table);

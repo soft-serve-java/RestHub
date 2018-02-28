@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="container" style="text-align: left">
     <div class="row">
 
@@ -132,19 +134,11 @@
     </div>
 </div>
 
-<style type="text/css">
-    .card-block{
-        margin-top: 5px;
-        margin-left: 18px;
-        margin-bottom: 5px;
+<style>
+    .card-block {
+        min-height: 250px;
+        min-width: 300px;
+        margin-right: 5px;
+        text-align: center;
     }
-
-    .tab-content {
-        padding: 50px 15px;
-        border: 1px solid #ddd;
-        border-top: 0;
-        border-bottom-right-radius: 4px;
-        border-bottom-left-radius: 4px;
-    }
-
 </style>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="emaxi" id="dropCheckWeightConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS weightChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckWeightConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT weightChecker
+            CHECK (CAST(rh.dish.weight AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropCheckCaloriesConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS caloriesChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckCaloriesConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT caloriesChecker
+            CHECK (CAST(rh.dish.calories AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropCheckPreparingTimeConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS preparingTimeChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckPreparingTimeConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT preparingTimeChecker
+            CHECK (CAST(rh.dish.preparingtime AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropCheckPriceConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.dish DROP CONSTRAINT IF EXISTS priceChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckPriceConstraint">
+        <sql>
+            ALTER TABLE rh.dish ADD CONSTRAINT priceChecker
+            CHECK (CAST(rh.dish.price AS DECIMAL) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropCheckQuantityConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.orderdish DROP CONSTRAINT IF EXISTS quantityChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckQuantityConstraint">
+        <sql>
+            ALTER TABLE rh.orderdish ADD CONSTRAINT quantityChecker
+            CHECK (CAST(rh.orderdish.quantity AS INT) > 0)
+        </sql>
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropCheckTimeConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.order DROP CONSTRAINT IF EXISTS timeChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckTimeConstraint">
+        <sql>
+            ALTER TABLE rh.order ADD CONSTRAINT timeChecker
+            CHECK ((EXTRACT(DAYS FROM NOW() - rh.order.time))>=0)
+        </sql>
+    </changeSet>
+</databaseChangeLog>
