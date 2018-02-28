@@ -1,6 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ include file="header.jsp" %>
 <div class="container">
+    ${alreadyRegisteredMessage}
+    ${IncorrectPassword}
+    ${IncorrectName}
     <div class="row">
         <div class="col-md-4 col-md-offset-7" style="background: white">
             <div class="panel panel-default">
@@ -44,24 +46,34 @@
 </div>
 
 <style>
-    body {
-        background: url('/images/sezar.jpg') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+    .error {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
     }
 
-    .panel-default {
-        opacity: 0.9;
-        margin-top:30px;
-        background: white;
-        height: 70%;
+    .msg {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
     }
-    .form-group.last {
-        margin-bottom:0px;
+
+    #login-box {
+        width: 300px;
+        padding: 20px;
+        margin: 100px auto;
+        background: #fff;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border: 1px solid #000;
     }
 </style>
 
-</body>
-</html>

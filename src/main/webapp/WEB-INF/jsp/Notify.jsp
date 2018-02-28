@@ -1,4 +1,8 @@
-<%@ include file="header.jsp" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+
 <script src="/js/liveCall.js"></script>
 <div class="container" >
 <div class="row">
@@ -15,7 +19,7 @@
                             </div>
                             <div class="card-body">
                             <h1 class="card-title">${loop.index}</h1>
-                                <a onclick="getOrderdetails(${loop.index})" class="btn btn-default btn-sm">Order details</a>
+                                <a href="/waiter/orderdetails/${loop.index}" class="btn btn-default btn-sm">Order details</a>
                                 <div class="row">
                                     <button onclick="doPOSTonGettingTable(${loop.index})" class="btn btn-success btn-sm">Get this table</button>
                                     <button onclick="doPOSTonCloseCalling(${loop.index})" class="btn btn-default btn-sm">Accept calling</button>
@@ -56,4 +60,3 @@
         margin-left: 80%;
     }
 </style>
-<%@ include file="footer.jsp" %>

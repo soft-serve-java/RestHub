@@ -115,5 +115,12 @@ public class OrderServiceImpl implements OrderService {
         order.setWaiter(waiter);
         update(order);
     }
+
+    @Override
+    public Order closeOrder(int table) {
+        Order order = orderRepository.findFirstByTablenumberAndClosedFalse(table);
+        order.setClosed(true);
+        return update(order);
+    }
 }
 

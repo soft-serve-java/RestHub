@@ -4,7 +4,9 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
+import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.CallForWaiter;
+import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.Tables;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.service.CallForWaiterService;
@@ -71,5 +73,21 @@ public class LiveCallWaiterController {
            User user = userService.findByEmail(auth.getName());
             orderService.setWaiter(table, user);
         }
+    }
+    @GetMapping("waiter/orderdetails/{table}")
+    public ModelAndView odrerDetails(@PathVariable(value = "table") int table){
+        Order order = orderService.findByTable(table);
+        ModelAndView modelAndView = new ModelAndView(ViewName.WAITER_ORDERS, "order", order.getOrderedFood());
+        int sumOfAllDishPrices = order.getOrderedFood().stream().mapToInt(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice()).sum();
+        modelAndView.addObject("ordersTotalAmount", sumOfAllDishPrices);
+        modelAndView.addObject("user", order.getUser());
+        modelAndView.addObject("table", table);
+        return modelAndView;
+
+    }
+    @PostMapping("waiter/close/{table}")
+    public String closeOrder(@PathVariable(value = "table") int table){
+        orderService.closeOrder(table);
+        return "Notify";
     }
 }

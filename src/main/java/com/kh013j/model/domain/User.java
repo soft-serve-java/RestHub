@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.Constraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -38,6 +39,15 @@ public class User implements UserDetails {
     private String confirmationtoken;
 
     private boolean enabled;
+
+    public User(User user) {
+        this.email = user.email;
+        this.password = user.password;
+        this.name = user.name;
+        this.confirmationtoken = user.confirmationtoken;
+        this.enabled = user.enabled;
+        this.role = user.role;
+    }
 
     @ManyToOne
     @JoinColumn(name = "role_id")

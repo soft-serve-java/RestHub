@@ -2,7 +2,7 @@ package com.kh013j.controllers.login;
 
 
 import com.kh013j.model.domain.User;
-import com.kh013j.model.service.EmailService;
+import com.kh013j.model.service.interfaces.EmailService;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

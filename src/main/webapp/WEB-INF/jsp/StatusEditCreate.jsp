@@ -1,6 +1,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "Admin.jsp" %>
+
 <div class="container">
     <form:form method="POST" action="/admin/status/save" modelAttribute="status">
         <div class="form-row align-items-center">
@@ -16,4 +16,3 @@
         </div>
     </form:form>
 </div>
-<%@ include file = "footer.jsp" %>

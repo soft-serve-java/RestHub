@@ -8,7 +8,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ include file = "Admin.jsp" %>
 <div class="container">
     <div class="col1" style="text-align: right; padding-top: 10px;">
         <div class="btn-group">
@@ -102,4 +101,3 @@
         </nav>
     </div>
 </div>
-<%@ include file = "footer.jsp" %>

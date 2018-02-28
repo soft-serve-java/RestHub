@@ -1,4 +1,4 @@
-<%@ include file="header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-7" style="background: white">
@@ -87,4 +87,3 @@
 			margin-bottom:0px;
 		}
     </style>
-<%@ include file="footer.jsp" %>
