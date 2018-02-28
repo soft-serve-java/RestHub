@@ -11,6 +11,7 @@
             <c:forEach begin="1" end="${tables.quantityOfTables}" varStatus="loop">
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="card">
+                        <img ng-if="isOnDelivery(${loop.index})" class="imageforDelivery" src="/images/delivery.jpg"/>
                         <div ng-class="{hasNullWaiter:hasNullWaiter(${loop.index}),
                              isOfCurrentWaiter:getCurrentWaiter(${loop.index})=='${pageContext.request.userPrincipal.name}',
                             isOfOtherWaiter:isOfOtherWaiter(${loop.index}+'${pageContext.request.userPrincipal.name}')}">
@@ -26,7 +27,6 @@
                                 </div>
                         </div>
                         </div>
-                        <img ng-if="isOnDelivery(${loop.index})" class="imageforDelivery" src="/images/delivery.jpg"/>
                     </div>
                 </div>
             </c:forEach>
@@ -50,13 +50,16 @@
         background: gainsboro;
     }
     .imageforDelivery{
-        margin-top: -25%;
+        position: absolute;
         width: 25%;
-        height: 10%;
+        height: 25%;
+        margin-right: 100px;
+
     }
     .bell{
         position: absolute;
         margin-top: 0%;
         margin-left: 80%;
+
     }
 </style>

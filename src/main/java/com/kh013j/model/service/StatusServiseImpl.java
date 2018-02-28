@@ -23,7 +23,9 @@ public class StatusServiseImpl implements StatusService {
                 return statusRepositiry.findFirstByName(Status.COOKING);
             case Status.COOKING:
                 return statusRepositiry.findFirstByName(Status.DELIVERY);
-                default:
+            case Status.DELIVERY:
+                return statusRepositiry.findFirstByName(Status.DONE);
+            default:
                     throw new UnsupportedOperationException();
         }
     }

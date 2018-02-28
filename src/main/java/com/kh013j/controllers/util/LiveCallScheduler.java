@@ -26,7 +26,7 @@ public class LiveCallScheduler {
     OrderService service;
 
 
-   @Scheduled(fixedRate = 5000)
+   @Scheduled(fixedRate = 1000)
    @Secured({"ROLE_WAITER","RUN_AS_AUDITOR"})
     public void publishUpdates(){
         template.convertAndSend("/waiter/tables", service.findTableInfoForWaiter());

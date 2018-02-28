@@ -13,21 +13,21 @@
             <div class="col-sm-9">
                 <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
                 <form:input type="email" class="form-control" id="inputEmail3"
-                       placeholder="Email"  path="email"  required="">
+                       placeholder="Email"  path="email"  required=""/>
                 <form:errors path="email" class="control-label"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-9">
                 <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-                <form:input type="password" class="form-control" id="inputPassword3" path="password" placeholder="Password"name="password" required="">
+                <form:input type="password" class="form-control" id="inputPassword3" path="password" placeholder="Password" name="password" required=""/>
                 <form:errors path="password" class="control-label"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-9">
                 <label for="inputName3" class="col-sm-3 control-label">Name</label>
-                <form:input type="text" class="form-control" id="inputName3" path="name" placeholder="Name" name="password" required="">
+                <form:input type="text" class="form-control" id="inputName3" path="name" placeholder="Name" name="password" required=""/>
                 <form:errors path="name" class="control-label"/>
             </div>
         </div>
