@@ -2,7 +2,6 @@ package com.kh013j.controllers;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 
 import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.CallForWaiter;
@@ -11,17 +10,17 @@ import com.kh013j.model.domain.Tables;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.service.CallForWaiterService;
 import com.kh013j.model.service.interfaces.OrderService;
+import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,6 +34,9 @@ public class LiveCallWaiterController {
     private OrderService orderService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderedDishService orderedDishService;
+
     @MessageMapping("/waiterCall")
     @SendTo("waiter/tables")
     public List<Tables> getWaitingTables(){
@@ -85,9 +87,14 @@ public class LiveCallWaiterController {
         return modelAndView;
 
     }
-    @PostMapping("waiter/close/{table}")
-    public String closeOrder(@PathVariable(value = "table") int table){
+    @GetMapping("waiter/close/{table}")
+    public RedirectView closeOrder(@PathVariable(value = "table") int table){
         orderService.closeOrder(table);
-        return "Notify";
+        return new RedirectView("/waiter/tab");
+    }
+    @GetMapping("/waiter/deliver/{id}")
+    public RedirectView diliverThis(@PathVariable(value = "id") int id, HttpServletRequest request){
+        orderedDishService.setDelivered(id);
+        return new RedirectView(request.getHeader("referer"));
     }
 }
