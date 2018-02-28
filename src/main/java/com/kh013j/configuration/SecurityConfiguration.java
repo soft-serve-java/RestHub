@@ -34,7 +34,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/admin/**").access("hasAuthority('ADMINISTRATOR')")
                 .antMatchers("/cooker/**").access("hasAuthority('COOK')")
+                .antMatchers("/cooker/**").access("hasAuthority('ADMINISTRATOR')")
                 .antMatchers("/waiter/**").access("hasAuthority('WAITER')")
+                .antMatchers("/waiter/**").access("hasAuthority('ADMINISTRATOR')")
                 //.antMatchers("/user/**").hasAnyRole("USER")
 
                 .and()
