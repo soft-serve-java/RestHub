@@ -37,7 +37,7 @@ public class ImgurImageService{
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", CLIENT_ID);
-        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("image", new String(imageBase64, "UTF-8"));
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);

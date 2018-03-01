@@ -27,7 +27,7 @@ INSERT INTO rh.user(email, password, name, confirmationtoken, enabled) VALUES ('
 INSERT INTO rh.userrole (user_id, role_id) VALUES (1, 1);
 INSERT INTO rh.userrole (user_id, role_id) VALUES (2, 2);
 INSERT INTO rh.userrole (user_id, role_id) VALUES (3, 3);
-INSERT INTO rh.userrole (user_id, role_id) VALUES (3, 3);
+INSERT INTO rh.userrole (user_id, role_id) VALUES (4, 4);
 
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, availability

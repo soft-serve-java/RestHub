@@ -15,6 +15,7 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(exclude = "images")
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,7 @@ public class Dish {
     private int calories;
     @Min(0)
     private int preparingtime;
-    @Max(100000)
+    @Min(0) @Max(100000)
     private BigDecimal price;
     @ManyToOne
     @JoinColumn(name = "category_id")

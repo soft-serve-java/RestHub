@@ -112,13 +112,7 @@
                               schemaName="rh"
                               tableName="order"/>
     </changeSet>
-    <changeSet author="emaxi" id="addNotNullConstraintUserId">
-        <validCheckSum>any</validCheckSum>
-        <addNotNullConstraint columnDataType="bigint"
-                              columnName="user_id"
-                              schemaName="rh"
-                              tableName="order"/>
-    </changeSet>
+
 
     <!-- dish -->
     <changeSet author="emaxi" id="addNotNullConstraintDishName">
