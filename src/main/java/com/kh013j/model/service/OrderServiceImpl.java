@@ -61,7 +61,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order();
         order.setTime(new Timestamp(new Date().getTime()));
         order.setTablenumber(tablenumber);
-        order.setOrderedFood(orderedDishService.createOrderedDishesFromMap(orderMap, order));
+        order.setOrderedFood(orderedDishService.createOrderedDishesFromMap(orderMap));
         return order;
     }
 
@@ -69,7 +69,7 @@ public class OrderServiceImpl implements OrderService {
     public void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap, User user) {
         Order order = findByTable(tablenumber);
         if (order != null) {
-            order.getOrderedFood().addAll(orderedDishService.createOrderedDishesFromMap(orderMap, order));
+            order.getOrderedFood().addAll(orderedDishService.createOrderedDishesFromMap(orderMap));
         } else {
             order = createOrderFromMap(orderMap, tablenumber);
         }
