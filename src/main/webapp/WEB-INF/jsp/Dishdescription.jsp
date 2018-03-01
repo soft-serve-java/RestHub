@@ -44,7 +44,7 @@
             </c:if>
         </div>
         <c:if test="${not empty populars}">
-            <h3>Customers who ordered this dish also ordered:</h3>
+            <h3 class="reviews">Customers who ordered this dish also ordered:</h3>
 
             <div class="container-fluid tab-pane" style="padding-bottom: 50px">
                 <div class="d-flex flex-row flex-nowrap">
@@ -59,7 +59,7 @@
                 </div>
             </div>
         </c:if>
-                <div class="col-sm-10 col-sm-offset-1" >
+                <div class="col-sm-10 col-sm-offset-1" style="padding-bottom: 50px">
                     <div class="page-header">
                         <h3 class="reviews">Leave your Review</h3>
                     </div>
@@ -93,7 +93,7 @@
                                     <div class="card-header text-uppercase reviews">
                                         ${review.user.name}
                                     </div>
-                                    <div class="card-block">
+                                    <div class="card-block reviewCard">
                                         <p class="card-text">${review.commentText}</p>
                                         <p class="card-text"><small class="text-muted">${review.date}</small></p>
                                     </div>
