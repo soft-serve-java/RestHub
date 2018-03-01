@@ -27,8 +27,8 @@
                 <form:input path="login" type="text" class="form-control" id="inputLogin"/>
             </div>--%>
             <div class="form-group col-md-4">
-                <label for="inputState">Role</label>
-                <form:select path="role" multiple="false" id="inputState" class="form-control">
+                <label for="inputState">Roles</label>
+                <form:select path="roles" multiple="true" id="inputState" class="form-control">
                     <form:options items="${Roles}" itemValue="id" itemLabel="name"/>
                 </form:select>
             </div>
