@@ -6,10 +6,9 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th>Email</th>
-            <th>Password</th>
+            <th>Name</th>
             <th>Role</th>
             <th colspan="2"><a href="/admin/user/new">
-                <button type="submit" class="btn btn-primary">New User</button>
             </a>
             </th>
         </tr>
@@ -19,7 +18,7 @@
             <tr>
                 <td>${user.id}</td>
                 <td>${user.email}</td>
-                <td>${user.password}</td>
+                <td>${user.name}</td>
                 <td>
                  <c:forEach items="${user.roles}" var="role">
                     ${role.name}
