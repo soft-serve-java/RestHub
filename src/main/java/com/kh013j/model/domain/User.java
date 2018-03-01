@@ -41,7 +41,7 @@ public class User implements UserDetails {
 
     private boolean enabled;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
             schema = "rh",
             name = "userrole",

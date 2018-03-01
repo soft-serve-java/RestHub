@@ -103,7 +103,6 @@
                             <div class="tab-pane fade" id="addcomment" role="tabpanel" aria-labelledby="addcomment-tab">
                                 <form action="/dish/${dish.id}/addReview" method="get" class="form-horizontal" id="commentForm" role="form">
                                     <div class="form-group">
-                                        <label for="commentArea" class="col-sm-2 control-label">Review</label>
                                         <div class="col-sm-10">
                                             <c:choose>
                                                 <c:when test="${canComment}">
@@ -134,11 +133,3 @@
     </div>
 </div>
 
-<style>
-    .card-block {
-        min-height: 250px;
-        min-width: 300px;
-        margin-right: 5px;
-        text-align: center;
-    }
-</style>
