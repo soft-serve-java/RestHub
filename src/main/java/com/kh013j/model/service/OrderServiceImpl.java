@@ -66,13 +66,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap) {
+    public void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap, User user) {
         Order order = findByTable(tablenumber);
         if (order != null) {
             order.getOrderedFood().addAll(orderedDishService.createOrderedDishesFromMap(orderMap, order));
         } else {
             order = createOrderFromMap(orderMap, tablenumber);
         }
+        order.setUser(user);
         orderRepository.saveAndFlush(order);
     }
 

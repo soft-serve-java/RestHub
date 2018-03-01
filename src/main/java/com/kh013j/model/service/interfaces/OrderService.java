@@ -27,7 +27,7 @@ public interface OrderService {
 
     Order createOrderFromMap(Map<Dish, Integer> orderMap, int tableNumber);
 
-    void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap);
+    void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap, User user);
 
     List<Tables> findTableInfoForWaiter();
 

@@ -6,11 +6,14 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -58,7 +61,11 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<GrantedAuthority> roleList = new ArrayList<>();
+        for (Role role: roles) {
+            roleList.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return roleList;
     }
 
     @Override
@@ -68,16 +75,16 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return enabled;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return enabled;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return enabled;
     }
 }
