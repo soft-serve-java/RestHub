@@ -194,11 +194,4 @@
                               schemaName="rh"
                               tableName="orderdish"/>
     </changeSet>
-    <changeSet author="emaxi" id="addNotNullConstraintOrderId">
-        <validCheckSum>any</validCheckSum>
-        <addNotNullConstraint columnDataType="bigint"
-                              columnName="order_id"
-                              schemaName="rh"
-                              tableName="orderdish"/>
-    </changeSet>
 </databaseChangeLog>

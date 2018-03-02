@@ -48,12 +48,20 @@ public class UserAdminController {
 
     @PostMapping(value = "/admin/user/save")
     public String userSaveNew(@Valid @ModelAttribute("user") User user, BindingResult userResult,
-                              Model model) throws DishNotFound, IOException {
+                              Model model) {
         if (userResult.hasErrors()) {
             model.addAttribute("Roles", roleService.findAll());
             return ViewName.USER_EDIT_CREATE;
         }
-        userService.update(user);
+        if (user.getId() == -1) {
+            userService.update(user);
+        } else {
+            User oldUser = userService.findById(user.getId());
+            oldUser.setRoles(user.getRoles());
+            oldUser.setEmail(user.getEmail());
+            user.setPassword(oldUser.getPassword());
+            userService.update(oldUser);
+        }
         return "redirect:/admin/user/all";
 
     }

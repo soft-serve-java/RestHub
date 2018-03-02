@@ -13,15 +13,11 @@ import java.util.Map;
 public interface OrderedDishService {
     OrderedDish create(OrderedDish dish);
 
-    List<OrderedDish> createAll(List<OrderedDish> dishes, Order order);
-
     void setCooking(long id);
 
     OrderedDish delete(long id) throws DishNotFound;
 
     List<OrderedDish> findAll();
-
-    OrderedDish update(OrderedDish dish) throws DishNotFound;
 
     OrderedDish findById(long id);
 
@@ -34,7 +30,7 @@ public interface OrderedDishService {
     @Transactional
     void setDelivered(long id);
 
-    List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap, Order order);
+    List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap);
 
-    OrderedDish createOrderedDishFromDish(Dish dish, Order order, int quantity);
+    OrderedDish createOrderedDishFromDish(Dish dish, int quantity);
 }
