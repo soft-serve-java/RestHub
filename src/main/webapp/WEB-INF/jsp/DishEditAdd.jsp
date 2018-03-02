@@ -5,7 +5,7 @@
     <form:form method="POST" action="/admin/dish/save" modelAttribute="dish" enctype="multipart/form-data">
         <table class="table table-hover">
             <tbody>
-            <h4 >Edit dish</h4>
+            <h4 >Dish</h4>
             <div class="form-row">
                 <form:input path="id" type="hidden"/>
                 <label>Name: </label>
@@ -50,6 +50,12 @@
                 <label>Calories: </label>
                 <form:input type="number" class="form-control" text="${dish.calories}" path="calories" />
                 <form:errors path="calories" class="control-label"/>
+            </div>
+
+            <div class="form-row">
+                <label>Weight: </label>
+                <form:input type="number" class="form-control" text="${dish.calories}" path="weight" />
+                <form:errors path="weight" class="control-label"/>
             </div>
 
             <div class="form-row">

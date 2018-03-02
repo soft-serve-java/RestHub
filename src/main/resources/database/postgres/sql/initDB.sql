@@ -28,7 +28,7 @@ CREATE TABLE rh.user
 (
   id bigint NOT NULL PRIMARY KEY DEFAULT nextval('user_sequance'),
   email varchar(50),
-  psword varchar(100),
+  password varchar(100),
   name varchar(50),
   enabled boolean,
   confirmationtoken varchar(100),

@@ -1,19 +1,19 @@
 package com.kh013j.controllers;
 
 import com.kh013j.controllers.util.ViewName;
-import com.kh013j.model.domain.Dish;
-import com.kh013j.model.domain.Order;
-import com.kh013j.model.domain.OrderedDish;
-import com.kh013j.model.domain.Tables;
+import com.kh013j.model.domain.*;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
+import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -24,6 +24,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping(value = "/addToOrder/{id}")
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
@@ -52,8 +55,13 @@ public class OrderController {
     @GetMapping(value = "/submitOrder")
     public RedirectView submitOrder(@ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                     @ModelAttribute("orderedList") List<OrderedDish> orderedDishes,
-                                    @ModelAttribute("tables") Tables table) {
-        orderService.onSubmitOrder(table.getCurrentTable(), orderMap);
+                                    @ModelAttribute("tables") Tables table,
+                                    Principal principal) {
+        User user = null;
+        if (principal != null) {
+            user = userService.findByEmail(principal.getName());
+        }
+        orderService.onSubmitOrder(table.getCurrentTable(), orderMap, user);
         orderMap.clear();
         return new RedirectView("/order");
     }

@@ -96,6 +96,13 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
     }
+    @Override
+    @Transactional
+    public void setDelivered(long id) {
+        OrderedDish dish = orderedDishRepository.findOne(id);
+        dish.setStatus(statusService.nextStatus(dish.getStatus()));
+        orderedDishRepository.saveAndFlush(dish);
+    }
 
     public List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap, Order order) {
         List<OrderedDish> orderedDishes = new ArrayList<>();

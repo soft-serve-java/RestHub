@@ -38,7 +38,7 @@ public class RoleServiceImplTest {
 
     @Test
     public void delete() {
-        Role role = new Role(5, "Porter");
+        Role role = new Role();
 
         Role createdRole = roleService.create(role);
 
@@ -75,7 +75,7 @@ public class RoleServiceImplTest {
     public void tryToUpdate() {
         String name = "CEO";
 
-        Role role = new Role(2, name);
+        Role role = new Role();
         Role updatedRole= roleService.update(role);
 
         assertEquals(updatedRole.getName(), name);

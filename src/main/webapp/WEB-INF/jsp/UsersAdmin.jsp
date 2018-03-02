@@ -20,7 +20,11 @@
                 <td>${user.id}</td>
                 <td>${user.email}</td>
                 <td>${user.password}</td>
-                <td>${user.role.name}</td>
+                <td>
+                 <c:forEach items="${user.roles}" var="role">
+                    ${role.name}
+                 </c:forEach>
+                </td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
                             data-whatever="${user.email}" data-href="/admin/user/delete/${user.id}">Delete

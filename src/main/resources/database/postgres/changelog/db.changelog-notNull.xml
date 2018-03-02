@@ -47,10 +47,10 @@
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
-    <changeSet author="emaxi" id="addNotNullConstraintPsword">
+    <changeSet author="emaxi" id="addNotNullConstraintPassword">
         <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
-                              columnName="psword"
+                              columnName="password"
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
@@ -112,13 +112,7 @@
                               schemaName="rh"
                               tableName="order"/>
     </changeSet>
-    <changeSet author="emaxi" id="addNotNullConstraintUserId">
-        <validCheckSum>any</validCheckSum>
-        <addNotNullConstraint columnDataType="bigint"
-                              columnName="user_id"
-                              schemaName="rh"
-                              tableName="order"/>
-    </changeSet>
+
 
     <!-- dish -->
     <changeSet author="emaxi" id="addNotNullConstraintDishName">

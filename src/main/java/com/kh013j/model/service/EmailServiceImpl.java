@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.Async;
 @NoArgsConstructor
 //@Service("emailService")
 public class EmailServiceImpl implements EmailService{
-
+	@Autowired
 	private JavaMailSender mailSender;
 	
 	@Autowired

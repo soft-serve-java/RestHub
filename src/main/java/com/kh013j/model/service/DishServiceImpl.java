@@ -61,7 +61,6 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    @Transactional(rollbackFor = DishNotFound.class)
     public Page<Dish> findAllAvailableDishByCategory(Category category, Integer pageNumber) {
         PageRequest request =
                 new PageRequest(pageNumber - 1, PAGE_SIZE);

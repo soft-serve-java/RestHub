@@ -1,8 +1,7 @@
 package com.kh013j.controllers.login;
 
-
 import com.kh013j.model.domain.User;
-import com.kh013j.model.service.EmailService;
+import com.kh013j.model.service.interfaces.EmailService;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -48,24 +45,35 @@ public class RegisterController {
     }
 
     // Process form input data
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    @PostMapping(value = "/registration")
     public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
         User userExists = userService.findByEmail(user.getEmail());
-        //System.out.println(userExists);
         modelAndView.addObject("registration", user);
         if (userExists != null) {
-            modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
+            modelAndView.addObject("alreadyRegisteredMessage", "There is already a user registered with the email provided.");
             modelAndView.setViewName("registration");
             bindingResult.reject("email");
         }
+        if (user.getPassword().length() <= 4) {
+            modelAndView.addObject("IncorrectPassword", "Password length min 5, max 100 symbols ");
+            modelAndView.setViewName("registration");
+        }
+        if (user.getName().length() <= 1) {
+            modelAndView.addObject("IncorrectName", "Name length min 2, max 50 symbols ");
+            modelAndView.setViewName("registration");
+        }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
-        } else { // new user so we create user and send confirmation e-mail
+        }
+        else { // new user so we create user and send confirmation e-mail
 
             Random random = new Random();
             //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword() + String.valueOf(random.nextInt())));
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            user.setRole(roleService.findByName("user"));
+            if (user.getRoles() == null) {
+                user.setRoles(new HashSet<>());
+            }
+            user.getRoles().add(roleService.findByName("user")); // changes because of a few user's roles
             user.setEnabled(false);
             user.setConfirmationtoken(UUID.randomUUID().toString());
             userService.create(user);
@@ -84,7 +92,7 @@ public class RegisterController {
     }
 
     // Process confirmation link
-    @RequestMapping(value="/confirm", method = RequestMethod.GET)
+   @GetMapping(value="/confirm")
     public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, @RequestParam("token") String token) {
         User user = userService.findByConfirmationtoken(requestParams.get("token"));
         user.setEnabled(true);
