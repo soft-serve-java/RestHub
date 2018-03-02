@@ -33,8 +33,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**").access("hasAuthority('ADMINISTRATOR')")
-                .antMatchers("/cooker/**").access("hasAuthority('COOK')")
-                .antMatchers("/waiter/**").access("hasAuthority('WAITER')")
+                .antMatchers("/cooker/**").access("hasAnyAuthority('COOK', 'ADMINISTRATOR')")
+                .antMatchers("/waiter/**").access("hasAnyAuthority('WAITER', 'ADMINISTRATOR')")
                 //.antMatchers("/user/**").hasAnyRole("USER")
 
                 .and()

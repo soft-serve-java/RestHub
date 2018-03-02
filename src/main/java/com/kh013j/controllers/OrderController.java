@@ -71,7 +71,6 @@ public class OrderController {
                                   @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
                                   @ModelAttribute("orderedList") List<OrderedDish> orderedDishes,
                                   HttpServletRequest request) {
-        Order order = orderService.findByTable(1);
         return new RedirectView(request.getHeader("referer"));
     }
 
