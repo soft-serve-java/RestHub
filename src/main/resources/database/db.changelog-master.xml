@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="database/postgres/initDB.sql"/>
+    <include file="database/postgres/populateDB.sql"/>
+
+    <changeSet id="1" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/initDB.sql"/>
+    </changeSet>
+    <changeSet id="2" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/populateDB.sql"/>
+    </changeSet>
+    <changeSet author="meow" id="renameAvailability">
+        <renameColumn columnDataType="boolean"
+                      newColumnName="availability"
+                      oldColumnName="avalibility"
+                      schemaName="rh"
+                      tableName="dish"/>
+    </changeSet>
+    <changeSet author="meow" id="renameClosed">
+        <renameColumn columnDataType="boolean"
+                      newColumnName="closed"
+                      oldColumnName="close"
+                      schemaName="rh"
+                      tableName="order"/>
+    </changeSet>
+    <changeSet author="meow" id="modifyDataTypePreparingTime">
+        <modifyDataType columnName="preparingtime"
+                        newDataType="int"
+                        schemaName="rh"
+                        tableName="dish"/>
+    </changeSet>
+    <changeSet id="6" author="me">
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="database/postgres/imageReviewEntities.sql"/>
+    </changeSet>
+</databaseChangeLog>

@@ -2,10 +2,13 @@ package com.kh013j;
 
 import com.kh013j.model.service.*;
 import com.kh013j.model.service.interfaces.*;
+import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
+import javax.servlet.Filter;
 
 @Configuration
 public class CaffinoApplicationConfiguration {
@@ -51,4 +54,9 @@ public class CaffinoApplicationConfiguration {
 
     @Bean
     public ReviewService reviewServiceConfig() {return new ReviewServiceImpl(); }
+
+    @Bean
+    public Filter sitemesh(){
+        return new SiteMeshFilter();
+    }
 }

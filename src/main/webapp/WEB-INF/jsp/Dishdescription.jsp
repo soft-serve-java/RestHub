@@ -1,6 +1,4 @@
-<%@ include file="header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 
 <div class="container" style="text-align: left">
     <div class="row">
@@ -130,6 +128,7 @@
                                 </form>
                             </div>
                         </div>
+                </div>
     </div>
 </div>
 
@@ -149,4 +148,3 @@
     }
 
 </style>
-<%@ include file="footer.jsp" %>

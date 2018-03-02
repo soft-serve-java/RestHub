@@ -1,5 +1,6 @@
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page errorPage="error.jsp" %>
+<%@ page errorPage="/WEB-INF/jsp/error.jsp" %>
 <html lang="en" style="position: relative; min-height: 100%">
 <head>
     <meta charset="UTF-8">
@@ -92,7 +93,25 @@
             </h6>
         </c:if>
         <c:if test="${pageContext.request.userPrincipal.name == null}">
-        <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+            <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
         </c:if>
     </div>
 </nav>
+
+<decorator:body />
+
+<footer class="footer">
+    <div class="container">
+        <span class="add-text"> RestHub Inc. 	&#169;</span>
+        <a href="#" class="add-text">Contact us </a>
+        <span class="align-middle">Join us
+              <button class="i-button" style="margin-left: 20px">
+                  <i class="fa fa-facebook" aria-hidden="true"></i></button>
+        <button class="i-button"><i class="fa fa-twitter" aria-hidden="true"></i></button>
+            <button class="i-button"><i class="fa fa-instagram" aria-hidden="true"></i></button>
+        </span>
+        <a href="#" class="add-text">Help</a>
+    </div>
+</footer>
+</body>
+</html>

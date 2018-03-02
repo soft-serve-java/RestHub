@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class Dish {
     @Min(0)
     private int preparingtime;
     @Max(100000)
-    private BigDecimal price;
+    private int price;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
