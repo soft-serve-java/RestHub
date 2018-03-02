@@ -13,8 +13,12 @@ import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.SimpMessageType;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -32,10 +36,15 @@ public class LiveCallWaiterController {
 
     @Autowired
     private OrderService orderService;
+
     @Autowired
     private UserService userService;
+
     @Autowired
     private OrderedDishService orderedDishService;
+
+    @Autowired
+    private SimpMessagingTemplate template;
 
     @MessageMapping("/waiterCall")
     @SendTo("waiter/tables")
@@ -52,20 +61,36 @@ public class LiveCallWaiterController {
 
     @PostMapping("/callWaiterClient")
     @ResponseBody
-    public void callForWaiter(@RequestParam int table) {
+    public void callForWaiter(@RequestParam int table, HttpServletRequest headerAccessor) {
+        String sessionId  = (String)
+                headerAccessor.getSession().getId();
         List<CallForWaiter> callForWaiterList = service.findAll();
         callForWaiterList.add(new CallForWaiter(new Tables(table),
-                new Timestamp(System.currentTimeMillis())));
+                new Timestamp(System.currentTimeMillis()), sessionId));
     }
 
     @PostMapping("/acceptCalling")
     @ResponseBody
-    public void acceptCalling(@RequestParam int table){
+    public void acceptCalling(@RequestParam int table) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             User user = userService.findByEmail(auth.getName());
-            service.mackAsClosed(table, user);
+            CallForWaiter call = service.mackAsClosed(table, user);
+             template.convertAndSendToUser("1",
+                    "/callBackInfo", true);
         }
+    }
+
+    private MessageHeaders createHeaders(String sessionId) {
+        SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor.create(SimpMessageType.MESSAGE);
+        headerAccessor.setSessionId(sessionId);
+        headerAccessor.setLeaveMutable(true);
+        return headerAccessor.getMessageHeaders();
+    }
+    @MessageMapping("/waiterCallBack")
+    @SendTo("/queue/callBackInfo")
+    public List<Tables> callBack(){
+        return orderService.findTableInfoForWaiter();
     }
     @PostMapping("/getTable")
     @ResponseBody
@@ -80,7 +105,7 @@ public class LiveCallWaiterController {
     public ModelAndView odrerDetails(@PathVariable(value = "table") int table){
         Order order = orderService.findByTable(table);
         ModelAndView modelAndView = new ModelAndView(ViewName.WAITER_ORDERS, "order", order.getOrderedFood());
-        double sumOfAllDishPrices = order.getOrderedFood().stream().mapToDouble(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice().doubleValue()).sum();
+        double sumOfAllDishPrices = order.getOrderedFood().stream().mapToDouble(orderedDish -> orderedDish.getQuantity()*orderedDish.getDish().getPrice()).sum();
         modelAndView.addObject("ordersTotalAmount", sumOfAllDishPrices);
         modelAndView.addObject("user", order.getUser());
         modelAndView.addObject("table", table);
@@ -97,4 +122,5 @@ public class LiveCallWaiterController {
         orderedDishService.setDelivered(id);
         return new RedirectView(request.getHeader("referer"));
     }
+
 }

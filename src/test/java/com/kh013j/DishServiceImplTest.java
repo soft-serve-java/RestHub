@@ -49,40 +49,40 @@ public class DishServiceImplTest {
         dishes.addAll(Arrays.asList(
                 (new Dish(1L, "White corn guacamole",
                         "Diced avocado, sweet white corn, black beans.",
-                        200, 1000, 40, new BigDecimal(3), soupsCategory, new ArrayList<>(), true)),
+                        200, 1000, 40,3.0, soupsCategory, new ArrayList<>(), true)),
                 (new Dish(2L, "Camole",
                         "Diced avocado, sweet white corn, black beans.",
-                        250, 1200, 10, new BigDecimal(33), soupsCategory, new ArrayList<>(), true)),
+                        250, 1200, 10,33.0, soupsCategory, new ArrayList<>(), true)),
                 (new Dish(3L, "Guacamole",
                         "Black beans.",
-                        430, 1400, 20, new BigDecimal(56), soupsCategory, new ArrayList<>(), true)),
+                        430, 1400, 20,56.0, soupsCategory, new ArrayList<>(), true)),
                 (new Dish(4L, "Tiramisu",
                         "Soft.",
-                        730, 1341, 26, new BigDecimal(39), desertsCategory, new ArrayList<>(), true)),
+                        730, 1341, 26, 39.0, desertsCategory, new ArrayList<>(), true)),
                 (new Dish(5L, "Tortinni",
                         "Delicious.",
-                        330, 1909, 27, new BigDecimal(60), desertsCategory, new ArrayList<>(), true)),
+                        330, 1909, 27, 60.0, desertsCategory, new ArrayList<>(), true)),
                 (new Dish(6L, "Our desert",
                         "From love",
-                        230, 1467, 29, new BigDecimal(34), desertsCategory, new ArrayList<>(), true)),
+                        230, 1467, 29, 34.0, desertsCategory, new ArrayList<>(), true)),
                 (new Dish(7L, "Gua mole",
                         "Red beans.",
-                        230, 1348, 23, new BigDecimal(39), mealsCategory, new ArrayList<>(), true)),
+                        230, 1348, 23, 39.0, mealsCategory, new ArrayList<>(), true)),
                 (new Dish(8L, "Mole",
                         "Beans.",
-                        530, 1906, 22, new BigDecimal(6), mealsCategory, new ArrayList<>(), true)),
+                        530, 1906, 22, 6.0, mealsCategory, new ArrayList<>(), true)),
                 (new Dish(9L, "Dishy-Issy",
                         "Different beans.",
-                        730, 1409, 25, new BigDecimal(66), mealsCategory, new ArrayList<>(), true)),
+                        730, 1409, 25, 66.0, mealsCategory, new ArrayList<>(), true)),
                 (new Dish(10L, "Milk shake",
                         "Tasty drink",
-                        521, 1317, 13, new BigDecimal(8), drinksCategory, new ArrayList<>(), true)),
+                        521, 1317, 13, 8.0, drinksCategory, new ArrayList<>(), true)),
                 (new Dish(11L, "Strawberry cocktail",
                         "Tasty strawberry flavour",
-                        580, 1005, 14, new BigDecimal(9), drinksCategory, new ArrayList<>(), true)),
+                        580, 1005, 14, 9.0, drinksCategory, new ArrayList<>(), true)),
                 (new Dish(12L, "Blackberry cocktail",
                         "Tasty blackberry flavour",
-                        570, 1404, 12, new BigDecimal(11), drinksCategory, new ArrayList<>(), true))));
+                        570, 1404, 12, 11.0, drinksCategory, new ArrayList<>(), true))));
 
         for (Dish dish : dishes) {
             dishService.create(dish);
@@ -102,7 +102,7 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("some_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
-        dish.setPrice(new BigDecimal(10));
+        dish.setPrice(10.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
 
@@ -129,7 +129,7 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("mexico_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
-        dish.setPrice(new BigDecimal(12));
+        dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
 
@@ -150,7 +150,7 @@ public class DishServiceImplTest {
         for (Category category : categories) {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category,1, "DESC").getContent();
 
-            Dish minPriceDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPrice)).get();
+           Dish minPriceDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPrice)).get();
             assertEquals(categoryDishes.get(0), minPriceDish);
 
             Dish maxPriceDish = categoryDishes.stream().max(Comparator.comparing(Dish::getPrice)).get();
@@ -198,7 +198,7 @@ public class DishServiceImplTest {
     @Test
     public void delete() {
         Dish lastDish = new Dish(dishes.size()+1, "Guaca", "Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.",
-                200, 1000, 40, new BigDecimal(3), desertsCategory, null, true);
+                200, 1000, 40,3.0, desertsCategory, null, true);
 
         Dish createdDish = dishService.create(lastDish);
 
@@ -250,7 +250,8 @@ public class DishServiceImplTest {
         dish.setPreparingtime(5);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
-        dish.setImages(new ArrayList<>(Collections.singletonList(image)));        dish.setPrice(new BigDecimal(-12));
+        dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+        dish.setPrice(-12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
 
@@ -269,7 +270,7 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
-        dish.setPrice(new BigDecimal(12));
+        dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
 
@@ -288,7 +289,7 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
-        dish.setPrice(new BigDecimal(12));
+        dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
 
@@ -307,7 +308,7 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
-        dish.setPrice(new BigDecimal(12));
+        dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
 
