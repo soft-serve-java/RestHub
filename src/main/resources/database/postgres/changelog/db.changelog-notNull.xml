@@ -7,7 +7,6 @@
 
     <!-- category -->
     <changeSet author="emaxi" id="addNotNullConstraintCategoryName">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
                               columnName="name"
                               schemaName="rh"
@@ -16,23 +15,12 @@
 
     <!-- role -->
     <changeSet author="emaxi" id="addNotNullConstraintRoleName">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
                               columnName="name"
                               schemaName="rh"
                               tableName="role"/>
     </changeSet>
-   <!-- <changeSet author="emaxi" id="addNotNullConstraintUserRoleIdInRole">
-        <validCheckSum>any</validCheckSum>
-        <addNotNullConstraint columnDataType="bigint"
-                              columnName="userrole_id"
-                              schemaName="rh"
-                              tableName="role"/>
-    </changeSet> -->
-
-    <!-- status -->
     <changeSet author="emaxi" id="addNotNullConstraintStatusName">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
                               columnName="name"
                               schemaName="rh"
@@ -41,49 +29,36 @@
 
     <!-- user -->
     <changeSet author="emaxi" id="addNotNullConstraintEmail">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
                               columnName="email"
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintPassword">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
                               columnName="password"
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintUserName">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
                               columnName="name"
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
-   <!-- <changeSet author="emaxi" id="addNotNullConstraintUserRoleIdInUsers">
-        <validCheckSum>any</validCheckSum>
-        <addNotNullConstraint columnDataType="bigint"
-                              columnName="userrole_id"
-                              schemaName="rh"
-                              tableName="user"/>
-    </changeSet> -->
     <changeSet author="emaxi" id="addNotNullConstraintEnabled">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="boolean"
                               columnName="enabled"
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintEnabled">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="boolean"
                               columnName="enabled"
                               schemaName="rh"
                               tableName="user"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintConfirmationToken">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="boolean"
                               columnName="confirmationtoken"
                               schemaName="rh"
@@ -92,80 +67,68 @@
 
     <!-- order -->
     <changeSet author="emaxi" id="addNotNullConstraintTime">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="timestamp"
                               columnName="time"
                               schemaName="rh"
                               tableName="order"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintTableNumber">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="int"
                               columnName="tablenumber"
                               schemaName="rh"
                               tableName="order"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintClosed">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="boolean"
                               columnName="closed"
                               schemaName="rh"
                               tableName="order"/>
     </changeSet>
 
-
     <!-- dish -->
     <changeSet author="emaxi" id="addNotNullConstraintDishName">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(50)"
                               columnName="name"
                               schemaName="rh"
                               tableName="dish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintDishDescription">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="varchar(1000)"
                               columnName="description"
                               schemaName="rh"
                               tableName="dish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintWeight">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="int"
                               columnName="weight"
                               schemaName="rh"
                               tableName="dish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintCalories">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="int"
                               columnName="calories"
                               schemaName="rh"
                               tableName="dish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintPreparingTime">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="int"
                               columnName="preparingtime"
                               schemaName="rh"
                               tableName="dish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintPrice">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="decimal"
                               columnName="price"
                               schemaName="rh"
                               tableName="dish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintAvailability">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="boolean"
                               columnName="availability"
                               schemaName="rh"
                               tableName="dish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintCategoryId">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="bigint"
                               columnName="category_id"
                               schemaName="rh"
@@ -174,28 +137,24 @@
 
     <!-- orderdish -->
     <changeSet author="emaxi" id="addNotNullConstraintQuantity">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="int"
                               columnName="quantity"
                               schemaName="rh"
                               tableName="orderdish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintDishId">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="bigint"
                               columnName="dish_id"
                               schemaName="rh"
                               tableName="orderdish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintStatusId">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="bigint"
                               columnName="status_id"
                               schemaName="rh"
                               tableName="orderdish"/>
     </changeSet>
     <changeSet author="emaxi" id="addNotNullConstraintOrderId">
-        <validCheckSum>any</validCheckSum>
         <addNotNullConstraint columnDataType="bigint"
                               columnName="order_id"
                               schemaName="rh"

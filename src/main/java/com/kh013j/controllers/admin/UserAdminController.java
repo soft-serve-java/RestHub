@@ -2,7 +2,6 @@ package com.kh013j.controllers.admin;
 
 import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.User;
-import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.io.IOException;
 
 @Controller
 public class UserAdminController {
@@ -41,14 +39,14 @@ public class UserAdminController {
     }
 
     @PostMapping(value = "/admin/user/delete/{id}")
-    public String userDelete(@PathVariable(value = "id") long id) throws DishNotFound {
+    public String userDelete(@PathVariable(value = "id") long id) {
         userService.delete(id);
         return "redirect:/admin/user/all";
     }
 
     @PostMapping(value = "/admin/user/save")
     public String userSaveNew(@Valid @ModelAttribute("user") User user, BindingResult userResult,
-                              Model model) throws DishNotFound, IOException {
+                              Model model) {
         if (userResult.hasErrors()) {
             model.addAttribute("Roles", roleService.findAll());
             return ViewName.USER_EDIT_CREATE;
@@ -57,5 +55,4 @@ public class UserAdminController {
         return "redirect:/admin/user/all";
 
     }
-
 }

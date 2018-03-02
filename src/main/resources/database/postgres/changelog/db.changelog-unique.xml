@@ -6,7 +6,6 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet author="liquibase-docs" id="addUniqueConstraintCategoryName">
-        <validCheckSum>any</validCheckSum>
         <addUniqueConstraint columnNames="name"
                              deferrable="true"
                              initiallyDeferred="true"
@@ -15,7 +14,6 @@
         />
     </changeSet>
     <changeSet author="emaxi" id="addUniqueConstraintRoleName">
-        <validCheckSum>any</validCheckSum>
         <addUniqueConstraint columnNames="name"
                              deferrable="true"
                              initiallyDeferred="true"
@@ -24,7 +22,6 @@
         />
     </changeSet>
     <changeSet author="emaxi" id="addUniqueConstraintStatusName">
-        <validCheckSum>any</validCheckSum>
         <addUniqueConstraint columnNames="name"
                              deferrable="true"
                              initiallyDeferred="true"
@@ -33,7 +30,6 @@
         />
     </changeSet>
     <changeSet author="emaxi" id="addUniqueConstraintEmail">
-        <validCheckSum>any</validCheckSum>
         <addUniqueConstraint columnNames="email"
                              deferrable="true"
                              initiallyDeferred="true"
@@ -42,7 +38,6 @@
         />
     </changeSet>
     <changeSet author="emaxi" id="addUniqueConstraintDishName">
-        <validCheckSum>any</validCheckSum>
         <addUniqueConstraint columnNames="name"
                              deferrable="true"
                              initiallyDeferred="true"

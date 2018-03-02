@@ -6,7 +6,6 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="1" author="me">
-        <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/sql/initDB.sql"/>
     </changeSet>
 
@@ -56,11 +55,9 @@
     <include file="database/postgres/changelog/db.changelog-check.xml"/>
 
     <changeSet id="2" author="emaxi">
-        <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/sql/createUserRole.sql"/>
     </changeSet>
     <changeSet id="3" author="me">
-        <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/sql/populateDB.sql"/>
     </changeSet>
     <changeSet author="orasso" id="addWaiter">
@@ -84,7 +81,6 @@
         />
     </changeSet>
     <changeSet id="6" author="me">
-        <validCheckSum>any</validCheckSum>
         <sqlFile path="database/postgres/sql/imageReviewEntities.sql"/>
     </changeSet>
     <changeSet author="orasso" id="7">
