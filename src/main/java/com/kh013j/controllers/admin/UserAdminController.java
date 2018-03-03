@@ -6,6 +6,7 @@ import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,9 +24,42 @@ public class UserAdminController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping(value = "/admin/user/all")
+/*    @GetMapping(value = "/admin/user/all")
     public ModelAndView showUsers() {
         return new ModelAndView(ViewName.SHOW_USERS, "Users", userService.findAll());
+    }*/
+
+
+    @GetMapping("/admin/user/all")
+    public ModelAndView showReviews(@RequestParam(value = "show", required = false) String showOnly,
+                                    @RequestParam(value = "page", required = false) Integer pageNumber){
+        ModelAndView modelAndView = new ModelAndView("UsersAdmin");
+
+        if(pageNumber == null || pageNumber < 1) {
+            pageNumber = 1;
+        }
+        if (showOnly == null) {
+            showOnly = "all";
+        }
+
+        Page<User> usersPage;
+
+        switch (showOnly.toUpperCase()){
+            case "CONFIRMED":
+                usersPage = userService.findAllEnabledUser(pageNumber, true);
+                break;
+            case "NOTCONFIRMED":
+                usersPage = userService.findAllEnabledUser(pageNumber, false);
+                break;
+            default:
+                usersPage = userService.findAllUser(pageNumber);
+        }
+
+        modelAndView.addObject("maxPages", usersPage.getTotalPages());
+        modelAndView.addObject("page", pageNumber);
+        modelAndView.addObject("showBy", showOnly);
+
+        return modelAndView;
     }
 
     @GetMapping(value = "admin/user/new")
