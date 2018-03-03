@@ -3,10 +3,16 @@ package com.kh013j.model.service;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.repository.UserRepository;
 import com.kh013j.model.service.interfaces.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import javax.annotation.Resource;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+
+    private static final int PAGE_SIZE = 4;
+
     @Resource
     private UserRepository userRepository;
 
@@ -50,5 +56,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByConfirmationtoken(String token) {
         return userRepository.findByConfirmationtoken(token);
+    }
+
+    @Override
+    public Page<User> findAllUser(Integer pageNumber) {
+        PageRequest request = new PageRequest(pageNumber - 1, PAGE_SIZE);
+        return userRepository.findAll(request);
+    }
+
+    @Override
+    public Page<User> findAllEnabledUser(Integer pageNumber, boolean enabled) {
+        PageRequest request = new PageRequest(pageNumber - 1, PAGE_SIZE);
+        return userRepository.findAllByEnabled(enabled, request);
     }
 }
