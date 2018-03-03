@@ -16,8 +16,10 @@ import java.io.Serializable;
 @Table(name = "role", schema = "rh")
 public class Role implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "role-sequence_generator", sequenceName = "role_sequence")
+    @GeneratedValue(generator = "role-sequence_generator", strategy = GenerationType.IDENTITY)
     private long id;
+
     @Min(2) @Max(50)
     private String name;
 }

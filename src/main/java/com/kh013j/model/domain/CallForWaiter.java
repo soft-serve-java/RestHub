@@ -16,13 +16,17 @@ import java.sql.Timestamp;
 public class CallForWaiter {
     @Id
     long id;
+
     @NonNull
     @Convert(converter = TableConverter.class)
     Tables table;
+
     @ManyToOne
     @JoinColumn(name = "waiter_id")
     User waiter;
+
     @NonNull
     Timestamp timeCreate;
+
     Timestamp timeClose;
 }

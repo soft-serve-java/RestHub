@@ -15,16 +15,21 @@ import javax.persistence.*;
 @Table(name = "orderdish", schema = "rh")
 public class OrderedDish {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "orderdish-sequence_generator", sequenceName = "orderdish_sequence")
+    @GeneratedValue(generator = "orderdish-sequence_generator", strategy = GenerationType.IDENTITY)
     long id;
+
     @ManyToOne
     @JoinColumn(name = "dish_id")
     private Dish dish;
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
     @ManyToOne
     @JoinColumn(name = "status_id", nullable = false)
     private Status status;
+
     private int quantity;
 }
