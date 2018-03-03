@@ -59,9 +59,13 @@
                     <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
                 </li>
             </c:forEach>
-            <button onclick="doPOSTonCallWaiter()" class="btn btn-success nav-button" style="margin-right:10px;">
+
+            <button type="button" class="btn btn-success nav-button" style="margin-right:10px;"
+                    data-toggle="modal" data-target="#exampleModalWaiter">
                 <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
             </button>
+
+
             </li>
             <li>
 
@@ -97,6 +101,7 @@
             <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
         </c:if>
     </div>
+
 </nav>
 
 <decorator:body />
@@ -116,3 +121,5 @@
 </footer>
 </body>
 </html>
+
+<%@ include file="/WEB-INF/jsp/ModalWaiter.jsp" %>
