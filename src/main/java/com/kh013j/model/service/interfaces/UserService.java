@@ -1,6 +1,7 @@
 package com.kh013j.model.service.interfaces;
 
 import com.kh013j.model.domain.User;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -19,4 +20,9 @@ public interface UserService {
     User findByEmail(String email);
 
     User findByConfirmationtoken(String token);
+
+
+    Page<User> findAllUser(Integer pageNumber);
+
+    Page<User> findAllEnabledUser(Integer pageNumber, boolean enabled);
 }
