@@ -24,7 +24,7 @@ public class Order {
     private long id;
     @Past
     private Timestamp time;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
     private int tablenumber;
