@@ -24,7 +24,8 @@ import java.util.Set;
 @Table(name = "user", schema = "rh")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "user-sequence_generator", sequenceName = "user_sequence")
+    @GeneratedValue(generator = "user-sequence_generator", strategy = GenerationType.IDENTITY)
     private long id = -1;
 
     @Email
@@ -48,6 +49,7 @@ public class User implements UserDetails {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
+
     private Set<Role> roles;
 
     public User(User user) {

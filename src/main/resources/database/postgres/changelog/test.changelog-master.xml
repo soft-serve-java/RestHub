@@ -45,6 +45,9 @@
             CHECK ((EXTRACT(DAYS FROM NOW() - rh.order.time))>=0)
         </sql>
     </changeSet>
+    <changeSet id="DropPictureColumn" author="emaxi">
+        <dropColumn tableName="dish" schemaName="rh" columnName="picture"/>
+    </changeSet>
 
     <include file="database/postgres/sql/populateTest.sql"/>
 

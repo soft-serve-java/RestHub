@@ -21,16 +21,22 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Past
     private Timestamp time;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
     private int tablenumber;
+
     @Column(name = "closed")
     private boolean closed;
+
     @OneToMany(mappedBy = "order",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<OrderedDish> orderedFood = new ArrayList<>();
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "waiter")
     User waiter;

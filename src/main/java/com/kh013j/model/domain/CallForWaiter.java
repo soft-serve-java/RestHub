@@ -1,9 +1,7 @@
 package com.kh013j.model.domain;
 
 
-import com.kh013j.model.domain.User;
 import com.kh013j.model.domain.converter.TableConverter;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

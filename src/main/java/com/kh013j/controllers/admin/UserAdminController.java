@@ -15,9 +15,9 @@ import javax.validation.Valid;
 
 @Controller
 public class UserAdminController {
-
     @Autowired
     private UserService userService;
+
     @Autowired
     private RoleService roleService;
 
