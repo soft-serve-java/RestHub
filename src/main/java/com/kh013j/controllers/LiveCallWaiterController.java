@@ -77,7 +77,7 @@ public class LiveCallWaiterController {
             User user = userService.findByEmail(auth.getName());
             CallForWaiter call = service.mackAsClosed(table, user);
              template.convertAndSendToUser("1",
-                    "/callBackInfo", true);
+                    "/callBackInfo", call.getWaiter());
         }
     }
 
