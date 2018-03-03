@@ -35,7 +35,7 @@ public class OrderController {
                                    HttpServletRequest request) {
         Optional<Dish> dish = Optional.of(dishService.findById(id));
         dish.ifPresent(d -> {
-            orderMap.computeIfPresent(d, (key, val) -> val++);
+            orderMap.computeIfPresent(d, (k, v) -> ++v);
             orderMap.putIfAbsent(d, 1);
         });
         return new RedirectView(request.getHeader("referer")+"#" + dish.orElse(new Dish()).getId());
@@ -114,7 +114,9 @@ public class OrderController {
 
     @ModelAttribute("tables")
     public Tables getTableNumber() {
-        return new Tables();
+        Tables tables = new Tables();
+        tables.setCurrentTable(1);
+        return tables;
     }
 
     @PostMapping(value = "/setTableNumber")
