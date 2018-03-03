@@ -1,5 +1,6 @@
 package com.kh013j.model.config;
 
+import com.kh013j.controllers.util.CustomHandshakeHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.scheduling.concurrent.DefaultManagedTaskScheduler;
@@ -15,8 +16,9 @@ public class    WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/waiter");
+        config.enableSimpleBroker("/waiter", "/user");
         config.setApplicationDestinationPrefixes("/app");
+        //config.setUserDestinationPrefix("/user");
     }
 
     @Override
