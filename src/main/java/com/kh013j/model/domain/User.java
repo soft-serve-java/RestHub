@@ -41,7 +41,7 @@ public class User implements UserDetails {
 
     private boolean enabled;
 
-    @ManyToMany(cascade = {CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE})
     @JoinTable(
             schema = "rh",
             name = "userrole",
@@ -49,6 +49,7 @@ public class User implements UserDetails {
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
     private Set<Role> roles;
+    private String avatar;
 
     public User(User user) {
         this.email = user.email;

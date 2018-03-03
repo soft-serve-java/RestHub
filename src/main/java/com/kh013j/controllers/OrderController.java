@@ -85,8 +85,8 @@ public class OrderController {
         }
         //TODO:Решить, что делать с заказами на один стол, поле для ввода номера стола.
         double sumOfAllDishPrices = orderMap.entrySet()
-                .stream().mapToDouble(e -> e.getKey().getPrice().doubleValue() * e.getValue().doubleValue()).sum()
-                + orderedDishes.stream().mapToDouble(ordered -> ordered.getDish().getPrice().doubleValue() * ordered.getQuantity()).sum();
+                .stream().mapToDouble(e -> e.getKey().getPrice() * e.getValue().doubleValue()).sum()
+                + orderedDishes.stream().mapToDouble(ordered -> ordered.getDish().getPrice() * ordered.getQuantity()).sum();
 
         return new ModelAndView(ViewName.ORDER, "ordersTotalAmount", sumOfAllDishPrices);
     }

@@ -16,6 +16,17 @@ postgres:
   database: test
   username: postgres
 before_script:
-  - psql -c "create database test;" -U postgres
-  - psql -c "create user my with password '1234';" -U postgres
-  - psql -c "GRANT ALL PRIVILEGES ON DATABASE test TO my;" -U postgres
+ - sudo /etc/init.d/postgresql stop
+  # add postgresql 10 repository
+  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+  - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs 2>/dev/null)-pgdg main" >> /etc/apt/sources.list.d/postgresql.list'
+  # install new version
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq postgresql-10 postgresql-client-10
+  # clone auth config (might need to fix source path for another version)
+  - sudo cp /etc/postgresql/9.6/main/pg_hba.conf /etc/postgresql/10/main/pg_hba.conf
+  # start new version
+  - sudo /etc/init.d/postgresql restart
+  # I haven't investigated or tried to fix, but pg10 uses another port
+  # for some reason, so tell applications to use correct port
+  - export PGPORT=5430

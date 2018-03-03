@@ -67,6 +67,7 @@ app.controller('LiveController', function ($stomp, $scope) {
     };
     $stomp.connect('/call', {})
         .then(function (frame) {
+            console.log("connected");
             var subscription = $stomp.subscribe('/waiter/tables',
                 function (payload, headers, res) {
                     $scope.myres = payload;
