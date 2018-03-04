@@ -117,4 +117,10 @@
             <column name="name" value="done"/>
         </insert>
     </changeSet>
+    <changeSet author="orasso" id="addImgToUser">
+        <addColumn schemaName="rh"
+                   tableName="user">
+            <column name="avatar" type="VARCHAR"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

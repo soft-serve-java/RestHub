@@ -82,7 +82,8 @@ public class AdminDishController {
 
     @PostMapping(value = "/admin/dish/save")
     public String dishSaveNew(@Valid @ModelAttribute("dish" )Dish dish, BindingResult dishResult,
-                              @RequestParam("pic") List<MultipartFile> files, Model model) throws DishNotFound {
+                              @RequestParam("pic") List<MultipartFile> files,
+                              Model model) throws DishNotFound {
         if (dishResult.hasErrors()) {
             model.addAttribute("category",categoryService.findAll());
             return ViewName.DISH_EDIT_ADD;
@@ -92,7 +93,6 @@ public class AdminDishController {
             if (dish.getImages() == null) {
                 dish.setImages(new ArrayList<>());
             }
-
             files.parallelStream().forEach(file -> {
                 Image image = new Image();
                 try {

@@ -1,25 +1,34 @@
 package com.kh013j.controllers.admin;
 
 import com.kh013j.controllers.util.ViewName;
+import com.kh013j.model.domain.Image;
 import com.kh013j.model.domain.User;
+import com.kh013j.model.exception.DishNotFound;
+import com.kh013j.model.service.ImgurImageService;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class UserAdminController {
-    @Autowired
-    private UserService userService;
 
     @Autowired
+    private UserService userService;
+    @Autowired
     private RoleService roleService;
+    private Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
     @GetMapping(value = "/admin/user/all")
     public ModelAndView showUsers() {
@@ -39,20 +48,36 @@ public class UserAdminController {
     }
 
     @PostMapping(value = "/admin/user/delete/{id}")
-    public String userDelete(@PathVariable(value = "id") long id) {
+    public String userDelete(@PathVariable(value = "id") long id) throws DishNotFound {
         userService.delete(id);
         return "redirect:/admin/user/all";
     }
 
     @PostMapping(value = "/admin/user/save")
-    public String userSaveNew(@Valid @ModelAttribute("user") User user, BindingResult userResult,
-                              Model model) {
+    public String userSaveNew(@Valid @ModelAttribute("user") User user,
+                              BindingResult userResult,
+                              Model model,
+                              @RequestParam("pic") MultipartFile file) {
         if (userResult.hasErrors()) {
             model.addAttribute("Roles", roleService.findAll());
             return ViewName.USER_EDIT_CREATE;
         }
-        userService.update(user);
+        if (user.getId() == -1) {
+            userService.update(user);
+        } else {
+            User oldUser = userService.findById(user.getId());
+            oldUser.setRoles(user.getRoles());
+            oldUser.setEmail(user.getEmail());
+            user.setPassword(oldUser.getPassword());
+            try{
+                oldUser.setAvatar(ImgurImageService.uploadImage(file.getBytes()));
+            } catch (IOException e) {
+                logger.error("Something wrong with file", e, file);
+            }
+            userService.update(oldUser);
+        }
         return "redirect:/admin/user/all";
 
     }
+
 }

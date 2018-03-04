@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="container">
     <%--@elvariable id="user" type="com.kh013j.model.domain.User"--%>
-    <form:form method="POST" action="/admin/user/save" modelAttribute="user">
+    <form:form method="POST" action="/admin/user/save" modelAttribute="user" enctype="multipart/form-data">
         <div class="form-row">
 
             <div class="form-group col-md-6">
@@ -17,9 +17,11 @@
                                 placeholder="Password"/>
                 </c:if>
                 <c:if test="${null!=user.email}">
-                    <input disabled type="password" class="form-control" id="inputPassword4" placeholder="Password"/>
+                    <form disabled type="password" class="form-control" id="inputPassword4" placeholder="Password"/>
                 </c:if>
             </div>
+            <label>Avatar: </label>
+            <input class="form-control" type="file" name="pic" accept="image/*"/>
         </div>
         <div class="form-row">
 <%--            <div class="form-group col-md-6">
@@ -27,8 +29,8 @@
                 <form:input path="login" type="text" class="form-control" id="inputLogin"/>
             </div>--%>
             <div class="form-group col-md-4">
-                <label for="inputState">Role</label>
-                <form:select path="role" multiple="false" id="inputState" class="form-control">
+                <label for="inputState">Roles</label>
+                <form:select path="roles" multiple="true" id="inputState" class="form-control">
                     <form:options items="${Roles}" itemValue="id" itemLabel="name"/>
                 </form:select>
             </div>

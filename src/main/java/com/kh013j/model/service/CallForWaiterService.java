@@ -4,7 +4,6 @@ import com.kh013j.model.domain.CallForWaiter;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.repository.CallForWaiterRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
@@ -31,7 +30,7 @@ public class CallForWaiterService {
         return callForWaiters;
     }
 
-    public void mackAsClosed(int tablenumber, User waiter){
+    public CallForWaiter mackAsClosed(int tablenumber, User waiter){
         CallForWaiter call = findByTableNumber(tablenumber);
         callForWaiters.remove(call);
         call.setWaiter(waiter);
@@ -41,6 +40,7 @@ public class CallForWaiterService {
             CompletableFuture.runAsync(()-> callForWaiterRepository.save(callForWaiters));
             closed.clear();
         }
+        return call;
     }
     public boolean add(CallForWaiter callForWaiter){
         if (!callForWaiters.contains(callForWaiter)){

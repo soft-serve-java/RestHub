@@ -29,4 +29,7 @@ public class CallForWaiter {
     Timestamp timeCreate;
 
     Timestamp timeClose;
+    @NonNull
+    @Transient
+    String sessoinId;
 }

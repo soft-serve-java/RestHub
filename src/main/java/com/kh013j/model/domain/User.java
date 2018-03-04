@@ -42,7 +42,7 @@ public class User implements UserDetails {
 
     private boolean enabled;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE})
     @JoinTable(
             schema = "rh",
             name = "userrole",
@@ -51,6 +51,7 @@ public class User implements UserDetails {
     )
 
     private Set<Role> roles;
+    private String avatar;
 
     public User(User user) {
         this.email = user.email;

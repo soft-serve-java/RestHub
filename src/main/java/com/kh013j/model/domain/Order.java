@@ -1,5 +1,6 @@
 package com.kh013j.model.domain;
 
+import com.kh013j.model.domain.converter.TableConverter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,12 +32,12 @@ public class Order {
     private User user;
 
     private int tablenumber;
-
     @Column(name = "closed")
     private boolean closed;
 
-    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private List<OrderedDish> orderedFood = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="order_id")
+    private List<OrderedDish> orderedFood;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "waiter")

@@ -1,5 +1,6 @@
 package com.kh013j.model.domain;
 
+import com.kh013j.model.domain.converter.PriceConverter;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,8 +37,8 @@ public class Dish {
     private int preparingtime;
 
     @Min(0) @Max(100000)
-    private BigDecimal price;
-
+    @Convert(converter = PriceConverter.class)
+    private double price;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;

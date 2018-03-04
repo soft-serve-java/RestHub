@@ -24,10 +24,6 @@ public class OrderedDish {
     private Dish dish;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
-
-    @ManyToOne
     @JoinColumn(name = "status_id", nullable = false)
     private Status status;
 
