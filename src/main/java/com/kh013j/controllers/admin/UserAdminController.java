@@ -65,7 +65,7 @@ public class UserAdminController {
         modelAndView.addObject("maxPages", usersPage.getTotalPages());
         modelAndView.addObject("page", pageNumber);
         modelAndView.addObject("showBy", showOnly);
-
+        modelAndView.addObject("Users", usersPage.getContent());
         return modelAndView;
     }
 
