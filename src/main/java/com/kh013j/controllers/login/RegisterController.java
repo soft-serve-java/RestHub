@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
+
 @Controller
 public class RegisterController {
 

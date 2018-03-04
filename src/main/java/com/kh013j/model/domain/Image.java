@@ -15,7 +15,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Image {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "image-sequence_generator", sequenceName = "image_sequence")
+    @GeneratedValue(generator = "image-sequence_generator", strategy = GenerationType.IDENTITY)
     long id;
 
     private String url;

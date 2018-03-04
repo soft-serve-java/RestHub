@@ -7,17 +7,17 @@ import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.stream.Collectors;
 import static com.kh013j.model.domain.TableStatus.*;
+
 public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderRepository orderRepository;
+
     @Autowired
     private CallForWaiterService callForWaiterService;
 
