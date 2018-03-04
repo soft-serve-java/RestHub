@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.util.LinkedList;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -19,25 +19,34 @@ import java.util.List;
 @EqualsAndHashCode(exclude = "images")
 public class Dish {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "dish-sequence_generator", sequenceName = "dish_sequence")
+    @GeneratedValue(generator = "dish-sequence_generator", strategy = GenerationType.IDENTITY)
     long id;
+
     @Size(min = 3, max = 50)
     private String name;
+
     private String description;
+
     private int weight;
+
     @Max(5000)
     private int calories;
+
     @Min(0)
     private int preparingtime;
+
     @Min(0) @Max(100000)
     @Convert(converter = PriceConverter.class)
     private double price;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="dish_id")
-    private List<Image> images = new LinkedList<>();
+    private List<Image> images;
+
     private boolean availability;
 
     public Dish(Dish dish) {

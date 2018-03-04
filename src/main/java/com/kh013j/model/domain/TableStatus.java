@@ -1,7 +1,5 @@
 package com.kh013j.model.domain;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
 import java.io.Serializable;
 
 public class TableStatus implements Serializable {
