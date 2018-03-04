@@ -11,27 +11,32 @@
         <pattern>/dish/*</pattern><!-- Dishdescription.jsp -->
     </decorator>
 
-    <decorator name="admin" page="admin_pages_template.jsp">
-        <!-- Mapping for ADMIN-pages:
-         Admin.jsp
-         AdminDish.jsp
-         AdminOrder.jsp
-         AdminReviews.jsp
-         AdminRole.jsp
-         AdminStatus.jsp
-         CategoryAdmin.jsp
-         DishEditAdd.jsp
-         OrderAddCreate.jsp
-         OrderAdmin.jsp
-         RoleAdd.jsp
-         RoleEdit.jsp
-         StatusAdd.jsp
-         StatusEdit.jsp
-         StatusEditCreate.jsp
-         UserEditCreate.jsp
-         UserAdmin.jsp
-         -->
-        <pattern>/admin</pattern>
-        <pattern>/admin/*</pattern>
+    <decorator name="waiter" page="waiter_pages_template.jsp">
+        <pattern>/waiter/*</pattern>
     </decorator>
+
+
+    <decorator name="admin" page="admin_pages_template.jsp">
+          <!-- Mapping for ADMIN-pages:
+           Admin.jsp
+           AdminDish.jsp
+           AdminOrder.jsp
+           AdminReviews.jsp
+           AdminRole.jsp
+           AdminStatus.jsp
+           CategoryAdmin.jsp
+           DishEditAdd.jsp
+           OrderAddCreate.jsp
+           OrderAdmin.jsp
+           RoleAdd.jsp
+           RoleEdit.jsp
+           StatusAdd.jsp
+           StatusEdit.jsp
+           StatusEditCreate.jsp
+           UserEditCreate.jsp
+           UserAdmin.jsp
+           -->
+          <pattern>/admin</pattern>
+          <pattern>/admin/*</pattern>
+      </decorator>
 </decorators>

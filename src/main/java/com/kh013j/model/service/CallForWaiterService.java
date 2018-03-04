@@ -14,9 +14,12 @@ import java.util.concurrent.CompletableFuture;
 @Component
 public class CallForWaiterService {
     @Resource
-    CallForWaiterRepository callForWaiterRepository;
+    private CallForWaiterRepository callForWaiterRepository;
+
     private  List<CallForWaiter> callForWaiters = new ArrayList<>();
+
     private List<CallForWaiter> closed = new ArrayList<>();
+
     private final static int BUFFER = 1;
 
     public CallForWaiter create(CallForWaiter callForWaiter){
@@ -38,7 +41,6 @@ public class CallForWaiterService {
             CompletableFuture.runAsync(()-> callForWaiterRepository.save(callForWaiters));
             closed.clear();
         }
-
     }
     public boolean add(CallForWaiter callForWaiter){
         if (!callForWaiters.contains(callForWaiter)){

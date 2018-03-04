@@ -26,14 +26,15 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LiveCallWaiterController {
-
     @Autowired
     private CallForWaiterService service;
 
     @Autowired
     private OrderService orderService;
+
     @Autowired
     private UserService userService;
+
     @Autowired
     private OrderedDishService orderedDishService;
 
@@ -67,6 +68,7 @@ public class LiveCallWaiterController {
             service.mackAsClosed(table, user);
         }
     }
+
     @PostMapping("/getTable")
     @ResponseBody
     public void getTable(@RequestParam int table){
@@ -76,6 +78,7 @@ public class LiveCallWaiterController {
             orderService.setWaiter(table, user);
         }
     }
+
     @GetMapping("waiter/orderdetails/{table}")
     public ModelAndView odrerDetails(@PathVariable(value = "table") int table){
         Order order = orderService.findByTable(table);
@@ -87,11 +90,13 @@ public class LiveCallWaiterController {
         return modelAndView;
 
     }
+
     @GetMapping("waiter/close/{table}")
     public RedirectView closeOrder(@PathVariable(value = "table") int table){
         orderService.closeOrder(table);
         return new RedirectView("/waiter/tab");
     }
+
     @GetMapping("/waiter/deliver/{id}")
     public RedirectView diliverThis(@PathVariable(value = "id") int id, HttpServletRequest request){
         orderedDishService.setDelivered(id);
