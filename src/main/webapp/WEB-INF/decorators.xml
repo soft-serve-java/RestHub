@@ -34,8 +34,7 @@
            StatusEdit.jsp
            StatusEditCreate.jsp
            UserEditCreate.jsp
-           UserAdmin.jsp
-           -->
+           UserAdmin.jsp-->
           <pattern>/admin</pattern>
           <pattern>/admin/*</pattern>
       </decorator>
