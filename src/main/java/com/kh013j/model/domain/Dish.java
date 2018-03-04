@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.math.BigDecimal;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -37,7 +37,7 @@ public class Dish {
     private Category category;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="dish_id")
-    private List<Image> images;
+    private List<Image> images = new LinkedList<>();
     private boolean availability;
 
     public Dish(Dish dish) {
