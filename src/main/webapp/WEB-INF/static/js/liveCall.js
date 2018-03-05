@@ -1,16 +1,5 @@
 var app = angular.module('liveCall', ['ngStomp']);
-app.service('ngUserService', ['$http', function($http){
-    var me = this;
-    function getUser(callback) {
-        if(me.currentUser)
-            calback(me.currentUser);
-        $http.get('/api/current_user').then(function(res){
-            me.currentUser = res.data;
-            callback(me.currentUser);
-        });
-    }
-    return {getUser:getUser}
-}]);
+
 app.controller('LiveController', function ($stomp, $scope) {
     $scope.myres = [];
     $scope.tables = [];
