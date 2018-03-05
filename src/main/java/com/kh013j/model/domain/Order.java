@@ -20,19 +20,24 @@ import java.util.List;
 @Table(name = "order", schema = "rh")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "order-sequence_generator", sequenceName = "order_sequence")
+    @GeneratedValue(generator = "order-sequence_generator", strategy = GenerationType.IDENTITY)
     private long id;
+
     @Past
     private Timestamp time;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+
     private int tablenumber;
     @Column(name = "closed")
     private boolean closed;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="order_id")
     private List<OrderedDish> orderedFood;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "waiter")
     User waiter;

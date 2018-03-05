@@ -5,21 +5,19 @@ import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderRepository;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
+import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import static com.kh013j.model.domain.TableStatus.*;
+
 public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderRepository orderRepository;
+
     @Autowired
     private CallForWaiterService callForWaiterService;
 
@@ -72,6 +70,19 @@ public class OrderServiceImpl implements OrderService {
             order.getOrderedFood().addAll(orderedDishService.createOrderedDishesFromMap(orderMap));
         } else {
             order = createOrderFromMap(orderMap, tablenumber);
+        }
+        order.setUser(user);
+        orderRepository.saveAndFlush(order);
+    }
+
+    public void submitOneDish(int tablenumber, AbstractMap.SimpleEntry<Dish, Integer> dishQuantity, User user){
+        Order order = findByTable(tablenumber);
+        if (order != null) {
+            OrderedDish od = orderedDishService
+                    .createOrderedDishFromDish(dishQuantity.getKey(), dishQuantity.getValue());
+            order.getOrderedFood().add(od);
+        } else {
+            order = createOrderFromMap(Collections.singletonMap(dishQuantity.getKey(), dishQuantity.getValue()), tablenumber);
         }
         order.setUser(user);
         orderRepository.saveAndFlush(order);

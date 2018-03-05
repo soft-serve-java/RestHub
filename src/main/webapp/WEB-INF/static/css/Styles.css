@@ -135,3 +135,15 @@ body {
     margin-top: 10px;
     margin-left: 10px;
 }
+
+.carouselRH {
+    min-height: 52%;
+    overflow: hidden;
+}
+.carouselRH img {
+    height: auto;
+    width: auto;
+}
+.tab-pane {
+    padding-top: 20px;
+}

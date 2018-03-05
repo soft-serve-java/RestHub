@@ -6,7 +6,7 @@
     <div class="row">
 
         <div class="col">
-            <div id="carouselExampleIndicators" class="carousel slide card-img-top" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide card-img-top carouselRH" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="d-block w-100" src="${dish.images[0].url}" alt="${dish.name}">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-md-6">
-            <h4>${dish.name}</h4>
+            <h4 class="reviews text-uppercase">${dish.name}</h4>
             <p class="text-muted">${dish.weight} grams</p>
             <p class="text-muted">${dish.calories} calories</p>
             <p class="text-muted">Preparing time: ${dish.preparingtime} min</p>
@@ -61,7 +61,7 @@
         </c:if>
                 <div class="col-sm-10 col-sm-offset-1" style="padding-bottom: 50px">
                     <div class="page-header">
-                        <h3 class="reviews">Leave your Review</h3>
+                        <h3 class="reviews text-uppercase">Leave your Review</h3>
                     </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">

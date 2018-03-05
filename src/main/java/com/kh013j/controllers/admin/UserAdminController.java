@@ -29,6 +29,9 @@ public class UserAdminController {
     private UserService userService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private ImgurImageService imgurImageService;
+
     private Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
 /*    @GetMapping(value = "/admin/user/all")
@@ -101,7 +104,7 @@ public class UserAdminController {
     public String userSaveNew(@Valid @ModelAttribute("user") User user,
                               BindingResult userResult,
                               Model model,
-                              @RequestParam("pic") MultipartFile file) {
+                              @RequestParam(value = "pic", required = false) MultipartFile file) {
         if (userResult.hasErrors()) {
             model.addAttribute("Roles", roleService.findAll());
             return ViewName.USER_EDIT_CREATE;
@@ -114,7 +117,7 @@ public class UserAdminController {
             oldUser.setEmail(user.getEmail());
             user.setPassword(oldUser.getPassword());
             try{
-                oldUser.setAvatar(ImgurImageService.uploadImage(file.getBytes()));
+                oldUser.setAvatar(imgurImageService.uploadImage(file.getBytes()));
             } catch (IOException e) {
                 logger.error("Something wrong with file", e, file);
             }

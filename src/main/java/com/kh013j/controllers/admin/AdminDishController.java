@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -32,6 +33,9 @@ public class AdminDishController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ImgurImageService imgurImageService;
 
     private Logger logger = LoggerFactory.getLogger(AdminDishController.class);
 
@@ -82,28 +86,46 @@ public class AdminDishController {
 
     @PostMapping(value = "/admin/dish/save")
     public String dishSaveNew(@Valid @ModelAttribute("dish" )Dish dish, BindingResult dishResult,
-                              @RequestParam("pic") List<MultipartFile> files,
+                              @RequestParam(value = "pic", required = false) List<MultipartFile> files,
                               Model model) throws DishNotFound {
+        Dish oldDish = dishService.findById(dish.getId());
+        int totalSize = oldDish.getImages().size() + files.size();
+        if(totalSize > 5) {
+            dishResult.rejectValue("images", "maxSizeImg", "The maximum number of images is 5!");
+        }
+        if(files.get(0).getSize() == 0) {
+            dishResult.rejectValue("images", "maxSizeImg", "You have to upload at least one image!");
+        }
         if (dishResult.hasErrors()) {
             model.addAttribute("category",categoryService.findAll());
             return ViewName.DISH_EDIT_ADD;
         }
-        if (files != null && !files.isEmpty()) {
+        if (!files.isEmpty()) {
 
-            if (dish.getImages() == null) {
-                dish.setImages(new ArrayList<>());
+            uploadImages(dish, files);
+
+            if (oldDish != null && oldDish.getImages() != null) {
+                dish.getImages().addAll(0, oldDish.getImages());
             }
-            files.parallelStream().forEach(file -> {
-                Image image = new Image();
-                try {
-                    image.setUrl(ImgurImageService.uploadImage(file.getBytes()));
-                    dish.getImages().add(image);
-                } catch (IOException e) {
-                    logger.error("Something wrong with file", e, file);
-                }
-            });
         }
         dishService.update(dish);
         return "redirect:/admin/dish/all";
+    }
+
+    private void uploadImages(Dish dish, List<MultipartFile> files){
+        if (dish.getImages() == null) {
+            dish.setImages(new ArrayList<>());
+        }
+        files.parallelStream().forEach(file -> {
+            if (file.getSize() == 0) return;
+
+            Image image = new Image();
+            try {
+                image.setUrl(imgurImageService.uploadImage(file.getBytes()));
+                dish.getImages().add(image);
+            } catch (IOException e) {
+                logger.error("Something wrong with file", e, file);
+            }
+        });
     }
 }
