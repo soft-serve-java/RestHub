@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User deleteNotEnabledUsers() {
+    public Integer deleteNotEnabledUsers() {
         return userRepository.deleteByEnabledFalse();
     }
 
