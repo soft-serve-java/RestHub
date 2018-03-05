@@ -28,6 +28,9 @@ public class UserAdminController {
     private UserService userService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private ImgurImageService imgurImageService;
+
     private Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
     @GetMapping(value = "/admin/user/all")
@@ -70,7 +73,7 @@ public class UserAdminController {
             oldUser.setEmail(user.getEmail());
             user.setPassword(oldUser.getPassword());
             try{
-                oldUser.setAvatar(ImgurImageService.uploadImage(file.getBytes()));
+                oldUser.setAvatar(imgurImageService.uploadImage(file.getBytes()));
             } catch (IOException e) {
                 logger.error("Something wrong with file", e, file);
             }

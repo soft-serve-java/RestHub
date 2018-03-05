@@ -6,7 +6,7 @@
     <div class="row">
 
         <div class="col">
-            <div id="carouselExampleIndicators" class="carousel slide card-img-top" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide card-img-top carouselRH" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="d-block w-100" src="${dish.images[0].url}" alt="${dish.name}">

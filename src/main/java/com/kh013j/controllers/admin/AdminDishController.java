@@ -34,6 +34,9 @@ public class AdminDishController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private ImgurImageService imgurImageService;
+
     private Logger logger = LoggerFactory.getLogger(AdminDishController.class);
 
     @GetMapping(value = "/admin")
@@ -118,7 +121,7 @@ public class AdminDishController {
 
             Image image = new Image();
             try {
-                image.setUrl(ImgurImageService.uploadImage(file.getBytes()));
+                image.setUrl(imgurImageService.uploadImage(file.getBytes()));
                 dish.getImages().add(image);
             } catch (IOException e) {
                 logger.error("Something wrong with file", e, file);
