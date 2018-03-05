@@ -1,9 +1,7 @@
 package com.kh013j.controllers.admin;
 
 import com.kh013j.controllers.util.ViewName;
-import com.kh013j.model.domain.Image;
 import com.kh013j.model.domain.User;
-import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.service.ImgurImageService;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
@@ -17,10 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 public class UserAdminController {
@@ -33,12 +29,6 @@ public class UserAdminController {
     private ImgurImageService imgurImageService;
 
     private Logger logger = LoggerFactory.getLogger(UserAdminController.class);
-
-/*    @GetMapping(value = "/admin/user/all")
-    public ModelAndView showUsers() {
-        return new ModelAndView(ViewName.SHOW_USERS, "Users", userService.findAll());
-    }*/
-
 
     @GetMapping("/admin/user/all")
     public ModelAndView showReviews(@RequestParam(value = "show", required = false) String showOnly,
@@ -89,10 +79,6 @@ public class UserAdminController {
         userService.delete(id);
         return "redirect:/admin/user/all";
     }
-
-
-
-
 
     @GetMapping(value = "/admin/user/delete/")
     public String userDeleteNotEnabled() {

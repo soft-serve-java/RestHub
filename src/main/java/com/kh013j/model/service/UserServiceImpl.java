@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private static final int PAGE_SIZE = 4;
+    private static final int PAGE_SIZE = 5;
 
     @Resource
     private UserRepository userRepository;
