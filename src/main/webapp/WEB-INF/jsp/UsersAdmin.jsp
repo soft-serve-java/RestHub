@@ -3,6 +3,9 @@
 <div class="container">
     <div class="col1" style="text-align: right; padding-top: 10px;">
         <div class="btn-group">
+
+                <a href="/admin/user/delete/"> <span class="btn btn-danger" style="margin-right: 1rem">Delete not confirmed users</span></a>
+
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                 Show
