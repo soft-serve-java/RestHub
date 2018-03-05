@@ -4,7 +4,12 @@
     <div class="col1" style="text-align: right; padding-top: 10px;">
         <div class="btn-group">
 
-                <a href="/admin/user/delete/"> <span class="btn btn-danger" style="margin-right: 1rem">Delete not confirmed users</span></a>
+            <button type="button" class="btn btn-danger" style="margin-right:10px;"
+                    data-toggle="modal" data-target="#exampleModalDeleteNotConfirmedUsers">
+                <span class="left-span"> Delete not confirmed </span>
+            </button>
+
+
 
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -107,3 +112,4 @@
 
 </div>
 <%@ include file="Modal.jsp" %>
+<%@ include file="ModalDeleteNotConfirmUser.jsp" %>
