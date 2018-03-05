@@ -17,15 +17,21 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "review-sequence_generator", sequenceName = "review_sequence")
+    @GeneratedValue(generator = "review-sequence_generator", strategy = GenerationType.IDENTITY)
     private long id;
+
     @Size(max = 1000)
     private String commentText;
+
     private Timestamp date;
+
     private Boolean approved;
+
     @ManyToOne
     @JoinColumn(name = "dish_id")
     private Dish dish;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

@@ -6,11 +6,14 @@ import com.kh013j.model.service.interfaces.EmailService;
 import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.servlet.Filter;
 
 @Configuration
+@PropertySource("classpath:imgur.properties")
 public class CaffinoApplicationConfiguration {
     @Bean
     public DishService dishServiceConfig() {
@@ -63,6 +66,12 @@ public class CaffinoApplicationConfiguration {
     @Bean
     EmailService emailServiceConfig(){
         return new EmailServiceImpl();
+    }
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer
+    propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
     }
 
 }
