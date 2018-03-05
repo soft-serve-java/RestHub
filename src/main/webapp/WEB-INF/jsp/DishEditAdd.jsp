@@ -28,7 +28,8 @@
 
             <div class="form-row">
                 <label>Image: </label>
-                <input class="form-control" type="file" name="pic" accept="image/*" multiple>
+                <input class="form-control" type="file" id="image" name="pic" accept="image/*" multiple>
+                <form:errors path="images" class="control-label"/>
                 <c:if test="${dish != null}">
                       <div class="row justify-content-md-start">
                     <c:forEach items="${dish.images}" var="img">
