@@ -60,7 +60,7 @@ public class UserAdminController {
     public String userSaveNew(@Valid @ModelAttribute("user") User user,
                               BindingResult userResult,
                               Model model,
-                              @RequestParam("pic") MultipartFile file) {
+                              @RequestParam(value = "pic", required = false) MultipartFile file) {
         if (userResult.hasErrors()) {
             model.addAttribute("Roles", roleService.findAll());
             return ViewName.USER_EDIT_CREATE;
