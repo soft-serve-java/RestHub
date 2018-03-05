@@ -82,8 +82,18 @@ public class UserAdminController {
     }
 
     @PostMapping(value = "/admin/user/delete/{id}")
-    public String userDelete(@PathVariable(value = "id") long id) throws DishNotFound {
+    public String userDelete(@PathVariable(value = "id") long id) {
         userService.delete(id);
+        return "redirect:/admin/user/all";
+    }
+
+
+
+
+
+    @GetMapping(value = "/admin/user/delete/")
+    public String userDeleteNotEnabled() {
+        userService.deleteNotEnabledUsers();
         return "redirect:/admin/user/all";
     }
 

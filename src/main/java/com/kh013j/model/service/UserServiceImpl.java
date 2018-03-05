@@ -5,10 +5,12 @@ import com.kh013j.model.repository.UserRepository;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private static final int PAGE_SIZE = 4;
@@ -56,6 +58,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByConfirmationtoken(String token) {
         return userRepository.findByConfirmationtoken(token);
+    }
+
+    @Override
+    public User deleteNotEnabledUsers() {
+        return userRepository.deleteByEnabledFalse();
     }
 
     @Override

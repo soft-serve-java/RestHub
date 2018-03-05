@@ -21,6 +21,7 @@ public interface UserService {
 
     User findByConfirmationtoken(String token);
 
+    User deleteNotEnabledUsers();
 
     Page<User> findAllUser(Integer pageNumber);
 
