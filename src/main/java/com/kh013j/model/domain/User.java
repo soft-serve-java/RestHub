@@ -24,7 +24,8 @@ import java.util.Set;
 @Table(name = "user", schema = "rh")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "user-sequence_generator", sequenceName = "user_sequence")
+    @GeneratedValue(generator = "user-sequence_generator", strategy = GenerationType.IDENTITY)
     private long id = -1;
 
     @Email
@@ -41,14 +42,16 @@ public class User implements UserDetails {
 
     private boolean enabled;
 
-    @ManyToMany(cascade = {CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE})
     @JoinTable(
             schema = "rh",
             name = "userrole",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
+
     private Set<Role> roles;
+    private String avatar;
 
     public User(User user) {
         this.email = user.email;

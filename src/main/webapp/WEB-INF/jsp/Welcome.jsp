@@ -1,3 +1,26 @@
+<script type="application/javascript">
+    var app = angular.module('kswaughsLiveScore', ['ngStomp']);
+
+    app.controller('LiveController', function ($stomp, $scope) {
+
+        $scope.myres;
+
+        $stomp.connect('/call', {})
+            .then(function (frame) {
+                console.log("123");
+                var subscription = $stomp.subscribe('/user/1/callBackInfo',
+                    function (payload, headers, res) {
+                        $scope.myres = payload;
+                        $scope.$apply($scope.myres);
+                        console.log(payload);
+                        $("#waiterIsComingModal").modal("show");
+                    });
+
+                $stomp.send('/app/waiterCallBack', '');
+            });
+    });
+
+</script>
 <div id="demo" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -40,12 +63,30 @@
 </div>
 <div class="container">
     <div class="row">
-        <button type="button" class="btn btn-warning btn-lg btn-block">Waiter</button>
+        <a href="\waiter\tables" class="btn btn-warning btn-lg btn-block">Waiter</a>
         <a href="\cooker" class="btn btn-warning btn-lg btn-block">Cook</a>
         <a href="\admin" class="btn btn-warning btn-lg btn-block">Administrator</a>
         <a href="\menu\soups" class="btn btn-warning btn-lg btn-block">User</a>
 
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="waiterIsComingModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Your waiter is coming</h4>
+            </div>
+            <div class="modal-body">
+                <div class="liveScore" ng-app="kswaughsLiveScore"
+                     ng-controller="LiveController">
+                    <img src="{{myres.avatar}}" class="avatarWaiter pull-left">
+               <div style="text-align: center"> <h3> {{myres.name}}</h3></div>
+                </div>
+            </div>
+    </div>
+</div>
 </div>
 <style>
     .row {
@@ -54,5 +95,10 @@
 
     .btn-block {
         padding: 10pt;
+    }
+    .avatarWaiter{
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
     }
 </style>

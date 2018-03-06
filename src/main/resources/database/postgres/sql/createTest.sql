@@ -43,13 +43,13 @@ CREATE TABLE rh.user
   id      BIGINT      NOT NULL PRIMARY KEY DEFAULT nextval('user_sequence'),
   email   VARCHAR(50) NOT NULL UNIQUE,
   login   VARCHAR(50) NOT NULL UNIQUE,
-  psword  VARCHAR(50) NOT NULL,
+  password  VARCHAR(50) NOT NULL,
   role_id BIGINT      NOT NULL,
   FOREIGN KEY ("role_id")
   REFERENCES rh.role (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE rh.order
+/*CREATE TABLE rh.order
 (
   id           BIGINT                      NOT NULL PRIMARY KEY UNIQUE DEFAULT nextval('order_sequence') NOT NULL,
   time         TIMESTAMP WITHOUT TIME ZONE NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE rh.order
   user_id      BIGINT                      NOT NULL,
   FOREIGN KEY ("user_id")
   REFERENCES rh.user (id) ON DELETE CASCADE ON UPDATE CASCADE
-);
+);*/
 
 CREATE TABLE rh.dish
 (
@@ -80,7 +80,7 @@ CREATE TABLE rh.dish
   REFERENCES rh.category (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE rh.orderdish
+/*CREATE TABLE rh.orderdish
 (
   id        BIGINT NOT NULL PRIMARY KEY UNIQUE DEFAULT nextval('orderdish_sequence'),
   quantity  INT    NOT NULL  CHECK (CAST(quantity AS INT) > 0)              ,
@@ -93,4 +93,4 @@ CREATE TABLE rh.orderdish
   REFERENCES rh.status (id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY ("order_id")
   REFERENCES rh.order (id) ON DELETE CASCADE ON UPDATE CASCADE
-);
+);*/

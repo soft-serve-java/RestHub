@@ -15,9 +15,9 @@ import java.io.IOException;
 
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
-@AutoConfigureBefore(DataSourceAutoConfiguration.class)
-@MockBean(JavaMailSender.class)
 @Configuration
+@AutoConfigureBefore(DataSourceAutoConfiguration.class)
+//@MockBean(JavaMailSender.class)
 @EnableJpaRepositories("com.kh013j.model.repository")
 public class CaffinnoApplicationTestConfiguration {
     @Bean(destroyMethod = "stop")

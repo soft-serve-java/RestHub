@@ -5,9 +5,7 @@ import com.kh013j.model.domain.*;
 import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.UserService;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,8 +33,11 @@ public class OrderController {
                                    HttpServletRequest request) {
         Optional<Dish> dish = Optional.of(dishService.findById(id));
         dish.ifPresent(d -> {
-            orderMap.computeIfPresent(d, (key, val) -> val++);
-            orderMap.putIfAbsent(d, 1);
+            if (orderMap.containsKey(d)) {
+                orderMap.put(d, orderMap.get(d) + 1);
+            } else {
+                orderMap.put(d, 1);
+            }
         });
         return new RedirectView(request.getHeader("referer")+"#" + dish.orElse(new Dish()).getId());
     }
@@ -65,23 +66,11 @@ public class OrderController {
     }
 
     @GetMapping(value = "/submitOne/{dish}")
-    public RedirectView submitOne(@PathVariable(value = "dish") long dishId,
+    public RedirectView submitOne(@PathVariable(value = "dish") Dish dish,
                                   @ModelAttribute("orderMap") Map<Dish, Integer> orderMap,
-                                  @ModelAttribute("tables") Tables table,
-                                  Principal principal) {
-        Dish dish = dishService.findById(dishId);
-        if (dish == null) {
-            return new RedirectView("/order");
-        }
-        User user = null;
-        if(principal != null) {
-            user = userService.findByEmail(principal.getName());
-        }
-        if(orderMap.containsKey(dish)) {
-            orderService.submitOneDish(table.getCurrentTable(), new AbstractMap.SimpleEntry<>(dish, orderMap.get(dish)), user);
-        }
-        orderMap.remove(dish);
-        return new RedirectView("/order");
+                                  @ModelAttribute("orderedList") List<OrderedDish> orderedDishes,
+                                  HttpServletRequest request) {
+        return new RedirectView(request.getHeader("referer"));
     }
 
     @GetMapping(value = "/order")
@@ -91,12 +80,12 @@ public class OrderController {
         Order order = orderService.findByTable(table.getCurrentTable());
         if (order != null) {
             orderedDishes.clear();
-            Collections.sort(order.getOrderedFood(), Comparator.comparingLong(OrderedDish::getId));
             orderedDishes.addAll(order.getOrderedFood());
         }
+        //TODO:Решить, что делать с заказами на один стол, поле для ввода номера стола.
         double sumOfAllDishPrices = orderMap.entrySet()
-                .stream().mapToDouble(e -> e.getKey().getPrice().doubleValue() * e.getValue().doubleValue()).sum()
-                + orderedDishes.stream().mapToDouble(ordered -> ordered.getDish().getPrice().doubleValue() * ordered.getQuantity()).sum();
+                .stream().mapToDouble(e -> e.getKey().getPrice() * e.getValue().doubleValue()).sum()
+                + orderedDishes.stream().mapToDouble(ordered -> ordered.getDish().getPrice() * ordered.getQuantity()).sum();
 
         return new ModelAndView(ViewName.ORDER, "ordersTotalAmount", sumOfAllDishPrices);
     }
@@ -119,7 +108,7 @@ public class OrderController {
 
     @PostMapping(value = "/setTableNumber")
     public RedirectView set(@RequestParam int selectedNumber,
-                            @ModelAttribute("tables") Tables table) {
+                            HttpServletRequest request, @ModelAttribute("tables") Tables table) {
         table.setCurrentTable(selectedNumber);
         return new RedirectView("/submitOrder");
     }

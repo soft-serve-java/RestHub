@@ -13,42 +13,42 @@ VALUES
   ('Preparing'), ('Cooking'), ('Delivery');
 
 INSERT INTO rh.dish (name, description, weight, calories, preparingtime, price,
-                     availability, picture, category_id)
+                     availability, category_id)
 VALUES
   ('White corn guacamole',
    'Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.',
-   200, 1000, 40, 3, TRUE, '/images/White%20corn%20guacamole.jpg', 4),
+   200, 1000, 40, 3, TRUE, 4),
 
   ('Sweet white corn',
    'Very subtle.',
-   200, 1000, 40, 6, TRUE, '/images/White%20corn%20sweet.jpg', 4),
+   200, 1000, 40, 6, TRUE, 4),
 
   ('Petite wedge',
    'Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.',
-   400, 1450, 15, 35, TRUE, '/images/White%20corn%20guacamole.jpg', 4),
+   400, 1450, 15, 35, TRUE, 4),
 
   ('Arugula salad',
    'Sun-dried tomatoes, toasted almonds and shaved Parmesan served with housemade lemon vinaigrette.',
-   100, 1400, 20, 10, TRUE, '/images/Arugula%20salad.jpg', 2),
+   100, 1400, 20, 10, TRUE, 2),
 
   ('Spinach artishoke dip',
    'Served hot with housemade blue & white corn tortilla chips..',
-   100, 1300, 12, 93, TRUE, '/images/Spinach%20artishoke%20dip.jpg', 2),
+   100, 1300, 12, 93, TRUE, 2),
 
   ('Shaved mushroom & spinach flatbread',
    'Cremini mushrooms, sauteed spinach and California Olive Ranch extra virgin olive oil with Romano and Parmesan.',
-   100, 1010, 2, 70, TRUE, '/images/Shaved%20mushroom%20&%20spinach%20flatbread.jpg', 1),
+   100, 1010, 2, 70, TRUE, 1),
 
   ('Mushrooms', 'Very tasty',
-   100, 400, 28, 80, TRUE, '/images/mushroom%20&%20spinach%20flatbread.jpg', 1),
+   100, 400, 28, 80, TRUE, 1),
 
   ('Cranberry cocktail',
    'Cool drink',
-   100, 950, 20, 12, TRUE, '/images/Shaved%20mushroom%20&%20spinach%20flatbread.jpg', 3),
+   100, 950, 20, 12, TRUE, 3),
 
   ('Strawberry cocktail',
    'Fresh and subtle drink',
-   100, 900, 25, 10, TRUE, '/images/spinach%20flatbread.jpg', 3);
+   100, 900, 25, 10, TRUE, 3);
 
 /*INSERT INTO rh.user (email, login, psword, role_id)
 VALUES
