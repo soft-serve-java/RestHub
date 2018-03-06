@@ -16,19 +16,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src = "/js/angular.min.js"></script>
     <script src="/js/ng-stomp.standalone.min.js"></script>
-    <script>
-        function doPOSTonCallWaiter() {
-            $.ajax({
-                url: '/callWaiterClient',
-                type: 'POST',
-                data:{"table":1},
-                success: function () {
-                },
-                error: function () {
-                }
-            });
-        }
-    </script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 

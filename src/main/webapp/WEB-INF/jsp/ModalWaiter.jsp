@@ -13,16 +13,26 @@
             </div>
 
             <div class="modal-footer">
-                <a href="javascript:doPOSTonCallWaiter()"> <button type="button" class="btn btn-success"
-                                                                   data-dismiss="modal">Yes</button></a>
+               <button type="button" class="btn btn-success" onclick="doPOSTonCallWaiter()" data-dismiss="modal">Yes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
             </div>
         </div>
     </div>
 </div>
 <script>
+    function doPOSTonCallWaiter() {
+        $.ajax({
+            url: '/callWaiterClient',
+            type: 'POST',
+            data:{"table":${sessionScope.tables.currentTable}},
+            success: function () {
+            },
+            error: function () {
+            }
+        });
+    }
     $('#exampleModalWaiter').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
+        var button = $(event.relatedTarget) ; // Button that triggered the modal
         var recipient = button.data('whatever');
         var href = button.data('href');
         $("#delete").attr("action", href);
