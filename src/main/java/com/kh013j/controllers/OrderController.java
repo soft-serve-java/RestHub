@@ -141,19 +141,6 @@ public class OrderController {
         return new RedirectView(request.getHeader("referer"));
     }
 
-    @PostMapping(value = "/setTableNumberAdmin")
-    public RedirectView setAdmin(@RequestParam int selectedNumber,
-                            @ModelAttribute("tables") Tables table, @RequestParam String email,
-                                 @RequestParam String password,
-                                 HttpServletRequest request) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-        if (userDetails.getPassword().equals(password)
-                && userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ADMIN"))) {
-            table.setCurrentTable(selectedNumber);
-        }
-        return new RedirectView(request.getHeader("referer"));
-    }
-
     @ModelAttribute("tables")
     public Tables getTableNumber() {
         Tables tables = new Tables();
