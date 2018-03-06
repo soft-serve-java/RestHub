@@ -26,8 +26,6 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-
 public class DishServiceImplTest {
     @Autowired
     private DishService dishService;

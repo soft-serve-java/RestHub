@@ -20,7 +20,6 @@ import java.util.HashSet;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class OrderDishRepositoryTest {
     @Autowired
     private OrderRepository orderRepository;
