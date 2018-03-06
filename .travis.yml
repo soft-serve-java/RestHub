@@ -1,9 +1,14 @@
 language: java
-sudo: true
 dist: trusty
+sudo: false
+cache:
+  directories:
+  - $HOME/.sbt
+  - $HOME/.m2
 jdk: oraclejdk8
 before_install:
   - chmod +x mvnw
   - jdk_switcher use oraclejdk8
 services:
   - postgresql
+script: mvn test
