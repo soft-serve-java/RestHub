@@ -21,11 +21,12 @@ import java.io.IOException;
 
 @Controller
 public class UserAdminController {
-
     @Autowired
     private UserService userService;
+
     @Autowired
     private RoleService roleService;
+
     private Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
     @GetMapping(value = "/admin/user/all")
@@ -46,7 +47,7 @@ public class UserAdminController {
     }
 
     @PostMapping(value = "/admin/user/delete/{id}")
-    public String userDelete(@PathVariable(value = "id") long id) throws DishNotFound {
+    public String userDelete(@PathVariable(value = "id") long id) {
         userService.delete(id);
         return "redirect:/admin/user/all";
     }
@@ -67,7 +68,7 @@ public class UserAdminController {
             oldUser.setRoles(user.getRoles());
             oldUser.setEmail(user.getEmail());
             user.setPassword(oldUser.getPassword());
-            try{
+            try {
                 oldUser.setAvatar(ImgurImageService.uploadImage(file.getBytes()));
             } catch (IOException e) {
                 logger.error("Something wrong with file", e, file);
