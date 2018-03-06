@@ -77,7 +77,7 @@
                         <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                     </button>
                 </c:if>
-
+                Your table is ${tables.currentTable}
             </li>
         </ul>
         <form action="/menu" method="get" class="form-inline">
