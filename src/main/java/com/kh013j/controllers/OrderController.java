@@ -8,6 +8,9 @@ import com.kh013j.model.service.interfaces.UserService;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +31,8 @@ public class OrderController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @GetMapping(value = "/addToOrder/{id}")
     public RedirectView addToOrder(@PathVariable(value = "id") long id,
@@ -112,13 +117,6 @@ public class OrderController {
         return new ArrayList<>();
     }
 
-    @ModelAttribute("tables")
-    public Tables getTableNumber() {
-        Tables tables = new Tables();
-        tables.setCurrentTable(1);
-        return tables;
-    }
-
     @PostMapping(value = "/setTableNumber")
     public RedirectView set(@RequestParam int selectedNumber,
                             @ModelAttribute("tables") Tables table) {
@@ -141,5 +139,12 @@ public class OrderController {
                                        HttpServletRequest request) {
         orderMap.computeIfPresent(dishService.findById(dishId), (k, v) -> v - 1);
         return new RedirectView(request.getHeader("referer"));
+    }
+
+    @ModelAttribute("tables")
+    public Tables getTableNumber() {
+        Tables tables = new Tables();
+        tables.setCurrentTable(0);
+        return tables;
     }
 }

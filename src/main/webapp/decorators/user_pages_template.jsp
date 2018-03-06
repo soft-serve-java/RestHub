@@ -31,7 +31,37 @@
         document.getElementById("logoutForm").submit();
     }
 </script>
+<script type="text/javascript">
+    var app = angular.module('kswaughsLiveScore', ['ngStomp']);
 
+    app.controller('LiveController', function ($stomp, $scope) {
+        $scope.myres;
+        $stomp.connect('/call', {})
+            .then(function (frame) {
+                console.log("123");
+                var subscription = $stomp.subscribe('/user/${tables.currentTable}/callBackInfo',
+                    function (payload, headers, res) {
+                        $scope.myres = payload;
+                        $scope.$apply($scope.myres);
+                        console.log(payload);
+                        $("#waiterIsComingModal").modal("show");
+                    });
+
+                $stomp.send('/app/waiterCallBack', '');
+            });
+    });
+    function doPOSTonCallWaiter() {
+        $.ajax({
+            url: '/callWaiterClient',
+            type: 'POST',
+            data:{"table":${sessionScope.tables.currentTable}},
+            success: function () {
+            },
+            error: function () {
+            }
+        });
+    }
+</script>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -68,7 +98,7 @@
                         <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
                     </button>
                 </c:if>
-
+                Your table is ${tables.currentTable}
             </li>
         </ul>
         <form action="/menu" method="get" class="form-inline">
@@ -90,7 +120,23 @@
     </div>
 
 </nav>
-
+<div class="modal fade" id="waiterIsComingModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Your waiter is coming</h4>
+            </div>
+            <div class="modal-body">
+                <div class="liveScore" ng-app="kswaughsLiveScore"
+                     ng-controller="LiveController">
+                    <img src="{{myres.avatar}}" class="avatarWaiter pull-left">
+                    <div style="text-align: center"> <h3> {{myres.name}}</h3></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <decorator:body />
 
 <footer class="footer">

@@ -1,4 +1,4 @@
-package com.kh013j;
+/*package com.kh013j;
 
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
@@ -26,8 +26,6 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-
 public class DishServiceImplTest {
     @Autowired
     private DishService dishService;
@@ -314,4 +312,4 @@ public class DishServiceImplTest {
 
        dishService.create(dish);
     }
-}
+}*/
