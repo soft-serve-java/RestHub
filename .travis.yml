@@ -10,4 +10,4 @@ before_install:
 install: true
 services:
   - postgresql
-script: mvn test
+script: "mvn test"
