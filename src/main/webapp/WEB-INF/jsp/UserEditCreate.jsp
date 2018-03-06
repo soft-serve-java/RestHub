@@ -6,12 +6,12 @@
             <div class="form-group col-md-6">
                 <form:hidden path="id"/>
                 <label for="inputEmail4">Email</label>
-                <form:input path="email" type="email" class="form-control" id="inputEmail4" placeholder="Email"/>
+                <form:input path="email" readonly="true" type="email"  class="form-control" id="inputEmail4" placeholder="Email"/>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputName">Name</label>
-                <form:input path="name" type="text" class="form-control" id="inputName"/>
+                <form:input path="name" readonly="true" type="text" class="form-control" id="inputName"/>
             </div>
 
             <div class="form-group col-md-6">
