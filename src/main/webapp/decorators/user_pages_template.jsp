@@ -4,7 +4,7 @@
 <html lang="en" style="position: relative; min-height: 100%">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>RestHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -16,19 +16,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src = "/js/angular.min.js"></script>
     <script src="/js/ng-stomp.standalone.min.js"></script>
-    <script>
-        function doPOSTonCallWaiter() {
-            $.ajax({
-                url: '/callWaiterClient',
-                type: 'POST',
-                data:{"table":1},
-                success: function () {
-                },
-                error: function () {
-                }
-            });
-        }
-    </script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -59,9 +46,13 @@
                     <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
                 </li>
             </c:forEach>
-            <button onclick="doPOSTonCallWaiter()" class="btn btn-success nav-button" style="margin-right:10px;">
+
+            <button type="button" class="btn btn-success nav-button" style="margin-right:10px;"
+                    data-toggle="modal" data-target="#exampleModalWaiter">
                 <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
             </button>
+
+
             </li>
             <li>
 
@@ -97,6 +88,7 @@
             <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
         </c:if>
     </div>
+
 </nav>
 
 <decorator:body />
@@ -116,3 +108,5 @@
 </footer>
 </body>
 </html>
+
+<%@ include file="/WEB-INF/jsp/ModalWaiter.jsp" %>

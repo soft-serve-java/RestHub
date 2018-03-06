@@ -1,25 +1,22 @@
 package com.kh013j.controllers.admin;
 
 import com.kh013j.controllers.util.ViewName;
-import com.kh013j.model.domain.Image;
 import com.kh013j.model.domain.User;
-import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.service.ImgurImageService;
 import com.kh013j.model.service.interfaces.RoleService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 public class UserAdminController {
@@ -33,9 +30,36 @@ public class UserAdminController {
 
     private Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
-    @GetMapping(value = "/admin/user/all")
-    public ModelAndView showUsers() {
-        return new ModelAndView(ViewName.SHOW_USERS, "Users", userService.findAll());
+    @GetMapping("/admin/user/all")
+    public ModelAndView showReviews(@RequestParam(value = "show", required = false) String showOnly,
+                                    @RequestParam(value = "page", required = false) Integer pageNumber){
+        ModelAndView modelAndView = new ModelAndView("UsersAdmin");
+
+        if(pageNumber == null || pageNumber < 1) {
+            pageNumber = 1;
+        }
+        if (showOnly == null) {
+            showOnly = "all";
+        }
+
+        Page<User> usersPage;
+
+        switch (showOnly.toUpperCase()){
+            case "CONFIRMED":
+                usersPage = userService.findAllEnabledUser(pageNumber, true);
+                break;
+            case "NOTCONFIRMED":
+                usersPage = userService.findAllEnabledUser(pageNumber, false);
+                break;
+            default:
+                usersPage = userService.findAllUser(pageNumber);
+        }
+
+        modelAndView.addObject("maxPages", usersPage.getTotalPages());
+        modelAndView.addObject("page", pageNumber);
+        modelAndView.addObject("showBy", showOnly);
+        modelAndView.addObject("Users", usersPage.getContent());
+        return modelAndView;
     }
 
     @GetMapping(value = "admin/user/new")
@@ -51,8 +75,14 @@ public class UserAdminController {
     }
 
     @PostMapping(value = "/admin/user/delete/{id}")
-    public String userDelete(@PathVariable(value = "id") long id) throws DishNotFound {
+    public String userDelete(@PathVariable(value = "id") long id) {
         userService.delete(id);
+        return "redirect:/admin/user/all";
+    }
+
+    @GetMapping(value = "/admin/user/delete/")
+    public String userDeleteNotEnabled() {
+        userService.deleteNotEnabledUsers();
         return "redirect:/admin/user/all";
     }
 
@@ -73,7 +103,9 @@ public class UserAdminController {
             oldUser.setEmail(user.getEmail());
             user.setPassword(oldUser.getPassword());
             try{
-                oldUser.setAvatar(imgurImageService.uploadImage(file.getBytes()));
+                if(file.getSize() != 0) {
+                    oldUser.setAvatar(imgurImageService.uploadImage(file.getBytes()));
+                }
             } catch (IOException e) {
                 logger.error("Something wrong with file", e, file);
             }

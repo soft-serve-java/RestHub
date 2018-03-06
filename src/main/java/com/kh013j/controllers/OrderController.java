@@ -120,6 +120,7 @@ public class OrderController {
     @PostMapping(value = "/setTableNumber")
     public RedirectView set(@RequestParam int selectedNumber,
                             @ModelAttribute("tables") Tables table) {
+
         table.setCurrentTable(selectedNumber);
         return new RedirectView("/submitOrder");
     }
