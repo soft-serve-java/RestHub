@@ -103,7 +103,9 @@ public class UserAdminController {
             oldUser.setEmail(user.getEmail());
             user.setPassword(oldUser.getPassword());
             try{
-                oldUser.setAvatar(imgurImageService.uploadImage(file.getBytes()));
+                if(file.getSize() != 0) {
+                    oldUser.setAvatar(imgurImageService.uploadImage(file.getBytes()));
+                }
             } catch (IOException e) {
                 logger.error("Something wrong with file", e, file);
             }
