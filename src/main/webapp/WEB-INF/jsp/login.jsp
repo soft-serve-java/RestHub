@@ -46,6 +46,14 @@
 				</div>
 			</div>
 		</div>
+
+        <div class="col-md-8" >
+            <div class="panel panel-default" style="padding-bottom: unset">
+                <h2>Dish of the week with the best price!</h2>
+                <img src="../images/picLogin.jpg" alt="Carry" class="fluid" width="100%">
+            </div>
+        </div>
+
 	</div>
 </div>
 <div id="fb-root"></div>
