@@ -13,5 +13,4 @@ public class CaffinnoApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

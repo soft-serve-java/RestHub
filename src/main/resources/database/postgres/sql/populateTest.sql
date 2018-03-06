@@ -49,8 +49,8 @@ VALUES
   ('Strawberry cocktail',
    'Fresh and subtle drink',
    100, 900, 25, 10, TRUE, 3);
-
-/*INSERT INTO rh.user (email, login, psword, role_id)
+/*
+INSERT INTO rh.user (email, login, psword, role_id)
 VALUES
   ('feed@ukr.net', 'beefoot', 'asegfa254', 1),
   ('newest@ukr.net', 'misterpister', '147qwerty', 2),
@@ -59,7 +59,7 @@ VALUES
   ('news@ukr.net', 'reporter', 'qwertrty', 4),
   ('intuit@i.ua', 'ititit', 'mkoijnb', 4);
 
-INSERT INTO rh.order (time, table_number, closed, user_id)
+INSERT INTO rh.order (time, tablenumber, closed, user_id)
 VALUES
   ('NOW()', 1, FALSE, '4'),
   ('NOW()', 1, FALSE, '4'),

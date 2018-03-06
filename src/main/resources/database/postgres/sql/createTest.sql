@@ -49,16 +49,16 @@ CREATE TABLE rh.user
   REFERENCES rh.role (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-/*CREATE TABLE rh.order
+CREATE TABLE rh.order
 (
   id           BIGINT                      NOT NULL PRIMARY KEY UNIQUE DEFAULT nextval('order_sequence') NOT NULL,
   time         TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-  table_number INT                         NOT NULL,
+  table_number INT                          NOT NULL,
   closed       BOOLEAN                     NOT NULL,
   user_id      BIGINT                      NOT NULL,
   FOREIGN KEY ("user_id")
   REFERENCES rh.user (id) ON DELETE CASCADE ON UPDATE CASCADE
-);*/
+);
 
 CREATE TABLE rh.dish
 (

@@ -30,7 +30,7 @@ INSERT INTO rh.userrole (user_id, role_id) VALUES (3, 3);
 INSERT INTO rh.userrole (user_id, role_id) VALUES (4, 4);
 
 
-INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, availability
+/*INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, availability
 , category_id) VALUES ('Spicy buffalo Cauliflower', 'Fresh cauliflower florets buttermilk-battered and fried to a golden brown, then tossed in housemade Sriracha buffalo sauce and topped with a salad of celery, Gorgonzola and cilantro.'
 , 300, 1200, 3, 130, true, 1);
 
@@ -58,4 +58,4 @@ INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, a
 
 INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, availability
   , category_id) VALUES ('Shaved mushroom & spinach flatbread', 'Cremini mushrooms, sauteed spinach and California Olive Ranch extra virgin olive oil with Romano and Parmesan.'
-  , 100, 1400, 2, 30, true, 1);
+  , 100, 1400, 2, 30, true, 1);*/
