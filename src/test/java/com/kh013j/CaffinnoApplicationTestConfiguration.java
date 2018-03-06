@@ -2,6 +2,9 @@ package com.kh013j;
 
 import com.opentable.db.postgres.embedded.EmbeddedPostgres;
 import com.opentable.db.postgres.embedded.PgBinaryResolver;
+import com.opentable.db.postgres.junit.EmbeddedPostgresRules;
+import com.opentable.db.postgres.junit.SingleInstancePostgresRule;
+import org.junit.Rule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +22,8 @@ import java.io.InputStream;
 @Configuration
 @EnableJpaRepositories("com.kh013j.model.repository")
 public class CaffinnoApplicationTestConfiguration {
+    @Rule
+    public SingleInstancePostgresRule pg = EmbeddedPostgresRules.singleInstance();
     @Bean
     public DataSource dataSource() throws Exception {
         return EmbeddedPostgres

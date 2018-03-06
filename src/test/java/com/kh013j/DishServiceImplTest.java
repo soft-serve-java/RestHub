@@ -1,4 +1,4 @@
-package com.kh013j;
+/*package com.kh013j;
 
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
@@ -312,4 +312,4 @@ public class DishServiceImplTest {
 
        dishService.create(dish);
     }
-}
+}*/

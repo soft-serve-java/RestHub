@@ -1,4 +1,4 @@
-package com.kh013j;
+/*package com.kh013j;
 
 import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.Role;
@@ -29,7 +29,7 @@ public class OrderDishRepositoryTest {
 
     private Order order = new Order();
 
-    @Test
+   @Test
     public void isOrderAdded() {
         Assert.notNull(orderRepository.save(order));
     }
@@ -41,7 +41,7 @@ public class OrderDishRepositoryTest {
 
     @Test
     public void isOrdersEqual() {
-     /*   User user1 = new User();
+        User user1 = new User();
         HashSet<User> users = new HashSet<>();
 
         users.add(user1);
@@ -57,7 +57,8 @@ public class OrderDishRepositoryTest {
         order = new Order(2, time, user, 1, false, null, new User());
         orderService.create(order);
 
-        Assert.isTrue(order.equals(orderRepository.findOne(2L)));*/
+        Assert.isTrue(order.equals(orderRepository.findOne(2L)));
     }
 
 }
+*/
