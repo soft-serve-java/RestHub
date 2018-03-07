@@ -2,7 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="container">
-    <form:form method="POST" action="/admin/status/save" modelAttribute="status">
+    <%--@elvariable id="category" type="com.kh013j.model.domain.Category"--%>
+    <form:form method="POST" action="/admin/category/save" modelAttribute="category">
         <div class="form-row align-items-center">
             <form:hidden path="id"/>
             <div class="form-group col-md-6">
