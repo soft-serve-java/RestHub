@@ -20,9 +20,9 @@
                             data-whatever="${role.name}" data-href="/admin/role/delete/${role.id}">Delete
                     </button>
                 </td>
-                <td>
+<%--                <td>
                     <a href="/admin/role/edit/${role.id}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>
-                </td>
+                </td>--%>
             </tr>
         </c:forEach>
         </tbody>

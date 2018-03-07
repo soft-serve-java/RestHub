@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data
@@ -19,10 +18,10 @@ public class Role implements Serializable {
     @GeneratedValue(generator = "role-sequence_generator", strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Min(2) @Max(50)
+    @Size(min = 2, max = 50)
     private String name;
 
-    public Role(@Min(2) @Max(50) String name) {
+    public Role(@Size(min = 2, max = 50) String name) {
         this.name = name;
     }
 }
