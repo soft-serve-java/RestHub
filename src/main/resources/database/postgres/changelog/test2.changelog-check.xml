@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="database/postgres/changelog/db.changelog-sequence.xml"/>
+
+    <changeSet author="emaxi" id="renameAvailability" runAlways="true">
+        <renameColumn columnDataType="boolean"
+                      newColumnName="availability"
+                      oldColumnName="avalibility"
+                      schemaName="rh"
+                      tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="renameClosed" runAlways="true">
+        <renameColumn columnDataType="boolean"
+                      newColumnName="closed"
+                      oldColumnName="close"
+                      schemaName="rh"
+                      tableName="order"/>
+    </changeSet>
+    <changeSet author="emaxi" id="modifyDataTypePreparingTime" runAlways="true">
+        <modifyDataType columnName="preparingtime"
+                        newDataType="int"
+                        schemaName="rh"
+                        tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="modifyLengthDishName">
+        <modifyDataType columnName="name"
+                        newDataType="varchar(255)"
+                        schemaName="rh"
+                        tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="modifyDataTypePrice" runAlways="true">
+        <modifyDataType columnName="price"
+                        newDataType="decimal"
+                        schemaName="rh"
+                        tableName="dish"/>
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropColumnRoleId">
+        <dropColumn columnName="role_id"
+                    schemaName="rh"
+                    tableName="user"/>
+    </changeSet>
+
+    <include file="database/postgres/changelog/db.changelog-notNull.xml"/>
+    <include file="database/postgres/changelog/db.changelog-unique.xml"/>
+    <include file="database/postgres/changelog/db.changelog-check.xml"/>
+
+    <changeSet id="2" author="emaxi" runAlways="true">
+        <sqlFile path="database/postgres/sql/createUserRole.sql"/>
+    </changeSet>
+    <changeSet id="3" author="me" runAlways="true">
+        <validCheckSum>7:7f0d724c425559740dd4fe4766a2fac4</validCheckSum>
+        <sqlFile path="database/postgres/sql/populateDB.sql"/>
+    </changeSet>
+    <!-- <include file="database/postgres/sql/populateDB.sql"/> -->
+
+    <changeSet author="orasso" id="addWaiter" runAlways="true">
+        <addColumn schemaName="rh"
+                   tableName="order">
+            <column name="waiter" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="orasso" id="addForeignKeyWaiter" runAlways="true">
+        <addForeignKeyConstraint baseColumnNames="waiter"
+                                 baseTableName="order"
+                                 baseTableSchemaName="rh"
+                                 constraintName="waiter_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"
+                                 referencedTableSchemaName="rh"
+        />
+    </changeSet>
+    <changeSet id="6" author="me" runAlways="true">
+        <sqlFile path="database/postgres/sql/imageReviewEntities.sql"/>
+    </changeSet>
+    <changeSet author="orasso" id="7" runAlways="true">
+        <validCheckSum>7:20b07b61ca28fd8e37e78f75037e22e5</validCheckSum>
+        <createTable remarks="A String"
+                     schemaName="rh"
+                     tableName="callforwaiter">
+            <column name="id" type="bigint" autoIncrement="true" defaultValue="1"/>
+            <column name="table" type="int"/>
+            <column name="waiter_id" type="bigint"/>
+            <column name="time_create" type="timestamp"/>
+            <column name="time_close" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="orasso" id="8">
+        <addForeignKeyConstraint baseColumnNames="waiter_id"
+                                 baseTableName="callforwaiter"
+                                 baseTableSchemaName="rh"
+                                 constraintName="waiter_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"
+                                 referencedTableSchemaName="rh"
+        />
+    </changeSet>
+    <changeSet id="9" author="orasso">
+        <insert tableName="status" schemaName="rh">
+            <column name="name" value="done"/>
+        </insert>
+    </changeSet>
+    <changeSet author="orasso" id="addImgToUser" runAlways="true">
+        <addColumn schemaName="rh"
+                   tableName="user">
+            <column name="avatar" type="VARCHAR"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

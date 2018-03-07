@@ -1,6 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "Admin.jsp" %>
 <div class="container">
     <table class="table table-hover">
         <thead>
@@ -21,13 +20,12 @@
                             data-whatever="${role.name}" data-href="/admin/role/delete/${role.id}">Delete
                     </button>
                 </td>
-                <td>
+<%--                <td>
                     <a href="/admin/role/edit/${role.id}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>
-                </td>
+                </td>--%>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
 <%@ include file = "Modal.jsp" %>
-<%@ include file = "footer.jsp" %>

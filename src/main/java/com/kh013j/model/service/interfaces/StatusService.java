@@ -6,15 +6,8 @@ import com.kh013j.model.exception.DishNotFound;
 import java.util.List;
 
 public interface StatusService {
-    Status create(Status role);
-
-    void delete(long id);
-
-    List findAll();
-
-    Status update(Status role);
-
-    Status findById(long id);
-
-    Status findByName(String name);
+    Status create();
+    Status nextStatus(Status status);
+    List<Status> cookersStatuses();
+    List<Status> waiterStatuses();
 }

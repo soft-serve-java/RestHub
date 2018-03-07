@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- category -->
+    <changeSet author="emaxi" id="addNotNullConstraintCategoryName">
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="category"/>
+    </changeSet>
+
+    <!-- role -->
+    <changeSet author="emaxi" id="addNotNullConstraintRoleName">
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="role"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintStatusName">
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="status"/>
+    </changeSet>
+
+    <!-- user -->
+    <changeSet author="emaxi" id="addNotNullConstraintEmail">
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="email"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintPassword">
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="password"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintUserName">
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintEnabled">
+        <addNotNullConstraint columnDataType="boolean"
+                              columnName="enabled"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintEnabled">
+        <addNotNullConstraint columnDataType="boolean"
+                              columnName="enabled"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintConfirmationToken">
+        <addNotNullConstraint columnDataType="boolean"
+                              columnName="confirmationtoken"
+                              schemaName="rh"
+                              tableName="user"/>
+    </changeSet>
+
+    <!-- order -->
+    <changeSet author="emaxi" id="addNotNullConstraintTime">
+        <addNotNullConstraint columnDataType="timestamp"
+                              columnName="time"
+                              schemaName="rh"
+                              tableName="order"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintTableNumber">
+        <addNotNullConstraint columnDataType="int"
+                              columnName="tablenumber"
+                              schemaName="rh"
+                              tableName="order"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintClosed">
+        <addNotNullConstraint columnDataType="boolean"
+                              columnName="closed"
+                              schemaName="rh"
+                              tableName="order"/>
+    </changeSet>
+
+    <!-- dish -->
+    <changeSet author="emaxi" id="addNotNullConstraintDishName">
+        <addNotNullConstraint columnDataType="varchar(50)"
+                              columnName="name"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintDishDescription">
+        <addNotNullConstraint columnDataType="varchar(1000)"
+                              columnName="description"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintWeight">
+        <addNotNullConstraint columnDataType="int"
+                              columnName="weight"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintCalories">
+        <addNotNullConstraint columnDataType="int"
+                              columnName="calories"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintPreparingTime">
+        <addNotNullConstraint columnDataType="int"
+                              columnName="preparingtime"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintPrice">
+        <addNotNullConstraint columnDataType="decimal"
+                              columnName="price"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintAvailability">
+        <addNotNullConstraint columnDataType="boolean"
+                              columnName="availability"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintCategoryId">
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="category_id"
+                              schemaName="rh"
+                              tableName="dish"/>
+    </changeSet>
+
+    <!-- orderdish -->
+    <changeSet author="emaxi" id="addNotNullConstraintQuantity">
+        <addNotNullConstraint columnDataType="int"
+                              columnName="quantity"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintDishId">
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="dish_id"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintStatusId">
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="status_id"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+    <changeSet author="emaxi" id="addNotNullConstraintOrderId">
+        <addNotNullConstraint columnDataType="bigint"
+                              columnName="order_id"
+                              schemaName="rh"
+                              tableName="orderdish"/>
+    </changeSet>
+</databaseChangeLog>

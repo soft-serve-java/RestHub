@@ -1,8 +1,10 @@
 package com.kh013j.model.service.interfaces;
 
 import com.kh013j.model.domain.Category;
+import com.kh013j.model.domain.Review;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.exception.DishNotFound;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -11,22 +13,29 @@ public interface DishService {
 
     Dish delete(long id);
 
-    List findAll();
+    List<Dish>  findAll();
+
+    List<Dish>  findAllAvailable();
 
     //Dish update(Dish dish) throws DishNotFound;
     Dish findById(long id);
 
-    List findAllDishByCategory(Category category);
+    Page<Dish> findAllAvailableDishByCategory(Category category, Integer pageNumber);
 
-    List findAllDishByCategoryOrderByPrice(Category category);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber, String sortingDirection);
 
-    List findAllDishByCategoryOrderByPreparingtime(Category category);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByPreparingtime(Category category, Integer pageNumber, String sortingDirection);
 
-    List findAllDishByCategoryOrderByCalories(Category category);
+    Page<Dish>  findAllAvailableDishByCategoryOrderByCalories(Category category, Integer pageNumber, String sortingDirection);
 
-    List findByNameContaining(String name);
+    List<Dish>  findByAvailableAndNameContaining(String name);
 
-    List findPopular(long id);
+    List<Dish>  findPopular(long id);
+
+    Dish tweakAvailability(long id);
 
     Dish update(Dish dish) throws DishNotFound;
+
+    List<Review> getReviews(Dish dish);
+
 }

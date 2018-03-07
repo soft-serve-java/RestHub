@@ -2,20 +2,24 @@ package com.kh013j.model.service.interfaces;
 
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.domain.Order;
+import com.kh013j.model.domain.Tables;
+import com.kh013j.model.domain.User;
 import com.kh013j.model.exception.DishNotFound;
+import javafx.util.Pair;
 import org.springframework.stereotype.Service;
 
+import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public interface OrderService {
 
-    void create(Order order);
+    Order create(Order order);
 
     Order delete(long id) throws DishNotFound;
 
-    List findAll();
+    List<Order> findAll();
 
     Order update(Order order);
 
@@ -25,5 +29,13 @@ public interface OrderService {
 
     Order createOrderFromMap(Map<Dish, Integer> orderMap, int tableNumber);
 
-    void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap);
+    void onSubmitOrder(int tablenumber, Map<Dish, Integer> orderMap, User user);
+
+    void submitOneDish(int tablenumber, AbstractMap.SimpleEntry<Dish, Integer> dishQuantity, User user);
+
+    List<Tables> findTableInfoForWaiter();
+
+    void setWaiter(int table, User waiter);
+
+    Order closeOrder(int table);
 }

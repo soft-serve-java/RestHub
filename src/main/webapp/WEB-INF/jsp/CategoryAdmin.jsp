@@ -1,15 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="Admin.jsp" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="container">
     <table class="table table-hover">
         <thead>
         <tr style="text-align: center;">
             <th>#</th>
             <th>Name</th>
-            <th colspan="2"><a href="/admin/category/new">
-                <button type="submit" class="btn btn-primary">New Category</button>
-            </a>
-            </th>
+            <th><a href="/admin/category/new" class="btn btn-primary inline">Create</a></th>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +27,7 @@
         </c:forEach>
         </tbody>
     </table>
+
+    <hr>
 </div>
 <%@ include file="Modal.jsp" %>
-<%@ include file="footer.jsp" %>

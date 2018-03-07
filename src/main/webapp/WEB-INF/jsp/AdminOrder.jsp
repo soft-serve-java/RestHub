@@ -1,5 +1,4 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ include file = "Admin.jsp" %>
 <div class="container">
 <%--    <c:if test="${not empty order}"><p>test- BD Empty</p></c:if>   --%>
     <table class="table table-hover">
@@ -7,7 +6,6 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th>Order</th>
-
             <%--<th colspan="2" >
                 <a href="/admin/order/new"><button type="submit" class="btn btn-primary">New order</button> </a>
             </th>--%>
@@ -33,4 +31,3 @@
     </table>
 </div>
 <%@ include file="Modal.jsp"%>
-<%@ include file = "footer.jsp" %>

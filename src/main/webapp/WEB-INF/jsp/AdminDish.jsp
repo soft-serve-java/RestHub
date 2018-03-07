@@ -1,5 +1,4 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ include file = "Admin.jsp" %>
 
 <div class="container">
     <table class="table table-hover">
@@ -13,9 +12,18 @@
         </thead>
         <tbody>
         <c:forEach items="${dish}" var="dish">
-            <tr>
+            <c:if test="${!dish.availability}"><tr class="table-warning"></c:if>
+            <c:if test="${dish.availability}"><tr></c:if>
                 <td>${dish.id}</td>
                 <td>${dish.name}</td>
+                <td>
+                    <a class="btn btn-info" href="/admin/dish/tweakAvail/${dish.id}">
+                        <c:choose>
+                            <c:when test="${dish.availability}">Remove from menu</c:when>
+                            <c:otherwise>Add to menu</c:otherwise>
+                        </c:choose>
+                    </a>
+                </td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
                             data-whatever="${dish.name}" data-href="/admin/dish/delete/${dish.id}">Delete
@@ -30,4 +38,3 @@
     </table>
 </div>
 <%@ include file="Modal.jsp"%>
-<%@ include file = "footer.jsp" %>

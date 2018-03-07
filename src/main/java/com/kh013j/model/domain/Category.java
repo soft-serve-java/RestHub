@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "category", schema = "rh")
@@ -15,8 +16,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "category-sequence_generator", sequenceName = "category_sequence")
+    @GeneratedValue(generator = "category-sequence_generator", strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(length = 50)
+
+    @Size(min=3, max=50)
     private String name;
 }
+

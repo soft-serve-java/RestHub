@@ -5,6 +5,7 @@ import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.DishNotFound;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -12,15 +13,11 @@ import java.util.Map;
 public interface OrderedDishService {
     OrderedDish create(OrderedDish dish);
 
-    List<OrderedDish> createAll(List<OrderedDish> dishes, Order order);
-
     void setCooking(long id);
 
     OrderedDish delete(long id) throws DishNotFound;
 
-    List findAll();
-
-    OrderedDish update(OrderedDish dish) throws DishNotFound;
+    List<OrderedDish> findAll();
 
     OrderedDish findById(long id);
 
@@ -30,7 +27,10 @@ public interface OrderedDishService {
 
     List<OrderedDish> findAllForCooker();
 
-    List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap, Order order);
+    @Transactional
+    void setDelivered(long id);
 
-    OrderedDish createOrderedDishFromDish(Dish dish, Order order, int quantity);
+    List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap);
+
+    OrderedDish createOrderedDishFromDish(Dish dish, int quantity);
 }

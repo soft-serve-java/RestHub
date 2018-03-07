@@ -20,6 +20,13 @@ public class ViewName {
     public static final String SHOW_ORDERS = "OrderAdmin";
 
     public static final String COOKER = "Cooker";
+    public static final String WAITER_ORDERS = "OrderWaiter";
+
+
+    public static final String DISH_EDIT_ADD = "DishEditAdd";
+
+    public static final String ADMIN_SELECT_TABLE = "AdminTableSelect";
+
 
     private ViewName() {
         throw new UnsupportedOperationException();

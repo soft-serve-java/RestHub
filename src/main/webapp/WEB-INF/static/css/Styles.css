@@ -24,7 +24,7 @@ body {
     color: lightgrey;
 }
 
-.card {
+.card-deck .card {
     max-width: 250px;
 }
 
@@ -104,4 +104,51 @@ body {
 
 .clickable:hover {
     color: cornflowerblue;
+}
+.footer .footer-widget{
+    padding-top: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+
+.reviews {
+    color: #555;
+    font-weight: bold;
+}
+
+.menuPagination{
+    width: min-content;
+    margin:0 auto;
+    padding-top: 15px;
+}
+
+.container-fluid .card-block {
+    min-height: 250px;
+    min-width: 300px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.reviewCard {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.carouselRH {
+    min-height: 52%;
+    overflow: hidden;
+}
+.carouselRH img {
+    height: auto;
+    width: auto;
+}
+.tab-pane {
+    padding-top: 20px;
+}
+.avatarWaiter{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
 }

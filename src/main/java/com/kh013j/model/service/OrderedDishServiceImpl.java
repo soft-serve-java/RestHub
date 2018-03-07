@@ -7,6 +7,7 @@ import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderedDishRepository;
+import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +23,13 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     private OrderedDishRepository orderedDishRepository;
     @Autowired
     private StatusService statusService;
+    @Autowired
+    private DishService dishService;
 
     @Override
     @Transactional
     public OrderedDish create(OrderedDish orderedDish) {
         return orderedDishRepository.save(orderedDish);
-    }
-
-    @Override
-    public List<OrderedDish> createAll(List<OrderedDish> dishes, Order order) {
-        dishes.stream().
-                forEach(orderedDish -> orderedDish.setOrder(order));
-        return orderedDishRepository.save(dishes);
     }
 
     @Override
@@ -48,18 +44,6 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         return deletedOrderedDish;
     }
 
-    @Override
-    @Transactional
-    public OrderedDish update(OrderedDish orderedDish) {
-        OrderedDish updatedOrderedDish = orderedDishRepository.findOne(orderedDish.getId());
-
-        updatedOrderedDish.setOrder(orderedDish.getOrder());
-        updatedOrderedDish.setDish(orderedDish.getDish());
-        updatedOrderedDish.setQuantity(orderedDish.getQuantity());
-        updatedOrderedDish.setStatus(orderedDish.getStatus());
-
-        return updatedOrderedDish;
-    }
 
     @Override
     @Transactional
@@ -73,10 +57,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     }
 
     public List<OrderedDish> findAllForCooker() {
-        List<Status> statuses = new ArrayList<>();
-        statuses.add(new Status(2, "cooking"));
-        statuses.add(new Status(1, "preparing"));
-        return orderedDishRepository.findAllByStatusIn(statuses);
+        return orderedDishRepository.findAllByStatusIn(statusService.cookersStatuses());
     }
 
 
@@ -84,7 +65,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     @Transactional
     public void setDone(long id) {
         OrderedDish dish = orderedDishRepository.findOne(id);
-        dish.setStatus(new Status(3, "delivery"));
+        dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
     }
 
@@ -98,25 +79,30 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     @Transactional
     public void setCooking(long id) {
         OrderedDish dish = orderedDishRepository.findOne(id);
-        dish.setStatus(new Status(2, "cooking"));
+        dish.setStatus(statusService.nextStatus(dish.getStatus()));
+        orderedDishRepository.saveAndFlush(dish);
+    }
+    @Override
+    @Transactional
+    public void setDelivered(long id) {
+        OrderedDish dish = orderedDishRepository.findOne(id);
+        dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
     }
 
-    public List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap, Order order) {
+    public List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap) {
         List<OrderedDish> orderedDishes = new ArrayList<>();
         for (Map.Entry<Dish, Integer> entry : orderMap.entrySet()) {
-            orderedDishes.add(createOrderedDishFromDish(entry.getKey(), order, entry.getValue()));
+            orderedDishes.add(createOrderedDishFromDish(entry.getKey(), entry.getValue()));
         }
         return orderedDishes;
     }
 
-    public OrderedDish createOrderedDishFromDish(Dish dish, Order order, int quantity) {
+    public OrderedDish createOrderedDishFromDish(Dish dish, int quantity) {
         OrderedDish orderedDish = new OrderedDish();
         orderedDish.setDish(dish);
-        orderedDish.setOrder(order);
         orderedDish.setQuantity(quantity);
-        Status status = statusService.findByName("preparing");
-        orderedDish.setStatus(status);
+        orderedDish.setStatus(statusService.create());
         return orderedDish;
     }
 }
