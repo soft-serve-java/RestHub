@@ -115,7 +115,7 @@ public class DishServiceImplTest {
         dishService.create(new Dish());
     }
 
-    /*@Test
+    @Test
     public void findById() {
         Dish dish = new Dish();
 
@@ -136,23 +136,23 @@ public class DishServiceImplTest {
         //search a dish by id of a created dish
         Dish foundDish = dishService.findById(createdDish.getId());
 
-        assertEquals(dish, foundDish);
+        assertEquals(dish.getId(), foundDish.getId());
     }
 
     public void tryToFindById() {
         assertNull(dishService.findById(-1));
     }
 
-   /* @Test
+    @Test
     public void findAllDishByCategoryOrderByPrice() {
         for (Category category : categories) {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category,1, "DESC").getContent();
 
            Dish minPriceDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPrice)).get();
-            assertEquals(categoryDishes.get(0), minPriceDish);
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), minPriceDish);
 
             Dish maxPriceDish = categoryDishes.stream().max(Comparator.comparing(Dish::getPrice)).get();
-            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxPriceDish);
+            assertEquals(categoryDishes.get(0), maxPriceDish);
         }
     }
 
@@ -162,10 +162,10 @@ public class DishServiceImplTest {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category, 1, "DESC").getContent();
 
             Dish minPreparingTimeDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPreparingtime)).get();
-            assertEquals(categoryDishes.get(0), minPreparingTimeDish);
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), minPreparingTimeDish);
 
             Dish maxPreparingTimeDish = categoryDishes.stream().max(Comparator.comparing(Dish::getPreparingtime)).get();
-            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxPreparingTimeDish);
+            assertEquals(categoryDishes.get(0), maxPreparingTimeDish);
         }
     }
 
@@ -175,12 +175,12 @@ public class DishServiceImplTest {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByCalories(category,1, "DESC").getContent();
 
             Dish minCaloriesDish = categoryDishes.stream().min(Comparator.comparing(Dish::getCalories)).get();
-            assertEquals(categoryDishes.get(0), minCaloriesDish);
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), minCaloriesDish);
 
             Dish maxCaloriesDish = categoryDishes.stream().max(Comparator.comparing(Dish::getCalories)).get();
-            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxCaloriesDish);
+            assertEquals(categoryDishes.get(0), maxCaloriesDish);
         }
-    }*/
+    }
 
     @Test
     public void findAllDishByCategory() {

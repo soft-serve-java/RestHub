@@ -38,10 +38,6 @@ public class OrderDishRepositoryTest {
    @Test
     public void isOrderAdded() {
        User user1 = new User();
-       //HashSet<User> users = new HashSet<>();
-
-       // users.add(user1);
-
        Role role = new Role(1, "Admin");
        HashSet<Role> roles = new HashSet<>();
        roles.add(role);
@@ -63,21 +59,13 @@ public class OrderDishRepositoryTest {
     @Test
     public void isOrdersEqual() {
         User user1 = new User();
-        //HashSet<User> users = new HashSet<>();
-
-       // users.add(user1);
-
         Role role = new Role(1, "Admin");
         HashSet<Role> roles = new HashSet<>();
         roles.add(role);
-
         User user =  userService.findById(1);
-
         Timestamp time = new Timestamp(22L);
-
         order = new Order(1, time, user,   1, false, new ArrayList<OrderedDish>(), null);
         orderService.create(order);
-
         Assert.isTrue(order.equals(orderRepository.findOne(1L)));
     }
 
