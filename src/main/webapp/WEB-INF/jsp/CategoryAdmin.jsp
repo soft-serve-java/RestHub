@@ -6,6 +6,7 @@
         <tr style="text-align: center;">
             <th>#</th>
             <th>Name</th>
+            <th><a href="/admin/category/new" class="btn btn-primary inline">Create</a></th>
         </tr>
         </thead>
         <tbody>

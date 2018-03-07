@@ -147,3 +147,8 @@ body {
 .tab-pane {
     padding-top: 20px;
 }
+.avatarWaiter{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}

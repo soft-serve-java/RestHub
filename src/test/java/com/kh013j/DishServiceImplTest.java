@@ -1,4 +1,4 @@
-/*package com.kh013j;
+package com.kh013j;
 
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
@@ -45,7 +45,7 @@ public class DishServiceImplTest {
     @Before
     public void initialize() {
         dishes.addAll(Arrays.asList(
-                (new Dish(1L, "White corn guacamole",
+                (new Dish(1L, "White corn guacamol",
                         "Diced avocado, sweet white corn, black beans.",
                         200, 1000, 40,3.0, soupsCategory, new ArrayList<>(), true)),
                 (new Dish(2L, "Camole",
@@ -115,7 +115,7 @@ public class DishServiceImplTest {
         dishService.create(new Dish());
     }
 
-    @Test
+    /*@Test
     public void findById() {
         Dish dish = new Dish();
 
@@ -143,7 +143,7 @@ public class DishServiceImplTest {
         assertNull(dishService.findById(-1));
     }
 
-    @Test
+   /* @Test
     public void findAllDishByCategoryOrderByPrice() {
         for (Category category : categories) {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category,1, "DESC").getContent();
@@ -180,7 +180,7 @@ public class DishServiceImplTest {
             Dish maxCaloriesDish = categoryDishes.stream().max(Comparator.comparing(Dish::getCalories)).get();
             assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxCaloriesDish);
         }
-    }
+    }*/
 
     @Test
     public void findAllDishByCategory() {
@@ -312,4 +312,4 @@ public class DishServiceImplTest {
 
        dishService.create(dish);
     }
-}*/
+}

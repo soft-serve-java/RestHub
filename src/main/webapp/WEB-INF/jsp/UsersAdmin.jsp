@@ -107,9 +107,6 @@
             </ul>
         </nav>
     </div>
-
-
-
 </div>
 <%@ include file="Modal.jsp" %>
 <%@ include file="ModalDeleteNotConfirmUser.jsp" %>

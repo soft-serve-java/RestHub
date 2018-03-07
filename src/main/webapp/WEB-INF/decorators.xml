@@ -32,7 +32,7 @@
            RoleEdit.jsp
            StatusAdd.jsp
            StatusEdit.jsp
-           StatusEditCreate.jsp
+           CategoryEditCreate.jsp
            UserEditCreate.jsp
            UserAdmin.jsp-->
           <pattern>/admin</pattern>
