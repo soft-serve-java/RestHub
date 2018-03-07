@@ -32,8 +32,8 @@ public class CategoryAdminController {
     @GetMapping(value = "/admin/category/edit/{id}")
     public ModelAndView categoryEdit(@PathVariable(value = "id") long id) {
         Category category = categoryService.findById(id);
-        return new ModelAndView(ViewName.SHOW_CATEGORY,
-                "Categories", categoryService.findAll()).addObject("category", category);
+        return new ModelAndView(ViewName.CATEGORY_EDIT_CREATE,"Categories", categoryService.findAll())
+                .addObject("category", category);
     }
 
     @PostMapping(value = "/admin/category/delete/{id}")
