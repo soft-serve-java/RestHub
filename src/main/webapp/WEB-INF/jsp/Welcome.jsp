@@ -57,9 +57,5 @@
     .btn-block {
         padding: 10pt;
     }
-    .avatarWaiter{
-        height: 70px;
-        width: 70px;
-        border-radius: 50%;
-    }
+
 </style>
