@@ -9,7 +9,6 @@ import {WelcomeService} from "./welcome/welcome.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +17,9 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [WelcomeService, HttpClient, ],
+  providers: [WelcomeService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
