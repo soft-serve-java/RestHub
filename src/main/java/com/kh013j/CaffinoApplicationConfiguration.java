@@ -64,5 +64,4 @@ public class CaffinoApplicationConfiguration {
     EmailService emailServiceConfig(){
         return new EmailServiceImpl();
     }
-
 }
