@@ -8,18 +8,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @SessionAttributes("categoryItems")
 public class WelcomeController {
     @Autowired
     private CategoryService categoryService;
 
     @ModelAttribute("categoryItems")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<Category> getOrderMap() {
         return categoryService.findAll();
     }
     @RequestMapping("/api/hello")
-    @CrossOrigin(origins = "http://localhost:4200")
     public String greet() {
         return "Hello from the other side!!!";
     }
