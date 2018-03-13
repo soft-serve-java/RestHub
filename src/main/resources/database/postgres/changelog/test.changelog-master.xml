@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="1" author="emaxi" runAlways="true">
-        <validCheckSum>7:2804fc3eba728b7ceb3186ed34e16339</validCheckSum>
+        <validCheckSum>7:a7ec629642690280acd78672d3ff060f</validCheckSum>
         <sqlFile path="database/postgres/sql/createTest.sql"/>
     </changeSet>
 
@@ -130,9 +130,9 @@
                       tableName="order"/>
     </changeSet>
 
-    <changeSet id="dropRoleNotNullConstraint" author="emaxi">
+    <!-- <changeSet id="dropRoleNotNullConstraint" author="emaxi">
         <dropNotNullConstraint schemaName="rh" tableName="user" columnName="role_id"/>
-    </changeSet>
+    </changeSet> -->
 
     <changeSet id="6" author="me" runAlways="true">
         <sqlFile path="database/postgres/sql/imageReviewEntities.sql"/>

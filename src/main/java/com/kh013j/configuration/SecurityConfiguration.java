@@ -28,7 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -36,6 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/cooker/**").access("hasAnyAuthority('COOK', 'ADMINISTRATOR')")
                 .antMatchers("/waiter/**").access("hasAnyAuthority('WAITER', 'ADMINISTRATOR')")
                 //.antMatchers("/user/**").hasAnyRole("USER")
+
+               /* .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html**", "/webjars/**").permitAll()
+                .anyRequest().authenticated()*/
 
                 .and()
                 .formLogin()

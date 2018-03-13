@@ -48,20 +48,22 @@ public class CaffinoApplicationConfiguration {
     }
 
     @Bean
-    public UserDetailsService userDetailsServiceConfig(){
+    public UserDetailsService userDetailsServiceConfig() {
         return new UserDetailsServiceImpl();
     }
 
     @Bean
-    public ReviewService reviewServiceConfig() {return new ReviewServiceImpl(); }
+    public ReviewService reviewServiceConfig() {
+        return new ReviewServiceImpl();
+    }
 
     @Bean
-    public Filter sitemesh(){
+    public Filter sitemesh() {
         return new SiteMeshFilter();
     }
 
     @Bean
-    EmailService emailServiceConfig(){
+    EmailService emailServiceConfig() {
         return new EmailServiceImpl();
     }
 }
