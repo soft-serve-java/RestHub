@@ -2,7 +2,6 @@
 <decorators defaultdir="/decorators">
     <decorator name="user" page="user_pages_template.jsp">
         <!-- Mapping for USER-pages -->
-        <pattern>/</pattern><!-- Welcome.jsp -->
         <pattern>/welcome</pattern><!-- Welcome.jsp -->
         <pattern>/order</pattern><!-- Cart.jsp -->
         <pattern>/login</pattern><!-- login.jsp -->
