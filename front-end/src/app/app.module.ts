@@ -9,20 +9,23 @@ import {WelcomeService} from "./services/welcome.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { AppService } from './services/app.service';
 import { environment } from '../environments/environment';
+import { WaiterTablesComponent } from './waiter-tables/waiter-tables.component';
+import {WaiterService} from "./services/waiter.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    WaiterTablesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [WelcomeService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl}],
+  providers: [WelcomeService,WaiterService , HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
