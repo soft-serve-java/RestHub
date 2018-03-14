@@ -1,4 +1,4 @@
-package com.kh013j.controllers;
+package com.kh013j.restcontrollers;
 
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.exception.CategoryNotFound;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 public class CategoryController {
 
@@ -22,12 +23,12 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/category/all")
+    @GetMapping("/api/category/all")
     public List<Category> getCategories(){
         return categoryService.findAll();
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/api/category/{id}")
     public Category getCategory(@PathVariable("id") long id){
         try {
             return categoryService.findById(id);
@@ -37,12 +38,12 @@ public class CategoryController {
         }
     }
 
-    @PostMapping("/category/add")
+    @PostMapping("/api/category/add")
     public Category addCategory(@RequestBody Category category){
         return categoryService.create(category);
     }
 
-    @DeleteMapping("category/{id}")
+    @DeleteMapping("/api/category/{id}")
     public Boolean deleteCategory(@PathVariable("id") long id){
         try {
             categoryService.delete(id);

@@ -10,7 +10,7 @@ class Category {
 
 @Injectable()
 export class WelcomeService {
-  url:string = "http://localhost:9090/api/hello";
+  url:string = "http://localhost:8080/api/hello";
   constructor(private http:HttpClient) { }
 
   getWithPromise(): Promise<string> {

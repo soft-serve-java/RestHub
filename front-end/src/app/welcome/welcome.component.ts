@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {WelcomeService} from "./welcome.service";
+import {WelcomeService} from "../services/welcome.service";
 
 @Component({
   selector: 'app-welcome',
@@ -7,12 +7,11 @@ import {WelcomeService} from "./welcome.service";
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-  myString:string;
-  constructor(public welcomeservice: WelcomeService) { }
+
+  constructor() { }
 
   ngOnInit() {
-    this.welcomeservice.getWithPromise()
-      .then(value=>this.myString=value);
+      
   }
 
 }
