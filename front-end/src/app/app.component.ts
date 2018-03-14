@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
-import { Category } from './model/Category';
+import { Category } from './models/Category';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,6 @@ export class AppComponent {
   categories: Array<Category>;
 
   constructor(public appService: AppService) { }
-
 
   ngOnInit() {
     this.getCategories();
