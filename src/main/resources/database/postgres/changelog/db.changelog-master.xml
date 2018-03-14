@@ -58,9 +58,10 @@
         <sqlFile path="database/postgres/sql/createUserRole.sql"/>
     </changeSet>
     <changeSet id="3" author="me" runAlways="true">
-        <validCheckSum>7:eb1501edc6c2ccdcb97151b0c80cd087</validCheckSum>
+        <validCheckSum>7:7f0d724c425559740dd4fe4766a2fac4</validCheckSum>
         <sqlFile path="database/postgres/sql/populateDB.sql"/>
     </changeSet>
+   <!-- <include file="database/postgres/sql/populateDB.sql"/> -->
 
     <changeSet author="orasso" id="addWaiter" runAlways="true">
         <addColumn schemaName="rh"

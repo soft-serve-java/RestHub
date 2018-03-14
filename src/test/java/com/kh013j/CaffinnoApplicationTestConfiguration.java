@@ -25,9 +25,9 @@ public class CaffinnoApplicationTestConfiguration {
         Logger logger = LoggerFactory.getLogger(EmbeddedPostgres.class);
 
         final EmbeddedPostgres postgres = new EmbeddedPostgres(V10);
-        final String url = postgres.start("localhost", 5430, "test", "User", "vfhie,rf06081968");
+        postgres.start("localhost", 5432, "test2", "arthurvartanyan", "");
 
-        logger.info("Embedded postgres has started.");
+        logger.error("Embedded postgres has started.");
 
         return postgres;
     }

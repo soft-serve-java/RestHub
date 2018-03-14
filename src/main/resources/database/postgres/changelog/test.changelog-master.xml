@@ -6,7 +6,6 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="1" author="emaxi" runAlways="true">
-        <validCheckSum>7:a7ec629642690280acd78672d3ff060f</validCheckSum>
         <sqlFile path="database/postgres/sql/createTest.sql"/>
     </changeSet>
 
@@ -34,20 +33,6 @@
                              tableName="status"
         />
     </changeSet>
-    <changeSet author="emaxi" id="modifyDataTypePrice" runAlways="true">
-        <modifyDataType columnName="price"
-                        newDataType="decimal"
-                        schemaName="rh"
-                        tableName="dish"/>
-    </changeSet>
-    <changeSet author="emaxi" id="dropColumnRoleId">
-        <dropColumn columnName="role_id"
-                    schemaName="rh"
-                    tableName="user"/>
-    </changeSet>
-    <changeSet id="2" author="emaxi" runAlways="true">
-        <sqlFile path="database/postgres/sql/createUserRole.sql"/>
-    </changeSet>
 
     <changeSet author="emaxi" id="dropCheckQuantityConstraintIfExists">
         <sql>
@@ -60,81 +45,10 @@
             CHECK ((EXTRACT(DAYS FROM NOW() - rh.order.time))>=0)
         </sql>
     </changeSet>
-    <changeSet author="emaxi" id="dropNotNullConstraintPicture" runAlways="true">
-        <dropNotNullConstraint columnDataType="VARCHAR(100)"
-                               columnName="picture"
-                               schemaName="rh"
-                               tableName="dish"/>
-    </changeSet>
-   <!-- <changeSet id="DropPictureColumn" author="emaxi" runAlways="true">
+    <changeSet id="DropPictureColumn" author="emaxi">
         <dropColumn tableName="dish" schemaName="rh" columnName="picture"/>
-    </changeSet> -->
-
-    <changeSet id="populateTest" author="emaxi" runAlways="true">
-        <validCheckSum>7:2804fc3eba728b7ceb3186ed34e16339</validCheckSum>
-        <sqlFile path="database/postgres/sql/populateTest.sql"/>
     </changeSet>
 
-    <changeSet author="orasso" id="7" runAlways="true">
-        <createTable remarks="A String"
-                     schemaName="rh"
-                     tableName="callforwaiter">
-            <column name="id" type="bigint" autoIncrement="true" defaultValue="1"/>
-            <column name="table" type="int"/>
-            <column name="waiter_id" type="bigint"/>
-            <column name="time_create" type="timestamp"/>
-            <column name="time_close" type="timestamp"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="orasso" id="AddForeignKeyWaiterId">
-        <addForeignKeyConstraint baseColumnNames="waiter_id"
-                                 baseTableName="callforwaiter"
-                                 baseTableSchemaName="rh"
-                                 constraintName="waiter_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
-                                 referencedColumnNames="id"
-                                 referencedTableName="user"
-                                 referencedTableSchemaName="rh"
-        />
-    </changeSet>
+    <include file="database/postgres/sql/populateTest.sql"/>
 
-    <changeSet author="orasso" id="addWaiter" runAlways="true">
-        <addColumn schemaName="rh"
-                   tableName="order">
-            <column name="waiter" type="bigint"/>
-        </addColumn>
-    </changeSet>
-    <changeSet author="orasso" id="addForeignKeyWaiter" runAlways="true">
-        <addForeignKeyConstraint baseColumnNames="waiter"
-                                 baseTableName="order"
-                                 baseTableSchemaName="rh"
-                                 constraintName="waiter_fk"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
-                                 referencedColumnNames="id"
-                                 referencedTableName="user"
-                                 referencedTableSchemaName="rh"
-        />
-    </changeSet>
-
-    <changeSet author="emaxi" id="renameTablenumberColumn" runAlways="true">
-        <renameColumn columnDataType="int"
-                      newColumnName="tablenumber"
-                      oldColumnName="table_number"
-                      schemaName="rh"
-                      tableName="order"/>
-    </changeSet>
-
-    <!-- <changeSet id="dropRoleNotNullConstraint" author="emaxi">
-        <dropNotNullConstraint schemaName="rh" tableName="user" columnName="role_id"/>
-    </changeSet> -->
-
-    <changeSet id="6" author="me" runAlways="true">
-        <sqlFile path="database/postgres/sql/imageReviewEntities.sql"/>
-    </changeSet>
 </databaseChangeLog>

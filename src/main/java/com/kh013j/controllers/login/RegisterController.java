@@ -46,13 +46,19 @@ public class RegisterController {
 
     // Process form input data
     @PostMapping(value = "/registration")
-    public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
+    public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user,
+                                                BindingResult bindingResult, HttpServletRequest httpServletRequest) {
         User userExists = userService.findByEmail(user.getEmail());
         modelAndView.addObject("registration", user);
-        if (userExists != null) {
+        //If User allraedy registered, he receive a message
+/*        if (userExists != null) {
             modelAndView.addObject("alreadyRegisteredMessage", "There is already a user registered with the email provided.");
             modelAndView.setViewName("registration");
             bindingResult.reject("email");
+        }*/
+        if (userExists != null) {
+            userService.delete(userExists.getId());
+            modelAndView.setViewName("registration");
         }
         if (user.getPassword().length() <= 4) {
             modelAndView.addObject("IncorrectPassword", "Password length min 5, max 100 symbols ");
@@ -65,10 +71,9 @@ public class RegisterController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         }
-        else { // new user so we create user and send confirmation e-mail
+        else { // new user so we create user and send confirmation e-mai
 
             Random random = new Random();
-            //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword() + String.valueOf(random.nextInt())));
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             if (user.getRoles() == null) {
                 user.setRoles(new HashSet<>());

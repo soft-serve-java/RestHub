@@ -3,7 +3,6 @@ package com.kh013j.model.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -22,4 +21,8 @@ public class Role implements Serializable {
 
     @Min(2) @Max(50)
     private String name;
+
+    public Role(@Min(2) @Max(50) String name) {
+        this.name = name;
+    }
 }

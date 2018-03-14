@@ -49,13 +49,13 @@ public class DishServiceImplTest {
         dishes.addAll(Arrays.asList(
                 (new Dish(1L, "White corn guacamole",
                         "Diced avocado, sweet white corn, black beans.",
-                        200, 1000, 40,39.0, soupsCategory, new ArrayList<>(), true)),
+                        200, 1000, 40,3.0, soupsCategory, new ArrayList<>(), true)),
                 (new Dish(2L, "Camole",
                         "Diced avocado, sweet white corn, black beans.",
                         250, 1200, 10,33.0, soupsCategory, new ArrayList<>(), true)),
                 (new Dish(3L, "Guacamole",
                         "Black beans.",
-                        430, 1100, 20,56.0, soupsCategory, new ArrayList<>(), true)),
+                        430, 1400, 20,56.0, soupsCategory, new ArrayList<>(), true)),
                 (new Dish(4L, "Tiramisu",
                         "Soft.",
                         730, 1341, 26, 39.0, desertsCategory, new ArrayList<>(), true)),
@@ -64,10 +64,10 @@ public class DishServiceImplTest {
                         330, 1909, 27, 60.0, desertsCategory, new ArrayList<>(), true)),
                 (new Dish(6L, "Our desert",
                         "From love",
-                        230, 1467, 9, 34.0, desertsCategory, new ArrayList<>(), true)),
+                        230, 1467, 29, 34.0, desertsCategory, new ArrayList<>(), true)),
                 (new Dish(7L, "Gua mole",
                         "Red beans.",
-                        230, 1348, 23, 99.0, mealsCategory, new ArrayList<>(), true)),
+                        230, 1348, 23, 39.0, mealsCategory, new ArrayList<>(), true)),
                 (new Dish(8L, "Mole",
                         "Beans.",
                         530, 1906, 22, 6.0, mealsCategory, new ArrayList<>(), true)),
@@ -82,7 +82,7 @@ public class DishServiceImplTest {
                         580, 1005, 14, 9.0, drinksCategory, new ArrayList<>(), true)),
                 (new Dish(12L, "Blackberry cocktail",
                         "Tasty blackberry flavour",
-                        570, 1404, 12, 1.0, drinksCategory, new ArrayList<>(), true))));
+                        570, 1404, 12, 11.0, drinksCategory, new ArrayList<>(), true))));
 
         for (Dish dish : dishes) {
             dishService.create(dish);
@@ -151,10 +151,10 @@ public class DishServiceImplTest {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPrice(category,1, "DESC").getContent();
 
            Dish minPriceDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPrice)).get();
-            assertEquals(categoryDishes.get(categoryDishes.size()-1), minPriceDish);
+            assertEquals(categoryDishes.get(0), minPriceDish);
 
             Dish maxPriceDish = categoryDishes.stream().max(Comparator.comparing(Dish::getPrice)).get();
-            assertEquals(categoryDishes.get(0), maxPriceDish);
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxPriceDish);
         }
     }
 
@@ -164,10 +164,10 @@ public class DishServiceImplTest {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByPreparingtime(category, 1, "DESC").getContent();
 
             Dish minPreparingTimeDish = categoryDishes.stream().min(Comparator.comparing(Dish::getPreparingtime)).get();
-            assertEquals(categoryDishes.get(categoryDishes.size()-1), minPreparingTimeDish);
+            assertEquals(categoryDishes.get(0), minPreparingTimeDish);
 
             Dish maxPreparingTimeDish = categoryDishes.stream().max(Comparator.comparing(Dish::getPreparingtime)).get();
-            assertEquals(categoryDishes.get(0), maxPreparingTimeDish);
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxPreparingTimeDish);
         }
     }
 
@@ -177,10 +177,10 @@ public class DishServiceImplTest {
             categoryDishes = dishService.findAllAvailableDishByCategoryOrderByCalories(category,1, "DESC").getContent();
 
             Dish minCaloriesDish = categoryDishes.stream().min(Comparator.comparing(Dish::getCalories)).get();
-            assertEquals(categoryDishes.get(categoryDishes.size()-1), minCaloriesDish);
+            assertEquals(categoryDishes.get(0), minCaloriesDish);
 
             Dish maxCaloriesDish = categoryDishes.stream().max(Comparator.comparing(Dish::getCalories)).get();
-            assertEquals(categoryDishes.get(0), maxCaloriesDish);
+            assertEquals(categoryDishes.get(categoryDishes.size() - 1), maxCaloriesDish);
         }
     }
 
