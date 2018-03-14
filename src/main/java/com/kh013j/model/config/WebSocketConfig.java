@@ -10,7 +10,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 //http://spring-projects.ru/guides/messaging-stomp-websocket/
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
+public class    WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {

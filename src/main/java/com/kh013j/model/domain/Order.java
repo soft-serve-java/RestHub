@@ -1,6 +1,5 @@
 package com.kh013j.model.domain;
 
-import com.kh013j.model.domain.converter.TableConverter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,8 +24,7 @@ public class Order {
 
     @Past
     private Timestamp time;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 

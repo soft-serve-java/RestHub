@@ -4,7 +4,6 @@ import com.kh013j.controllers.util.ViewName;
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
-import com.kh013j.model.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +17,6 @@ import java.util.List;
 public class HelloController {
     @Autowired
     private DishService dishService;
-
-    @Autowired
-    private OrderService orderService;
 
     @Autowired
     private CategoryService categoryService;

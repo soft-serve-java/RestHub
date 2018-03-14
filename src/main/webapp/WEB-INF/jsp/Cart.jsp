@@ -98,7 +98,7 @@
                         </div>
                     </td>
                     <td style="text-align: center">
-                        <a href="/submitOne/${orderItem.key}" class="btn btn-success inline"><span
+                        <a href="/submitOne/${orderItem.key.id}" class="btn btn-success inline"><span
                                 class="fa fa-check"></span></a>
                         <a href="/removeFromOrder/${orderItem.key.id}" class="btn btn-danger inline"><span
                                 class="fa fa-times"></span></a>
