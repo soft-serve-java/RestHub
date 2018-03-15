@@ -15,12 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class CategoryController {
-    @Autowired
+public class MenuController {
     private DishService dishService;
 
-    @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    public MenuController(DishService dishService, CategoryService categoryService) {
+        this.dishService = dishService;
+        this.categoryService = categoryService;
+    }
 
     @ModelAttribute("categoryItems")
     public List<Category> getCategoryItems() {
