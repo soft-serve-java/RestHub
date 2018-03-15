@@ -8,15 +8,14 @@ import { Category } from './models/Category';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  categories: Array<Category>;
+  private categories: Array<Category>;
 
-  constructor(public appService: AppService) { }
+  constructor(public appService: AppService) { this.getCategories();}
 
   ngOnInit() {
-    this.getCategories();
   }
 
   getCategories(){
-    this.appService.getCategories().subscribe(res => this.categories = res)
+    this.appService.getCategories().then(res => this.categories = res)
   }
 }

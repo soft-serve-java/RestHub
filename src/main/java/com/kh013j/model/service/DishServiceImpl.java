@@ -25,7 +25,7 @@ public class DishServiceImpl implements DishService {
     /**
      * Number of dishes in one page
      */
-    private static final int PAGE_SIZE = 4;
+    private static final int PAGE_SIZE = 1;
 
     @Override
     @Transactional
