@@ -65,4 +65,9 @@ public class DishControllerRest {
         httpHeaders.add("last", String.valueOf(dishPage.getTotalPages()));
         return ResponseEntity.ok().headers(httpHeaders).body(dishPage.getContent());
     }
+
+    @GetMapping("/{id}/populars")
+    public List<Dish> getPopularsById(@PathVariable long id){
+        return dishService.findPopular(id);
+    }
 }

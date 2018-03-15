@@ -11,6 +11,7 @@ import {MenuService} from "../services/menu.service";
 export class DishPageComponent implements OnInit {
 
   private dish: Dish;
+  private populars: Dish[];
 
   constructor(private route: ActivatedRoute, public menuService: MenuService) {
     route.params.subscribe( params => {
@@ -23,6 +24,7 @@ export class DishPageComponent implements OnInit {
 
   loadDishById(dishId: number){
     this.menuService.getDishById(dishId).then(res => this.dish = res);
+    this.menuService.getDishPopulars(dishId).then(res => this.populars = res);
   }
 
 }

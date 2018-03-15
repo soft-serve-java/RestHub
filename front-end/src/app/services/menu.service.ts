@@ -19,4 +19,8 @@ export class MenuService {
     return this.http.get<Dish>(this.rootApi + "dish/" + dishId).toPromise();
   }
 
+  getDishPopulars(dishId: number): Promise<Dish[]>{
+    return this.http.get<Dish[]>(this.rootApi + "dish/" + dishId + "/populars").toPromise();
+  }
+
 }
