@@ -20,4 +20,9 @@ public class WaiterRestController {
     public List<Tables> getTableInfoForWaiter(){
         return orderService.findTableInfoForWaiter();
     }
+
+    @GetMapping("api/tableQuantity")
+    public int getTableQuantity(){
+        return new Tables().getQuantityOfTables();
+    }
 }

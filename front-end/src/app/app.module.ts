@@ -13,6 +13,7 @@ import { WaiterTablesComponent } from './waiter-tables/waiter-tables.component';
 import {WaiterService} from "./services/waiter.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
+export const SOCKET_URL = new InjectionToken<string>('socketUrl');
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ export const API_URL = new InjectionToken<string>('apiUrl');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule
   ],
-  providers: [WelcomeService,WaiterService , HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl}],
+  providers: [WelcomeService,WaiterService , HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+    {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

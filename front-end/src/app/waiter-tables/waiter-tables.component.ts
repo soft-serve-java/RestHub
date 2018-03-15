@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {WaiterService} from "../services/waiter.service";
 import {Tables} from "../models/tables";
+import {Client, Frame, Message} from "stompjs";
+import * as stompjs from 'stompjs';
+import * as SockJS from "sockjs-client";
+import {$} from "protractor";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-waiter-tables',
@@ -9,11 +14,24 @@ import {Tables} from "../models/tables";
 })
 export class WaiterTablesComponent implements OnInit {
   tables:Array<Tables>;
-  quantityOfTables:number = 8;
-  constructor(public waiterService:WaiterService) { }
+  quantityOfTables:Array<number>;
+  stompClient: Client;
+
+  constructor(@Inject('SOCKET_URL') private apiUrl, public waiterService:WaiterService) { }
+  initializeWebSocketConnection(){
+    const socket = new SockJS(this.apiUrl) as WebSocket;
+    this.stompClient = stompjs.over(socket);
+    let that = this;
+    this.stompClient.connect('', '', '', (frame: Frame) => {
+      this.stompClient.subscribe('/waiter/tables',
+        (res: Array<Tables>) => {this.tables = res;});
+    });
+  }
 
   ngOnInit() {
-    this.waiterService.getTablesWhithStatus().subscribe(res=>{this.tables = res;});
+   // this.waiterService.getTablesWhithStatus().then(res=>{this.tables = res;});
+    this.initializeWebSocketConnection();
+    this.waiterService.getTablesCount().then(res => this.quantityOfTables = Array.from(new Array(res), (x,i) => i+1));
   }
 
   isOnDelivery(i: number):boolean {
@@ -23,7 +41,7 @@ export class WaiterTablesComponent implements OnInit {
     return true;
   }
 
-  isCalling(currentTable: number) {
-
+  isCalling(currentTable: number):boolean {
+    return true;
   }
 }
