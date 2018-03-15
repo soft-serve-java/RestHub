@@ -11,6 +11,8 @@ import { AppService } from './services/app.service';
 import { environment } from '../environments/environment';
 import { MenuComponent } from './menu/menu.component';
 import { MenuService } from './services/menu.service';
+import { StorageServiceModule} from 'angular-webstorage-service';
+import { DishPageComponent } from './dish-page/dish-page.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
@@ -18,12 +20,15 @@ export const API_URL = new InjectionToken<string>('apiUrl');
   declarations: [
     AppComponent,
     WelcomeComponent,
-    MenuComponent
+    MenuComponent,
+    DishPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserModule,
+    StorageServiceModule
   ],
   providers: [WelcomeService, HttpClient, AppService, MenuService,
      {provide: "API_URL", useValue: environment.apiUrl}

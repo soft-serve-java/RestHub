@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 import {MenuService} from '../services/menu.service';
 import {Dish} from '../models/dish'
-import { HttpResponse } from '@angular/common/http';
+import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -16,14 +17,16 @@ export class MenuComponent implements OnInit {
   private currPage: number;
   private numbers: number[];
 
-  constructor(private route: ActivatedRoute, public menuService: MenuService) {
+  private data:any = [];
+
+  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,
+              private route: ActivatedRoute, public menuService: MenuService) {
     route.params.subscribe( params => {
                                             this.category = params['category'];
                                             this.currPage = Number(params['page']);
                                             console.log(Number(params['page']));
                                             this.getDishes()
                                           });
-
   }
 
   ngOnInit() {
@@ -39,6 +42,13 @@ export class MenuComponent implements OnInit {
       this.maxPage = Number(res.headers.get('last'));
       this.numbers = Array(this.maxPage).fill(1).map((x,i)=>i+1);
     });
+  }
+
+  addToOrder(dishId: number){
+    let temp = this.storage.get("orderMap");
+    temp.push({dish: dishId, quantity: 1});
+    this.storage.set("orderMap", temp);
+    this.data = temp;
   }
 
 }

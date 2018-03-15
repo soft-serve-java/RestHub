@@ -13,7 +13,7 @@
       <div class="col-sm-3" *ngFor="let dish of dishes">
         <div class="card">
 
-          <a href="/dish/{{dish.id}}">
+          <a [routerLink]="['/dish', dish.id]">
             <div id="dishCarousel${{dish.id}}" class="carousel slide card-img-top" data-interval="false" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -30,7 +30,6 @@
             </a>
             </div>
         </a>
-
         <div class="card-body">
             <h4 class="card-title">{{dish.name}}</h4>
             <p class="card-text">{{dish.description}}</p>
@@ -38,7 +37,7 @@
 
         <div class="card-footer">
             <h5 class="card-title inline">{{dish.price}}$</h5>
-            <a href="/addToOrder/${item.id}" class="btn btn-primary inline">Add to cart</a>
+            <button (click)="addToOrder(dish.id)" class="btn btn-primary inline">Add to cart</button>
         </div>
         </div>
       </div>
@@ -71,7 +70,6 @@
    display: flex;
    flex-wrap: wrap;
 }
-
 .row1 > div[class*='col-'] {
   display: flex;
 }
