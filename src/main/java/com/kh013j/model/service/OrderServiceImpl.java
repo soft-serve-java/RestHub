@@ -5,7 +5,6 @@ import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderRepository;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
