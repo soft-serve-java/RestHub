@@ -11,13 +11,9 @@ import { AppService } from './services/app.service';
 import { environment } from '../environments/environment';
 import {AdminComponent} from "./admin/admin.component";
 import {AdminUserComponent} from "./admin-user/admin-user.component";
-import { WaiterTablesComponent } from './waiter-tables/waiter-tables.component';
-import {WaiterService} from "./services/waiter.service";
 import {AdminUserService} from "./services/admin-user.service";
-import { MenuComponent } from './menu/menu.component';
-import { MenuService } from './services/menu.service';
-import { StorageServiceModule} from 'angular-webstorage-service';
-import { DishPageComponent } from './dish-page/dish-page.component';
+import {AdminDishComponent} from "./admin-dish/admin-dish.component";
+import {AdminDishService} from "./services/admin-dish.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
@@ -27,20 +23,17 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     WelcomeComponent,
     AdminComponent,
     AdminUserComponent,
+    AdminDishComponent,
     WelcomeComponent,
-    WaiterTablesComponent,
     WelcomeComponent,
-    MenuComponent,
-    DishPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserModule,
-    StorageServiceModule
   ],
-  providers: [WelcomeService, HttpClient, AppService, MenuService, AdminUserService,
+  providers: [WelcomeService, HttpClient, AppService, AdminUserService, AdminDishService,
      {provide: "API_URL", useValue: environment.apiUrl}
     ],
   bootstrap: [AppComponent]
