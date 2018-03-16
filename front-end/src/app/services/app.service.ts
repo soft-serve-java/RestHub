@@ -10,4 +10,5 @@ export class AppService {
   getCategories(): Promise<Category[]>{
     return this.http.get<Category[]>(this.categoryApi + 'category/all').toPromise()
   }
+
 }
