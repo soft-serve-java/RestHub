@@ -12,25 +12,24 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class CookerController {
-
+public class CookController {
     @Autowired
     private OrderedDishService orderedDishService;
 
-    @GetMapping(value = "/cooker")
-    public ModelAndView cooker() {
-        return new ModelAndView(ViewName.COOKER,
-                "Dishes", orderedDishService.findAllForCooker());
+    @GetMapping(value = "/cook")
+    public ModelAndView cook() {
+        return new ModelAndView(ViewName.COOK,
+                "Dishes", orderedDishService.findAllForCook());
     }
 
-    @GetMapping(value = "/cooker/gotit/{id}")
+    @GetMapping(value = "/cook/gotit/{id}")
     public RedirectView gotIt(@PathVariable(value = "id") long id,
                               HttpServletRequest request) {
         orderedDishService.setCooking(id);
         return new RedirectView(request.getHeader("referer"));
     }
 
-    @GetMapping(value = "/cooker/done/{id}")
+    @GetMapping(value = "/cook/done/{id}")
     public RedirectView done(@PathVariable(value = "id") long id,
                              HttpServletRequest request) {
         orderedDishService.setDone(id);
