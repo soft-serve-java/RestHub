@@ -51,4 +51,8 @@ export class MenuComponent implements OnInit {
     this.data = temp;
   }
 
+  searchByName(name: string){
+    this.menuService.getDishByName(name).then(res => this.dishes = res);
+  }
+
 }
