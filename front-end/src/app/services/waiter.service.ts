@@ -14,5 +14,11 @@ export class WaiterService {
   getTablesCount(): Promise<number>{
     return this.http.get<number>(this.categoryApi + 'tableQuantity').toPromise();
   }
-
+  tableHasStatus(table: number, status:string,tables:Array<Tables>):boolean {
+      let tab:Tables;
+      for(let i=0; i<tables.length; i++) {
+      tab = tables[i];
+      return tab.currentTable == table && (tab.tableStatus == status);
+    }
+  }
 }

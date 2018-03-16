@@ -5,8 +5,8 @@
             <div class="card">
               <img *ngIf="isOnDelivery(i)" class="imageforDelivery" src="/images/delivery.jpg"/>
               <div [ngClass]="{hasNullWaiter:hasNullWaiter(i)}">
-                <div class="bell">
-                  <i *ngIf="isCalling(i)" class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                <div *ngIf="isCalling(i)" class="bell">
+                  <i  class="fa fa-bell fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="card-body">
                   <h1 class="card-title">{{i}}</h1>

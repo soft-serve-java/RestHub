@@ -1,8 +1,8 @@
 import {User} from "./user";
 
 export class Tables {
-  private quantityOfTables: number;
-  private currentTable: number;
-  private tableStatus: string;
-  private currentWaiter: User;
+  public quantityOfTables: number;
+  public currentTable: number;
+  public tableStatus: string;
+  public currentWaiter: User;
 }
