@@ -1,9 +1,12 @@
 package com.kh013j.restcontrollers;
 
+import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class CookRestController {
@@ -14,5 +17,8 @@ public class CookRestController {
         this.orderedDishService = orderedDishService;
     }
 
-  //  @GetMapping("api/cook")
+    @GetMapping("api/cook")
+    public List<OrderedDish> getOrderedDishes(){
+        return orderedDishService.findAll();
+    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OrderedDish} from "../models/orderedDish";
 
 @Component({
   selector: 'app-cook',
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cook.component.css']
 })
 export class CookComponent implements OnInit {
+  orderedDishes: Array<OrderedDish>;
 
   constructor() { }
 
