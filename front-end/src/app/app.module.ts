@@ -9,13 +9,15 @@ import {WelcomeService} from "./services/welcome.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { AppService } from './services/app.service';
 import { environment } from '../environments/environment';
+import { CookComponent } from './cook/cook.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CookComponent
   ],
   imports: [
     BrowserModule,
