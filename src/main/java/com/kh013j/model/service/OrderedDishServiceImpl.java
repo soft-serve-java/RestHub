@@ -23,8 +23,6 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     private OrderedDishRepository orderedDishRepository;
     @Autowired
     private StatusService statusService;
-    @Autowired
-    private DishService dishService;
 
     @Override
     @Transactional

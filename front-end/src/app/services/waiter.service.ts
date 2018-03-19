@@ -6,7 +6,8 @@ import {Tables} from "../models/tables";
 
 @Injectable()
 export class WaiterService {
-  constructor(@Inject('API_URL') private categoryApi: string, private http:HttpClient) { }
+  constructor(@Inject('API_URL') private categoryApi: string, private http:HttpClient,
+                                                  @Inject('SOCKET_URL') private apiUrl) { }
 
   getTablesWhithStatus(): Promise<Array<Tables>>{
     return this.http.get<Array<Tables>>(this.categoryApi + 'tableStatus').toPromise();
@@ -21,4 +22,14 @@ export class WaiterService {
       return tab.currentTable == table && (tab.tableStatus == status);
     }
   }
+
+  doPOSTonGettingTable(tableNumber:number){
+    return this.http.post(this.apiUrl + 'getTable',tableNumber);
+  }
+
+  doPOSTonCloseCalling(tableNumber:number){
+    return this.http.post(this.apiUrl + 'acceptCalling',tableNumber);
+  }
+
+
 }

@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                   <h1 class="card-title">{{i}}</h1>
-                  <a href="/waiter/orderdetails/{{i}}" class="btn btn-default btn-sm">Order details</a>
+                  <a  [routerLink]="['/waiter/order/', i]" class="btn btn-default btn-sm">Order details</a>
                   <div class="row">
                     <button onclick="doPOSTonGettingTable(i)" class="btn btn-success btn-sm">Get this table</button>
                     <button onclick="doPOSTonCloseCalling(i)" class="btn btn-default btn-sm">Accept calling</button>
