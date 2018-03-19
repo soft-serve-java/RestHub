@@ -19,4 +19,8 @@ export class AppComponent {
   getCategories(){
     this.appService.getCategories().subscribe(res => this.categories = res);
   }
+  doPOSTonCallWaiter(tableNumber:number) {
+    this.appService.doPOSTonCallWaiter(tableNumber);
+    console.log(tableNumber);
+  }
 }
