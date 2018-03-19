@@ -22,7 +22,7 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
   declarations: [
     AppComponent,
     WelcomeComponent,
-    CookComponent
+    CookComponent,
     WelcomeComponent,
     WaiterTablesComponent,
     WaiterOdrerComponent

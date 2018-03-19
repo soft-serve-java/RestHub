@@ -9,6 +9,6 @@ export class Order {
   user: User;
   tablenumber: number;
   closed: boolean;
-  orrderedFood: Array<OrderedDish>;
+  orderedFood: Array<OrderedDish>;
   waiter: User;
 }
