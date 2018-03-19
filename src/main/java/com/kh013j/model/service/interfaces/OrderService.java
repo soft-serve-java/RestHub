@@ -5,7 +5,6 @@ import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.Tables;
 import com.kh013j.model.domain.User;
 import com.kh013j.model.exception.DishNotFound;
-import javafx.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.AbstractMap;

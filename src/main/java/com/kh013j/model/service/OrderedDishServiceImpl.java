@@ -1,13 +1,11 @@
 package com.kh013j.model.service;
 
 import com.kh013j.model.domain.Dish;
-import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderedDishRepository;
-import com.kh013j.model.service.interfaces.DishService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,7 @@ import java.util.Map;
 public class OrderedDishServiceImpl implements OrderedDishService {
     @Resource
     private OrderedDishRepository orderedDishRepository;
+
     @Autowired
     private StatusService statusService;
 
@@ -35,13 +34,9 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     public OrderedDish delete(long id) throws DishNotFound {
         OrderedDish deletedOrderedDish = orderedDishRepository.findOne(id);
 
-        if (orderedDishRepository == null)
-            throw new DishNotFound();
-
         orderedDishRepository.delete(deletedOrderedDish);
         return deletedOrderedDish;
     }
-
 
     @Override
     @Transactional
@@ -54,10 +49,9 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         return orderedDishRepository.findAllByStatusIn(statuses);
     }
 
-    public List<OrderedDish> findAllForCooker() {
-        return orderedDishRepository.findAllByStatusIn(statusService.cookersStatuses());
+    public List<OrderedDish> findAllForCook() {
+        return orderedDishRepository.findAllByStatusIn(statusService.cookStatuses());
     }
-
 
     @Override
     @Transactional
@@ -80,6 +74,7 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
     }
+
     @Override
     @Transactional
     public void setDelivered(long id) {

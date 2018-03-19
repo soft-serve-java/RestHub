@@ -1,8 +1,6 @@
 import {Injectable, NgModule} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-
-
 class Category {
   private id: number;
   private name: string;
