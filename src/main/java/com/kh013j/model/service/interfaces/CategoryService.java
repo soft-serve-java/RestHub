@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface CategoryService {
-    Category findById(long id);
+    Category findById(long id) throws CategoryNotFound;
 
     Category delete(long id) throws CategoryNotFound;
 

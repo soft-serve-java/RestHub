@@ -31,7 +31,12 @@ public class CategoryAdminController {
 
     @GetMapping(value = "/admin/category/edit/{id}")
     public ModelAndView categoryEdit(@PathVariable(value = "id") long id) {
-        Category category = categoryService.findById(id);
+        Category category = null;
+        try {
+            category = categoryService.findById(id);
+        } catch (CategoryNotFound categoryNotFound) {
+            return new ModelAndView();
+        }
         return new ModelAndView(ViewName.CATEGORY_EDIT_CREATE,"Categories", categoryService.findAll())
                 .addObject("category", category);
     }

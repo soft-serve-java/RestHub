@@ -1,0 +1,18 @@
+import {Injectable, NgModule, Inject} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
+import {Category} from '../models/category'
+import { Observable } from 'rxjs/Observable';
+
+@Injectable()
+export class AppService {
+  constructor(@Inject('API_URL') private api: string, private http:HttpClient) { }
+
+  getCategories(): Observable<Array<Category>>{
+    return this.http.get<Array<Category>>(this.api + 'category/all')
+  }
+  doPOSTonCallWaiter(tableNumber:number) {
+    return this.http.post(this.api+ '/callWaiterClient', tableNumber);
+
+  }
+}

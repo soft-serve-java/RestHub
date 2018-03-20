@@ -41,7 +41,7 @@
 <div class="container">
     <div class="row">
         <a href="\waiter\tables" class="btn btn-warning btn-lg btn-block">Waiter</a>
-        <a href="\cooker" class="btn btn-warning btn-lg btn-block">Cook</a>
+        <a href="\cook" class="btn btn-warning btn-lg btn-block">Cook</a>
         <a href="\admin" class="btn btn-warning btn-lg btn-block">Administrator</a>
         <a href="\menu\soups" class="btn btn-warning btn-lg btn-block">User</a>
 

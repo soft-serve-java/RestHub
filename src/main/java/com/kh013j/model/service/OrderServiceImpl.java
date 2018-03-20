@@ -1,11 +1,13 @@
 package com.kh013j.model.service;
 
+import com.kh013j.listener.OrderUpdateListener;
 import com.kh013j.model.domain.*;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderRepository;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
@@ -22,7 +24,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderedDishService orderedDishService;
-
+    @Autowired
+    private SimpMessagingTemplate template;
     @Override
     public Order create(Order order) {
         return orderRepository.save(order);
@@ -40,6 +43,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order update(Order order) {
+        template.convertAndSendToUser(Integer.toString(order.getTablenumber()),
+                "/oreder-updates", order);
         return orderRepository.saveAndFlush(order);
     }
 
@@ -71,7 +76,7 @@ public class OrderServiceImpl implements OrderService {
             order = createOrderFromMap(orderMap, tablenumber);
         }
         order.setUser(user);
-        orderRepository.saveAndFlush(order);
+        update(order);
     }
 
     public void submitOneDish(int tablenumber, AbstractMap.SimpleEntry<Dish, Integer> dishQuantity, User user){
@@ -84,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
             order = createOrderFromMap(Collections.singletonMap(dishQuantity.getKey(), dishQuantity.getValue()), tablenumber);
         }
         order.setUser(user);
-        orderRepository.saveAndFlush(order);
+        update(order);
     }
 
     private List<Tables> findNullWaiterTables(List<Order> orders) {

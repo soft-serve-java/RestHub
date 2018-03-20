@@ -14,7 +14,6 @@
         <pattern>/waiter/*</pattern>
     </decorator>
 
-
     <decorator name="admin" page="admin_pages_template.jsp">
           <!-- Mapping for ADMIN-pages:
            Admin.jsp

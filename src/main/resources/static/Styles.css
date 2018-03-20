@@ -1,0 +1,154 @@
+body {
+    margin-bottom: 60px;
+}
+
+.tab-pane {
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.nav-button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.nav-form {
+    margin-right: 10px;
+}
+
+.a-nav {
+    color: darkgrey;
+}
+
+.a-nav:hover {
+    color: lightgrey;
+}
+
+.card-deck .card {
+    max-width: 250px;
+}
+
+.btn-nav-search {
+    margin-top: 10px;
+}
+
+.i-button {
+    width: 30px;
+    height: 30px;
+    border: solid black 2px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 20px;
+}
+
+.left-span {
+    text-align: left;
+}
+
+.footer {
+    height: auto;
+    background-color: white;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    left: 0;
+    bottom: 0;
+}
+
+.add-text {
+    color: #000000;
+    margin-right: 15%;
+}
+
+.col1 {
+    padding-bottom: 1pt;
+}
+
+.card {
+    margin-top: 15pt;
+}
+
+.container {
+    /*vertical-align: middle;*/
+    text-align: center;
+}
+
+.row {
+    padding-top: 15pt;
+}
+
+.row1 {
+    padding-top: 1pt;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.inline {
+    display: inline;
+}
+
+.sign {
+    margin-top: 50%;
+}
+
+.plus-icon {
+    vertical-align: middle;
+}
+
+.clickable:hover {
+    color: cornflowerblue;
+}
+.footer .footer-widget{
+    padding-top: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+
+.reviews {
+    color: #555;
+    font-weight: bold;
+}
+
+.menuPagination{
+    width: min-content;
+    margin:0 auto;
+    padding-top: 15px;
+}
+
+.container-fluid .card-block {
+    min-height: 250px;
+    min-width: 300px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.reviewCard {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.carouselRH {
+    min-height: 52%;
+    overflow: hidden;
+}
+.carouselRH img {
+    height: auto;
+    width: auto;
+}
+.tab-pane {
+    padding-top: 20px;
+}
+.avatarWaiter{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
