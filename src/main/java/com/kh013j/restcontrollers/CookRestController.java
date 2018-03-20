@@ -29,17 +29,6 @@ public class CookRestController {
     @GetMapping("api/cook/{orderedDish}/{status}")
     public void changeOrderedDishStatus(@PathVariable("orderedDish") OrderedDish orderedDish,
                                         @PathVariable("status") Status status){
-       /* switch (status.getName()){
-            case Status.COOKING :{
-                orderedDishService.setCooking(orderedDish.getId());
-                break;
-            }
-            case Status.DONE:{
-                orderedDishService.setDone(orderedDish.getId());
-                break;
-            }
-        }*/
-
        // in html href point to this method reference
         if(status.getName().equals(Status.COOKING)){
             orderedDishService.setCooking(orderedDish.getId());
