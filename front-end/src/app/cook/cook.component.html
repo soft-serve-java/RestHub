@@ -9,20 +9,26 @@
     </thead>
     <tbody>
     <tr *ngFor="let orderedDish of orderedDishes">
-          <td>{{orderedDish.dish.name}}</td>
-          <td>{{orderedDish.quantity}}</td>
-          <!-- <td>
-            <*ngif test="${dish.status.name=='preparing'}">
-              <a href="/cook/gotit/${dish.id}" class="btn btn-warning" style="margin-bottom: 10%">
-                Got it!<span class="fa fa-check"></span></a>
-              </a>
-            </ngif>
-            <*ngif test="${dish.status.name=='cooking'}">
-              <a href="/cook/done/${dish.id}" class="btn btn-success" style="margin-bottom: 10%">
-                Done<span class="fa fa-check"></span></a>
-            </ngif>
-          </td> -->
-        </tr>
+      <td>{{orderedDish.dish.name}}</td>
+      <td>{{orderedDish.quantity}}</td>
+      <td *ngIf="orderedDish.status.name=='preparing'; else elseDoneBlock">
+        <a href="/cook" class="btn btn-warning" style="margin-bottom: 10%">
+          Got it!<span class="fa fa-check"></span>
+        </a>
+        <ng-template #elseBlock>
+          <a href="" class="btn btn-success" style="margin-bottom: 10%">
+            Done<span class="fa fa-check"></span></a>
+        </ng-template>
+        <!--  <a *ngif = "orderedDish.dish.status.name=='preparing'|">
+            <a href="/cook/gotit/${dish.id}" class="btn btn-warning" style="margin-bottom: 10%">
+              Got it!<span class="fa fa-check"></span></a>
+          <!--</div>
+          <div *ngif orderedDish.dish.status.name=='cooking'}">
+            <a href="/cook/done/${dish.id}" class="btn btn-success" style="margin-bottom: 10%">
+              Done<span class="fa fa-check"></span></a>
+          </a> -->
+      </td>
+    </tr>
     </tbody>
   </table>
 </div>
