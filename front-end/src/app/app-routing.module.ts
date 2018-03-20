@@ -5,7 +5,6 @@ import {CookComponent} from "./cook/cook.component";
 import {WaiterTablesComponent} from "./waiter/waiter-tables/waiter-tables.component";
 import {WaiterOdrerComponent} from "./waiter/waiter-odrer/waiter-odrer.component";
 
-
 const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: 'cook', component: CookComponent},

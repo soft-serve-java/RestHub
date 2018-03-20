@@ -1,28 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {OrderedDish} from "../models/orderedDish";
-import {Observable} from 'rxjs/Observable';
-import {HttpClient} from "@angular/common/http";
+import {CookService} from "../services/cook.service";
 
 @Component({
   selector: 'app-cook',
-  template: `
-    <p>
-      cook work!
-    </p>
-  `,
+  templateUrl: './cook.component.html',
+  providers: [CookService],
   styleUrls: ['./cook.component.css']
 })
 export class CookComponent implements OnInit {
-   orderedDishes: Array<OrderedDish>;
+  orderedDishes: Array<OrderedDish>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private cookService: CookService) {
+  }
 
-  /*getOrderedDishes(): Observable<OrderedDish[]>{
-   return this.http.get('orderedDishes.json')
-  }*/
+  showOrderedDishes(): void {
+    this.cookService.getOrderedDishes().subscribe(orderedDishes => this.orderedDishes = orderedDishes);
+  }
 
   ngOnInit() {
-    //this.getOrderedDishes();
+    this.showOrderedDishes();
   }
 
 }
