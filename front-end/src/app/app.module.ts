@@ -20,6 +20,7 @@ import {AdminCategoryService} from "./services/admin-category.service";
 import { AdminCategoryAddComponent } from './admin-category-add/admin-category-add.component';
 import {AdminCategoryAddService} from "./services/admin-category-add.service";
 import {FormsModule} from "@angular/forms";
+import { AdminOrderComponent } from './admin-order/admin-order.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
@@ -36,6 +37,7 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     DishPageComponent,
     AdminCategoryComponent,
     AdminCategoryAddComponent,
+    AdminOrderComponent,
   ],
   imports: [
     BrowserModule,

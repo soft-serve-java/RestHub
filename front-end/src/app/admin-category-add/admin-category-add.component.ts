@@ -26,10 +26,4 @@ export class AdminCategoryAddComponent implements OnInit {
       .addCategory(this.categoryName),
       this.categoryName = '';
   }
-
-  editCategory(){
-    this.adminCategoryAddService
-      .editCategory(this.category),
-      this.category
-  }
 }

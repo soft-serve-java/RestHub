@@ -7,6 +7,7 @@ import {WaiterTablesComponent} from "./waiter-tables/waiter-tables.component";
 import {AdminDishComponent} from "./admin-dish/admin-dish.component";
 import {AdminCategoryComponent} from "./admin-category/admin-category.component";
 import {AdminCategoryAddComponent} from "./admin-category-add/admin-category-add.component";
+import {AdminOrderComponent} from "./admin-order/admin-order.component";
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'admin/category/all', component: AdminCategoryComponent},
   {path: 'admin/category/add', component: AdminCategoryAddComponent},
   {path: 'waiter', component: WaiterTablesComponent},
+  {path: 'admin/order', component: AdminOrderComponent},
 ];
 
 @NgModule({
