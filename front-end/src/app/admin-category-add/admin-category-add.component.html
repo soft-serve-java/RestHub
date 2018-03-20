@@ -4,9 +4,9 @@
   <input type="text" placeholder="Category name" class="form-control" [(ngModel)]="categoryName">
   </div>
   <div class="col-md-2">
-<!--  <button class="btn btn-success" (click)="addCategory()">Add</button>-->
-    <a href="/admin/category/all" placeholder="Category name"
-       button class="btn btn-success" (click)="addCategory()" [(ngModel)]="categoryName">Add</a>
+    <div *ngIf="!category ">
+      <a href="/admin/category/all" placeholder="Category name" button class="btn btn-success" (click)="addCategory()" [(ngModel)]="categoryName">Add</a>
+    </div>
   </div>
   </div>
 </div>

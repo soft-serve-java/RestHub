@@ -19,4 +19,11 @@ export class AdminCategoryAddService {
       .then()
   }
 
+
+  editCategory(id:number, categoryName: string): Promise<any>{
+    return this.http
+      .post(this.categoryApi + "admin/category/" + id, {category: new Category(id, categoryName)})
+      .toPromise()
+      .then(res =>  console.log(res))
+  }
 }

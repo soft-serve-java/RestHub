@@ -1,7 +1,9 @@
 package com.kh013j.restcontrollers;
 
 import com.kh013j.model.domain.Dish;
+import com.kh013j.model.domain.User;
 import com.kh013j.model.service.interfaces.DishService;
+import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,7 @@ public class AdminDishControllerRest {
     }
 
     @GetMapping("/api/admin/dish/{id}")
-    public Dish getDish(@PathVariable("id") long id){
+    public Dish fetDish(@PathVariable("id") long id){
         return dishService.findById(id);
     }
 
