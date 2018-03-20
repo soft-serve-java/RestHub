@@ -21,7 +21,7 @@ import { AdminCategoryAddComponent } from './admin-category-add/admin-category-a
 import {AdminCategoryAddService} from "./services/admin-category-add.service";
 import {FormsModule} from "@angular/forms";
 import { AdminOrderComponent } from './admin-order/admin-order.component';
-
+import { AdminOrderService } from './services/admin-order.service';
 export const API_URL = new InjectionToken<string>('apiUrl');
 
 @NgModule({
@@ -46,7 +46,7 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     BrowserModule,
     FormsModule,
   ],
-  providers: [WelcomeService, HttpClient, AppService, AdminUserService, AdminDishService, AdminCategoryService, AdminCategoryAddService,
+  providers: [WelcomeService, HttpClient,AdminOrderService, AppService, AdminUserService, AdminDishService, AdminCategoryService, AdminCategoryAddService,
      {provide: "API_URL", useValue: environment.apiUrl}
     ],
   bootstrap: [AppComponent]

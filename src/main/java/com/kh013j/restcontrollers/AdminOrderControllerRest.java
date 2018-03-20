@@ -20,7 +20,7 @@ public class AdminOrderControllerRest {
         this.orderService = orderService;
     }
 
-    @GetMapping("/api/admin/order")
+    @GetMapping("/api/admin/order/all")
     public List<Order> getDish(){
         return orderService.findAll();
     }
