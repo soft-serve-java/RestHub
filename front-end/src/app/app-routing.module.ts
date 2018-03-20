@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'admin/category/all', component: AdminCategoryComponent},
   {path: 'admin/category/add', component: AdminCategoryAddComponent},
   {path: 'waiter', component: WaiterTablesComponent},
-  {path: 'admin/order', component: AdminOrderComponent},
+  {path: 'admin/order', component: AdminOrderComponent}
 ];
 
 @NgModule({
