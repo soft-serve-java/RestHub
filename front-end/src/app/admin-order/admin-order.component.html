@@ -1,0 +1,27 @@
+<div class="container">
+
+  <table class="table table-hover">
+    <thead>
+    <tr style="text-align: center;">
+      <th>#</th>
+      <th>Order</th>
+
+    </tr>
+    </thead>
+    <tbody *ngFor="let ord of order">
+      <tr>
+        <td>{{ord.id}}</td>
+        <td>{{ord.time}}</td>
+        <td>{{ord.tablenumber}}</td>
+
+        <td>
+          <button type="button" class="btn btn-danger" method="POST" data-toggle="modal" data-target="#exampleModal"
+                 >Delete</button>
+        </td>
+        <td>
+          <a href="/admin/order/edit/{{ord.id}}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
