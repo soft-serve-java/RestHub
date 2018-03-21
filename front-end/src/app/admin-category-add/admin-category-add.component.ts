@@ -10,20 +10,21 @@ import {NgForm} from "@angular/forms";
 })
 export class AdminCategoryAddComponent implements OnInit {
 
-  category: Category[];
+  category: Category;
   categoryName: String;
 
   constructor(public adminCategoryAddService: AdminCategoryAddService){}
 
   ngOnInit(){
-    //this.adminCategoryAddService.getCategory().then(res => this.category = res)
   }
-
-//  ngRouter получить id
 
   addCategory(){
     this.adminCategoryAddService
       .addCategory(this.categoryName),
       this.categoryName = '';
+  }
+
+    editCategory(){
+    this.adminCategoryAddService.editCategory(this.category.id, this.category.name)
   }
 }

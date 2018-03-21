@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../models/user";
 import {AdminUserService} from "../services/admin-user.service";
+import {Category} from "../models/category";
 
 @Component({
   selector: 'wfm-admin-user',
@@ -8,19 +9,15 @@ import {AdminUserService} from "../services/admin-user.service";
   styleUrls: ['./admin-user.component.scss']
 })
 export class AdminUserComponent implements OnInit {
+  user: User[];
 
   constructor(public adminUserServise: AdminUserService) {}
-
 
   ngOnInit() {
     this.adminUserServise.getUsers().then(res => this.user = res)
   }
 
-  user: User[];
-
-
-
-
-//user = [{id:1, email: 'df@d.as', name: 'admin'}, {id:2, email: 'df@d.as', name: 'user'}]
-
+  deleteUser(user: User){
+    this.adminUserServise.deleteUser(user.id).then(res => this.user.splice(this.user.indexOf(user), 1))
+  }
 }

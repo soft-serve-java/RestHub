@@ -18,6 +18,7 @@ const routes: Routes = [
   {path: 'admin/dish/all', component: AdminDishComponent},
   {path: 'admin/category/all', component: AdminCategoryComponent},
   {path: 'admin/category/add', component: AdminCategoryAddComponent},
+  {path: 'admin/category/edit/:id', component: AdminCategoryAddComponent},
   {path: 'waiter', component: WaiterTablesComponent},
   {path: 'admin/order', component: AdminOrderComponent}
 ];
