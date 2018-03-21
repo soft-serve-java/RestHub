@@ -11,17 +11,21 @@
     <tbody *ngFor="let ord of order">
       <tr>
         <td>{{ord.id}}</td>
-        <td>{{ord.time}}</td>
-        <td>{{ord.tablenumber}}</td>
+          <td>
+            {{ord.time | date:'yyyy-MM-dd HH:mm:ss'}}
+          </td>
 
-        <td>
+          <td>{{ord.tablenumber}}</td>
+
+          <td>
           <button type="button" class="btn btn-danger" method="POST" data-toggle="modal" data-target="#exampleModal"
-                 >Delete</button>
-        </td>
-        <td>
-          <a href="/admin/order/edit/{{ord.id}}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+            >Delete</button>
+            </td>
+            <td>
+            <a href="/admin/order/edit/{{ord.id}}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+          <td>

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -20,7 +22,7 @@ public class AdminOrderControllerRest {
         this.orderService = orderService;
     }
 
-    @GetMapping("/api/admin/order/all")
+    @GetMapping("/api/admin/order")
     public List<Order> getDish(){
         return orderService.findAll();
     }
