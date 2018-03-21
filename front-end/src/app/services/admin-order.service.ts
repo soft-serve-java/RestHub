@@ -10,4 +10,11 @@ export class AdminOrderService {
   getOrder(): Promise<Order[]>{
     return this.http.get<Order[]>(this.orderApi + "admin/order").toPromise();
   }
+
+  deleteOrder(id:number):Promise<any>{
+    return this.http
+      .delete(this.orderApi + "admin/order/delete/" + id )
+      .toPromise()
+      .then()
+  }
 }

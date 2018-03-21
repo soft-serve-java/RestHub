@@ -29,7 +29,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order delete(long id) throws DishNotFound {
+    public Order delete(long id){
+        orderRepository.delete(id);
         return null;
     }
 

@@ -3,9 +3,7 @@ package com.kh013j.restcontrollers;
 import com.kh013j.model.domain.Order;
 import com.kh013j.model.service.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -27,5 +25,11 @@ public class AdminOrderControllerRest {
         return orderService.findAll();
     }
 
+    @DeleteMapping("api/admin/order/delete/{id}")
+    public boolean deleteOrder(@PathVariable("id") long id){
+        orderService.delete(id);
+        System.out.println(id);
+        return true;
+    }
 
 }

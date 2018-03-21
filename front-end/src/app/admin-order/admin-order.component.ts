@@ -9,14 +9,16 @@ import {Order} from "../models/order";
 })
 export class AdminOrderComponent implements OnInit {
 
-  constructor(public adminOrderServise: AdminOrderService) { }
+  constructor(public adminOrderService: AdminOrderService) { }
 
   ngOnInit() {
-    this.adminOrderServise.getOrder().then(res => this.order = res)
+    this.adminOrderService.getOrder().then(res => this.order = res)
   }
 
   order: Order[];
 
-
+  deleteOrder(ord: Order){
+    this.adminOrderService.deleteOrder(ord.id).then(res=> this.order.splice(this.order.indexOf(ord), 1))
+  }
 
 }
