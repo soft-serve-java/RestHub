@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: 'cook', component: CookComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'waiter/tables', component: WaiterTablesComponent},
-  {path: 'waiter/order/:id', component: WaiterOdrerComponent}
+  {path: 'waiter/order/:id', component: WaiterOdrerComponent},
+  {path: 'api/cook/:id', component: CookComponent}
 ];
 
 @NgModule({

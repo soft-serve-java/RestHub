@@ -20,4 +20,12 @@ export class CookService {
   getOrderedDishes(): Observable<OrderedDish[]> {
     return this.http.get<OrderedDish[]>(this.orderedDishesUrl);
   }
+
+  updateOrderedDish(orderedDish: OrderedDish) : Observable<OrderedDish> {
+    // transfer id
+    let updateOrderedDishUrl = 'http://localhost:8080/api/cook?id={updatedOrderedDish}';
+    httpOptions.headers.set('Authorization', 'my-new-auth-token');
+    return this.http.put<OrderedDish>(this.orderedDishesUrl, orderedDish, httpOptions);
+  }
+
 }

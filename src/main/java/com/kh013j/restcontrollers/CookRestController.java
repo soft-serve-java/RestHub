@@ -26,14 +26,13 @@ public class CookRestController {
         return orderedDishService.findAll();
     }
 
-    @GetMapping("api/cook/{orderedDish}/{status}")
-    public void changeOrderedDishStatus(@PathVariable("orderedDish") OrderedDish orderedDish,
-                                        @PathVariable("status") Status status){
+    @GetMapping("api/cook/{orderedDish}")
+    public void changeOrderedDishStatus(@PathVariable("orderedDish") OrderedDish orderedDish){
        // in html href point to this method reference
-        if(status.getName().equals(Status.COOKING)){
+        if(orderedDish.getStatus().getName().equals(Status.COOKING)){
             orderedDishService.setCooking(orderedDish.getId());
         }
-        if(status.getName().equals(Status.DONE)){
+        if(orderedDish.getStatus().getName().equals(Status.DONE)){
             orderedDishService.setDone(orderedDish.getId());
         }
     }
