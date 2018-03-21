@@ -1,5 +1,7 @@
 package com.kh013j.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,6 +24,7 @@ import java.util.Set;
 @Entity
 @EqualsAndHashCode
 @Table(name = "user", schema = "rh")
+@JsonAutoDetect
 public class User implements UserDetails {
     @Id
     @SequenceGenerator(name = "user-sequence_generator", sequenceName = "user_sequence")
@@ -30,6 +33,7 @@ public class User implements UserDetails {
 
     @Email
     @Size(min = 5, max = 50)
+    @JsonProperty("username")
     private String email;
 
     @Size(min = 5, max = 100)
