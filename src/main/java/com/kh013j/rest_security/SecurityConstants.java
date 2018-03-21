@@ -1,4 +1,4 @@
-package com.kh013j.rest_sequrity;
+package com.kh013j.rest_security;
 
 public class SecurityConstants {
     public static final String SECRET = "SecretKeyToGenJWTs";

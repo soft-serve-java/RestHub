@@ -13,6 +13,9 @@ import { WaiterTablesComponent } from './waiter/waiter-tables/waiter-tables.comp
 import {WaiterService} from "./services/waiter.service";
 import { WaiterOdrerComponent } from './waiter/waiter-odrer/waiter-odrer.component';
 import {OrderService} from "./services/order.service";
+import { LoginComponent } from './login/login.component';
+import {AuthService} from "./services/auth.service";
+import {FormsModule} from "@angular/forms";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -22,14 +25,16 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     AppComponent,
     WelcomeComponent,
     WaiterTablesComponent,
-    WaiterOdrerComponent
+    WaiterOdrerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [WelcomeService,WaiterService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService,WaiterService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-package com.kh013j.rest_sequrity;
+package com.kh013j.rest_security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh013j.model.domain.User;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import static com.kh013j.rest_sequrity.SecurityConstants.*;
+import static com.kh013j.rest_security.SecurityConstants.*;
 
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {

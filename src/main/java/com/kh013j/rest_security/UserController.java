@@ -1,4 +1,4 @@
-package com.kh013j.rest_sequrity;
+package com.kh013j.rest_security;
 
 import com.kh013j.model.domain.User;
 import com.kh013j.model.repository.UserRepository;

@@ -1,4 +1,4 @@
-package com.kh013j.rest_sequrity;
+package com.kh013j.rest_security;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.kh013j.rest_sequrity.SecurityConstants.*;
+import static com.kh013j.rest_security.SecurityConstants.*;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 

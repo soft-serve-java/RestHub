@@ -1,4 +1,4 @@
-package com.kh013j.rest_sequrity;
+package com.kh013j.rest_security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import static com.kh013j.rest_sequrity.SecurityConstants.SIGN_UP_URL;
+import java.util.Arrays;
+import java.util.Collections;
+
+import static com.kh013j.rest_security.SecurityConstants.SIGN_UP_URL;
 
 @EnableWebSecurity
 @Configuration
@@ -30,8 +33,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/admin/**").access("hasAuthority('ADMINISTRATOR')")
+                .antMatchers("/cooker/**").access("hasAnyAuthority('COOK', 'ADMINISTRATOR')")
+                .antMatchers("/waiter/**").access("hasAnyAuthority('WAITER', 'ADMINISTRATOR')")
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
@@ -48,7 +52,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedHeaders(Collections.singletonList("*"));
+        config.setAllowedOrigins(Collections.singletonList("*"));
+        config.setAllowCredentials(true);
+        config.setAllowedMethods(Arrays.asList("GET", "POST"));
+        source.registerCorsConfiguration("/**", config.applyPermitDefaultValues());
         return source;
     }
 }
