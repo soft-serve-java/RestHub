@@ -15,10 +15,9 @@ export class AdminOrderComponent implements OnInit {
     this.adminOrderService.getOrder().then(res => this.order = res)
   }
 
-  order: Order[];
-
   deleteOrder(ord: Order){
     this.adminOrderService.deleteOrder(ord.id).then(res=> this.order.splice(this.order.indexOf(ord), 1))
   }
 
+  order: Order[];
 }
