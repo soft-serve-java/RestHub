@@ -12,4 +12,12 @@ export class AdminUserService {
   getUsers(): Promise<User[]>{
     return this.http.get<User[]>(this.userApi + "admin/user/all").toPromise();
   }
+
+  deleteUser(id: number): Promise<any>{
+    return this.http
+      .delete(this.userApi + "admin/user/delete/" + id )
+      .toPromise()
+      .then()
+  }
+
 }

@@ -12,4 +12,11 @@ export class AdminDishService {
   getDish(): Promise<Dish[]>{
     return this.http.get<Dish[]>(this.dishApi + "admin/dish/all").toPromise();
 }
+
+  deleteDish(id: number): Promise<any>{
+      return this.http
+        .delete(this.dishApi + "admin/dish/delete/" + id )
+        .toPromise()
+        .then()
+  }
 }
