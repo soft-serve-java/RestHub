@@ -1,5 +1,5 @@
 
 export class Status {
-  private id: number;
-  private name: string;
+   id: number;
+   name: string;
 }

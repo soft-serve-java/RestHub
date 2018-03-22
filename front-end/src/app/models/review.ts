@@ -4,10 +4,10 @@ import {OrderedDish} from "./orderedDish";
 import {Dish} from "./dish";
 
 export class Review {
-  private id: number;
-  private commentText: String;
-  private date: Data;
-  private approved: boolean;
-  private dish: Dish;
-  private user: User;
+   id: number;
+   commentText: String;
+   date: Data;
+   approved: boolean;
+   dish: Dish;
+   user: User;
 }
