@@ -1,17 +1,22 @@
 <div class="container">
   <div class=row>
-  <div class="col-md-6">
-  <input type="text" placeholder="Category name" class="form-control" [(ngModel)]="categoryName">
-  </div>
-  <div class="col-md-2">
-    <div *ngIf="!category ">
-    <a href="/admin/category/all" placeholder="Category name" button class="btn btn-success" (click)="addCategory()" [(ngModel)]="categoryName">Add</a>
-  </div>
+    <div class="col-md-6">
+      <input type="text" placeholder="Category name" class="form-control" [(ngModel)]="categoryName">
+    </div>
+  <div class="col-md-2" >
+    <a href="/admin/category/all" placeholder="Category name" button class="btn btn-success" (click)="addCategory()" >Add</a>
+
+    <!--    <div [ngClass]="routerlink={hasNullWaiter:hasNullWaiter(i.currentTable)};">
+      <a [routerLink]="['../form2']">Go To Form 2 From Editor {{id}}</a>-->
+    <!--<a class="nav-link" [routerLink]="['category', category.id]">{{category.id }}</a>-->
 
     <!--<div ng-if= "category.name == '' " href="/admin/category/all" placeholder="Category name" button class="btn btn-success" (click)="addCategory()" [(ngModel)]="categoryName">Add </div>-->
     <!--<div ng-if="category.name != '' " href="/admin/category/all" button class="btn btn-success" (click)="editCategory()" [(ngModel)]="categoryName">Change</div>-->
     <!--<div ng-if= "category.name.length == 0 " href="/admin/category/all" placeholder="Category name" button class="btn btn-success" (click)="addCategory()" [(ngModel)]="categoryName">Add </div>-->
     <!--<div ng-if= "category.name.length > 0 " > Change </div>-->
+
+    <!--<h3 *ngIf="lang.language == 1">English </h3>
+        <h3 *ngIf="lang.language == 2">Russian </h3>-->
 
 
   </div>

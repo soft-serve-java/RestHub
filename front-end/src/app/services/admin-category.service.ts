@@ -13,7 +13,7 @@ export class AdminCategoryService {
 
   deleteCategory(id:number):Promise<any>{
     return this.http
-      .delete(this.categoryApi + "admin/category/delete/" + id )
+      .delete(this.categoryApi + "admin/category/delete/" + id)
       .toPromise()
       .then()
   }
