@@ -44,7 +44,7 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     HttpClientModule,
     StorageServiceModule
   ],
-  providers: [WelcomeService,WaiterService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService, WaiterService, MenuService, OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })
