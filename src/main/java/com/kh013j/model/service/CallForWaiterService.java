@@ -19,7 +19,7 @@ public class CallForWaiterService {
 
     private List<CallForWaiter> closed = new ArrayList<>();
 
-    private final static int BUFFER = 1;
+    private static final int BUFFER = 1;
 
     public CallForWaiter create(CallForWaiter callForWaiter){
         callForWaiters.add(callForWaiter);

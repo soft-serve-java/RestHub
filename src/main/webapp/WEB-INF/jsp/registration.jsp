@@ -19,8 +19,10 @@
         </div>
         <div class="form-group">
             <div class="col-sm-9">
-                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-                <form:input type="password" class="form-control" id="inputPassword3" path="password" placeholder="Password" name="password" required=""/>
+                <label for="inputPassword" class="col-sm-3 control-label">Password</label>
+                <form:input type="password" class="form-control" id="inputPassword" path="password" placeholder="Password" name="password" required=""/>
+                <label for="confirmPassword" class="col-sm-3 control-label">Password</label>
+                <form:input type="password" class="form-control" id="confirmPassword" path="confirmPassword" placeholder="Confirm your password" name="password" required=""/>
                 <form:errors path="password" class="control-label"/>
             </div>
         </div>
@@ -42,38 +44,4 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-
-<style>
-    .error {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        color: #a94442;
-        background-color: #f2dede;
-        border-color: #ebccd1;
-    }
-
-    .msg {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        color: #31708f;
-        background-color: #d9edf7;
-        border-color: #bce8f1;
-    }
-
-    #login-box {
-        width: 300px;
-        padding: 20px;
-        margin: 100px auto;
-        background: #fff;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border: 1px solid #000;
-    }
-</style>
 

@@ -1,13 +1,14 @@
 import {Data} from "@angular/router";
 import {User} from "./user";
 import {OrderedDish} from "./orderedDish";
+import {Timestamp} from "rxjs/Rx";
 
 export class Order {
-  private id: number;
-  private time: Data;
-  private user: User;
-  private tablenumber: number;
-  private closed: boolean;
-  private orrderedFood: OrderedDish;
-  private waiter: object;
+  id: number;
+  time:Data;
+  user: User;
+  tablenumber: number;
+  closed: boolean;
+  orderedFood: Array<OrderedDish>;
+  waiter: User;
 }

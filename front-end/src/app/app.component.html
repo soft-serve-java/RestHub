@@ -15,9 +15,10 @@
             <li  *ngFor="let category of categories" class="nav-item">
                 <a class="nav-link" [routerLink]="['menu', category.name]">{{category.name}}</a>
             </li>
-            <button type="button" class="btn btn-success nav-button" style="margin-right:10px;"
+            <button (click)="doPOSTonCallWaiter(1)"  type="button" class="btn btn-success nav-button" style="margin-right:10px;"
                     data-toggle="modal" data-target="#exampleModalWaiter">
-                <span class="left-span"> Call a waiter  <i class="fa fa-bell" aria-hidden="true"></i></span>
+                <span class="left-span"> Call a waiter
+                  <i class="fa fa-bell" aria-hidden="true"></i></span>
             </button>
              <!--
 

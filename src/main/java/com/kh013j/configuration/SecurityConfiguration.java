@@ -20,7 +20,6 @@ import org.springframework.social.connect.web.ProviderSignInController;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
@@ -41,12 +40,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**").access("hasAuthority('ADMINISTRATOR')")
-                .antMatchers("/cooker/**").access("hasAnyAuthority('COOK', 'ADMINISTRATOR')")
+                .antMatchers("/cook/**").access("hasAnyAuthority('COOK', 'ADMINISTRATOR')")
                 .antMatchers("/waiter/**").access("hasAnyAuthority('WAITER', 'ADMINISTRATOR')")
                 //.antMatchers("/user/**").hasAnyRole("USER")
 

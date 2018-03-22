@@ -15,12 +15,23 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 import { DishPageComponent } from './dish-page/dish-page.component';
 import {CommonModule} from "@angular/common";
 import { OrderComponent } from './order/order.component';
+import { CookComponent } from './cook/cook.component';
+import { WaiterTablesComponent } from './waiter/waiter-tables/waiter-tables.component';
+import {WaiterService} from "./services/waiter.service";
+import { WaiterOdrerComponent } from './waiter/waiter-odrer/waiter-odrer.component';
+import {OrderService} from "./services/order.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
+export const SOCKET_URL = new InjectionToken<string>('socketUrl');
 
 @NgModule({
   declarations: [
     AppComponent,
+    WelcomeComponent,
+    CookComponent,
+    WelcomeComponent,
+    WaiterTablesComponent,
+    WaiterOdrerComponent,
     WelcomeComponent,
     MenuComponent,
     DishPageComponent,
@@ -31,12 +42,10 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserModule,
     StorageServiceModule
   ],
-  providers: [WelcomeService, HttpClient, AppService, MenuService,
-     {provide: "API_URL", useValue: environment.apiUrl}
-    ],
+  providers: [WelcomeService,WaiterService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+    {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

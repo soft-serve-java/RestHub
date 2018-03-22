@@ -8,9 +8,9 @@ export class OrderedDish {
     this.status = status;
     this.quantity = quantity;
   }
-  private id: number;
+
+  id: number;
   dish: Dish;
   status: Status;
   quantity: number;
-
 }
