@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
 
   constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,
               private route: ActivatedRoute, public menuService: MenuService) {
-    this.setSession()
+    this.setSession();
     route.params.subscribe( params => {
                                             this.category = params['category'];
                                             this.currPage = Number(params['page']);
@@ -46,14 +46,17 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  addToOrder(dishId: number){
+  addToOrder(dish: Dish){
     let temp = this.storage.get("orderMap");
 
-    if (!temp.some(elem => elem.key == dishId)){
-      temp.push({key:dishId, value:0});
+    if (!temp.some(elem => elem.key == dish.id)){
+      temp.push({key: dish.id, value:0});
+      let dishes = this.storage.get("orderDishes");
+      dishes.push(dish);
+      this.storage.set("orderDishes", dishes);
     }
     temp.find(function(val){
-        if (val.key == dishId){
+        if (val.key == dish.id){
           val.value += 1;
         }
     });
@@ -70,6 +73,7 @@ export class MenuComponent implements OnInit {
     return this.data.find(function(val){
       if (val.key == dish.id) return val;
       });
+
   }
 
   searchByName(name: string){
@@ -79,6 +83,7 @@ export class MenuComponent implements OnInit {
   private setSession(){
     if (this.storage.get("orderMap") == null){
       this.storage.set("orderMap", []);
+      this.storage.set("orderDishes", [])
     }
   }
 
