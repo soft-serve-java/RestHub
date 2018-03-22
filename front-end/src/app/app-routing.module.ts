@@ -8,7 +8,7 @@ import {AdminDishComponent} from "./admin-dish/admin-dish.component";
 import {AdminCategoryComponent} from "./admin-category/admin-category.component";
 import {AdminCategoryAddComponent} from "./admin-category-add/admin-category-add.component";
 import {AdminOrderComponent} from "./admin-order/admin-order.component";
-
+import { AdminLtComponent, PUBLIC_ROUTES } from './layouts/admin/';
 
 const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -20,7 +20,8 @@ const routes: Routes = [
   {path: 'admin/category/add', component: AdminCategoryAddComponent},
   {path: 'admin/category/edit/:id', component: AdminCategoryAddComponent},
   {path: 'waiter', component: WaiterTablesComponent},
-  {path: 'admin/order', component: AdminOrderComponent}
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'admin/order', component: AdminLtComponent, data: { title: 'Public Views' }, children: PUBLIC_ROUTES },
 ];
 
 @NgModule({
