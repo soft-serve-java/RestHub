@@ -1,0 +1,52 @@
+<div class="container">
+  <h3>Add New Dish</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="addDish()" #form="ngForm">
+
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" class="form-control" [(ngModel)] = "dish.name" name="name">
+        </div>
+
+        <div class="form-group">
+          <label>Description:</label>
+          <input type="text" class="form-control" [(ngModel)]= "dish.description" name="description">
+        </div>
+
+        <div class="form-group">
+          <label>Category:</label>
+          <select class="form-control" [(ngModel)]="dish.category" name="category">
+            <option *ngFor="let cat of category">{{cat.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Calories:</label>
+          <input type="number" class="form-control" [(ngModel)]="dish.calories" name="calories">
+        </div>
+
+        <div class="form-group">
+          <label>Weight:</label>
+          <input type="number" class="form-control" [(ngModel)]="dish.weight" name="weight">
+        </div>
+
+        <div class="form-group">
+          <label>Preparingtime</label>
+          <input type="number" class="form-control" [(ngModel)]="dish.preparingtime" name="preparingtime">
+        </div>
+
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" class="form-control" [(ngModel)]="dish.price" name="price">
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Save</button>
+          <!--<a href="/admin/dish/all" placeholder="Dish name" button class="btn btn-success" (click)="addDish()"> Add </a>-->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
