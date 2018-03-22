@@ -2,7 +2,7 @@ import {Category} from "./category";
 import {Image} from "./image";
 
 export class Dish {
-  private id: number;
+  id: number;
   private name: string;
   private description: string;
   private weight: number;

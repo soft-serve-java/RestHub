@@ -21,11 +21,13 @@ export class MenuComponent implements OnInit {
 
   constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,
               private route: ActivatedRoute, public menuService: MenuService) {
+    this.setSession()
     route.params.subscribe( params => {
                                             this.category = params['category'];
                                             this.currPage = Number(params['page']);
-                                            console.log(Number(params['page']));
-                                            this.getDishes()
+                                            this.getDishes();
+                                            this.data = this.storage.get("orderMap");
+                                            console.log(this.data)
                                           });
   }
 
@@ -46,13 +48,38 @@ export class MenuComponent implements OnInit {
 
   addToOrder(dishId: number){
     let temp = this.storage.get("orderMap");
-    temp.push({dish: dishId, quantity: 1});
+
+    if (!temp.some(elem => elem.key == dishId)){
+      temp.push({key:dishId, value:0});
+    }
+    temp.find(function(val){
+        if (val.key == dishId){
+          val.value += 1;
+        }
+    });
+
     this.storage.set("orderMap", temp);
     this.data = temp;
   }
 
+  checkIfDishInOrder(dish: Dish): boolean{
+    return this.data.some(e => e.key === dish.id);
+  }
+
+  getDishQuantityInOrder(dish: Dish): Object{
+    return this.data.find(function(val){
+      if (val.key == dish.id) return val;
+      });
+  }
+
   searchByName(name: string){
     this.menuService.getDishByName(name).then(res => this.dishes = res);
+  }
+
+  private setSession(){
+    if (this.storage.get("orderMap") == null){
+      this.storage.set("orderMap", []);
+    }
   }
 
 }

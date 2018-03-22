@@ -30,6 +30,9 @@
             </a>
             </div>
         </a>
+          <div class="card-header" *ngIf='checkIfDishInOrder(dish)'>
+            In order {{getDishQuantityInOrder(dish).value}}
+          </div>
         <div class="card-body">
             <h4 class="card-title">{{dish.name}}</h4>
             <p class="card-text">{{dish.description}}</p>

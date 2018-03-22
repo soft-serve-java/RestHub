@@ -1,5 +1,5 @@
-import {Injectable, NgModule, Inject} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable, Inject} from '@angular/core';
+import {HttpClient,} from '@angular/common/http';
 
 import {Category} from '../models/category'
 

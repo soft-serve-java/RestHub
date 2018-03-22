@@ -25,5 +25,4 @@ export class MenuService {
     return this.http.get<Dish[]>(this.rootApi + "dish/", {params: params}).toPromise();
   }
 
-
 }

@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuService } from './services/menu.service';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { DishPageComponent } from './dish-page/dish-page.component';
+import {CommonModule} from "@angular/common";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
@@ -24,6 +25,7 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     DishPageComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

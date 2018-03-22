@@ -18,4 +18,5 @@ export class AppComponent {
   getCategories(){
     this.appService.getCategories().then(res => this.categories = res)
   }
+
 }
