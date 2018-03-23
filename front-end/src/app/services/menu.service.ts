@@ -8,7 +8,7 @@ export class MenuService {
   constructor(@Inject('API_URL') private rootApi: string, private http:HttpClient) { }
 
   getDishesByCategory(category: string, page: number): Promise<HttpResponse<Dish[]>> {
-    const params = new HttpParams().set('page', String(page));
+    let params = new HttpParams().set('page', String(page));
     return this.http.get<Dish[]>(this.rootApi + 'dish/by' + category, {params: params, observe: 'response'}).toPromise();
   }
 

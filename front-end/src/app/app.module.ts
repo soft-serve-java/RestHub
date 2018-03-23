@@ -20,6 +20,7 @@ import { WaiterTablesComponent } from './waiter/waiter-tables/waiter-tables.comp
 import {WaiterService} from "./services/waiter.service";
 import { WaiterOdrerComponent } from './waiter/waiter-odrer/waiter-odrer.component';
 import {OrderService} from "./services/order.service";
+import {StatusService} from "./services/status.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -44,7 +45,7 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     HttpClientModule,
     StorageServiceModule
   ],
-  providers: [WelcomeService, WaiterService, MenuService, OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService, WaiterService, MenuService, StatusService, OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })

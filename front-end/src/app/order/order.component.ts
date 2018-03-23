@@ -3,6 +3,7 @@ import {Dish} from "../models/dish";
 import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {OrderedDish} from "../models/orderedDish";
 import {Status} from "../models/status";
+import {StatusService} from "../services/status.service";
 
 @Component({
   selector: 'app-order',
@@ -17,7 +18,9 @@ export class OrderComponent implements OnInit {
 
   private orderMap: any;
 
-  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService) {
+  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,
+              private statusService: StatusService) {
+    this.statusService.saveStatusesToLocalStorage();
     this.getDishes();
   }
 
@@ -27,22 +30,18 @@ export class OrderComponent implements OnInit {
   getDishes(){
     this.dishes = this.storage.get("orderDishes");
     this.orderMap = this.storage.get("orderMap");
-    console.log(this.dishes);
-    console.log(this.orderMap);
     this.dishesToOrderedDishes();
   }
 
   dishesToOrderedDishes(){
     let temp = this.orderMap;
     let array = [];
+    let statusPreparing = this.statusService.getPreparingStatus();
     this.dishes.forEach(function(dish){
       let orderedDish;
-      orderedDish = new OrderedDish(dish, new Status(), temp.find(e => e.key == dish.id).value);
+      orderedDish = new OrderedDish(dish, statusPreparing, temp.find(e => e.key == dish.id).value);
       array.push(orderedDish);
     });
     this.orderedDishes = array;
   }
-
-
-
 }

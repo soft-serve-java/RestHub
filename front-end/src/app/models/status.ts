@@ -1,6 +1,10 @@
 
 export class Status {
   private id: number;
-  private name: string;
+  name: string;
 
+
+  constructor(name: string) {
+    this.name = name;
+  }
 }
