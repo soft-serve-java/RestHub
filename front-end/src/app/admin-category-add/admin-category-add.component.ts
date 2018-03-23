@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from "../models/category";
-import {AdminCategoryAddService} from "../services/admin-category-add.service";
-import {NgForm} from "@angular/forms";
+import {AdminCategoryService} from "../services/admin-category.service";
 
 @Component({
   selector: 'app-admin-category-add',
@@ -13,18 +12,20 @@ export class AdminCategoryAddComponent implements OnInit {
   category: Category;
   categoryName: String;
 
-  constructor(public adminCategoryAddService: AdminCategoryAddService){}
+  constructor(public adminCategoryService: AdminCategoryService){}
 
   ngOnInit(){
   }
 
   addCategory(){
-    this.adminCategoryAddService
+    this.adminCategoryService
       .addCategory(this.categoryName),
       this.categoryName = '';
   }
 
     editCategory(){
-    this.adminCategoryAddService.editCategory(this.category.id, this.category.name)
+    this.adminCategoryService
+      .editCategory(this.category.id, this.category.name)
+      .then()
   }
 }

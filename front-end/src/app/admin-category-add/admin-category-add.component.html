@@ -1,10 +1,12 @@
 <div class="container">
   <div class=row>
+
     <div class="col-md-6">
       <input type="text" placeholder="Category name" class="form-control" [(ngModel)]="categoryName">
     </div>
-  <div class="col-md-2" >
-    <a href="/admin/category/all" placeholder="Category name" button class="btn btn-success" (click)="addCategory()" >Add</a>
+
+    <div class="col-md-2" >
+    <a [routerLink]="'/admin/category/all'" placeholder="Category name" button class="btn btn-success" (click)="addCategory()">Add</a>
 
     <!--    <div [ngClass]="routerlink={hasNullWaiter:hasNullWaiter(i.currentTable)};">
       <a [routerLink]="['../form2']">Go To Form 2 From Editor {{id}}</a>-->

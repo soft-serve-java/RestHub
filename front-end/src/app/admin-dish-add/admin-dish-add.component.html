@@ -1,8 +1,8 @@
 <div class="container">
-  <h3>Add New Dish</h3>
+  <h3>Add new dish</h3>
   <div class="row">
-    <div class="col-md-6">
-      <form (ngSubmit)="addDish()" #form="ngForm">
+    <div class="col-md-8">
+      <!--<form (ngSubmit)="addDish()" #form="ngForm">-->
 
         <div class="form-group">
           <label>Name:</label>
@@ -43,10 +43,11 @@
 
 
         <div class="form-group">
-          <button type="submit" class="btn btn-success">Save</button>
-          <!--<a href="/admin/dish/all" placeholder="Dish name" button class="btn btn-success" (click)="addDish()"> Add </a>-->
+          <!--<button type="submit" class="btn btn-success" (click)="addDish()">Save</button>-->
+          <a [routerLink]="'/admin/dish/all'" button class="btn btn-success" (click)="addDish()"> Add </a>
+
         </div>
-      </form>
+      <!--</form>-->
     </div>
   </div>
 </div>

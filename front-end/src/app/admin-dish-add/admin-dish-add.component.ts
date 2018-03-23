@@ -1,11 +1,8 @@
-///<reference path="../services/admin-dish.service.ts"/>
 import { Component, OnInit } from '@angular/core';
 import {Category} from "../models/category";
 import {AdminCategoryService} from "../services/admin-category.service";
 import {Dish} from "../models/dish";
-import {AdminCategoryAddService} from "../services/admin-category-add.service";
 import {AdminDishService} from "../services/admin-dish.service";
-import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -15,18 +12,11 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminDishAddComponent implements OnInit {
 
-  name: String;
-  description: String;
-  category: Category;
-  weight: number;
-  calories: number;
-  preparingtime: number;
-  price: number;
-
-  adminDishService: AdminDishService;
+  category: Category[];
   dish = new Dish();
 
-  constructor(public adminCategoryService: AdminCategoryService) {this.getCategory()}
+  constructor(public adminCategoryService: AdminCategoryService,
+              public adminDishService: AdminDishService) {this.getCategory()}
 
   ngOnInit() {
     this.getCategory();
@@ -36,16 +26,15 @@ export class AdminDishAddComponent implements OnInit {
     this.adminCategoryService.getCategory().then(res => this.category = res)
   }
 
-
-  // + this.category, не принимает т.к. он является массивом.
   addDish(){
     this.adminDishService
-      .addDish(this.name, this.description, this.calories, this.category, this.weight,  this.preparingtime, this.price)
-      this.name = '';
-      this.description = '';
-      this.weight = 0;
-      this.calories = 0;
-      this.preparingtime = 0;
-      this.price = 0;
+      .addDish(this.dish)
+      .then();
+  }
+
+  editDish(){
+    this.adminDishService
+      .editDish(this.dish)
+      .then();
   }
 }

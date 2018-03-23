@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../models/user";
 import {AdminUserService} from "../services/admin-user.service";
-import {Category} from "../models/category";
+import { ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'wfm-admin-user',
@@ -11,10 +12,16 @@ import {Category} from "../models/category";
 export class AdminUserComponent implements OnInit {
   user: User[];
 
-  constructor(public adminUserServise: AdminUserService) {}
+  constructor(public adminUserServise: AdminUserService,
+  //            private route: ActivatedRoute
+  ) {}
+
+
+  //id: string;
 
   ngOnInit() {
-    this.adminUserServise.getUsers().then(res => this.user = res)
+    this.adminUserServise.getUsers().then(res => this.user = res);
+    //this.id = this.route.snapshot.params['id'];
   }
 
   deleteUser(user: User){

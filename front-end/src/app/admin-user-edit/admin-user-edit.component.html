@@ -22,7 +22,8 @@
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-success">Save</button>
+          <!--<button type="submit" class="btn btn-success">Save</button>-->
+          <a [routerLink]="'/admin/user/all'" button class="btn btn-success" (click)="editUser()"> Save </a>
         </div>
       </form>
     </div>
