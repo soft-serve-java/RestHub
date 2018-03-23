@@ -46,19 +46,15 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-            <!--
-
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <div *ngIf="isAuthenticated();else loginblock">
             <h6 style="color: lightgrey">
-                Hi, ${pageContext.request.userPrincipal.name}
-                <a href="javascript:formSubmit()"> Logout</a>
+                Hi,
+                <button (onclick)="logout()"> Logout</button>
             </h6>
-        </c:if>
-        <c:if test="${pageContext.request.userPrincipal.name == null}">
-            <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
-        </c:if>
-        //-->
-
+        </div>
+  <ng-template #loginblock>
+  <a class="nav-link a-nav" >Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+  </ng-template>
         </nav>
 
 <router-outlet></router-outlet>
