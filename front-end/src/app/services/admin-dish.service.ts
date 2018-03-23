@@ -20,11 +20,18 @@ export class AdminDishService {
   }
 
 
-  // + category: Category,
-  addDish(name: String, description: String,  calories: number, category: Category, weight: number, preparingtime: number, price: number): Promise<any>{
+  // Добавить category: Category,
+  addDish(dish): Promise<any>{
     return this.http
-      .post(this.dishApi + "admin/dish/add", {name: name, description: description, calories: calories, weight})
+      .post(this.dishApi + "admin/dish/add", {dish: new Dish ()})
       .toPromise()
       .then()
+  }
+
+  editDish(dish): Promise<any>{
+    return this.http
+      .post(this.dishApi + "admin/dish/add", {dish: new Dish ()})
+      .toPromise()
+      .then(res =>  console.log(res))
   }
 }

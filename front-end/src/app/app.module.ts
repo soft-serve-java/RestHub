@@ -18,12 +18,10 @@ import {AdminDishService} from "./services/admin-dish.service";
 import { AdminCategoryComponent } from './admin-category/admin-category.component';
 import {AdminCategoryService} from "./services/admin-category.service";
 import { AdminCategoryAddComponent } from './admin-category-add/admin-category-add.component';
-import {AdminCategoryAddService} from "./services/admin-category-add.service";
 import {FormsModule} from "@angular/forms";
 import { AdminUserEditComponent } from './admin-user-edit/admin-user-edit.component';
 import { AdminDishAddComponent } from './admin-dish-add/admin-dish-add.component';
-import {AdminDishAddService} from "./services/admin-dish-add.service";
-import {AdminUserEditService} from "./services/admin-user-edit.service";
+import {AdminRoleService} from "./services/admin-role.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
@@ -50,8 +48,8 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     BrowserModule,
     FormsModule,
   ],
-  providers: [WelcomeService, HttpClient, AppService, AdminUserService, AdminDishService, AdminDishAddService, AdminCategoryService, AdminCategoryAddService,
-    AdminUserService, AdminUserEditService,
+  providers: [WelcomeService, HttpClient, AppService, AdminUserService, AdminDishService, AdminCategoryService, AdminRoleService,
+    AdminUserService,
      {provide: "API_URL", useValue: environment.apiUrl}
     ],
   bootstrap: [AppComponent]

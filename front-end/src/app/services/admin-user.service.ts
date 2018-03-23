@@ -20,4 +20,11 @@ export class AdminUserService {
       .then()
   }
 
+  editUser(id:number, name: string): Promise<any>{
+    return this.http
+      .post(this.userApi + "admin/user/" + id, {category: new Category(id, name)})
+      .toPromise()
+      .then(res =>  console.log(res))
+  }
+
 }
