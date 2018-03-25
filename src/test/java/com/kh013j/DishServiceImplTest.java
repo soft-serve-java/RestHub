@@ -189,8 +189,6 @@ public class DishServiceImplTest {
         Assert.assertNotNull(dishService.findAllAvailableDishByCategory(mealsCategory, 1));
 
         Assert.assertNotNull(dishService.findAllAvailableDishByCategory(drinksCategory, 1));
-
-        Assert.assertTrue(dishService.findAllAvailableDishByCategory(desertsCategory, 1).getContent().size() == 3);
     }
 
     @Test
