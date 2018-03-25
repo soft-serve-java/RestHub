@@ -22,4 +22,9 @@ export class CookComponent implements OnInit {
     this.showOrderedDishes();
   }
 
+  update(orderedDish: OrderedDish) {
+    console.log(orderedDish);
+    this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = orderedDishes);
+  }
+
 }
