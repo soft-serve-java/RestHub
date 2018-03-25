@@ -7,12 +7,16 @@ import {LoginComponent} from "./login/login.component";
 import {
   AuthGuardService as AuthGuard
 } from './services/auth-guard.service';
+import {RegisterComponent} from "angular-stormpath";
+import {RegistrationComponent} from "./registration/registration.component";
 
 const routes: Routes = [
+  {path: '', component: WelcomeComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'waiter/tables', component: WaiterTablesComponent, canActivate: [AuthGuard] },
   {path: 'waiter/order/:id', component: WaiterOdrerComponent},
-  {path:'login', component:LoginComponent}
+  {path:'login', component:LoginComponent},
+  {path:'registration', component:RegistrationComponent}
 ];
 
 @NgModule({

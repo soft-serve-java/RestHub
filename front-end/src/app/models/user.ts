@@ -9,4 +9,9 @@ export class User {
   private enabled: boolean;
   private roles: Role;
   private avatar: string;
+  constructor(login:string, email:string, password:string ){
+    this.username = email;
+    this.name = login;
+    this.password = password;
+  }
 }

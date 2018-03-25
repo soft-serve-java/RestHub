@@ -18,6 +18,7 @@ import {AuthService} from "./services/auth.service";
 import {FormsModule} from "@angular/forms";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {AuthGuardService} from "./services/auth-guard.service";
+import { RegistrationComponent } from './registration/registration.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -28,8 +29,8 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     WelcomeComponent,
     WaiterTablesComponent,
     WaiterOdrerComponent,
-    LoginComponent
-
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
