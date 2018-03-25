@@ -27,6 +27,7 @@ import { AdminComponent } from './layout/admin/admin.component';
 import { WaiterComponent } from './layout/waiter/waiter.component';
 import { UserComponent } from './layout/user/user.component';
 import { WaiterHeaderComponent } from './layout/parts/waiter-header/waiter-header.component';
+import { AdminHeaderComponent } from './layout/parts/admin-header/admin-header.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -48,7 +49,8 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     AdminComponent,
     WaiterComponent,
     UserComponent,
-    WaiterHeaderComponent
+    WaiterHeaderComponent,
+    AdminHeaderComponent
   ],
   imports: [
     CommonModule,

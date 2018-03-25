@@ -1,6 +1,5 @@
-import {WelcomeComponent} from "../../welcome/welcome.component";
 
+//TODO: ADD ADMIN ROUTES!
+const ADMIN_ROUTES = [
 
-const ADMIN_ROUTER = [
-  {path: 'welcome', component: WelcomeComponent},
 ];
