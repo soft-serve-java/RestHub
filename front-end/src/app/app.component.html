@@ -49,7 +49,7 @@
         <div *ngIf="isAuthenticated();else loginblock">
             <h6 style="color: lightgrey">
                 Hi,
-                <button (onclick)="logout()"> Logout</button>
+                <button (click)="logout()">Logout</button>
             </h6>
         </div>
   <ng-template #loginblock>

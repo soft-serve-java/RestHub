@@ -39,6 +39,6 @@ public class FacebookConnectionSignup implements ConnectionSignUp {
         if (userService.findByEmail(user.getEmail()) == null) {
             userService.create(user);
         }
-        return user.getUsername();
+        return user.getEmail();
     }
 }

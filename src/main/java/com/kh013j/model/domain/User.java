@@ -25,7 +25,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @Table(name = "user", schema = "rh")
 @JsonAutoDetect
-public class User implements UserDetails {
+public class User  {
     @Id
     @SequenceGenerator(name = "user-sequence_generator", sequenceName = "user_sequence")
     @GeneratedValue(generator = "user-sequence_generator", strategy = GenerationType.IDENTITY)
@@ -66,7 +66,6 @@ public class User implements UserDetails {
         this.roles = user.roles;
     }
 
-    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> roleList = new ArrayList<>();
         for (Role role: roles) {
@@ -75,23 +74,4 @@ public class User implements UserDetails {
         return roleList;
     }
 
-    @Override
-    public String getUsername() {
-        return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return enabled;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return enabled;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return enabled;
-    }
 }

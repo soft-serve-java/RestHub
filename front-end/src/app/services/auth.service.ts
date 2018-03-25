@@ -17,9 +17,7 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
   logout() {
-    this.http.post('http://localhost:9090/logout', {}).finally(() => {
       this.router.navigateByUrl('/login');
       localStorage.removeItem("token");
-    }).subscribe();
   }
 }

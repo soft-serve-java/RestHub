@@ -31,7 +31,6 @@ export class WaiterTablesComponent implements OnInit {
   }
 
   isOnDelivery(table: number):boolean {
-    console.log(this.tables[0]);
     for(let i=0; i<this.tables.length; i++) {
       if(this.tables[i].currentTable == table && (this.tables[i].tableStatus == "IS_ON_DELIVERY")) {
         return true;
@@ -57,6 +56,29 @@ export class WaiterTablesComponent implements OnInit {
       }
     }
     return false
+  }
+  isOfCurrentWaiter(table: number):boolean {
+    for(let i=0; i<this.tables.length; i++) {
+      if(this.tables[i].currentTable == table &&
+        (this.tables[i].tableStatus == "HAS_WAITER" &&
+          this.tables[i].currentWaiter.username==localStorage.getItem("username"))) {
+        return true;
+      }
+    }
+    return false
+  }
+  isOfOtherWaiter(table:number):boolean{
+    for(let i=0; i<this.tables.length; i++) {
+      if(this.tables[i].currentTable == table &&
+        (this.tables[i].tableStatus == "HAS_WAITER" &&
+          this.tables[i].currentWaiter.username!=localStorage.getItem("username"))) {
+        return true;
+      }
+    }
+    return false
+  }
+  doPOSTonGettingTable(table:number){
+    this.waiterService.doPOSTonGettingTable(table).then(res => console.log(res));
   }
 
 }
