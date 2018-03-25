@@ -39,10 +39,9 @@
           </div>
         </td>
         <td style="text-align: center">
-          <button type="button" class="btn btn-secondary" disabled>{{orderItem.status.name}}</button>
+          <button  type="button" class="btn btn-secondary" disabled>{{orderItem.status.name}}</button>
         </td>
         </tr>
-
     </tbody>
   </table>
   <hr/>
@@ -51,8 +50,7 @@
     </h5>
     <h4 class="col-md-5">
     </h4>
-        <button type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%"
-                data-toggle="modal" data-target="#exampleModal">
+        <button (click)="submitOrder()" type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%">
           Submit All<span class="fa fa-check"></span>
         </button>
   </div>
