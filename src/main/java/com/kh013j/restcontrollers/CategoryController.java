@@ -6,12 +6,14 @@ import com.kh013j.model.service.interfaces.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin("*")
 @RestController
+@RequestMapping("/api/category")
 public class CategoryController {
 
     private CategoryService categoryService;
@@ -23,34 +25,35 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/api/category/all")
+    @GetMapping("/all")
     public List<Category> getCategories(){
         return categoryService.findAll();
     }
 
-    @GetMapping("/api/category/{id}")
-    public Category getCategory(@PathVariable("id") long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getCategory(@PathVariable("id") long id){
         try {
-            return categoryService.findById(id);
+            Category category = categoryService.findById(id);
+            return ResponseEntity.ok(category);
         } catch (CategoryNotFound categoryNotFound) {
-            LOGGER.warn("Category not found by id", id, categoryNotFound);
-            return null;
+            LOGGER.warn("Category not found by id: {0}", id, categoryNotFound);
+            return ResponseEntity.notFound().build();
         }
     }
 
-    @PostMapping("/api/category/add")
+    @PostMapping("/add")
     public Category addCategory(@RequestBody Category category){
         return categoryService.create(category);
     }
 
-    @DeleteMapping("/api/category/{id}")
-    public Boolean deleteCategory(@PathVariable("id") long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteCategory(@PathVariable("id") long id){
         try {
             categoryService.delete(id);
-            return true;
+            return ResponseEntity.ok().build();
         } catch (CategoryNotFound categoryNotFound) {
-            LOGGER.warn("Category not found by id for deletion", id, categoryNotFound);
-            return false;
+            LOGGER.warn("Category not found by id: {0} for deletion", id, categoryNotFound);
+            return ResponseEntity.notFound().build();
         }
     }
 }
