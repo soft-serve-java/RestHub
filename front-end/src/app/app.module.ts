@@ -21,8 +21,12 @@ import {WaiterService} from "./services/waiter.service";
 import { WaiterOdrerComponent } from './waiter/waiter-odrer/waiter-odrer.component';
 import {OrderService} from "./services/order.service";
 import {StatusService} from "./services/status.service";
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './layout/parts/header/header.component';
+import { FooterComponent } from './layout/parts/footer/footer.component';
+import { AdminComponent } from './layout/admin/admin.component';
+import { WaiterComponent } from './layout/waiter/waiter.component';
+import { UserComponent } from './layout/user/user.component';
+import { WaiterHeaderComponent } from './layout/parts/waiter-header/waiter-header.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -40,7 +44,11 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     DishPageComponent,
     OrderComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdminComponent,
+    WaiterComponent,
+    UserComponent,
+    WaiterHeaderComponent
   ],
   imports: [
     CommonModule,

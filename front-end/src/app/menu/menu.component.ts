@@ -27,7 +27,6 @@ export class MenuComponent implements OnInit {
                                             this.currPage = Number(params['page']);
                                             this.getDishes();
                                             this.data = this.storage.get("orderMap");
-                                            console.log(this.data)
                                           });
   }
 

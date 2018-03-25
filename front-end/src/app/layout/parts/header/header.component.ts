@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from "../models/category";
-import {AppService} from "../services/app.service";
+import {Category} from "../../../models/category";
+import {AppService} from "../../../services/app.service";
 
 @Component({
   selector: 'app-header',
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getCategories(){
-    this.appService.getCategories().then(res => this.categories = res);
+    this.categories = this.appService.getCategories();
   }
 
 }
