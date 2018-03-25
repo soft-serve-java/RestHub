@@ -8,17 +8,13 @@ import {Category} from "./models/category";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private categories: Array<Category>;
 
-  constructor(public appService: AppService) { this.getCategories();}
+  constructor(public appService: AppService) {}
 
   ngOnInit() {
-    this.getCategories();
   }
 
-  getCategories(){
-    this.appService.getCategories().then(res => this.categories = res);
-  }
+
   doPOSTonCallWaiter(tableNumber:number) {
     this.appService.doPOSTonCallWaiter(tableNumber);
     console.log(tableNumber);

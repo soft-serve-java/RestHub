@@ -21,6 +21,8 @@ import {WaiterService} from "./services/waiter.service";
 import { WaiterOdrerComponent } from './waiter/waiter-odrer/waiter-odrer.component';
 import {OrderService} from "./services/order.service";
 import {StatusService} from "./services/status.service";
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -36,7 +38,9 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     WelcomeComponent,
     MenuComponent,
     DishPageComponent,
-    OrderComponent
+    OrderComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
