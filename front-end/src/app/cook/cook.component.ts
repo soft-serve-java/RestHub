@@ -10,7 +10,6 @@ import {CookService} from "../services/cook.service";
 })
 export class CookComponent implements OnInit {
   orderedDishes: Array<OrderedDish>;
-  //doneDishes: Array<OrderedDish>;
 
   constructor(private cookService: CookService) {
   }
@@ -24,12 +23,10 @@ export class CookComponent implements OnInit {
   }
 
   update(orderedDish: OrderedDish) {
-    console.log(orderedDish);
     this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = orderedDishes);
   }
 
   done(orderedDish:OrderedDish){
-    console.log('done');
     this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = this.orderedDishes.filter(od => od != orderedDish));
   }
 
