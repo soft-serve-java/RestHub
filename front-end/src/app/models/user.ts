@@ -7,7 +7,7 @@ export class User {
   private name: string;
   private confirmationtoken: boolean;
   private enabled: boolean;
-  private roles: Role;
+  private roles: Role[];
   private avatar: string;
   constructor(login:string, email:string, password:string ){
     this.username = email;
