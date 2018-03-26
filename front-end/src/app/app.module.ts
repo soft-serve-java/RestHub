@@ -28,6 +28,12 @@ import { WaiterComponent } from './layout/waiter/waiter.component';
 import { UserComponent } from './layout/user/user.component';
 import { WaiterHeaderComponent } from './layout/parts/waiter-header/waiter-header.component';
 import { AdminHeaderComponent } from './layout/parts/admin-header/admin-header.component';
+import { LoginComponent } from './login/login.component';
+import {AuthService} from "./services/auth.service";
+import {FormsModule} from "@angular/forms";
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {AuthGuardService} from "./services/auth-guard.service";
+import { RegistrationComponent } from './registration/registration.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -35,11 +41,8 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
     CookComponent,
-    WelcomeComponent,
     WaiterTablesComponent,
-    WaiterOdrerComponent,
     WelcomeComponent,
     MenuComponent,
     DishPageComponent,
@@ -47,19 +50,23 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     HeaderComponent,
     FooterComponent,
     AdminComponent,
-    WaiterComponent,
     UserComponent,
     WaiterHeaderComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    WaiterOdrerComponent,
+    LoginComponent,
+    RegistrationComponent,
+    WaiterComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StorageServiceModule
+    StorageServiceModule,
+    FormsModule
   ],
-  providers: [WelcomeService, WaiterService, MenuService, StatusService, OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService,WaiterService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })

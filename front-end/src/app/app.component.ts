@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
 import {Category} from "./models/category";
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {Category} from "./models/category";
 })
 export class AppComponent {
 
-  constructor(public appService: AppService) {}
+  constructor(public appService: AppService, public authService:AuthService) { }
 
   ngOnInit() {
   }
@@ -19,5 +20,4 @@ export class AppComponent {
     this.appService.doPOSTonCallWaiter(tableNumber);
     console.log(tableNumber);
   }
-
 }

@@ -7,8 +7,7 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  templateUrl: './menu.component.html'
 })
 export class MenuComponent implements OnInit {
   private category: string;
@@ -40,6 +39,7 @@ export class MenuComponent implements OnInit {
     }
     this.menuService.getDishesByCategory(this.category, this.currPage).then(res => {
       this.dishes = res.body;
+
       this.maxPage = Number(res.headers.get('last'));
       this.numbers = Array(this.maxPage).fill(1).map((x,i)=>i+1);
     });

@@ -20,6 +20,7 @@
                 <span class="left-span"> Call a waiter
                   <i class="fa fa-bell" aria-hidden="true"></i></span>
       </button>
+
       <!--
 
      <li>
@@ -46,6 +47,12 @@
       <i class="fa fa-search"></i>
     </button>
   </form>
+  <div *ngIf="isAuthenticated();else loginblock">
+    <a class="a-nav nav-link" [routerLink]="['/login']" (click)="logout()">Logout</a>
+  </div>
+  <ng-template #loginblock>
+    <a class="a-nav nav-link" [routerLink]="['/login']" >Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+  </ng-template>
   <!--
 
 <c:if test="${pageContext.request.userPrincipal.name != null}">

@@ -42,6 +42,11 @@
       </button>
     </form>
 
-    <%--            <a class="nav-link a-nav" href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>--%>
+    <div *ngIf="isAuthenticated();else loginblock">
+      <a class="a-nav nav-link" [routerLink]="['/login']" (click)="logout()">Logout</a>
+    </div>
+    <ng-template #loginblock>
+      <a class="navbar-nav mr-auto nav-link" [routerLink]="['/login']" >Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+    </ng-template>
   </div>
 </nav>

@@ -1,5 +1,5 @@
 
 //TODO: ADD ADMIN ROUTES!
-const ADMIN_ROUTES = [
+export const ADMIN_ROUTES = [
 
 ];
