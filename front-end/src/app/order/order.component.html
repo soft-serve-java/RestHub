@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-          <tr *ngFor="let orderItem of orderedDishes" ng-class="orderItem.status.name=='preparing' ? 'table-info' : orderItem.status.name=='cooking' ? 'table-warning : orderItem.status.name=='delivery' ? 'table-table-success'">
+          <tr *ngFor="let orderItem of newOrderedDishes" ng-class="orderItem.status.name=='preparing' ? 'table-info' : orderItem.status.name=='cooking' ? 'table-warning : orderItem.status.name=='delivery' ? 'table-table-success'">
         <td>
           <div class="row">
             <div class="col-md-4">

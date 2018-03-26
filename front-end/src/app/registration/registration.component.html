@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-7">
       <div class="panel panel-default">
-        <div class="panel-heading"> <strong class="">Login</strong>
+        <div class="panel-heading"> <strong class="">Register</strong>
         </div>
         <div class="panel-body">
           <div class="form-horizontal">
@@ -25,6 +25,9 @@
               <input type="text" class="form-control col-sm-8 col-centered"
                      id="inputName" placeholder="Name" [(ngModel)]="login" required="">
             </div>
+            <div class="error" *ngIf="error">
+              {{massage}}
+            </div>
             <div class="form-group last">
               <div class="col-sm-8 col-centered">
                 <button (click)="registration()" class="btn btn-success btn-sm">Register</button>
@@ -39,7 +42,7 @@
     <div class="col-md-8" >
       <div class="panel panel-default" style="padding-bottom: unset">
         <h2>Dish of the week with the best price!</h2>
-        <img src="../images/picLogin.jpg" alt="Carry" class="fluid" width="100%">
+        <img src="/assets/images/picLogin.jpg" alt="Carry" class="fluid" width="100%">
       </div>
     </div>
   </div>

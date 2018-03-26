@@ -18,7 +18,6 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
   logout() {
-      this.router.navigateByUrl('/login');
       localStorage.removeItem("token");
   }
   register(user:User):Promise<User>{

@@ -77,7 +77,7 @@ public class RegisterRestController {
             registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
                     + appUrl + ":9090/api/confirm?token=" + user.getConfirmationtoken());
             registrationEmail.setFrom("noreply@domain.com");
-            emailService.sendEmail(registrationEmail);
+            emailService    .sendEmail(registrationEmail);
         }
         return userExists;
     }

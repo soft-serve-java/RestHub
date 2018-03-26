@@ -41,11 +41,8 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
     CookComponent,
-    WelcomeComponent,
     WaiterTablesComponent,
-    WaiterOdrerComponent,
     WelcomeComponent,
     MenuComponent,
     DishPageComponent,
@@ -53,25 +50,23 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     HeaderComponent,
     FooterComponent,
     AdminComponent,
-    WaiterComponent,
     UserComponent,
     WaiterHeaderComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
     WaiterOdrerComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    WaiterComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StorageServiceModule
-    HttpClientModule,
+    StorageServiceModule,
     FormsModule
   ],
-  providers: [WelcomeService, WaiterService, MenuService, StatusService, OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
-  providers: [WelcomeService,WaiterService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService,WaiterService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })

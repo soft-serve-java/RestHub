@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
 import {Category} from "./models/category";
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,5 @@ export class AppComponent {
   doPOSTonCallWaiter(tableNumber:number) {
     this.appService.doPOSTonCallWaiter(tableNumber);
     console.log(tableNumber);
-  }
-
-  isAuthenticated():boolean {
-    return this.authService.isAuthenticated();
-  }
-  logout(){
-    this.authService.logout();
   }
 }

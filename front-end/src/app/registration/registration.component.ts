@@ -9,15 +9,22 @@ import {AuthService} from "../services/auth.service";
 })
 export class RegistrationComponent implements OnInit {
   password:string;
+  passwordConfirm:string;
   email:string;
   login:string;
+  error:boolean;
+  massage:string;
   constructor(public authservice:AuthService){ }
 
   ngOnInit() {
   }
   registration(){
+    if(this.password!=this.passwordConfirm){
+      this.massage = "Passwords doesn't match";
+      this.error = true;
+      return;
+    }
     let user:User = new User(this.login, this.email, this.password);
-    console.log(user);
     this.authservice.register(user);
     //TODO:confirmation after!!!!!!!!!!!!(Router to conf + in back-end)
   }

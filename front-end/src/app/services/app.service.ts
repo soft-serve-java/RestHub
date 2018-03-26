@@ -11,7 +11,7 @@ export class AppService {
               @Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
 
   doPOSTonCallWaiter(tableNumber:number) {
-    return this.http.post(this.api + '/callWaiterClient', tableNumber);
+    return this.http.post(this.api + 'callWaiterClient', tableNumber);
   }
   getCategories(): Category[]{
     let categories = this.storage.get("categories");
