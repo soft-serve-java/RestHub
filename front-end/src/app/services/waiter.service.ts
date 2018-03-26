@@ -3,11 +3,12 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Category} from "../models/category";
 import {Tables} from "../models/tables";
+import {User} from "../models/user";
 
 @Injectable()
 export class WaiterService {
   constructor(@Inject('API_URL') private categoryApi: string, private http:HttpClient,
-                                                  @Inject('SOCKET_URL') private apiUrl) { }
+                                                  @Inject('API_URL') private apiUrl) { }
 
   getTablesWhithStatus(): Promise<Array<Tables>>{
     return this.http.get<Array<Tables>>(this.categoryApi + 'tableStatus').toPromise();
@@ -23,16 +24,16 @@ export class WaiterService {
     }
   }
 
-  doPOSTonGettingTable(tableNumber:number){
-    return this.http.post(this.apiUrl + 'getTable',tableNumber);
+  doPOSTonGettingTable(tableNumber:number):Promise<User>{
+    return this.http.post<User>(this.apiUrl + 'getTable/'+tableNumber, localStorage.getItem("username")).toPromise();
   }
 
   doPOSTonCloseCalling(tableNumber:number){
     return this.http.post(this.apiUrl + 'acceptCalling',tableNumber);
   }
   doPOSTonCallWaiter(tableNumber:number) {
-    return this.http.post(this.apiUrl+ '/callWaiterClient', tableNumber);
-    
+    return this.http.post(this.apiUrl+ 'callWaiterClient', tableNumber);
+
   }
 
 }

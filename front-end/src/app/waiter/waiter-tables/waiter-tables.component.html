@@ -4,7 +4,8 @@
           <div *ngFor="let i of quantityOfTables" class="col-md-4 col-sm-6 col-xs-6">
             <div class="card">
               <img *ngIf="isOnDelivery(i)" class="imageforDelivery" src="/images/delivery.jpg"/>
-              <div [ngClass]="{hasNullWaiter:hasNullWaiter(i)}">
+              <div [ngClass]="{hasNullWaiter:hasNullWaiter(i),
+              isOfCurrentWaiter:isOfCurrentWaiter(i),isOfOtherWaiter:isOfOtherWaiter(i)}">
                 <div *ngIf="isCalling(i)" class="bell">
                   <i  class="fa fa-bell fa-2x" aria-hidden="true"></i>
                 </div>
@@ -12,8 +13,8 @@
                   <h1 class="card-title">{{i}}</h1>
                   <a  [routerLink]="['/waiter/order/', i]" class="btn btn-default btn-sm">Order details</a>
                   <div class="row">
-                    <button onclick="doPOSTonGettingTable(i)" class="btn btn-success btn-sm">Get this table</button>
-                    <button onclick="doPOSTonCloseCalling(i)" class="btn btn-default btn-sm">Accept calling</button>
+                    <button (click)="doPOSTonGettingTable(i)" class="btn btn-success btn-sm">Get this table</button>
+                    <button (click)="doPOSTonCloseCalling(i)" class="btn btn-default btn-sm">Accept calling</button>
                   </div>
                 </div>
               </div>
