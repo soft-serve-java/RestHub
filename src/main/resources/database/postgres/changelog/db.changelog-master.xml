@@ -123,4 +123,7 @@
             <column name="avatar" type="VARCHAR"/>
         </addColumn>
     </changeSet>
+    <changeSet id="11" author="artur">
+        <sqlFile path="database/postgres/sql/changeImage.sql"/>
+    </changeSet>
 </databaseChangeLog>
