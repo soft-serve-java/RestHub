@@ -1,5 +1,5 @@
 import {Injectable, Inject} from '@angular/core';
-import {HttpClient,} from '@angular/common/http';
+import {HttpClient, HttpParams,} from '@angular/common/http';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 
@@ -11,8 +11,12 @@ export class AppService {
               @Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
 
   doPOSTonCallWaiter(tableNumber:number) {
-    return this.http.post(this.api + 'callWaiterClient', tableNumber);
+    console.log(this.api + 'callWaiterClient');
+    const params = new HttpParams()
+      .set('table', String(tableNumber));
+    return this.http.post(this.api + 'callWaiterClient', {table:tableNumber}, {params: params}).toPromise().then(rer=>console.log(rer));
   }
+
   getCategories(): Category[]{
     let categories = this.storage.get("categories");
     if (categories == null){

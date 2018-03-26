@@ -42,7 +42,7 @@ public class WaiterRestController {
     }
 
     @PostMapping("callWaiterClient")
-    public void callForWaiter(@RequestBody int table, HttpServletRequest headerAccessor) {
+    public void callForWaiter(@RequestParam int table, HttpServletRequest headerAccessor) {
         String sessionId  = (String)
                 headerAccessor.getSession().getId();
         List<CallForWaiter> callForWaiterList = service.findAll();
