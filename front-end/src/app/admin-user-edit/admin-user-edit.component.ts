@@ -5,6 +5,7 @@ import {User} from "../models/user";
 import {Role} from "../models/role";
 import {AdminRoleService} from "../services/admin-role.service";
 import {AdminUserService} from "../services/admin-user.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-user-edit',
@@ -13,20 +14,28 @@ import {AdminUserService} from "../services/admin-user.service";
 })
 export class AdminUserEditComponent implements OnInit {
 
-  adminUserService: AdminUserService;
-  //adminRoleService: AdminRoleService;
   role: Role[];
-  user= new User;
-  category: Category;
+  user: User;
+  //category: Category;
+  //id: number;
+  //name: string;
 
-
-
-  //необходимо чтобы этот конструктор работал для вывода ролей в выпадающем меню, но с конструктором страница вообще не загружается.
-  constructor(public adminRoleService: AdminRoleService) {this.getRole()}
-
+  constructor(public route: ActivatedRoute,
+              public adminUserService: AdminUserService,
+              public adminRoleService: AdminRoleService,
+              public router: Router) {
+    this.getRole();
+  }
 
   ngOnInit() {
-    this.getRole()
+    this.getRole();
+    this.route.params.subscribe( params => {
+      this.loadUserById(params['id'])
+    });
+  }
+
+  loadUserById(id: number){
+    this.adminUserService.getUserById(id).then(res => this.user = res);
   }
 
   getRole() {
@@ -34,6 +43,8 @@ export class AdminUserEditComponent implements OnInit {
   }
 
   editUser(){
-
+  this.adminUserService
+    .editUser(this.user)
+    .then(res => {this.router.navigate(['admin/user/all'])})
   }
 }

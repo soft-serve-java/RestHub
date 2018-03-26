@@ -33,6 +33,7 @@ public class AdminDishControllerRest {
 
     @PostMapping("/add")
     public Dish addDish(@RequestBody Dish dish){
+        dish.setAvailability(true);
         return dishService.create(dish);
     }
 

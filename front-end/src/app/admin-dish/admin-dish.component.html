@@ -14,11 +14,11 @@
     <tr *ngFor="let di of dish" >
       <td>{{di.id}}</td>
       <td>{{di.name}}</td>
-      <td>
+<!--      <td>
         <a [routerLink]="['/admin/dish/tweakAvail/', di.id]" class="btn btn-info"><span class="fa fa-pen">Avalibility</span></a>
-      </td>
+      </td>-->
       <td>
-        <a [routerLink]="['/admin/dish/edit/', di.id]" class="btn btn-warning" (click)="editDish(dish)"><span class="fa fa-pen">Edit</span></a>
+        <a [routerLink]="['/admin/dish/edit/', di.id]" class="btn btn-warning"><span class="fa fa-pen">Edit</span></a>
       </td>
       <td>
         <button class="btn btn-danger" (click)="deleteDish(di)"> <span class="fa fa-pen">Delete</span></button>

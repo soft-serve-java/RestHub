@@ -2,6 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Dish} from "../models/dish";
 import {Category} from "../models/category";
+import {User} from "../models/user";
 
 @Injectable()
 export class AdminDishService {
@@ -20,18 +21,22 @@ export class AdminDishService {
   }
 
 
-  // Добавить category: Category,
-  addDish(dish): Promise<any>{
+  addDish(name: string, description: string, weight: number, category: Category, calories: number, preparingtime: number, price: number): Promise<any>{
     return this.http
-      .post(this.dishApi + "admin/dish/add", {dish: new Dish ()})
+      //.post(this.dishApi + "admin/dish/add", {dish: new Dish ()})
+      .post(this.dishApi + "admin/dish/add", {name, description, weight, category, calories, preparingtime, price})
       .toPromise()
       .then()
   }
 
-  editDish(dish): Promise<any>{
+
+  editDish(dish: Dish): Promise<any>{
     return this.http
-      .post(this.dishApi + "admin/dish/add", {dish: new Dish ()})
+      .post(this.dishApi + "admin/dish/add", dish)
       .toPromise()
-      .then(res =>  console.log(res))
+  }
+
+  getDishById(id: number): Promise<Dish>{
+    return this.http.get<Dish>(this.dishApi + "admin/dish/" + id).toPromise();
   }
 }

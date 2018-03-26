@@ -22,6 +22,8 @@ import {FormsModule} from "@angular/forms";
 import { AdminUserEditComponent } from './admin-user-edit/admin-user-edit.component';
 import { AdminDishAddComponent } from './admin-dish-add/admin-dish-add.component';
 import {AdminRoleService} from "./services/admin-role.service";
+import { AdminCategoryEditComponent } from './admin-category-edit/admin-category-edit.component';
+import { AdminDishEditComponent } from './admin-dish-edit/admin-dish-edit.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
@@ -40,6 +42,8 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     AdminCategoryAddComponent,
     AdminUserEditComponent,
     AdminDishAddComponent,
+    AdminCategoryEditComponent,
+    AdminDishEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from "../models/category";
 import {AdminCategoryService} from "../services/admin-category.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-category-add',
@@ -9,23 +10,19 @@ import {AdminCategoryService} from "../services/admin-category.service";
 })
 export class AdminCategoryAddComponent implements OnInit {
 
-  category: Category;
-  categoryName: String;
+  name: string;
 
-  constructor(public adminCategoryService: AdminCategoryService){}
+  constructor(public route: ActivatedRoute,
+              public adminCategoryService: AdminCategoryService,
+              public router: Router){
+  }
 
   ngOnInit(){
   }
 
   addCategory(){
     this.adminCategoryService
-      .addCategory(this.categoryName),
-      this.categoryName = '';
-  }
-
-    editCategory(){
-    this.adminCategoryService
-      .editCategory(this.category.id, this.category.name)
-      .then()
+      .addCategory(this.name)
+      .then(res => {this.router.navigate(['admin/category/all'])});
   }
 }

@@ -2,50 +2,47 @@
   <h3>Add new dish</h3>
   <div class="row">
     <div class="col-md-8">
-      <!--<form (ngSubmit)="addDish()" #form="ngForm">-->
 
         <div class="form-group">
           <label>Name:</label>
-          <input type="text" class="form-control" [(ngModel)] = "dish.name" name="name">
+          <input type="text" class="form-control" [(ngModel)] = "name">
         </div>
 
         <div class="form-group">
           <label>Description:</label>
-          <input type="text" class="form-control" [(ngModel)]= "dish.description" name="description">
+          <input type="text" class="form-control" [(ngModel)]= "description">
         </div>
 
         <div class="form-group">
           <label>Category:</label>
-          <select class="form-control" [(ngModel)]="dish.category" name="category">
+          <select class="form-control" [(ngModel)]="category">
             <option *ngFor="let cat of category">{{cat.name}}</option>
           </select>
         </div>
 
         <div class="form-group">
           <label>Calories:</label>
-          <input type="number" class="form-control" [(ngModel)]="dish.calories" name="calories">
+          <input type="number" class="form-control" [(ngModel)]="calories">
         </div>
 
         <div class="form-group">
           <label>Weight:</label>
-          <input type="number" class="form-control" [(ngModel)]="dish.weight" name="weight">
+          <input type="number" class="form-control" [(ngModel)]="weight">
         </div>
 
         <div class="form-group">
           <label>Preparingtime</label>
-          <input type="number" class="form-control" [(ngModel)]="dish.preparingtime" name="preparingtime">
+          <input type="number" class="form-control" [(ngModel)]="preparingtime">
         </div>
 
         <div class="form-group">
           <label>Price</label>
-          <input type="number" class="form-control" [(ngModel)]="dish.price" name="price">
+          <input type="number" class="form-control" [(ngModel)]="price">
         </div>
 
 
         <div class="form-group">
-          <!--<button type="submit" class="btn btn-success" (click)="addDish()">Save</button>-->
-          <a [routerLink]="'/admin/dish/all'" button class="btn btn-success" (click)="addDish()"> Add </a>
-
+          <a button class="btn btn-success" (click)="addDish()"> Add </a>
         </div>
       <!--</form>-->
     </div>

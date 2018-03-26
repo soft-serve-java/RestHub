@@ -1,6 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Category} from "../models/category";
+import {User} from "../models/user";
+import {Dish} from "../models/dish";
 
 @Injectable()
 export class AdminCategoryService {
@@ -18,20 +20,22 @@ export class AdminCategoryService {
       .then()
   }
 
-  addCategory(categoryName: String): Promise<any>{
+  addCategory(name: String): Promise<any>{
     return this.http
-      .post(this.categoryApi + 'admin/category/add', {name: categoryName})
+      .post(this.categoryApi + 'admin/category/add', {name})
       .toPromise()
       .then()
   }
 
-
-  editCategory(id:number, categoryName: string): Promise<any>{
+  editCategory(category: Category): Promise<any>{
     return this.http
-      .post(this.categoryApi + "admin/category/" + id, {category: new Category(id, categoryName)})
+      .post(this.categoryApi + "admin/category/add/", category)
       .toPromise()
-      .then(res =>  console.log(res))
   }
 
-
+  getCategoryById(id: number): Promise<Category>{
+    return this.http
+      .get<Category>(this.categoryApi + "admin/category/" + id)
+      .toPromise()
+  }
 }

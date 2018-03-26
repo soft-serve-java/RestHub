@@ -3,6 +3,7 @@ import {Category} from "../models/category";
 import {AdminCategoryService} from "../services/admin-category.service";
 import {Dish} from "../models/dish";
 import {AdminDishService} from "../services/admin-dish.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -13,28 +14,38 @@ import {AdminDishService} from "../services/admin-dish.service";
 export class AdminDishAddComponent implements OnInit {
 
   category: Category[];
+
+  categ: string;
+
+  id: number;
+  name: string;
+  description: string;
+  weight: number;
+  calories: number;
+  preparingtime: number;
+  price: number;
+  categor: Category;
+
   dish = new Dish();
 
   constructor(public adminCategoryService: AdminCategoryService,
-              public adminDishService: AdminDishService) {this.getCategory()}
+              public adminDishService: AdminDishService,
+              public router: Router) {
+    this.getCategory();
+  }
 
   ngOnInit() {
     this.getCategory();
   }
 
   getCategory() {
-    this.adminCategoryService.getCategory().then(res => this.category = res)
+    this.adminCategoryService.getCategory()
+      .then(res => this.category = res)
   }
 
   addDish(){
     this.adminDishService
-      .addDish(this.dish)
-      .then();
-  }
-
-  editDish(){
-    this.adminDishService
-      .editDish(this.dish)
-      .then();
+      .addDish(this.name, this.description, this.weight, this.categor, this. calories, this.preparingtime, this.price)
+      .then(res => {this.router.navigate(['admin/dish/all'])});
   }
 }
