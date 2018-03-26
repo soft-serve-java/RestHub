@@ -30,9 +30,7 @@ export class CookComponent implements OnInit {
 
   done(orderedDish:OrderedDish){
     console.log('done');
-    this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = orderedDishes);
-    //this.doneDishes.push(orderedDish);
-    this.orderedDishes = this.orderedDishes.filter(od => od != orderedDish);
+    this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = this.orderedDishes.filter(od => od != orderedDish));
   }
 
 }
