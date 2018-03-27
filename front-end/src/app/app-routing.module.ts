@@ -22,7 +22,12 @@ const routes: Routes = [
   {path: '', component: UserComponent, data: {title: 'Welcome to RestHub!'}, children: USER_ROUTES},
   {path: '', component: WaiterComponent, data: {title: 'Hi, Waiter | RestHub'}, children: WAITER_ROUTES},
   {path: '', component: AdminComponent, data: {title: 'Hi, Admin | RestHub'}, children: ADMIN_ROUTES},
-  {path: 'cook', component: CookComponent}
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'cook', component: CookComponent},
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'waiter/tables', component: WaiterTablesComponent},
+  {path: 'waiter/order/:id', component: WaiterOdrerComponent},
+  {path: 'cook/:id', component: CookComponent}
 ];
 
 @NgModule({
