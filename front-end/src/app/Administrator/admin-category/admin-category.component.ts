@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminDishService} from "../services/admin-dish.service";
-import {Dish} from "../models/dish";
-import {AdminCategoryService} from "../services/admin-category.service";
-import {Category} from "../models/category";
+import {AdminDishService} from "../../services/admin-dish.service";
+import {Dish} from "../../models/dish";
+import {AdminCategoryService} from "../../services/admin-category.service";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-admin-category',
@@ -21,5 +21,4 @@ export class AdminCategoryComponent implements OnInit {
   deleteCategory(cat: Category){
     this.adminCategoryService.deleteCategory(cat.id).then(res=> this.category.splice(this.category.indexOf(cat), 1))
   }
-
 }

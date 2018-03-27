@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Dish} from "../models/dish";
-import {AdminDishService} from "../services/admin-dish.service";
-import {User} from "../models/user";
+import {Dish} from "../../models/dish";
+import {AdminDishService} from "../../services/admin-dish.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'wfm-admin-dish',

@@ -1,16 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {USER_ROUTES} from "./layout/user/user.routes";
-import {UserComponent} from "./layout/user/user.component";
-import {WaiterComponent} from "./layout/waiter/waiter.component";
-import {WAITER_ROUTES} from "./layout/waiter/waiter.routes";
-import {ADMIN_ROUTES} from "./layout/admin/admin.routes";
-import {AdminComponent} from "./layout/admin/admin.component";
+import { WelcomeComponent } from './welcome/welcome.component';
+import {AdminComponent} from "./Administrator/admin/admin.component";
+import {AdminUserComponent} from "./Administrator/admin-user/admin-user.component";
+import {WaiterTablesComponent} from "./waiter-tables/waiter-tables.component";
+import {AdminDishComponent} from "./Administrator/admin-dish/admin-dish.component";
+import {AdminCategoryComponent} from "./Administrator/admin-category/admin-category.component";
+import {AdminCategoryAddComponent} from "./Administrator/admin-category-add/admin-category-add.component";
+import {AdminDishAddComponent} from "./Administrator/admin-dish-add/admin-dish-add.component";
+import {AdminUserEditComponent} from "./Administrator/admin-user-edit/admin-user-edit.component";
+import {AdminCategoryEditComponent} from "./Administrator/admin-category-edit/admin-category-edit.component";
+import {AdminDishEditComponent} from "./Administrator/admin-dish-edit/admin-dish-edit.component";
 
 const routes: Routes = [
-  {path: '', component: UserComponent, data: {title: 'Welcome to RestHub!'}, children: USER_ROUTES},
-  {path: '', component: WaiterComponent, data: {title: 'Hi, Waiter | RestHub'}, children: WAITER_ROUTES},
-  {path: 'admin', component: AdminComponent, data: {title: 'Hi, Admin | RestHub'}, children: ADMIN_ROUTES},
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'waiter', component: WaiterTablesComponent},
+  {path: 'admin/user/all', component: AdminUserComponent},
+  {path: 'admin/user/edit/:id', component: AdminUserEditComponent},
+  {path: 'admin/dish/all', component: AdminDishComponent},
+  {path: 'admin/dish/add', component: AdminDishAddComponent},
+  {path: 'admin/dish/edit/:id', component: AdminDishEditComponent},
+  {path: 'admin/category/all', component: AdminCategoryComponent},
+  {path: 'admin/category/add', component: AdminCategoryAddComponent},
+  {path: 'admin/category/edit/:id', component: AdminCategoryEditComponent},
+  {path: 'waiter', component: WaiterTablesComponent},
 ];
 
 @NgModule({
