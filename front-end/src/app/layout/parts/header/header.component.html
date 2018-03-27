@@ -20,25 +20,11 @@
                 <span class="left-span"> Call a waiter
                   <i class="fa fa-bell" aria-hidden="true"></i></span>
       </button>
-
-      <!--
-
-     <li>
-         <c:if test="${not empty orderMap || not empty orderedList}">
-             <a href="/order">
-                 <button class="btn btn-info nav-button" style="margin-right:10px;">
-                     <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-                 </button>
-             </a>
-         </c:if>
-         <c:if test="${empty orderMap && empty orderedList}">
-             <button class="btn btn-info nav-button" disabled style="margin-right:10px;">
-                 <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
-             </button>
-         </c:if>
-         Your table is ${tables.currentTable}
-     </li>
-        //-->
+        <a [routerLink]="['/order']">
+          <button class="btn btn-info nav-button" style="margin-right:10px;">
+            <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+          </button>
+        </a>
     </ul>
   </div>
   <form action="/menu" method="get" class="form-inline">

@@ -34,6 +34,7 @@ import {FormsModule} from "@angular/forms";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {AuthGuardService} from "./services/auth-guard.service";
 import { RegistrationComponent } from './registration/registration.component';
+import {OrderStorageService} from "./services/order-storage.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -56,8 +57,7 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     WaiterOdrerComponent,
     LoginComponent,
     RegistrationComponent,
-    WaiterComponent
-  ],
+    WaiterComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -66,7 +66,7 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     StorageServiceModule,
     FormsModule
   ],
-  providers: [WelcomeService,WaiterService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService, WaiterService,OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl}],
   bootstrap: [AppComponent]
 })

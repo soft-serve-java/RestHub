@@ -3,7 +3,9 @@ import {ActivatedRoute} from "@angular/router";
 
 import {MenuService} from '../services/menu.service';
 import {Dish} from '../models/dish'
-import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {OrderStorageService} from "../services/order-storage.service";
+
 
 @Component({
   selector: 'app-menu',
@@ -18,16 +20,17 @@ export class MenuComponent implements OnInit {
 
   private data:any = [];
 
-  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,
-              private route: ActivatedRoute, public menuService: MenuService) {
+  constructor(private route: ActivatedRoute,
+              private menuService: MenuService,
+              private orderStorageService: OrderStorageService) {
     this.setSession();
     route.params.subscribe( params => {
                                             this.category = params['category'];
                                             this.currPage = Number(params['page']);
                                             this.getDishes();
-                                            this.data = this.storage.get("orderMap");
+                                            this.data = this.orderStorageService.orderMap;
                                           });
-  }
+    }
 
   ngOnInit() {
     this.getDishes();
@@ -46,13 +49,13 @@ export class MenuComponent implements OnInit {
   }
 
   addToOrder(dish: Dish){
-    let temp = this.storage.get("orderMap");
+    let temp = this.orderStorageService.orderMap;
 
     if (!temp.some(elem => elem.key == dish.id)){
       temp.push({key: dish.id, value:0});
-      let dishes = this.storage.get("orderDishes");
+      let dishes = this.orderStorageService.orderDishes;
       dishes.push(dish);
-      this.storage.set("orderDishes", dishes);
+      this.orderStorageService.orderDishes = dishes;
     }
     temp.find(function(val){
         if (val.key == dish.id){
@@ -60,7 +63,7 @@ export class MenuComponent implements OnInit {
         }
     });
 
-    this.storage.set("orderMap", temp);
+    this.orderStorageService.orderMap = temp;
     this.data = temp;
   }
 
@@ -80,9 +83,9 @@ export class MenuComponent implements OnInit {
   }
 
   private setSession(){
-    if (this.storage.get("orderMap") == null){
-      this.storage.set("orderMap", []);
-      this.storage.set("orderDishes", [])
+    if (this.orderStorageService.orderMap == null){
+      this.orderStorageService.orderMap = [];
+      this.orderStorageService.orderDishes = [];
     }
   }
 

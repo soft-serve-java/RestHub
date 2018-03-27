@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {Order} from "../models/order";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {OrderedDish} from "../models/orderedDish";
 
 @Injectable()
@@ -13,7 +13,32 @@ export class OrderService {
   }
 
   createOrder(orderDishes: OrderedDish[]):Promise<Order>{
-    return this.http.post<Order>(this.apiUrl + "order", orderDishes).toPromise();
+    let item = localStorage.getItem('token');
+    let tokenHeader = '';
+    let authHeader = '';
+    if (item != null){
+      tokenHeader = 'Bearer ' + item;
+      authHeader = 'Authorization';
+    }
+
+    return this.http.post<Order>(this.apiUrl + "order", orderDishes,
+      {headers: new HttpHeaders({
+              authHeader:  tokenHeader,
+             })}).toPromise();
   }
 
+  submitOne(orderedDish: OrderedDish): Promise<Order>{
+    let item = localStorage.getItem('token');
+    let tokenHeader = '';
+    let authHeader = '';
+    if (item != null){
+      tokenHeader = 'Bearer ' + item;
+      authHeader = 'Authorization';
+    }
+
+    return this.http.post<Order>(this.apiUrl + "order/submitOne", orderedDish,
+      {headers: new HttpHeaders({
+          authHeader:  tokenHeader,
+        })}).toPromise();
+  }
 }

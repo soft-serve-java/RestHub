@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-          <tr *ngFor="let orderItem of newOrderedDishes" ng-class="orderItem.status.name=='preparing' ? 'table-info' : orderItem.status.name=='cooking' ? 'table-warning : orderItem.status.name=='delivery' ? 'table-table-success'">
+          <tr *ngFor="let orderItem of orderedDishes" [ngClass]="getClassByStatus(orderItem.status)">
         <td>
           <div class="row">
             <div class="col-md-4">
@@ -27,7 +27,7 @@
         <td>
           <div class="row">
             <div class="input-group">
-              <button type="button" class="btn btn-secondary" disabled="disabled">
+              <button type="button" class="btn btn-secondary" disabled>
                 <span class="fa fa-minus"></span>
               </button>
               <input type="text" name="quant[1]" class="form-control input-number"
@@ -42,15 +42,51 @@
           <button  type="button" class="btn btn-secondary" disabled>{{orderItem.status.name}}</button>
         </td>
         </tr>
+          <tr *ngFor="let orderItem of newOrderedDishes">
+            <td>
+              <div class="row">
+                <div class="col-md-4">
+                  <img src="{{orderItem.dish.images[0].url}}" class="w-100">
+                </div>
+                <div class="col-md-6">
+                  <h4>{{orderItem.dish.name}}</h4>
+                  <p class="text-muted">{{orderItem.dish.weight}}</p>
+                </div>
+              </div>
+            </td>
+            <td>{{orderItem.dish.price}}$</td>
+            <td>
+              <div class="row">
+                <div class="input-group">
+                  <button type="button" class="btn btn-secondary" [disabled]="isDiabledByQuantity(orderItem)" (click)="decrementQuantity(orderItem)">
+                    <span class="fa fa-minus"></span>
+                  </button>
+                  <input type="text" name="quant[1]" class="form-control input-number"
+                         value="{{orderItem.quantity}}" min="1" max="10" disabled>
+                  <button type="button" class="btn btn-secondary" (click)="incrementQuantity(orderItem)">
+                    <span class="fa fa-plus"></span>
+                  </button>
+                </div>
+              </div>
+            </td>
+            <td style="text-align: center">
+              <button (click)="submitOne(orderItem)" class="btn btn-success inline"><span
+                class="fa fa-check"></span></button>
+              <button (click)="remove(orderItem)" class="btn btn-danger inline"><span
+                class="fa fa-times"></span></button>
+            </td>
+          </tr>
     </tbody>
   </table>
   <hr/>
   <div class="row">
     <h5 class="col-md-4">
+      You have {{orderedDishes.length + newOrderedDishes.length}} items in your cart
     </h5>
     <h4 class="col-md-5">
+      Total amount: {{getTotalAmount()}}$
     </h4>
-        <button (click)="submitOrder()" type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%">
+        <button (click)="submitOrder()" [disabled]="isDisabledByNewOrderedDishes()" type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%">
           Submit All<span class="fa fa-check"></span>
         </button>
   </div>

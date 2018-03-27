@@ -1,14 +1,18 @@
 package com.kh013j.restcontrollers;
 
-import com.kh013j.model.domain.Order;
-import com.kh013j.model.domain.OrderedDish;
+import com.kh013j.model.domain.*;
 import com.kh013j.model.service.interfaces.OrderService;
+import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.security.Principal;
 import java.sql.Timestamp;
+import java.util.AbstractMap;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/order")
@@ -16,9 +20,12 @@ import java.util.List;
 public class OrderRestController {
     private OrderService orderService;
 
+    private UserService userService;
+
     @Autowired
-    public OrderRestController(OrderService orderService) {
+    public OrderRestController(OrderService orderService, UserService userService) {
         this.orderService = orderService;
+        this.userService = userService;
     }
 
     @GetMapping(value = "/table/{id}")
@@ -27,12 +34,22 @@ public class OrderRestController {
     }
 
     @PostMapping
-    public Order saveOrder(@RequestBody List<OrderedDish> orderedDishes){
-        Order order = new Order();
-        order.setTime(new Timestamp(new Date().getTime()));
-        order.setOrderedFood(orderedDishes);
-        order.setTablenumber(1);
-        return orderService.create(order);
+    public Order saveOrder(@RequestBody List<OrderedDish> orderedDishes, Principal principal){
+        User user = null;
+        if (principal != null){
+            user = userService.findByEmail(principal.getName());
+        }
+        return orderService.onSubmitOrder(1, orderedDishes, user);
+    }
+
+    @PostMapping("/submitOne")
+    public Order submitOne(@RequestBody OrderedDish orderedDish, Principal principal) {
+        User user = null;
+        if(principal != null) {
+            user = userService.findByEmail(principal.getName());
+        }
+        return orderService.submitOneDish(1, orderedDish, user);
+
     }
 
 }
