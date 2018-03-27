@@ -10,8 +10,7 @@ export class AdminUserService {
   constructor(@Inject('API_URL') private userApi: string, private http:HttpClient) { }
 
   getUsers(): Promise<User[]>{
-    return this.http.get<User[]>(this.userApi + "admin/user/all")
-      .toPromise();
+    return this.http.get<User[]>(this.userApi + "admin/user/all").toPromise();
   }
 
   deleteUser(id: number): Promise<any>{
@@ -21,15 +20,4 @@ export class AdminUserService {
       .then()
   }
 
-  editUser(user: User): Promise<any>{
-    return this.http
-      .post(this.userApi + "admin/user/add/", user)
-      .toPromise()
-  }
-
-  getUserById(id: number): Promise<User>{
-    return this.http
-      .get<User>(this.userApi + "admin/user/" + id)
-      .toPromise()
-  }
 }

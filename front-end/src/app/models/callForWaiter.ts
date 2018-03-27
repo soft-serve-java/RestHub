@@ -1,3 +1,3 @@
 export class CallForWaiter {
-   id: number;
+  private id: number;
 }
