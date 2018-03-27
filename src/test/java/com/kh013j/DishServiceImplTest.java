@@ -96,7 +96,7 @@ public class DishServiceImplTest {
         dish.setDescription("This'll blow away your mind");
         dish.setWeight(250);
         dish.setCalories(500);
-        dish.setPreparingtime(5);
+        dish.setPreparingtime(6);
         Image image = new Image();
         image.setUrl("some_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
@@ -243,7 +243,7 @@ public class DishServiceImplTest {
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
         dish.setCalories(450);
-        dish.setPreparingtime(5);
+        dish.setPreparingtime(7);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
@@ -262,7 +262,7 @@ public class DishServiceImplTest {
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(-200);
         dish.setCalories(450);
-        dish.setPreparingtime(5);
+        dish.setPreparingtime(8);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
@@ -300,7 +300,7 @@ public class DishServiceImplTest {
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
         dish.setCalories(-450);
-        dish.setPreparingtime(5);
+        dish.setPreparingtime(9);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
