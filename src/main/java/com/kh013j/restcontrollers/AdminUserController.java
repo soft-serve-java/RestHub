@@ -9,33 +9,32 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/admin/user/")
-public class AdminUserControllerRest {
+public class AdminUserController {
 
     private UserService userService;
 
     @Autowired
-    public AdminUserControllerRest(UserService userService) {
+    public AdminUserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/api/admin/user/all")
     public List<User> getUser(){
         return userService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/admin/user/{id}")
     public User getUser(@PathVariable("id") long id){
         return userService.findById(id);
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("/api/admin/user/add")
         public User addUser(@RequestBody User user){
             return userService.create(user);
         }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/api/admin/user/{id}")
     public Boolean deleteUser(@PathVariable("id") long id){
         userService.delete(id);
         return true;

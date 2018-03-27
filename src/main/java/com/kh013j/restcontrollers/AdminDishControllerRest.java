@@ -11,7 +11,6 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/admin/dish/")
 public class AdminDishControllerRest {
 
     private DishService dishService ;
@@ -21,23 +20,22 @@ public class AdminDishControllerRest {
         this.dishService = dishService;
     }
 
-    @GetMapping ("/all")
+    @GetMapping ("/api/admin/dish/all")
     public List<Dish> getDish(){
         return dishService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/admin/dish/{id}")
     public Dish fetDish(@PathVariable("id") long id){
         return dishService.findById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/api/admin/dish/add")
     public Dish addDish(@RequestBody Dish dish){
-        dish.setAvailability(true);
         return dishService.create(dish);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/api/admin/dish/{id}")
     public Boolean deleteDish(@PathVariable("id") long id){
         dishService.delete(id);
         return true;

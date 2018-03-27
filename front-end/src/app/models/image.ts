@@ -1,4 +1,4 @@
 export class Image {
-   id: number;
-   url: string;
+  private id: number;
+  private url: string;
 }
