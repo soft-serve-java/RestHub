@@ -12,6 +12,7 @@ export class DishPageComponent implements OnInit {
 
   private dish: Dish;
   private populars: Dish[];
+  private object: [{dish: Dish, quantity: number }];
 
   constructor(private route: ActivatedRoute, public menuService: MenuService) {
     route.params.subscribe( params => {
@@ -19,12 +20,11 @@ export class DishPageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(){
   }
 
   loadDishById(dishId: number){
     this.menuService.getDishById(dishId).then(res => this.dish = res);
     this.menuService.getDishPopulars(dishId).then(res => this.populars = res);
   }
-
 }

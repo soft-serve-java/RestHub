@@ -70,4 +70,9 @@ public class DishControllerRest {
     public List<Dish> getPopularsById(@PathVariable long id){
         return dishService.findPopular(id);
     }
+
+    @GetMapping("/")
+    public List<Dish> getDishesByName(@RequestParam("search") String searchText){
+        return dishService.findByAvailableAndNameContaining(searchText);
+    }
 }

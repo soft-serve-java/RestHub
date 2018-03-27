@@ -2,7 +2,7 @@ import {Role} from "./role";
 
 export class User {
   id: number;
-  private email: string;
+  username: string;
   private password: string;
   private name: string;
   private confirmationtoken: boolean;
@@ -20,5 +20,11 @@ export class User {
     this.enabled = enabled;
     this.roles = roles;
     this.avatar = avatar;
+  }
+  constructor(login:string, email:string, password:string ){
+    this.username = email;
+    this.name = login;
+    this.password = password;
+
   }
 }

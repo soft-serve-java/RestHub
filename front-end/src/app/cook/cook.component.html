@@ -1,0 +1,29 @@
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr style="text-align: center;">
+      <th>Name</th>
+      <th>Quantity</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let orderedDish of orderedDishes">
+      <td>{{orderedDish.dish.name}}</td>
+      <td>{{orderedDish.quantity}}</td>
+      <td *ngIf="orderedDish.status.name=='preparing'; else elseBlock">
+        <a class="btn btn-warning" (click)="update(orderedDish)" style="margin-bottom: 10%">
+          Got it!<span class="fa fa-check"></span>
+        </a>
+      </td>
+        <ng-template #elseBlock>
+          <td>
+          <button (click)="done(orderedDish)" class="btn btn-success" style="margin-bottom: 10%;">
+            Done<span class="fa fa-check"></span>
+          </button>
+          </td>
+        </ng-template>
+    </tr>
+    </tbody>
+  </table>
+</div>

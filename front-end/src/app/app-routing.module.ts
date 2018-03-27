@@ -1,27 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-import {AdminComponent} from "./admin/admin.component";
-import {AdminUserComponent} from "./admin-user/admin-user.component";
-import {WaiterTablesComponent} from "./waiter-tables/waiter-tables.component";
-import {AdminDishComponent} from "./admin-dish/admin-dish.component";
-import {AdminCategoryComponent} from "./admin-category/admin-category.component";
-import {AdminCategoryAddComponent} from "./admin-category-add/admin-category-add.component";
-import {AdminOrderComponent} from "./admin-order/admin-order.component";
-import { AdminLtComponent, PUBLIC_ROUTES } from './layouts/admin/';
+import {CookComponent} from "./cook/cook.component";
+import {WaiterTablesComponent} from "./waiter/waiter-tables/waiter-tables.component";
+import {WaiterOdrerComponent} from "./waiter/waiter-odrer/waiter-odrer.component";
+import {LoginComponent} from "./login/login.component";
+import {
+  AuthGuardService as AuthGuard
+} from './services/auth-guard.service';
+import {RegisterComponent} from "angular-stormpath";
+import {RegistrationComponent} from "./registration/registration.component";
+import {USER_ROUTES} from "./layout/user/user.routes";
+import {UserComponent} from "./layout/user/user.component";
+import {WaiterComponent} from "./layout/waiter/waiter.component";
+import {WAITER_ROUTES} from "./layout/waiter/waiter.routes";
+import {ADMIN_ROUTES} from "./layout/admin/admin.routes";
+import {AdminComponent} from "./layout/admin/admin.component";
 
 const routes: Routes = [
+  {path: '', component: UserComponent, data: {title: 'Welcome to RestHub!'}, children: USER_ROUTES},
+  {path: '', component: WaiterComponent, data: {title: 'Hi, Waiter | RestHub'}, children: WAITER_ROUTES},
+  {path: '', component: AdminComponent, data: {title: 'Hi, Admin | RestHub'}, children: ADMIN_ROUTES},
   {path: 'welcome', component: WelcomeComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'admin/user/all', component: AdminUserComponent},
-  {path: 'waiter', component: WaiterTablesComponent},
-  {path: 'admin/dish/all', component: AdminDishComponent},
-  {path: 'admin/category/all', component: AdminCategoryComponent},
-  {path: 'admin/category/add', component: AdminCategoryAddComponent},
-  {path: 'admin/category/edit/:id', component: AdminCategoryAddComponent},
-  {path: 'waiter', component: WaiterTablesComponent},
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-  { path: 'admin/order', component: AdminLtComponent, data: { title: 'Public Views' }, children: PUBLIC_ROUTES },
+  {path: 'cook', component: CookComponent},
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'waiter/tables', component: WaiterTablesComponent},
+  {path: 'waiter/order/:id', component: WaiterOdrerComponent},
+  {path: 'cook/:id', component: CookComponent}
 ];
 
 @NgModule({
