@@ -10,29 +10,26 @@
           aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="/welcome"><img src="/images/logo.png"></a>
+  <a class="navbar-brand" [routerLink]="['/welcome']"><img src="/assets/images/logo.png"></a>
   <div class="navbar-collapse collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/admin/user/all">Users</a>
+        <a class="nav-link" [routerLink]="['/admin/user/all']" >Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/dish/all">Dish</a>
+        <a class="nav-link"  [routerLink]="['/admin/dish/all']">Dish</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/category/all">Category</a>
+        <a class="nav-link"  [routerLink]="['/admin/category/all']">Category</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/order">Order</a>
+        <a class="nav-link"  [routerLink]="['/admin/order/all']" >Order</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/role/all">Role</a>
+        <a class="nav-link" [routerLink]="['/admin/role/all']" >Role</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/status/all">Status</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/reviews">Reviews</a>
+        <a class="nav-link" [routerLink]="['/admin/status/all']" >Status</a>
       </li>
     </ul>
     <form action="#" class="form-inline">

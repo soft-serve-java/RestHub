@@ -5,7 +5,7 @@ import * as SockJS from "sockjs-client";
 import {Order} from "../../models/order";
 import {ActivatedRoute} from "@angular/router";
 import {OrderService} from "../../services/order.service";
-import {OrderedDish} from "../../models/orderedDish";
+
 @Component({
   selector: 'app-waiter-odrer',
   templateUrl: './waiter-odrer.component.html',

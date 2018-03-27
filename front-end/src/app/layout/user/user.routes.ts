@@ -9,6 +9,7 @@ import {CookComponent} from "../../cook/cook.component";
 
 
 export const USER_ROUTES: Routes = [
+  {path: '', component: WelcomeComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'menu/:category/:page', component: MenuComponent},
   {path: 'menu/:category', component: MenuComponent},
