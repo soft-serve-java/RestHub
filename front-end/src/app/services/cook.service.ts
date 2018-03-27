@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {OrderedDish} from "../models/orderedDish";
+import {reject, resolve} from "q";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,11 +22,10 @@ export class CookService {
     return this.http.get<OrderedDish[]>(this.orderedDishesUrl);
   }
 
-  updateOrderedDish(orderedDish: OrderedDish) : Observable<OrderedDish> {
-    // transfer id
-    let updateOrderedDishUrl = 'http://localhost:8080/api/cook?id={updatedOrderedDish}';
-    httpOptions.headers.set('Authorization', 'my-new-auth-token');
-    return this.http.put<OrderedDish>(this.orderedDishesUrl, orderedDish, httpOptions);
+  updateOrderedDish(id: number) : Promise<OrderedDish[]> {
+    console.log(id);
+    const url = `${this.orderedDishesUrl}/${id}`;
+    return this.http.post<OrderedDish[]>(url, httpOptions).toPromise();
   }
 
 }

@@ -9,7 +9,6 @@ import {CookService} from "../services/cook.service";
   styleUrls: ['./cook.component.css']
 })
 export class CookComponent implements OnInit {
-  updatedOrderedDish: OrderedDish;
   orderedDishes: Array<OrderedDish>;
 
   constructor(private cookService: CookService) {
@@ -23,15 +22,12 @@ export class CookComponent implements OnInit {
     this.showOrderedDishes();
   }
 
-  update(){
-    if(this.updatedOrderedDish){
-      this.cookService.updateOrderedDish(this.updatedOrderedDish)
-        .subscribe(orderedDish => {
-          const ix = orderedDish ? this.orderedDishes.findIndex(orderedDish => orderedDish.id === orderedDish.id) : -1;
-          if (ix > -1) { this.orderedDishes[ix] = orderedDish; }
-        });
-      this.updatedOrderedDish = undefined;
-        }
-    }
+  update(orderedDish: OrderedDish) {
+    this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = orderedDishes);
+  }
+
+  done(orderedDish:OrderedDish){
+    this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = this.orderedDishes.filter(od => od != orderedDish));
+  }
 
 }

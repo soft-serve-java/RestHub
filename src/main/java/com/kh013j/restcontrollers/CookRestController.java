@@ -4,10 +4,7 @@ import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,14 +23,16 @@ public class CookRestController {
         return orderedDishService.findAll();
     }
 
-    @GetMapping("api/cook/{orderedDish}")
-    public void changeOrderedDishStatus(@PathVariable("orderedDish") OrderedDish orderedDish){
-       // in html href point to this method reference
-        if(orderedDish.getStatus().getName().equals(Status.COOKING)){
+    @PostMapping("api/cook/{id}")
+    public List<OrderedDish> changeOrderedDishStatus(@PathVariable("id") long id){
+        OrderedDish orderedDish = orderedDishService.findById(id);
+
+        if(orderedDish.getStatus().getName().equals(Status.PREPARING)){
             orderedDishService.setCooking(orderedDish.getId());
         }
-        if(orderedDish.getStatus().getName().equals(Status.DONE)){
+        else if(orderedDish.getStatus().getName().equals(Status.COOKING)){
             orderedDishService.setDone(orderedDish.getId());
         }
+        return orderedDishService.findAll();
     }
 }
