@@ -26,11 +26,11 @@ export class WaiterService {
     return this.http.post<User>(this.apiUrl + 'getTable/'+tableNumber, localStorage.getItem("username")).toPromise();
   }
 
-  doPOSTonCloseCalling(tableNumber:number){
-    return this.http.post(this.apiUrl + 'acceptCalling/'+tableNumber, localStorage.getItem("username"));
+  doPOSTonCloseCalling(tableNumber:number):Promise<any>{
+    return this.http.post(this.apiUrl + 'acceptCalling/'+tableNumber, localStorage.getItem("username")).toPromise();
   }
-  doPOSTonCallWaiter(tableNumber:number) {
-    return this.http.post(this.apiUrl+ 'callWaiterClient', tableNumber);
+  doPOSTonCallWaiter(tableNumber:number):Promise<any> {
+    return this.http.post<any>(this.apiUrl+ 'callWaiterClient', tableNumber).toPromise();
 
   }
 

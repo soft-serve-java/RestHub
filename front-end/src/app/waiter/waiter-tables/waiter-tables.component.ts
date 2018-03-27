@@ -81,7 +81,7 @@ export class WaiterTablesComponent implements OnInit {
     this.waiterService.doPOSTonGettingTable(table).then(res => console.log(res));
   }
   doPOSTonCloseCalling(table:number){
-    this.waiterService.doPOSTonCloseCalling(table);
+    this.waiterService.doPOSTonCloseCalling(table).then(res => console.log(res));
   }
 
 }

@@ -18,6 +18,7 @@ export class WaiterOdrerComponent implements OnInit {
   constructor(@Inject('SOCKET_URL') private socketUrl, private route: ActivatedRoute,  private orderService:OrderService ) { }
   id: number;
   private sub: any;
+  showDialog:boolean;
   totalAmount:number;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

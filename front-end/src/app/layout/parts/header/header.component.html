@@ -26,6 +26,13 @@
           </button>
         </a>
     </ul>
+    <div *ngIf="showDialog">
+      <h4 class="modal-title">Your waiter is coming</h4>
+    </div>
+    <div *ngIf="showDialog" class="modal-body">
+        <img src="/assets/images/CUTharissa.jpg" class="avatarWaiter pull-left">
+    </div>
+
   </div>
   <form action="/menu" method="get" class="form-inline">
     <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search dish"/>
@@ -39,17 +46,4 @@
   <ng-template #loginblock>
     <a class="a-nav nav-link" [routerLink]="['/login']" >Log in <i class="fa fa-user" aria-hidden="true"></i></a>
   </ng-template>
-  <!--
-
-<c:if test="${pageContext.request.userPrincipal.name != null}">
-  <h6 style="color: lightgrey">
-      Hi, ${pageContext.request.userPrincipal.name}
-      <a href="javascript:formSubmit()"> Logout</a>
-  </h6>
-</c:if>
-<c:if test="${pageContext.request.userPrincipal.name == null}">
-  <a class="nav-link a-nav" href="/login">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
-</c:if>
-//-->
-
 </nav>
