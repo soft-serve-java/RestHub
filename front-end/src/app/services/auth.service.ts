@@ -7,10 +7,10 @@ import {User} from "../models/user";
 @Injectable()
 export class AuthService {
   public jwtHelper: JwtHelperService = new JwtHelperService();
-  constructor(private http:HttpClient, public router:Router) { }
+  constructor(private http:HttpClient, public router:Router, @Inject('LOGIN_URL') private api: string) { }
 
   logUserIn(username:string, password:string):Promise<any>{
-    return this.http.post("http://localhost:9090/login", {username:username, password:password},
+    return this.http.post(this.api+"login", {username:username, password:password},
       {observe:'response' }).toPromise();
   }
   public isAuthenticated(): boolean {
@@ -21,6 +21,6 @@ export class AuthService {
       localStorage.removeItem("token");
   }
   register(user:User):Promise<User>{
-    return this.http.post<User>("http://localhost:9090/api/registration", user).toPromise();
+    return this.http.post<User>(this.api + "registration", user).toPromise();
   }
 }

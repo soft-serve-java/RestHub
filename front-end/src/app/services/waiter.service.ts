@@ -27,7 +27,7 @@ export class WaiterService {
   }
 
   doPOSTonCloseCalling(tableNumber:number){
-    return this.http.post(this.apiUrl + 'acceptCalling',tableNumber);
+    return this.http.post(this.apiUrl + 'acceptCalling/'+tableNumber, localStorage.getItem("username"));
   }
   doPOSTonCallWaiter(tableNumber:number) {
     return this.http.post(this.apiUrl+ 'callWaiterClient', tableNumber);

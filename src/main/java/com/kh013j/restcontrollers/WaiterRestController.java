@@ -50,15 +50,12 @@ public class WaiterRestController {
                 new Timestamp(System.currentTimeMillis()), sessionId));
     }
 
-    @PostMapping("acceptCalling")
-    public void acceptCalling(@RequestBody int table) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            User user = userService.findByEmail(auth.getName());
+    @PostMapping("acceptCalling/{tablenumber}")
+    public void acceptCalling(@PathVariable("tablenumber") int table, @RequestBody String username) {
+            User user = userService.findByEmail(username);
             CallForWaiter call = service.mackAsClosed(table, user);
             template.convertAndSendToUser(Integer.toString(table),
                     "/callBackInfo", call.getWaiter());
-        }
     }
     @PostMapping("getTable/{tablenumber}")
     public User getTable(@PathVariable("tablenumber") int table, @RequestBody String username){

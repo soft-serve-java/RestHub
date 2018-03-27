@@ -6,5 +6,7 @@
 export const environment = {
   production: false,
   apiUrl: "http://localhost:9090/api/",
-  socketUrl: "http://localhost:9090/call"
+  socketUrl: "http://localhost:9090/call",
+  loginUrl: "http://localhost:9090/"
+
 };

@@ -38,6 +38,7 @@ import {OrderStorageService} from "./services/order-storage.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
+export const LOGIN_URL = new InjectionToken<string>('loginUrl');
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ export const SOCKET_URL = new InjectionToken<string>('socketUrl');
     FormsModule
   ],
   providers: [WelcomeService, WaiterService,OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
-    {provide: "SOCKET_URL", useValue: environment.socketUrl}],
+    {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
