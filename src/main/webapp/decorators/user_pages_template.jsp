@@ -75,7 +75,7 @@
         <ul class="navbar-nav mr-auto">
             <c:forEach items="${categoryItems}" var="item">
                 <li class="nav-item">
-                    <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
+                        <a class="nav-link" href="/menu/${item.name}">${item.name}</a>
                 </li>
             </c:forEach>
 

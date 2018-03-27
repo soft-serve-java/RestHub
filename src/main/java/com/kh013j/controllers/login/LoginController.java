@@ -15,7 +15,7 @@ public class LoginController {
         return model;
     }
 
-    @GetMapping(value = "/login")
+    //  @GetMapping(value = "/login")
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "logout", required = false) String logout) {
         ModelAndView model = new ModelAndView();

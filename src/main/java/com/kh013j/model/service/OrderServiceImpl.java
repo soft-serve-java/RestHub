@@ -59,6 +59,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Order createOrder(List<OrderedDish> orderedDishes, int tablenumber) {
+        Order order = new Order();
+        order.setTime(new Timestamp(new Date().getTime()));
+        order.setTablenumber(tablenumber);
+        order.setOrderedFood(orderedDishes);
+        return order;
+    }
+
+    @Override
     public Order createOrderFromMap(Map<Dish, Integer> orderMap, int tablenumber) {
         Order order = new Order();
         order.setTime(new Timestamp(new Date().getTime()));
@@ -79,6 +88,18 @@ public class OrderServiceImpl implements OrderService {
         update(order);
     }
 
+    @Override
+    public Order onSubmitOrder(int tablenumber, List<OrderedDish> orderedDishes, User user) {
+        Order order = findByTable(tablenumber);
+        if (order != null) {
+            order.getOrderedFood().addAll(orderedDishes);
+        } else {
+            order = createOrder(orderedDishes, tablenumber);
+        }
+        order.setUser(user);
+        return update(order);
+    }
+
     public void submitOneDish(int tablenumber, AbstractMap.SimpleEntry<Dish, Integer> dishQuantity, User user){
         Order order = findByTable(tablenumber);
         if (order != null) {
@@ -90,6 +111,18 @@ public class OrderServiceImpl implements OrderService {
         }
         order.setUser(user);
         update(order);
+    }
+
+    @Override
+    public Order submitOneDish(int tablenumber, OrderedDish orderedDish, User user){
+        Order order = findByTable(tablenumber);
+        if (order != null) {
+            order.getOrderedFood().add(orderedDish);
+        } else {
+            order = createOrder(Collections.singletonList(orderedDish), tablenumber);
+        }
+        order.setUser(user);
+        return update(order);
     }
 
     private List<Tables> findNullWaiterTables(List<Order> orders) {

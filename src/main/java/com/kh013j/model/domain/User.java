@@ -1,5 +1,7 @@
 package com.kh013j.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +24,8 @@ import java.util.Set;
 @Entity
 @EqualsAndHashCode
 @Table(name = "user", schema = "rh")
-public class User implements UserDetails {
+@JsonAutoDetect
+public class User  {
     @Id
     @SequenceGenerator(name = "user-sequence_generator", sequenceName = "user_sequence")
     @GeneratedValue(generator = "user-sequence_generator", strategy = GenerationType.IDENTITY)
@@ -30,6 +33,7 @@ public class User implements UserDetails {
 
     @Email
     @Size(min = 5, max = 50)
+    @JsonProperty("username")
     private String email;
 
     @Size(min = 5, max = 100)
@@ -62,7 +66,6 @@ public class User implements UserDetails {
         this.roles = user.roles;
     }
 
-    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> roleList = new ArrayList<>();
         for (Role role: roles) {
@@ -71,23 +74,4 @@ public class User implements UserDetails {
         return roleList;
     }
 
-    @Override
-    public String getUsername() {
-        return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return enabled;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return enabled;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return enabled;
-    }
 }
