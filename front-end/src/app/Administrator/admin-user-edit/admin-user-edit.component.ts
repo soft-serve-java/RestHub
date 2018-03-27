@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminCategoryService} from "../services/admin-category.service";
-import {Category} from "../models/category";
-import {User} from "../models/user";
-import {Role} from "../models/role";
-import {AdminRoleService} from "../services/admin-role.service";
-import {AdminUserService} from "../services/admin-user.service";
+import {AdminCategoryService} from "../../services/admin-category.service";
+import {Category} from "../../models/category";
+import {User} from "../../models/user";
+import {Role} from "../../models/role";
+import {AdminRoleService} from "../../services/admin-role.service";
+import {AdminUserService} from "../../services/admin-user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

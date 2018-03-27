@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-import {AdminComponent} from "./admin/admin.component";
-import {AdminUserComponent} from "./admin-user/admin-user.component";
+import {AdminComponent} from "./Administrator/admin/admin.component";
+import {AdminUserComponent} from "./Administrator/admin-user/admin-user.component";
 import {WaiterTablesComponent} from "./waiter-tables/waiter-tables.component";
-import {AdminDishComponent} from "./admin-dish/admin-dish.component";
-import {AdminCategoryComponent} from "./admin-category/admin-category.component";
-import {AdminCategoryAddComponent} from "./admin-category-add/admin-category-add.component";
-import {AdminDishAddComponent} from "./admin-dish-add/admin-dish-add.component";
-import {AdminUserEditComponent} from "./admin-user-edit/admin-user-edit.component";
-import {AdminCategoryEditComponent} from "./admin-category-edit/admin-category-edit.component";
-import {AdminDishEditComponent} from "./admin-dish-edit/admin-dish-edit.component";
+import {AdminDishComponent} from "./Administrator/admin-dish/admin-dish.component";
+import {AdminCategoryComponent} from "./Administrator/admin-category/admin-category.component";
+import {AdminCategoryAddComponent} from "./Administrator/admin-category-add/admin-category-add.component";
+import {AdminDishAddComponent} from "./Administrator/admin-dish-add/admin-dish-add.component";
+import {AdminUserEditComponent} from "./Administrator/admin-user-edit/admin-user-edit.component";
+import {AdminCategoryEditComponent} from "./Administrator/admin-category-edit/admin-category-edit.component";
+import {AdminDishEditComponent} from "./Administrator/admin-dish-edit/admin-dish-edit.component";
 
 const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
