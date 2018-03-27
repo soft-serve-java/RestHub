@@ -13,7 +13,7 @@ public interface OrderService {
 
     Order create(Order order);
 
-    Order delete(long id) throws DishNotFound;
+    Order delete(long id);
 
     List<Order> findAll();
 

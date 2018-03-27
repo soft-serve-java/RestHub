@@ -84,7 +84,7 @@ public class MenuController {
         modelAndView.addObject("maxPages", dishPage.getTotalPages());
         modelAndView.addObject("menuItems", dishPage.getContent());
         modelAndView.addObject("page", pageNumber);
-        modelAndView.addObject("category", category.getName());
+        modelAndView.addObject("category", categoryName);
         modelAndView.addObject("criteria", criteria);
         modelAndView.addObject("direction", sortingDirection);
 
