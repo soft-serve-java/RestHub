@@ -9,7 +9,7 @@ export class Dish {
    calories: number;
    preparingtime: number;
    price: number;
-   category: Category[];
+   category: Category;
    images: Image[];
    availability: boolean;
 }

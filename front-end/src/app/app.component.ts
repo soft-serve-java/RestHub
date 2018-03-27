@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
-import { Category } from './models/Category';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,15 @@ import { Category } from './models/Category';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private categories: Array<Category>;
 
-  constructor(public appService: AppService) { this.getCategories();}
+  constructor(public appService: AppService, public authService:AuthService) { }
 
   ngOnInit() {
   }
 
-  getCategories(){
-    this.appService.getCategories().then(res => this.categories = res)
+
+  doPOSTonCallWaiter(tableNumber:number) {
+    this.appService.doPOSTonCallWaiter(tableNumber);
+    console.log(tableNumber);
   }
 }

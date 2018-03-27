@@ -12,7 +12,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${Order}" var="order">
+        <c:forEach items="${order}" var="order">
             <tr>
                 <td>${order.id}</td>
                 <td>${order.time}</td>
@@ -20,7 +20,7 @@
 
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                            data-whatever="${order.login}" data-href = "/admin/order/delete/${order.id}">Delete</button>
+                            data-whatever="${order.id}" data-href = "/admin/order/delete/${order.id}">Delete</button>
                 </td>
                 <td>
                     <a href="/admin/order/edit/${order.id}" class="btn btn-warning inline"><span class="fa fa-pen">Edit</span></a>

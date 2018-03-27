@@ -1,8 +1,6 @@
 import {Injectable, NgModule} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-
-
 class Category {
   private id: number;
   private name: string;
@@ -10,11 +8,11 @@ class Category {
 
 @Injectable()
 export class WelcomeService {
-  url:string = "http://localhost:8080/api/hello";
+  url:string = "http://localhost:9090/api/tableStatus";
   constructor(private http:HttpClient) { }
 
   getWithPromise(): Promise<string> {
-    return this.http.get( this.url, {responseType: 'text'}).toPromise()
+    return this.http.get( this.url).toPromise()
       .then(this.extractData.toString);
   }
    private extractData(res: Response) {

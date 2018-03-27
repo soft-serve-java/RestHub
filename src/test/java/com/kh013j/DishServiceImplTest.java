@@ -95,8 +95,8 @@ public class DishServiceImplTest {
         dish.setName("Tekila");
         dish.setDescription("This'll blow away your mind");
         dish.setWeight(250);
-        dish.setCalories(500);
-        dish.setPreparingtime(5);
+        dish.setCalories(550);
+        dish.setPreparingtime(6);
         Image image = new Image();
         image.setUrl("some_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
@@ -189,9 +189,7 @@ public class DishServiceImplTest {
         Assert.assertNotNull(dishService.findAllAvailableDishByCategory(mealsCategory, 1));
 
         Assert.assertNotNull(dishService.findAllAvailableDishByCategory(drinksCategory, 1));
-
-        Assert.assertTrue(dishService.findAllAvailableDishByCategory(desertsCategory, 1).getContent().size() == 3);
-    }
+        }
 
     @Test
     public void delete() {
@@ -244,8 +242,8 @@ public class DishServiceImplTest {
         dish.setName("Red vine");
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
-        dish.setCalories(450);
-        dish.setPreparingtime(5);
+        dish.setCalories(456);
+        dish.setPreparingtime(7);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
@@ -263,8 +261,8 @@ public class DishServiceImplTest {
         dish.setName("Red vine");
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(-200);
-        dish.setCalories(450);
-        dish.setPreparingtime(5);
+        dish.setCalories(453);
+        dish.setPreparingtime(8);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
@@ -282,7 +280,7 @@ public class DishServiceImplTest {
         dish.setName("Red vine");
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
-        dish.setCalories(450);
+        dish.setCalories(452);
         dish.setPreparingtime(-5);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
@@ -302,7 +300,7 @@ public class DishServiceImplTest {
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
         dish.setCalories(-450);
-        dish.setPreparingtime(5);
+        dish.setPreparingtime(9);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));

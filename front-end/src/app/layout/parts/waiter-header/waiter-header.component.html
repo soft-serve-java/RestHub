@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" [routerLink]="['/welcome']"><img src="assets/images/logo.png"></a>
+  <div class="navbar-collapse collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li  *ngFor="let category of categories" class="nav-item">
+          <a class="nav-link" [routerLink]="['/menu', category.name]">{{category.name}}</a>
+        </li>
+      <a class="nav-link" [routerLink]="['/waiter', 'tables']">tables</a>
+    </ul>
+    <form action="/menu" method="get" class="form-inline">
+      <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search dish"/>
+      <button type="submit" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
+    <div *ngIf="isAuthenticated();else loginblock">
+      <a class="a-nav nav-link" [routerLink]="['/login']" (click)="logout()">Logout</a>
+    </div>
+    <ng-template #loginblock>
+      <a class="navbar-nav mr-auto nav-link" [routerLink]="['/login']" >Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+    </ng-template>
+  </div>
+</nav>
