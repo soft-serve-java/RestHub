@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminDishService} from "../services/admin-dish.service";
-import {AdminCategoryService} from "../services/admin-category.service";
+import {AdminDishService} from "../../services/admin-dish.service";
+import {AdminCategoryService} from "../../services/admin-category.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Category} from "../models/category";
-import {Dish} from "../models/dish";
+import {Category} from "../../models/category";
+import {Dish} from "../../models/dish";
 
 @Component({
   selector: 'app-admin-dish-edit',

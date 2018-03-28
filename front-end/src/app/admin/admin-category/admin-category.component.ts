@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminDishService} from "../services/admin-dish.service";
-import {Dish} from "../models/dish";
-import {AdminCategoryService} from "../services/admin-category.service";
-import {Category} from "../models/category";
+import {Category} from "../../models/category";
+import {AdminCategoryService} from "../../services/admin-category.service";
 
 @Component({
   selector: 'app-admin-category',

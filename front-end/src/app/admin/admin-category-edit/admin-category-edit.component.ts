@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AdminCategoryService} from "../services/admin-category.service";
-import {Category} from "../models/category";
+import {AdminCategoryService} from "../../services/admin-category.service";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-admin-category-edit',

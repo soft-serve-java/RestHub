@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from "../models/category";
-import {AdminCategoryService} from "../services/admin-category.service";
-import {Dish} from "../models/dish";
-import {AdminDishService} from "../services/admin-dish.service";
+import {Category} from "../../models/category";
+import {AdminCategoryService} from "../../services/admin-category.service";
+import {Dish} from "../../models/dish";
+import {AdminDishService} from "../../services/admin-dish.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 
