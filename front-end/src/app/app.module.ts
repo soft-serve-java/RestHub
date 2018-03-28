@@ -42,6 +42,9 @@ import {WaiterHeaderComponent} from "./layout/parts/waiter-header/waiter-header.
 import {HeaderComponent} from "./layout/parts/header/header.component";
 import {FooterComponent} from "./layout/parts/footer/footer.component";
 import {StorageServiceModule} from "angular-webstorage-service";
+import { AdminOrderEditComponent } from './admin-order-edit/admin-order-edit.component';
+import { AdminRoleComponent } from './admin-role/admin-role.component';
+import { AdminStatusComponent } from './admin-status/admin-status.component';
 
 
 export const API_URL = new InjectionToken<string>('apiUrl');
@@ -74,7 +77,10 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     AdminHeaderComponent,
     WaiterHeaderComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdminOrderEditComponent,
+    AdminRoleComponent,
+    AdminStatusComponent
   ],
   imports: [
     CommonModule,

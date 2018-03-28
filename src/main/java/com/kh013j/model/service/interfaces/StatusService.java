@@ -9,4 +9,5 @@ public interface StatusService {
     Status nextStatus(Status status);
     List<Status> cookStatuses();
     List<Status> waiterStatuses();
+    List<Status> findAll();
 }

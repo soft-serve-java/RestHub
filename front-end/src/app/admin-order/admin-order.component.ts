@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminOrderService} from "../services/admin-order.service";
+import {AdminOrderService} from "../services/admin-order.service"
 import {Order} from "../models/order";
 
 @Component({
@@ -11,13 +11,17 @@ export class AdminOrderComponent implements OnInit {
 
   constructor(public adminOrderService: AdminOrderService) { }
 
-  ngOnInit() {
-    this.adminOrderService.getOrder().then(res => this.order = res)
-  }
-
   deleteOrder(ord: Order){
     this.adminOrderService.deleteOrder(ord.id).then(res=> this.order.splice(this.order.indexOf(ord), 1))
   }
 
+  ngOnInit() {
+    this.adminOrderService.getOrders().then(res => this.order = res)
+  }
+
+  editOrder(ord: Order){
+    this.adminOrderService.getOrder(ord.id).then(res => this.ordr = res)
+  }
+  ordr: Order;
   order: Order[];
 }

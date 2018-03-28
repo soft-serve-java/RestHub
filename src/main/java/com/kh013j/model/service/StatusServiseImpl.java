@@ -44,4 +44,9 @@ public class StatusServiseImpl implements StatusService {
         statuses.add(statusRepositiry.findFirstByName(Status.DELIVERY));
         return statuses;
     }
+
+    @Override
+    public List<Status> findAll() {
+        return statusRepositiry.findAll();
+    }
 }
