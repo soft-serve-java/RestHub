@@ -15,7 +15,6 @@ import {AdminDishService} from "./services/admin-dish.service";
 import { AdminCategoryComponent } from './admin-category/admin-category.component';
 import {AdminCategoryService} from "./services/admin-category.service";
 import { AdminCategoryAddComponent } from './admin-category-add/admin-category-add.component';
-import {AdminCategoryAddService} from "./services/admin-category-add.service";
 import { AdminOrderComponent } from './admin-order/admin-order.component';
 import { AdminOrderService } from './services/admin-order.service';
 import {CommonModule} from "@angular/common";
@@ -42,6 +41,10 @@ import {WaiterHeaderComponent} from "./layout/parts/waiter-header/waiter-header.
 import {HeaderComponent} from "./layout/parts/header/header.component";
 import {FooterComponent} from "./layout/parts/footer/footer.component";
 import {StorageServiceModule} from "angular-webstorage-service";
+import {AdminDishAddComponent} from "./admin-dish-add/admin-dish-add.component";
+import {AdminDishEditComponent} from "./admin-dish-edit/admin-dish-edit.component";
+import {AdminCategoryEditComponent} from "./admin-category-edit/admin-category-edit.component";
+import {AdminUserEditComponent} from "./admin-user-edit/admin-user-edit.component";
 
 
 export const API_URL = new InjectionToken<string>('apiUrl');
@@ -57,12 +60,16 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     AdminComponent,
     AdminUserComponent,
     AdminDishComponent,
+    AdminDishAddComponent,
+    AdminDishEditComponent,
     WelcomeComponent,
     WaiterTablesComponent,
     WelcomeComponent,
     DishPageComponent,
     AdminCategoryComponent,
     AdminCategoryAddComponent,
+    AdminCategoryEditComponent,
+    AdminUserEditComponent,
     AdminOrderComponent,
     UserComponent,
     OrderComponent,
@@ -85,7 +92,7 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     StorageServiceModule,
     FormsModule,
   ],
-  providers: [WelcomeService, WaiterService, AdminCategoryAddService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService, WaiterService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
   bootstrap: [AppComponent]
 })

@@ -13,8 +13,7 @@ export class AdminOrderService {
 
   deleteOrder(id:number):Promise<any>{
     return this.http
-      .delete(this.orderApi + "admin/order/delete/" + id )
+      .delete(this.orderApi + "admin/order/" + id )
       .toPromise()
-      .then()
   }
 }

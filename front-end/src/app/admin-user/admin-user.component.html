@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col1" style="text-align: right; padding-top: 10px;">
+<!--  <div class="col1" style="text-align: right; padding-top: 10px;">
     <div class="btn-group">
 
       <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -12,7 +12,7 @@
         <a class="dropdown-item" href="/admin/user/all?show=notconfirmed">Not confirmed</a>
       </div>
     </div>
-  </div>
+  </div>-->
 
   <table class="table table-hover">
     <thead>
@@ -22,16 +22,14 @@
       <th>Name</th>
       <th>Role</th>
       <th>Confirmed</th>
-      <th colspan="2"><a href="/admin/user/new">
-      </a>
-      </th>
+      <th colspan="2"></th>
     </tr>
     </thead>
 
     <tbody>
     <tr *ngFor="let us of user">
       <td> {{ us.id }} </td>
-      <td> {{ us.email }} </td>
+      <td> {{ us.username }} </td>
       <td> {{ us.name }} </td>
       <td>
       <div *ngFor="let ro of us.roles">
@@ -40,7 +38,7 @@
       </td>
       <td> {{ us.enabled }} </td>
       <td>
-        <a href="/admin/dish/edit/${dish.id}" class="btn btn-warning"><span class="fa fa-pen">Edit</span></a>
+        <a [routerLink]="['/admin/user/edit/', us.id]" class="btn btn-warning"><span class="fa fa-pen">Edit</span></a>
       </td>
       <td>
         <button class="btn btn-danger" (click)="deleteUser(us)"> <span class="fa fa-pen">Delete</span></button>

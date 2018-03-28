@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from "../models/category";
-import {AdminCategoryAddService} from "../services/admin-category-add.service";
-import {NgForm} from "@angular/forms";
+import {AdminCategoryService} from "../services/admin-category.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-category-add',
@@ -10,21 +10,19 @@ import {NgForm} from "@angular/forms";
 })
 export class AdminCategoryAddComponent implements OnInit {
 
-  category: Category;
-  categoryName: String;
+  name: string;
 
-  constructor(public adminCategoryAddService: AdminCategoryAddService){}
+  constructor(public route: ActivatedRoute,
+              public adminCategoryService: AdminCategoryService,
+              public router: Router){
+  }
 
   ngOnInit(){
   }
 
   addCategory(){
-    this.adminCategoryAddService
-      .addCategory(this.categoryName),
-      this.categoryName = '';
-  }
-
-    editCategory(){
-    this.adminCategoryAddService.editCategory(this.category.id, this.category.name)
+    this.adminCategoryService
+      .addCategory(this.name)
+      .then(res => {this.router.navigate(['admin/category/all'])});
   }
 }
