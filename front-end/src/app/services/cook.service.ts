@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Inject, Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {OrderedDish} from "../models/orderedDish";
@@ -13,9 +13,9 @@ const httpOptions = {
 
 @Injectable()
 export class CookService {
-  orderedDishesUrl = 'http://localhost:8080/api/cook';
+  orderedDishesUrl = 'http://localhost:9090/api/cook';
 
-  constructor(private http: HttpClient) {
+  constructor(@Inject('API_URL') private api: string,private http: HttpClient) {
   }
 
   getOrderedDishes(): Observable<OrderedDish[]> {

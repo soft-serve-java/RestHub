@@ -15,7 +15,6 @@ import {AdminDishService} from "./services/admin-dish.service";
 import { AdminCategoryComponent } from './admin-category/admin-category.component';
 import {AdminCategoryService} from "./services/admin-category.service";
 import { AdminCategoryAddComponent } from './admin-category-add/admin-category-add.component';
-import {AdminCategoryAddService} from "./services/admin-category-add.service";
 import { AdminOrderComponent } from './admin-order/admin-order.component';
 import { AdminOrderService } from './services/admin-order.service';
 import {CommonModule} from "@angular/common";
@@ -99,7 +98,7 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     StorageServiceModule,
     FormsModule,
   ],
-  providers: [WelcomeService, WaiterService, AdminCategoryAddService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService, WaiterService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
   bootstrap: [AppComponent]
 })

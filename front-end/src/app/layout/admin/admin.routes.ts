@@ -20,7 +20,7 @@ export const ADMIN_ROUTES = [
   {path: 'category/all', component: AdminCategoryComponent},
   {path: 'category/add', component: AdminCategoryAddComponent},
   {path: 'category/edit/:id', component: AdminCategoryEditComponent},
-  {path: 'order/all', component: AdminOrderComponent}
+  {path: 'order/all', component: AdminOrderComponent},
   {path: 'category/edit/:id', component: AdminCategoryAddComponent},
   {path: 'order/all', component: AdminOrderComponent},
   {path: 'order/edit/:id', component: AdminOrderEditComponent},
