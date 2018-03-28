@@ -18,7 +18,6 @@ export class AdminUserService {
     return this.http
       .delete(this.userApi + "admin/user/" + id )
       .toPromise()
-      .then()
   }
 
   editUser(user: User): Promise<any>{
