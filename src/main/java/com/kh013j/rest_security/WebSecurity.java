@@ -56,7 +56,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         config.setAllowedHeaders(Collections.singletonList("*"));
         config.setAllowedOrigins(Collections.singletonList("*"));
         config.setAllowCredentials(true);
-        config.setAllowedMethods(Arrays.asList("GET", "POST"));
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PUT"));
         source.registerCorsConfiguration("/**", config.applyPermitDefaultValues());
         return source;
     }

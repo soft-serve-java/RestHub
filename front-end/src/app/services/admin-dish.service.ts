@@ -15,7 +15,7 @@ export class AdminDishService {
 
   deleteDish(id: number): Promise<any>{
       return this.http
-        .delete(this.dishApi + "admin/dish/delete/" + id )
+        .delete(this.dishApi + "admin/dish/" + id )
         .toPromise()
         .then()
   }
