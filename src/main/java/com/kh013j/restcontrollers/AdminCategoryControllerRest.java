@@ -35,7 +35,7 @@ public class AdminCategoryControllerRest  {
         return categoryService.create(category);
     }
 
-    @DeleteMapping("/{id}/delete")
+    @DeleteMapping("/{id}")
     public Boolean deleteCategory(@PathVariable("id") long id) throws CategoryNotFound {
         categoryService.delete(id);
         return true;
