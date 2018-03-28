@@ -161,3 +161,26 @@ body {
   background-color: #f2dede;
   border-color: #ebccd1;
 }
+.call_back{
+  position:fixed; /*фиксированная позиция при прокрутке*/
+  z-index:999;
+  left: 3%; /*отступ с права*/
+  top: 85%; /*отступ сверху*/
+  margin-right:-50px; /*отрицательный отступ справа (чем длиннее название кнопки тем больше должно быть значение данного отступа )*/
+}
+
+/*Стили для ссылки*/
+.call_back a{
+  color:#fff!important; /*цвет ссылки*/
+  display:block;
+  background: #4AA02C; /*цвет фона кнопки*/
+  font-size:1.2em; /*размер шрифта*/
+  text-align:center; /*выравнивание по центру*/
+  padding: 30px;
+  border-radius:90%; /*радиус скругления углов*/
+}
+
+#form_pop_up{
+  border:1px solid #ccc;
+  padding:20px;
+}

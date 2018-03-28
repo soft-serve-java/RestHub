@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from "../../../services/app.service";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public appService: AppService) { }
 
   ngOnInit() {
   }
-
+  doPOSTonCallWaiter(tableNumber:number) {
+    this.appService.doPOSTonCallWaiter(tableNumber);
+    console.log(1);
+  }
 }
