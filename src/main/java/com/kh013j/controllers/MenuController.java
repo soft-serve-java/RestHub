@@ -6,6 +6,8 @@ import com.kh013j.model.domain.Dish;
 import com.kh013j.model.service.interfaces.CategoryService;
 import com.kh013j.model.service.interfaces.DishService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -15,12 +17,18 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class CategoryController {
-    @Autowired
+public class MenuController {
     private DishService dishService;
 
-    @Autowired
     private CategoryService categoryService;
+
+    Logger logger = LoggerFactory.getLogger("a");
+
+    @Autowired
+    public MenuController(DishService dishService, CategoryService categoryService) {
+        this.dishService = dishService;
+        this.categoryService = categoryService;
+    }
 
     @ModelAttribute("categoryItems")
     public List<Category> getCategoryItems() {
@@ -52,6 +60,7 @@ public class CategoryController {
 
         if(sortingDirection == null) {
             sortingDirection = "DESC";
+            logger.error(categoryName);
         }
 
         Category category = categoryService.findCategoryByName(categoryName);
@@ -75,7 +84,7 @@ public class CategoryController {
         modelAndView.addObject("maxPages", dishPage.getTotalPages());
         modelAndView.addObject("menuItems", dishPage.getContent());
         modelAndView.addObject("page", pageNumber);
-        modelAndView.addObject("category", category.getName());
+        modelAndView.addObject("category", categoryName);
         modelAndView.addObject("criteria", criteria);
         modelAndView.addObject("direction", sortingDirection);
 

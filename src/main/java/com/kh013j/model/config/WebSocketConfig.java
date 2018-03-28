@@ -16,7 +16,6 @@ public class    WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/waiter", "/user");
         config.setApplicationDestinationPrefixes("/app");
-        //config.setUserDestinationPrefix("/user");
     }
 
     @Override

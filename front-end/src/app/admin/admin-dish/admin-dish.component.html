@@ -1,0 +1,29 @@
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr style="text-align: center;">
+      <th>#</th>
+      <th>Name</th>
+      <th> <a [routerLink]="'/admin/dish/add'"><button type="submit" class="btn btn-primary"><span class="fa fa-pen">New dish</span></button> </a>
+      </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let di of dish" >
+      <td>{{di.id}}</td>
+      <td>{{di.name}}</td>
+<!--      <td>
+        <a [routerLink]="['/admin/dish/tweakAvail/', di.id]" class="btn btn-info"><span class="fa fa-pen">Avalibility</span></a>
+      </td>-->
+      <td>
+        <a [routerLink]="['/admin/dish/edit/', di.id]" class="btn btn-warning"><span class="fa fa-pen">Edit</span></a>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteDish(di)"> <span class="fa fa-pen">Delete</span></button>
+      </td>
+    </tr>
+    </tbody>
+</table>
+</div>

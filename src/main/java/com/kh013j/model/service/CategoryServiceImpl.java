@@ -26,8 +26,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category findById(long id) {
-        return categoryRepository.findOne(id);
+    public Category findById(long id) throws CategoryNotFound {
+        Category category = categoryRepository.findOne(id);
+
+        if (category == null){
+            throw new CategoryNotFound();
+        }
+        return category;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Category delete(long id) throws CategoryNotFound {
         Category deletedCategory = categoryRepository.findOne(id);
 
-        if (categoryRepository == null)
+        if (deletedCategory == null)
             throw new CategoryNotFound();
 
         categoryRepository.delete(deletedCategory);
