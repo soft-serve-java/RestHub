@@ -45,6 +45,10 @@ import {StorageServiceModule} from "angular-webstorage-service";
 import { AdminOrderEditComponent } from './admin-order-edit/admin-order-edit.component';
 import { AdminRoleComponent } from './admin-role/admin-role.component';
 import { AdminStatusComponent } from './admin-status/admin-status.component';
+import {AdminDishAddComponent} from "./admin-dish-add/admin-dish-add.component";
+import {AdminDishEditComponent} from "./admin-dish-edit/admin-dish-edit.component";
+import {AdminCategoryEditComponent} from "./admin-category-edit/admin-category-edit.component";
+import {AdminUserEditComponent} from "./admin-user-edit/admin-user-edit.component";
 
 
 export const API_URL = new InjectionToken<string>('apiUrl');
@@ -60,12 +64,16 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     AdminComponent,
     AdminUserComponent,
     AdminDishComponent,
+    AdminDishAddComponent,
+    AdminDishEditComponent,
     WelcomeComponent,
     WaiterTablesComponent,
     WelcomeComponent,
     DishPageComponent,
     AdminCategoryComponent,
     AdminCategoryAddComponent,
+    AdminCategoryEditComponent,
+    AdminUserEditComponent,
     AdminOrderComponent,
     UserComponent,
     OrderComponent,

@@ -21,5 +21,4 @@ export class AdminCategoryComponent implements OnInit {
   deleteCategory(cat: Category){
     this.adminCategoryService.deleteCategory(cat.id).then(res=> this.category.splice(this.category.indexOf(cat), 1))
   }
-
 }

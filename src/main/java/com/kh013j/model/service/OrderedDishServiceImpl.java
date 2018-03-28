@@ -1,17 +1,22 @@
 package com.kh013j.model.service;
 
 import com.kh013j.model.domain.Dish;
+import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderedDishRepository;
+import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.StatusService;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +27,12 @@ public class OrderedDishServiceImpl implements OrderedDishService {
 
     @Autowired
     private StatusService statusService;
+
+    @Autowired
+    private SimpMessagingTemplate template;
+
+    @Autowired
+    OrderService orderService;
 
     @Override
     @Transactional
@@ -59,6 +70,10 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         OrderedDish dish = orderedDishRepository.findOne(id);
         dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
+        long orderId = orderedDishRepository.getOrderId(id);
+        Order order = orderService.findById(orderId);
+        template.convertAndSendToUser(Integer.toString(order.getTablenumber()),
+                "/oreder-updates", order);
     }
 
     @Override
@@ -73,6 +88,10 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         OrderedDish dish = orderedDishRepository.findOne(id);
         dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
+        long orderId = orderedDishRepository.getOrderId(id);
+        Order order = orderService.findById(orderId);
+        template.convertAndSendToUser(Integer.toString(order.getTablenumber()),
+                "/oreder-updates", order);
     }
 
     @Override
