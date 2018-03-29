@@ -4,7 +4,7 @@
     <tr style="text-align: center;">
       <th>#</th>
       <th>Name</th>
-      <th><a [routerLink]="'/admin/category/add'" class="btn btn-primary"><span class="fa fa-pen">New category</span></a></th>
+      <th><a [routerLink]="'/admin/category/add'" class="btn btn-primary"><i class="fa fa-plus"></i>   New</a></th>
     </tr>
     </thead>
   <tbody>
@@ -12,10 +12,10 @@
     <td>{{ cat.id }}</td>
     <td>{{cat.name}}</td>
         <td>
-          <a [routerLink]="['/admin/category/edit/', cat.id]" class="btn btn-warning"><span class="fa fa-pen">Edit</span></a>
+          <a [routerLink]="['/admin/category/edit/', cat.id]" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
         </td>
         <td>
-          <button class="btn btn-danger" (click)="deleteCategory(cat)"><span class="fa fa-pen">Delete</span></button>
+          <button class="btn btn-danger" (click)="deleteCategory(cat)"><i class="fa fa-trash"></i></button>
         </td>
 
   </tr>

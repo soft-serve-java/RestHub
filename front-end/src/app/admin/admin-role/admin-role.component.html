@@ -1,10 +1,10 @@
 <div class="container">
   <table class="table table-hover">
     <thead>
-    <tr style="text-align: center;">
+    <tr>
       <th>#</th>
       <th>Name</th>
-      <th colspan="2" > <a href="/admin/role/new"><button type="submit" class="btn btn-primary">New Role</button> </a>
+      <th colspan="2" > <a href="/admin/role/new"><button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>   New</button> </a>
       </th>
     </tr>
     </thead>
@@ -12,11 +12,8 @@
       <tr>
         <td>{{role.id}}</td>
         <td>{{role.name}}</td>
-        <td>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                  data-whatever="${role.name}" data-href="/admin/role/delete/${role.id}">Delete
-          </button>
-        </td>
+        <td></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
