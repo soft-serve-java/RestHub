@@ -12,12 +12,11 @@
     <td>{{ cat.id }}</td>
     <td>{{cat.name}}</td>
         <td>
-          <a [routerLink]="['/admin/category/edit/', cat.id]" class="btn btn-warning"><span class="fa fa-pen">Edit</span></a>
+          <a [routerLink]="['/admin/category/edit/', cat.id]" class="btn btn-warning"><span class="fa fa-pen"> <i class="fa fa-pencil"></i></span></a>
         </td>
         <td>
           <button class="btn btn-danger" (click)="deleteCategory(cat)"><span class="fa fa-pen">Delete</span></button>
         </td>
-
   </tr>
   </tbody>
   </table>

@@ -48,6 +48,7 @@ import {AdminDishAddComponent} from "./admin/admin-dish-add/admin-dish-add.compo
 import {AdminDishEditComponent} from "./admin/admin-dish-edit/admin-dish-edit.component";
 import {AdminCategoryEditComponent} from "./admin/admin-category-edit/admin-category-edit.component";
 import {AdminUserEditComponent} from "./admin/admin-user-edit/admin-user-edit.component";
+import { TokenConfermeComponent } from './token-conferme/token-conferme.component';
 
 
 export const API_URL = new InjectionToken<string>('apiUrl');
@@ -87,7 +88,8 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     FooterComponent,
     AdminOrderEditComponent,
     AdminRoleComponent,
-    AdminStatusComponent
+    AdminStatusComponent,
+    TokenConfermeComponent
   ],
   imports: [
     CommonModule,
