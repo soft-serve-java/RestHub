@@ -45,4 +45,8 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.authService.logout();
   }
+  doPOSTonCallWaiter(tableNumber:number) {
+    this.appService.doPOSTonCallWaiter(tableNumber);
+    console.log(1);
+  }
 }

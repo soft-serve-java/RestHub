@@ -12,8 +12,5 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
   }
-  doPOSTonCallWaiter(tableNumber:number) {
-    this.appService.doPOSTonCallWaiter(tableNumber);
-    console.log(1);
-  }
+
 }

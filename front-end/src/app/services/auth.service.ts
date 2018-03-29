@@ -21,6 +21,11 @@ export class AuthService {
       localStorage.removeItem("token");
   }
   register(user:User):Promise<User>{
-    return this.http.post<User>(this.api + "registration", user).toPromise();
+    return this.http.post<User>(this.api + "api/registration", user).toPromise();
+  }
+
+  confermToken(token: string) {
+    return this.http.post(this.api + "api/confirm?token="+token,{}).toPromise();
+
   }
 }

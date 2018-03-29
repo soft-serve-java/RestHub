@@ -21,13 +21,6 @@
           </button>
         </a>
     </ul>
-    <div  *ngIf="showDialog">
-      <h6 style="color: white;" class="modal-title">Your waiter is coming</h6>
-    </div>
-    <div *ngIf="showDialog" class="modal-body">
-      <img  src="/assets/images/CUTharissa.jpg" class="avatarWaiter">
-    </div>
-
   </div>
   <form action="/menu" method="get" class="form-inline">
     <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search dish"/>
@@ -42,3 +35,9 @@
     <a class="a-nav nav-link" [routerLink]="['/login']" >Log in <i class="fa fa-user" aria-hidden="true"></i></a>
   </ng-template>
 </nav>
+  <div  *ngIf="showDialog;else waiterAvatar">
+    <div class="call_back_accept" (click)="doPOSTonCallWaiter(1)"><img src="/assets/images/cat.jpg"/></div>
+  </div>
+<ng-template #waiterAvatar>
+  <div class="call_back" (click)="doPOSTonCallWaiter(1)"><a><i class="fa fa-bell fa-3x" aria-hidden="true"></i></a></div>
+</ng-template>
