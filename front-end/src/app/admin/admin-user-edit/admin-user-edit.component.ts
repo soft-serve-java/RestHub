@@ -16,9 +16,6 @@ export class AdminUserEditComponent implements OnInit {
 
   role: Role[];
   user: User;
-  //category: Category;
-  //id: number;
-  //name: string;
 
   constructor(public route: ActivatedRoute,
               public adminUserService: AdminUserService,

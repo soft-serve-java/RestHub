@@ -10,5 +10,4 @@ export class AdminRoleService {
   getRole(): Promise<Role[]>{
     return this.http.get<Role[]>(this.roleApi + "admin/role/all").toPromise();
   }
-
 }

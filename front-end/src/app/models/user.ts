@@ -4,10 +4,10 @@ export class User {
   id: number;
   username: string;
   private password: string;
-  private name: string;
+  name: string;
   private confirmationtoken: boolean;
   private enabled: boolean;
-  private roles: Role[];
+  roles: Role[];
   private avatar: string;
 
 

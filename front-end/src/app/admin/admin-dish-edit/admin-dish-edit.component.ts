@@ -29,7 +29,8 @@ export class AdminDishEditComponent implements OnInit {
   }
 
   getCategory() {
-    this.adminCategoryService.getCategory().then(res => this.category = res)
+    this.adminCategoryService.getCategory()
+      .then(res => this.category = res)
   }
 
   loadDishById(id: number){
