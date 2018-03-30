@@ -18,10 +18,10 @@
           <td>{{ord.tablenumber}}</td>
 
           <td>
-            <button class="btn btn-danger" (click)="deleteOrder(ord)">Delete</button>
+            <a [routerLink]="['/admin/order/edit/', ord.id]" class="btn btn-warning"><span class="fa fa-pen"> <i class="fa fa-pencil"></i></span></a>
             </td>
             <td>
-            <a href="/admin/order/edit/{{ord.id}}" class="btn btn-warning inline" (click)="editOrder(ord)"><span class="fa fa-pen">Edit</span></a>
+              <button class="btn btn-danger fa fa-trash-o" (click)="deleteOrder(ord)" ></button>
           </td>
           </tr>
           </tbody>

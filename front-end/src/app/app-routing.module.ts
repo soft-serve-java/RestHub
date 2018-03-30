@@ -6,7 +6,7 @@ import {WaiterComponent} from "./layout/waiter/waiter.component";
 import {WAITER_ROUTES} from "./layout/waiter/waiter.routes";
 import {ADMIN_ROUTES} from "./layout/admin/admin.routes";
 import {AdminComponent} from "./layout/admin/admin.component";
-import {TokenConfermeComponent} from "./token-conferme/token-conferme.component";
+//import {TokenConfermeComponent} from "./token-conferme/token-conferme.component";
 
 const routes: Routes = [
   {path: '', component: UserComponent, data: {title: 'Welcome to RestHub!'}, children: USER_ROUTES},
