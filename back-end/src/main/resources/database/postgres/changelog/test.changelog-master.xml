@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="emaxi" runAlways="true">
+        <sqlFile path="database/postgres/sql/createTest.sql"/>
+    </changeSet>
+
+    <changeSet author="emaxi" id="addUniqueConstraintCategoryName">
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="category"
+        />
+    </changeSet>
+    <changeSet author="emaxi" id="addUniqueConstraintRoleName">
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="role"
+        />
+    </changeSet>
+    <changeSet author="emaxi" id="addUniqueConstraintStatusName">
+        <addUniqueConstraint columnNames="name"
+                             deferrable="true"
+                             initiallyDeferred="true"
+                             schemaName="rh"
+                             tableName="status"
+        />
+    </changeSet>
+
+    <changeSet author="emaxi" id="dropCheckQuantityConstraintIfExists">
+        <sql>
+            ALTER TABLE rh.order DROP CONSTRAINT IF EXISTS timeChecker
+        </sql>
+    </changeSet>
+    <changeSet author="emaxi" id="addCheckTimeConstraint">
+        <sql>
+            ALTER TABLE rh.order ADD CONSTRAINT timeChecker
+            CHECK ((EXTRACT(DAYS FROM NOW() - rh.order.time))>=0)
+        </sql>
+    </changeSet>
+    <changeSet id="DropPictureColumn" author="emaxi">
+        <dropColumn tableName="dish" schemaName="rh" columnName="picture"/>
+    </changeSet>
+
+    <include file="database/postgres/sql/populateTest.sql"/>
+
+</databaseChangeLog>

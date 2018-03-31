@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="dropCategorySequenceIfExists" author="emaxi">
+        <sql>DROP SEQUENCE IF EXISTS category_sequence CASCADE</sql>
+    </changeSet>
+    <changeSet id="renameCategorySequence" author="emaxi">
+        <sql>ALTER SEQUENCE category_sequance RENAME TO category_sequence</sql>
+    </changeSet>
+
+    <changeSet id="dropRoleSequenceIfExists" author="emaxi">
+        <sql>DROP SEQUENCE IF EXISTS role_sequence CASCADE</sql>
+    </changeSet>
+    <changeSet id="renameRoleSequence" author="emaxi">
+        <sql>ALTER SEQUENCE role_sequance RENAME TO role_sequence</sql>
+    </changeSet>
+    <changeSet id="restartRoleSequence" author="emaxi">
+        <sql>ALTER SEQUENCE role_sequence RESTART WITH 1</sql>
+    </changeSet>
+
+    <changeSet id="dropStatusSequenceIfExists" author="emaxi">
+        <sql>DROP SEQUENCE IF EXISTS status_sequence CASCADE</sql>
+    </changeSet>
+    <changeSet id="renameStatusSequence" author="emaxi">
+        <sql>ALTER SEQUENCE status_sequance RENAME TO status_sequence</sql>
+    </changeSet>
+    <changeSet id="dropOrderSequenceIfExists" author="emaxi">
+        <sql>DROP SEQUENCE IF EXISTS order_sequence CASCADE</sql>
+    </changeSet>
+    <changeSet id="renameOrderSequence" author="emaxi">
+        <sql>ALTER SEQUENCE order_sequense RENAME TO order_sequence</sql>
+    </changeSet>
+
+    <changeSet id="dropDishSequenceIfExists" author="emaxi">
+        <sql>DROP SEQUENCE IF EXISTS dish_sequence CASCADE</sql>
+    </changeSet>
+    <changeSet id="renameDishSequence" author="emaxi">
+        <sql>ALTER SEQUENCE dish_sequense RENAME TO dish_sequence</sql>
+    </changeSet>
+
+    <changeSet id="dropOrderDishSequenceIfExists" author="emaxi">
+        <sql>DROP SEQUENCE IF EXISTS orderdish_sequence CASCADE</sql>
+    </changeSet>
+    <changeSet id="renameOrderDishSequence" author="emaxi">
+        <sql>ALTER SEQUENCE orderdish_sequense RENAME TO orderdish_sequence</sql>
+    </changeSet>
+</databaseChangeLog>

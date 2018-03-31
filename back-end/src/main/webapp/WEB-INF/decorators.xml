@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    <decorator name="user" page="user_pages_template.jsp">
+        <!-- Mapping for USER-pages -->
+        <pattern>/welcome</pattern><!-- Welcome.jsp -->
+        <pattern>/order</pattern><!-- Cart.jsp -->
+        <pattern>/login</pattern><!-- login.jsp -->
+        <pattern>/menu/*</pattern><!-- Layoutgrid.jsp -->
+        <pattern>/hello</pattern><!-- Hello.jsp -->
+        <pattern>/dish/*</pattern><!-- Dishdescription.jsp -->
+    </decorator>
+
+    <decorator name="waiter" page="waiter_pages_template.jsp">
+        <pattern>/waiter/*</pattern>
+    </decorator>
+
+    <decorator name="admin" page="admin_pages_template.jsp">
+          <!-- Mapping for ADMIN-pages:
+           Admin.jsp
+           AdminDish.jsp
+           AdminOrder.jsp
+           AdminReviews.jsp
+           AdminRole.jsp
+           AdminStatus.jsp
+           CategoryAdmin.jsp
+           DishEditAdd.jsp
+           OrderAddCreate.jsp
+           OrderAdmin.jsp
+           RoleAdd.jsp
+           RoleEdit.jsp
+           StatusAdd.jsp
+           StatusEdit.jsp
+           CategoryEditCreate.jsp
+           UserEditCreate.jsp
+           UserAdmin.jsp-->
+          <pattern>/admin</pattern>
+          <pattern>/admin/*</pattern>
+      </decorator>
+</decorators>
