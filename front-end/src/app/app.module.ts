@@ -48,6 +48,8 @@ import {AdminDishAddComponent} from "./admin/admin-dish-add/admin-dish-add.compo
 import {AdminDishEditComponent} from "./admin/admin-dish-edit/admin-dish-edit.component";
 import {AdminCategoryEditComponent} from "./admin/admin-category-edit/admin-category-edit.component";
 import {AdminUserEditComponent} from "./admin/admin-user-edit/admin-user-edit.component";
+import { AdminTableComponent } from './admin/admin-table/admin-table.component';
+import {TableStorageService} from "./services/table-storage.service";
 
 
 export const API_URL = new InjectionToken<string>('apiUrl');
@@ -87,7 +89,8 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     FooterComponent,
     AdminOrderEditComponent,
     AdminRoleComponent,
-    AdminStatusComponent
+    AdminStatusComponent,
+    AdminTableComponent
   ],
   imports: [
     CommonModule,
@@ -98,7 +101,7 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     StorageServiceModule,
     FormsModule,
   ],
-  providers: [WelcomeService, WaiterService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
+  providers: [WelcomeService, WaiterService, TableStorageService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl},
     {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
   bootstrap: [AppComponent]
 })

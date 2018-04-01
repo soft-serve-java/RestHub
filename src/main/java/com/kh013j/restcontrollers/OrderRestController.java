@@ -34,21 +34,25 @@ public class OrderRestController {
     }
 
     @PostMapping
-    public Order saveOrder(@RequestBody List<OrderedDish> orderedDishes, Principal principal){
+    public Order saveOrder(@RequestBody List<OrderedDish> orderedDishes,
+                           @RequestParam("table") Integer tableNumber,
+                           Principal principal){
         User user = null;
         if (principal != null){
             user = userService.findByEmail(principal.getName());
         }
-        return orderService.onSubmitOrder(1, orderedDishes, user);
+        return orderService.onSubmitOrder(tableNumber, orderedDishes, user);
     }
 
     @PostMapping("/submitOne")
-    public Order submitOne(@RequestBody OrderedDish orderedDish, Principal principal) {
+    public Order submitOne(@RequestBody OrderedDish orderedDish,
+                           @RequestParam("table") Integer tableNumber,
+                           Principal principal) {
         User user = null;
         if(principal != null) {
             user = userService.findByEmail(principal.getName());
         }
-        return orderService.submitOneDish(1, orderedDish, user);
+        return orderService.submitOneDish(tableNumber, orderedDish, user);
 
     }
 

@@ -6,6 +6,7 @@ import {Client, Frame, Message} from "stompjs";
 import * as stompjs from 'stompjs';
 import * as SockJS from "sockjs-client";
 import {User} from "../../../models/user";
+import {TableStorageService} from "../../../services/table-storage.service";
 
 @Component({
   selector: 'app-header',
@@ -15,10 +16,14 @@ import {User} from "../../../models/user";
 export class HeaderComponent implements OnInit {
 
   private categories: Array<Category>;
-
+  private tableNumber: number;
 
   constructor(@Inject('SOCKET_URL') private socketUrl,
-              public appService: AppService,public authService:AuthService) {this.getCategories()}
+              public appService: AppService,public authService:AuthService,
+              private tableStorageSerivce: TableStorageService) {
+    this.getCategories();
+    this.getTableNumber()
+  }
   stompClient: Client;
   showDialog:boolean;
   waiter:User;
@@ -48,6 +53,10 @@ export class HeaderComponent implements OnInit {
   doPOSTonCallWaiter(tableNumber:number) {
     this.appService.doPOSTonCallWaiter(tableNumber);
     console.log(1);
+  }
+
+  getTableNumber(){
+    this.tableNumber = this.tableStorageSerivce.table;
   }
 
 

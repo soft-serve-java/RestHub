@@ -10,6 +10,7 @@ import {AdminCategoryEditComponent} from "../../admin/admin-category-edit/admin-
 import {AdminOrderEditComponent} from "../../admin/admin-order-edit/admin-order-edit.component";
 import {AdminRoleComponent} from "../../admin/admin-role/admin-role.component";
 import {AdminStatusComponent} from "../../admin/admin-status/admin-status.component";
+import {AdminTableComponent} from "../../admin/admin-table/admin-table.component";
 
 export const ADMIN_ROUTES = [
   {path: 'user/all', component: AdminUserComponent},
@@ -25,5 +26,6 @@ export const ADMIN_ROUTES = [
   {path: 'order/all', component: AdminOrderComponent},
   {path: 'order/edit/:id', component: AdminOrderEditComponent},
   {path: 'role/all', component: AdminRoleComponent},
-  {path: 'status/all', component: AdminStatusComponent}
+  {path: 'status/all', component: AdminStatusComponent},
+  {path: 'table', component: AdminTableComponent}
 ];

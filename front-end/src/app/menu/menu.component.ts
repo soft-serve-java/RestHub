@@ -1,9 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 import {MenuService} from '../services/menu.service';
 import {Dish} from '../models/dish'
-import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {OrderStorageService} from "../services/order-storage.service";
 
 

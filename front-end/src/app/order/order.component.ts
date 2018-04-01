@@ -24,7 +24,6 @@ export class OrderComponent implements OnInit {
 
   private orderedDishes = [];
 
-  private tableNumber = 1;
 
   constructor(private route: ActivatedRoute,
               private statusService: StatusService,
@@ -83,7 +82,7 @@ export class OrderComponent implements OnInit {
   }
 
   checkOrderByTableNumber(){
-    this.orderService.getOrderDetails(this.tableNumber).then(res => {
+    this.orderService.getOrderDetails().then(res => {
       this.newOrder = res;
       this.orderedDishes = this.newOrder.orderedFood;
     });

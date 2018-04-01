@@ -15,16 +15,12 @@
       <li  *ngFor="let category of categories" class="nav-item">
         <a class="nav-link" [routerLink]="['/menu', category.name]">{{category.name}}</a>
       </li>
-      <button (click)="doPOSTonCallWaiter(1)"  type="button" class="btn btn-success nav-button" style="margin-right:10px;"
-              data-toggle="modal" data-target="#exampleModalWaiter">
-                <span class="left-span"> Call a waiter
-                  <i class="fa fa-bell" aria-hidden="true"></i></span>
-      </button>
         <a [routerLink]="['/order']">
           <button class="btn btn-info nav-button" style="margin-right:10px;">
             <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
           </button>
         </a>
+      <p *ngIf="tableNumber" class="navbar-text" style="color: snow">Your table is {{tableNumber}}</p>
     </ul>
     <div  *ngIf="showDialog">
       <h6 style="color: white;" class="modal-title">Your waiter is coming</h6>
