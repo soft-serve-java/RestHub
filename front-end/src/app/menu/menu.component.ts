@@ -74,7 +74,6 @@ export class MenuComponent implements OnInit {
     return this.data.find(function(val){
       if (val.key == dish.id) return val;
       });
-
   }
 
   searchByName(name: string){

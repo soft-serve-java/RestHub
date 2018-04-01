@@ -15,7 +15,7 @@
 
       <div class="form-group">
         <label>Category:</label>
-        <select class="form-control" [(ngModel)]="dish.category" name="category">
+        <select class="form-control" [(ngModel)]="categoryName" name="category">
           <option *ngFor="let cat of category">{{cat.name}}</option>
         </select>
       </div>

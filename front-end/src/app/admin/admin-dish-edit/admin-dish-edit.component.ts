@@ -15,6 +15,7 @@ export class AdminDishEditComponent implements OnInit {
 
   category: Category[];
   dish: Dish;
+  categoryName: string;
 
   inputTag = '';
 
@@ -32,14 +33,20 @@ export class AdminDishEditComponent implements OnInit {
   }
 
   getCategory() {
-    this.adminCategoryService.getCategory().then(res => this.category = res)
+    this.adminCategoryService.getCategory().then(res => {this.category = res})
   }
 
   loadDishById(id: number){
-    this.adminDishService.getDishById(id).then(res => this.dish = res);
+    this.adminDishService.getDishById(id).then(res => {
+      this.dish = res;
+      this.categoryName = this.dish.category.name;
+    });
   }
 
   editDish(){
+    this.dish.category = this.category.find(cat => cat.name === this.categoryName);
+
+
     this.adminDishService
       .editDish(this.dish)
       .then(res => {this.router.navigate(['admin/dish/all'])});
