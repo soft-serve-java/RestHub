@@ -82,7 +82,7 @@ export class OrderComponent implements OnInit {
   }
 
   checkOrderByTableNumber(){
-    this.orderService.getOrderDetails().then(res => {
+    this.orderService.getOrderDetailsByTable().then(res => {
       this.newOrder = res;
       this.orderedDishes = this.newOrder.orderedFood;
     });

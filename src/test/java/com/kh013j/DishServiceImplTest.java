@@ -47,40 +47,40 @@ public class DishServiceImplTest {
         dishes.addAll(Arrays.asList(
                 (new Dish(1L, "White corn guacamol",
                         "Diced avocado, sweet white corn, black beans.",
-                        200, 1000, 40,3.0, soupsCategory, new ArrayList<>(), true)),
+                        200, 1000, 40,3.0, soupsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(2L, "Camole",
                         "Diced avocado, sweet white corn, black beans.",
-                        250, 1200, 10,33.0, soupsCategory, new ArrayList<>(), true)),
+                        250, 1200, 10,33.0, soupsCategory, new ArrayList<>(),new ArrayList<>(), true)),
                 (new Dish(3L, "Guacamole",
                         "Black beans.",
-                        430, 1400, 20,56.0, soupsCategory, new ArrayList<>(), true)),
+                        430, 1400, 20,56.0, soupsCategory, new ArrayList<>(),new ArrayList<>(), true)),
                 (new Dish(4L, "Tiramisu",
                         "Soft.",
-                        730, 1341, 26, 39.0, desertsCategory, new ArrayList<>(), true)),
+                        730, 1341, 26, 39.0, desertsCategory, new ArrayList<>(), new ArrayList<>(),true)),
                 (new Dish(5L, "Tortinni",
                         "Delicious.",
-                        330, 1909, 27, 60.0, desertsCategory, new ArrayList<>(), true)),
+                        330, 1909, 27, 60.0, desertsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(6L, "Our desert",
                         "From love",
-                        230, 1467, 29, 34.0, desertsCategory, new ArrayList<>(), true)),
+                        230, 1467, 29, 34.0, desertsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(7L, "Gua mole",
                         "Red beans.",
-                        230, 1348, 23, 39.0, mealsCategory, new ArrayList<>(), true)),
+                        230, 1348, 23, 39.0, mealsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(8L, "Mole",
                         "Beans.",
-                        530, 1906, 22, 6.0, mealsCategory, new ArrayList<>(), true)),
+                        530, 1906, 22, 6.0, mealsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(9L, "Dishy-Issy",
                         "Different beans.",
-                        730, 1409, 25, 66.0, mealsCategory, new ArrayList<>(), true)),
+                        730, 1409, 25, 66.0, mealsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(10L, "Milk shake",
                         "Tasty drink",
-                        521, 1317, 13, 8.0, drinksCategory, new ArrayList<>(), true)),
+                        521, 1317, 13, 8.0, drinksCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(11L, "Strawberry cocktail",
                         "Tasty strawberry flavour",
-                        580, 1005, 14, 9.0, drinksCategory, new ArrayList<>(), true)),
+                        580, 1005, 14, 9.0, drinksCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(12L, "Blackberry cocktail",
                         "Tasty blackberry flavour",
-                        570, 1404, 12, 11.0, drinksCategory, new ArrayList<>(), true))));
+                        570, 1404, 12, 11.0, drinksCategory, new ArrayList<>(), new ArrayList<>(), true))));
 
         for (Dish dish : dishes) {
             dishService.create(dish);
@@ -194,7 +194,7 @@ public class DishServiceImplTest {
     @Test
     public void delete() {
         Dish lastDish = new Dish(dishes.size()+1, "Guaca", "Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.",
-                200, 1000, 40,3.0, desertsCategory, null, true);
+                200, 1000, 40,3.0, desertsCategory, null, null, true);
 
         Dish createdDish = dishService.create(lastDish);
 

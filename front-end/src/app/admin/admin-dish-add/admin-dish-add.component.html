@@ -1,3 +1,4 @@
+
 <div class="container">
   <h3>Add new dish</h3>
   <div class="row">
@@ -15,8 +16,8 @@
 
         <div class="form-group">
           <label>Category:</label>
-          <select class="form-control" [(ngModel)]="category">
-            <option *ngFor="let cat of category">{{cat.name}}</option>
+          <select class="form-control" [(ngModel)]="categoryName">
+            <option *ngFor="let cat of category" [value]="cat.name">{{cat.name}}</option>
           </select>
         </div>
 
@@ -39,6 +40,17 @@
           <label>Price</label>
           <input type="number" class="form-control" [(ngModel)]="price">
         </div>
+      <div class="form-group">
+        <label>Tags:</label>
+        <div class="form-control">
+          <input type="text" class="form-control" [(ngModel)]="inputTag" (keyup.enter)="addTag()">
+          <div class="container row">
+            <div *ngFor="let tag of tags" style="padding-left: 8px"><span>{{tag.title}}</span>
+              <i class="fa fa-close" (click)="removeTag(tag.title)"></i></div>
+          </div>
+        </div>
+      </div>
+
 
 
         <div class="form-group">

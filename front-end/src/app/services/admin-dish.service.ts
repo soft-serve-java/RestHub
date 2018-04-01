@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Dish} from "../models/dish";
 import {Category} from "../models/category";
 import {User} from "../models/user";
+import {Tag} from "../models/tag";
 
 @Injectable()
 export class AdminDishService {
@@ -21,10 +22,10 @@ export class AdminDishService {
   }
 
 
-  addDish(name: string, description: string, weight: number, category: Category, calories: number, preparingtime: number, price: number): Promise<any>{
+  addDish(name: string, description: string, weight: number, category: Category, calories: number, preparingtime: number, price: number, tags: Tag[]): Promise<any>{
     return this.http
     //.post(this.dishApi + "admin/dish/add", {dish: new Dish ()})
-      .post(this.dishApi + "admin/dish/add", {name, description, weight, category, calories, preparingtime, price})
+      .post(this.dishApi + "admin/dish/add", {name, description, weight, category, calories, preparingtime, price, tags})
       .toPromise()
   }
 

@@ -10,7 +10,11 @@ export class OrderService {
   constructor(@Inject('API_URL') private apiUrl: string,
               private tableStorageService: TableStorageService,private http:HttpClient) { }
 
-  public getOrderDetails():Promise<Order>{
+  public getOrderDetails(id: number):Promise<Order>{
+    return this.http.get<Order>(this.apiUrl + 'order/table/'+id).toPromise();
+  }
+
+  public getOrderDetailsByTable():Promise<Order>{
     return this.http.get<Order>(this.apiUrl + 'order/table/'+this.tableStorageService.table).toPromise();
   }
 
