@@ -27,7 +27,7 @@
       <p class="text-muted">{{dish.calories}} calories</p>
       <p class="text-muted">Preparing time: {{dish.preparingtime}} min</p>
       <p class="card-text">{{dish.description}}</p>
-      <p class="card-text">
+      <p class="card-text" *ngIf="dish.tags.length > 0">
         Tags: <span *ngFor="let tag of dish.tags" class="text-muted">{{tag.title}} </span>
       </p>
       <div class="">

@@ -1,7 +1,6 @@
 <div class="container">
   <h3>Edit dish</h3>
-  <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mx-auto">
 
       <div class="form-group">
         <label>Name:</label>
@@ -15,7 +14,7 @@
 
       <div class="form-group">
         <label>Category:</label>
-        <select class="form-control" [(ngModel)]="categoryName" name="category">
+        <select class="form-control" [(ngModel)]="dish.category.name" name="category">
           <option *ngFor="let cat of category">{{cat.name}}</option>
         </select>
       </div>
@@ -62,7 +61,5 @@
       <div class="form-group">
         <a class="btn btn-success" (click)="editDish()"> Save </a>
       </div>
-
     </div>
-  </div>
 </div>
