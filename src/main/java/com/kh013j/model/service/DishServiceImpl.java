@@ -45,13 +45,12 @@ public class DishServiceImpl implements DishService {
         List<Tag> attachedTags = new LinkedList<>();
         for (Tag tag: dish.getTags()){
                 attachedTags.add(tags.stream().
-                        filter(tag1 -> tag1.getTitle().equals(tag.getTitle()))
+                        filter(tag1 -> tag1.getTitle().equalsIgnoreCase(tag.getTitle()))
                         .findFirst()
                         .orElse(new Tag(tag.getTitle())));
         }
 
         dish.setTags(attachedTags);
-        logger.error("test {}", dish);
         return dishRepository.save(dish);
     }
 
