@@ -75,7 +75,7 @@ public class RegisterRestController {
             registrationEmail.setTo(user.getEmail());
             registrationEmail.setSubject("Registration Confirmation");
             registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
-                    + appUrl + ":9090/api/confirm?token=" + user.getConfirmationtoken());
+                    + appUrl + ":4200/confirm/" + user.getConfirmationtoken());
             registrationEmail.setFrom("noreply@domain.com");
             emailService    .sendEmail(registrationEmail);
         }
@@ -83,9 +83,9 @@ public class RegisterRestController {
     }
 
     // Process confirmation link
-    @GetMapping(value = "/confirm")
+    @PostMapping(value = "/confirm")
     public void confirmRegistration(@RequestParam Map<String, String> requestParams,
-                                    @RequestParam("token") String token) {
+                                    @RequestParam String token) {
         User user = userService.findByConfirmationtoken(requestParams.get("token"));
         user.setEnabled(true);
         userService.create(user);

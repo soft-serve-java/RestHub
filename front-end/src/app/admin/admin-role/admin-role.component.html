@@ -4,7 +4,7 @@
     <tr style="text-align: center;">
       <th>#</th>
       <th>Name</th>
-      <th colspan="2" > <a href="/admin/role/new"><button type="submit" class="btn btn-primary">New Role</button> </a>
+      <th colspan="2" > <a href="/admin/role/new"><button type="submit" class="btn btn-primary fa fa-plus"></button> </a>
       </th>
     </tr>
     </thead>
@@ -13,8 +13,8 @@
         <td>{{role.id}}</td>
         <td>{{role.name}}</td>
         <td>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                  data-whatever="${role.name}" data-href="/admin/role/delete/${role.id}">Delete
+          <button type="button" class="btn btn-danger fa fa-trash-o" data-toggle="modal" data-target="#exampleModal"
+                  data-whatever="${role.name}" data-href="/admin/role/delete/${role.id}">
           </button>
         </td>
       </tr>

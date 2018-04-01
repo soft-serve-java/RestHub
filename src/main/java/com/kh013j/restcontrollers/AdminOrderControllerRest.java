@@ -51,10 +51,10 @@ public class AdminOrderControllerRest {
         return orderService.findById(id);
     }
 
-    @GetMapping(value = "/api/admin/role/all")
+/*    @GetMapping(value = "/api/admin/role/all")
     public List<Role> showRoles(){
         return roleService.findAll();
-    }
+    }*/
 
     @GetMapping(value = "/api/admin/status/all")
     public List<Status> showStatuses(){

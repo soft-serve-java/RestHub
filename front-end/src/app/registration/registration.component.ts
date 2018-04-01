@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../models/user";
 import {AuthService} from "../services/auth.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   login:string;
   error:boolean;
   massage:string;
-  constructor(public authservice:AuthService){ }
+  constructor(public authservice:AuthService, private router: Router){ }
 
   ngOnInit() {
   }
@@ -26,6 +27,7 @@ export class RegistrationComponent implements OnInit {
     }
     let user:User = new User(this.login, this.email, this.password);
     this.authservice.register(user);
+    this.router.navigate(['/confirm/0']);
     //TODO:confirmation after!!!!!!!!!!!!(Router to conf + in back-end)
   }
 
