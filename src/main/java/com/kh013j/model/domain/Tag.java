@@ -21,7 +21,7 @@ public class Tag {
     @Size(min=2, max=30)
     private String title;
 
-    public Tag(@Size(min = 2, max = 30) String title) {
+    public Tag(@Size(min = 1, max = 30) String title) {
         this.title = title;
     }
 }

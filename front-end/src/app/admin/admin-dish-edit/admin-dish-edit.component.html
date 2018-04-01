@@ -40,16 +40,24 @@
         <input type="number" class="form-control" [(ngModel)]="dish.price" name="price">
       </div>
 
+
       <div class="form-group">
         <label>Tags:</label>
         <div class="form-control">
-          <input type="text" class="form-control" [(ngModel)]="inputTag" (keyup.enter)="addTag()">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="inputTag" (keyup.enter)="addTag()" placeholder="Submit tag by tapping enter" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="addTag()" type="button">Add</button>
+            </div>
+          </div>
           <div class="container row">
             <div *ngFor="let tag of dish.tags" class="tag"><span>{{tag.title}}</span>
               <i class="fa fa-close" (click)="removeTag(tag.title)"></i></div>
           </div>
         </div>
       </div>
+
+
 
       <div class="form-group">
         <a class="btn btn-success" (click)="editDish()"> Save </a>
