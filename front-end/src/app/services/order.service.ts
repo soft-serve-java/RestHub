@@ -1,15 +1,21 @@
 import {Inject, Injectable} from '@angular/core';
 import {Order} from "../models/order";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {OrderedDish} from "../models/orderedDish";
+import {TableStorageService} from "./table-storage.service";
 
 @Injectable()
 export class OrderService {
 
-  constructor(@Inject('API_URL') private apiUrl: string, private http:HttpClient) { }
+  constructor(@Inject('API_URL') private apiUrl: string,
+              private tableStorageService: TableStorageService,private http:HttpClient) { }
 
-  public getOrderDetails(id:number):Promise<Order>{
+  public getOrderDetails(id: number):Promise<Order>{
     return this.http.get<Order>(this.apiUrl + 'order/table/'+id).toPromise();
+  }
+
+  public getOrderDetailsByTable():Promise<Order>{
+    return this.http.get<Order>(this.apiUrl + 'order/table/'+this.tableStorageService.table).toPromise();
   }
 
   createOrder(orderDishes: OrderedDish[]):Promise<Order>{
@@ -21,10 +27,12 @@ export class OrderService {
       authHeader = 'Authorization';
     }
 
+    let params = new HttpParams().set("table", this.tableStorageService.table);
+
     return this.http.post<Order>(this.apiUrl + "order", orderDishes,
       {headers: new HttpHeaders({
               authHeader:  tokenHeader,
-             })}).toPromise();
+             }), params: params}).toPromise();
   }
 
   submitOne(orderedDish: OrderedDish): Promise<Order>{
@@ -36,9 +44,11 @@ export class OrderService {
       authHeader = 'Authorization';
     }
 
+    let params = new HttpParams().set("table", this.tableStorageService.table);
+
     return this.http.post<Order>(this.apiUrl + "order/submitOne", orderedDish,
       {headers: new HttpHeaders({
           authHeader:  tokenHeader,
-        })}).toPromise();
+        }), params: params}).toPromise();
   }
 }

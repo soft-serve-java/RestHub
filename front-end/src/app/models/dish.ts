@@ -1,5 +1,6 @@
 import {Category} from "./category";
 import {Image} from "./image";
+import {Tag} from "./tag";
 
 export class Dish {
    id: number;
@@ -11,5 +12,6 @@ export class Dish {
    price: number;
    category: Category;
    images: Image[];
+   tags: Tag[];
    availability: boolean;
 }

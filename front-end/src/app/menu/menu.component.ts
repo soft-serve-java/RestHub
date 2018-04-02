@@ -1,9 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 import {MenuService} from '../services/menu.service';
 import {Dish} from '../models/dish'
-import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {OrderStorageService} from "../services/order-storage.service";
 
 
@@ -75,7 +74,6 @@ export class MenuComponent implements OnInit {
     return this.data.find(function(val){
       if (val.key == dish.id) return val;
       });
-
   }
 
   searchByName(name: string){

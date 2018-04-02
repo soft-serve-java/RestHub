@@ -2,6 +2,10 @@ body {
     margin-bottom: 60px;
 }
 
+.i-check{
+    color: #ffffff;
+}
+
 .tab-pane {
     overflow-y: scroll;
     width: 100%;

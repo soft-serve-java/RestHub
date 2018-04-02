@@ -18,7 +18,7 @@
             <div class="form-group">
               <label for="inputPassword2" class="col-sm-3 control-label">Password confirm</label>
               <input type="password" class="form-control col-sm-8 col-centered"
-                     id="inputPassword2" placeholder="Password" [(ngModel)]="passwordConfirm" required="">
+                     id="inputPassword2" onblur="checkPass" placeholder="Password" [(ngModel)]="passwordConfirm" required="">
             </div>
             <div class="form-group">
               <label for="inputName" class="col-sm-3 control-label">Name</label>

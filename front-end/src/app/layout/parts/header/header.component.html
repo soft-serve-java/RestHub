@@ -20,6 +20,7 @@
             <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
           </button>
         </a>
+      <p *ngIf="tableNumber" class="navbar-text" style="color: snow">Your table is {{tableNumber}}</p>
     </ul>
   </div>
   <form action="/menu" method="get" class="form-inline">

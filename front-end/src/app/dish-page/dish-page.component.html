@@ -26,12 +26,16 @@
       <p class="text-muted">{{dish.weight}} grams</p>
       <p class="text-muted">{{dish.calories}} calories</p>
       <p class="text-muted">Preparing time: {{dish.preparingtime}} min</p>
-      <!-- <p class="text-muted">Components: cauliflower, cheese, seeds, sauce</p> -->
       <p class="card-text">{{dish.description}}</p>
+      <p class="card-text" *ngIf="dish.tags.length > 0">
+        Tags: <span *ngFor="let tag of dish.tags" class="text-muted">{{tag.title}} </span>
+      </p>
       <div class="">
-        <h5 class="card-title">{{dish.price}}$ <a href="/addToOrder/${dish.id}" class="btn btn-primary">Add to
-          order</a></h5>
+        <h5 class="card-title">{{dish.price}}$ <button class="btn btn-primary" (click)="addToOrder()">Add to
+          order</button></h5>
       </div>
+      <span *ngIf="quantityInOrder" class="text-muted">Already in order ({{quantityInOrder}})</span>
+
     </div>
 
     <div *ngIf="populars.length">

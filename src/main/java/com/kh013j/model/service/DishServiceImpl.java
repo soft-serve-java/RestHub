@@ -3,16 +3,21 @@ package com.kh013j.model.service;
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Review;
 import com.kh013j.model.domain.Dish;
+import com.kh013j.model.domain.Tag;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.ReviewRepository;
 import com.kh013j.model.repository.DishRepository;
+import com.kh013j.model.repository.TagRepository;
 import com.kh013j.model.service.interfaces.DishService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.LinkedList;
 import java.util.List;
 
 public class DishServiceImpl implements DishService {
@@ -22,6 +27,11 @@ public class DishServiceImpl implements DishService {
     @Resource
     private ReviewRepository reviewRepository;
 
+    @Resource
+    private TagRepository tagRepository;
+
+    Logger logger = LoggerFactory.getLogger(DishServiceImpl.class);
+
     /**
      * Number of dishes in one page
      */
@@ -30,6 +40,17 @@ public class DishServiceImpl implements DishService {
     @Override
     @Transactional
     public Dish create(Dish dish) {
+        List<Tag> tags = tagRepository.findAll();
+
+        List<Tag> attachedTags = new LinkedList<>();
+        for (Tag tag: dish.getTags()){
+                attachedTags.add(tags.stream().
+                        filter(tag1 -> tag1.getTitle().equalsIgnoreCase(tag.getTitle()))
+                        .findFirst()
+                        .orElse(new Tag(tag.getTitle())));
+        }
+
+        dish.setTags(attachedTags);
         return dishRepository.save(dish);
     }
 

@@ -126,4 +126,7 @@
     <changeSet id="11" author="artur"  runAlways="true">
         <sqlFile path="database/postgres/sql/changeImage.sql"/>
     </changeSet>
+    <changeSet id="12" author="artur"  runAlways="true">
+        <sqlFile path="database/postgres/sql/tagEntity.sql"/>
+    </changeSet>
 </databaseChangeLog>
