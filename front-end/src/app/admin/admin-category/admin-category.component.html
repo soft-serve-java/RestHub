@@ -4,7 +4,7 @@
     <tr style="text-align: center;">
       <th>#</th>
       <th>Name</th>
-      <th><a [routerLink]="'/admin/category/add'" class="btn btn-primary"><span class="fa fa-pen">New category</span></a></th>
+      <th colspan="2"><a [routerLink]="'/admin/category/add'" class="btn btn-primary fa fa-plus"><span class="fa fa-pen"></span></a></th>
     </tr>
     </thead>
   <tbody>
@@ -15,7 +15,7 @@
           <a [routerLink]="['/admin/category/edit/', cat.id]" class="btn btn-warning"><span class="fa fa-pen"> <i class="fa fa-pencil"></i></span></a>
         </td>
         <td>
-          <button class="btn btn-danger" (click)="deleteCategory(cat)"><span class="fa fa-pen">Delete</span></button>
+          <button class="btn btn-danger fa fa-trash-o" (click)="deleteCategory(cat)"></button>
         </td>
   </tr>
   </tbody>
