@@ -29,8 +29,7 @@ export class MenuComponent implements OnInit {
 
                                             if (params['tag']){
                                               this.getDishesByTag(params['tag'])
-                                            }
-                                            if (this.category){
+                                            } else{
                                               this.getDishes();
                                             }
 
