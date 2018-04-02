@@ -38,10 +38,10 @@
       </td>
       <td> {{ us.enabled }} </td>
       <td>
-        <a [routerLink]="['/admin/user/edit/', us.id]" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+        <a [routerLink]="['/admin/user/edit/', us.id]" class="btn btn-warning fa fa-pencil"></a>
       </td>
       <td>
-        <button class="btn btn-danger" (click)="deleteUser(us)"> <i class="fa fa-trash"></i></button>
+        <button class="btn btn-danger fa fa-trash-o" (click)="deleteUser(us)"></button>
       </td>
     </tr>
     </tbody>
