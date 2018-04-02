@@ -1,4 +1,3 @@
-
 <div class="container">
   <h3>Add new dish</h3>
     <div class="col-md-8  mx-auto">
@@ -39,6 +38,10 @@
           <label>Price</label>
           <input type="number" class="form-control" [(ngModel)]="price">
         </div>
+
+
+        <div class="form-group">
+          <a button class="btn btn-success" (click)="addDish()"><i style="color: #ffffff" class="fa fa-check fa-2x"></i></a>
       <div class="form-group">
         <label>Tags:</label>
         <div class="form-control">
@@ -53,10 +56,7 @@
               <i class="fa fa-close" (click)="removeTag(tag.title)"></i></div>
           </div>
         </div>
-      </div>
-
-        <div class="form-group">
-          <a class="btn btn-success" (click)="addDish()"> Add </a>
-        </div>
+      <!--</form>-->
     </div>
+  </div>
 </div>
