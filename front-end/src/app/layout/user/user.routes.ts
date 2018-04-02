@@ -12,6 +12,8 @@ import {CookComponent} from "../../cook/cook.component";
 export const USER_ROUTES: Routes = [
   {path: '', component: WelcomeComponent},
   {path: 'welcome', component: WelcomeComponent},
+  {path: 'menu/search/:tag', component: MenuComponent},
+  {path: 'menu/search/:tag/:page', component: MenuComponent},
   {path: 'menu/:category/:page', component: MenuComponent},
   {path: 'menu/:category', component: MenuComponent},
   {path: 'dish/:id', component: DishPageComponent},

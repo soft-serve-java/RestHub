@@ -55,9 +55,11 @@ export class AdminDishAddComponent implements OnInit {
   }
 
   addTag(){
-    let tag = new Tag(this.inputTag);
-    this.tags.push(tag);
-    this.inputTag = '';
+    if (!this.tags.some(t => t.title === this.inputTag)){
+      let tag = new Tag(this.inputTag);
+      this.tags.push(tag);
+      this.inputTag = '';
+    }
   }
 
   removeTag(text){
