@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getCategories(){
-    this.categories = this.appService.getCategories();
+     this.appService.getCategories().then(res=> this.categories = res);
   }
   isAuthenticated():boolean {
     return this.authService.isAuthenticated();

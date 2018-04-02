@@ -17,16 +17,8 @@ export class AppService {
     return this.http.post(this.api + 'callWaiterClient', {table:tableNumber}, {params: params}).toPromise().then(rer=>console.log(rer));
   }
 
-  getCategories(): Category[]{
-    let categories = this.storage.get("categories");
-    if (categories == null){
-      this.http.get<Category[]>(this.api + 'category/all').toPromise().then(res=>{
-        this.storage.set("categories", res);
-        return res;
-      });
-    }else {
-      return categories;
-    }
+  getCategories(): Promise<Category[]>{
+    return this.http.get<Category[]>(this.api + 'category/all').toPromise();
   }
 
 }
