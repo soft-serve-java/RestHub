@@ -28,4 +28,6 @@ public interface DishRepository extends JpaRepository<Dish, Long> {
             "  ORDER BY COUNT(rh.dish.*) DESC " +
             "  LIMIT 10; ", nativeQuery = true)
     List<Dish> findDishByPopularCustomQuery(Long id);
+
+
 }
