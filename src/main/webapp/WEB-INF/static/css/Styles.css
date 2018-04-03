@@ -2,6 +2,10 @@ body {
     margin-bottom: 60px;
 }
 
+.dropdown-item {
+    cursor: pointer;
+}
+
 .i-check{
     color: #ffffff;
 }

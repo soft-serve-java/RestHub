@@ -6,6 +6,10 @@ body {
   color: #ffffff !important;
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
 .tab-pane {
     overflow-y: scroll;
     width: 100%;
