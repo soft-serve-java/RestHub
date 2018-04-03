@@ -35,9 +35,9 @@
         <a class="nav-link" [routerLink]="['/admin/table']" >Set Table</a>
       </li>
     </ul>
-    <form action="#" class="form-inline">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button type="button" class="btn btn-default btn-lg nav-button btn-nav-search" style="margin-top: 10px">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2"  name="search" [(ngModel)]="search" type="text" placeholder="Search dish"/>
+      <button class="btn btn-default btn-lg nav-button btn-nav-search" [routerLink]="['/menu/search', search]">
         <i class="fa fa-search"></i>
       </button>
     </form>

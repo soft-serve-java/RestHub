@@ -63,7 +63,7 @@ public class DishServiceImpl implements DishService {
     @Override
     public Page<Dish> findAllAvailableDishByTagName(String tagName, Integer pageNumber){
         PageRequest request = new PageRequest(pageNumber -1, PAGE_SIZE);
-        return dishRepository.findByTags_TitleIgnoreCaseOrNameContainingIgnoreCaseAndAvailabilityTrue(tagName, tagName, request);
+        return dishRepository.findDistinctByTags_TitleIgnoreCaseOrNameContainingIgnoreCaseAndAvailabilityTrue(tagName, tagName, request);
     }
 
 
