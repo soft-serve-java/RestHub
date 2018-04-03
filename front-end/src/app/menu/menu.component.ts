@@ -26,13 +26,18 @@ export class MenuComponent implements OnInit {
     route.params.subscribe( params => {
                                             this.category = params['category'];
                                             this.currPage = Number(params['page']);
-                                            this.getDishes();
+
+                                            if (params['tag']){
+                                              this.getDishesByTag(params['tag'])
+                                            } else{
+                                              this.getDishes();
+                                            }
+
                                             this.data = this.orderStorageService.orderMap;
                                           });
     }
 
   ngOnInit() {
-    this.getDishes();
   }
 
   getDishes() {
@@ -42,6 +47,17 @@ export class MenuComponent implements OnInit {
     this.menuService.getDishesByCategory(this.category, this.currPage).then(res => {
       this.dishes = res.body;
 
+      this.maxPage = Number(res.headers.get('last'));
+      this.numbers = Array(this.maxPage).fill(1).map((x,i)=>i+1);
+    });
+  }
+
+  getDishesByTag(tagName: string) {
+    if (!this.currPage) {
+      this.currPage = 1;
+    }
+    this.menuService.getDishesByTagName(tagName, this.currPage).then(res=> {
+      this.dishes = res.body;
       this.maxPage = Number(res.headers.get('last'));
       this.numbers = Array(this.maxPage).fill(1).map((x,i)=>i+1);
     });

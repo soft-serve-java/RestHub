@@ -52,6 +52,11 @@ public class CaffinoApplicationConfiguration {
     }
 
     @Bean
+    public TagService tagServiceConfig() {
+        return new TagServiceImpl();
+    }
+
+    @Bean
     public UserDetailsService userDetailsServiceConfig(){
         return new UserDetailsServiceImpl();
     }

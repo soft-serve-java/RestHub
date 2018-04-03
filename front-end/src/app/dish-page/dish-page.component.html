@@ -28,7 +28,7 @@
       <p class="text-muted">Preparing time: {{dish.preparingtime}} min</p>
       <p class="card-text">{{dish.description}}</p>
       <p class="card-text" *ngIf="dish.tags.length > 0">
-        Tags: <span *ngFor="let tag of dish.tags" class="text-muted">{{tag.title}} </span>
+        Tags: <a *ngFor="let tag of dish.tags" [routerLink]="['/menu/search', tag.title]" class="text-muted">{{tag.title}} </a>
       </p>
       <div class="">
         <h5 class="card-title">{{dish.price}}$ <button class="btn btn-primary" (click)="addToOrder()">Add to
