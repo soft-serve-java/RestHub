@@ -14,6 +14,9 @@ import java.util.List;
 public interface DishRepository extends JpaRepository<Dish, Long> {
     Page<Dish> findAllByCategoryAndAvailabilityTrue(Category category, Pageable pageable);
 
+    Page<Dish> findByTags_TitleIgnoreCaseOrNameContainingIgnoreCaseAndAvailabilityTrue(String name, String title, Pageable pageable);
+
+
     List<Dish> findByNameContainingIgnoreCaseAndAvailabilityTrue(String name);
 
     List<Dish> findAllByAvailability(Boolean availability);
@@ -28,4 +31,6 @@ public interface DishRepository extends JpaRepository<Dish, Long> {
             "  ORDER BY COUNT(rh.dish.*) DESC " +
             "  LIMIT 10; ", nativeQuery = true)
     List<Dish> findDishByPopularCustomQuery(Long id);
+
+
 }

@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   private categories: Array<Category>;
   private tableNumber: number;
+  private search: string;
 
   constructor(@Inject('SOCKET_URL') private socketUrl,
               public appService: AppService,public authService:AuthService,
@@ -42,7 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getCategories(){
-    this.categories = this.appService.getCategories();
+     this.appService.getCategories().then(res=> this.categories = res);
   }
   isAuthenticated():boolean {
     return this.authService.isAuthenticated();

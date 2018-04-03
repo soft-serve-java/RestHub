@@ -10,13 +10,11 @@ import com.kh013j.model.repository.OrderedDishRepository;
 import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.StatusService;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -116,5 +114,8 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         orderedDish.setQuantity(quantity);
         orderedDish.setStatus(statusService.create());
         return orderedDish;
+    }
+    public List<Object[]> getTheMostPooular(){
+        return orderedDishRepository.getTheMostPopular();
     }
 }

@@ -12,6 +12,11 @@ export class MenuService {
     return this.http.get<Dish[]>(this.rootApi + 'dish/by' + category, {params: params, observe: 'response'}).toPromise();
   }
 
+  getDishesByTagName(tag: string, page: number): Promise<HttpResponse<Dish[]>> {
+    let params = new HttpParams().set('page', String(page));
+    return this.http.get<Dish[]>(this.rootApi + 'dish/search/' + tag, {params: params, observe: 'response'}).toPromise();
+  }
+
   getDishById(dishId: number) : Promise<Dish>{
     return this.http.get<Dish>(this.rootApi + "dish/" + dishId).toPromise();
   }
