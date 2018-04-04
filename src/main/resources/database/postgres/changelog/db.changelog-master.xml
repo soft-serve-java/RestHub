@@ -129,4 +129,14 @@
     <changeSet id="12" author="artur"  runAlways="true">
         <sqlFile path="database/postgres/sql/tagEntity.sql"/>
     </changeSet>
+    <changeSet author="orasso" id="13" runAlways="true">
+        <addColumn schemaName="rh"
+                   tableName="order">
+            <column name="sum" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="14" author="orasso" runAlways="true">
+        <sqlFile path="database/postgres/sql/populateForStatistic.sql"/>
+    </changeSet>
+
 </databaseChangeLog>

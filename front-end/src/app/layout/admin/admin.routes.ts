@@ -11,21 +11,22 @@ import {AdminRoleComponent} from "../../admin/admin-role/admin-role.component";
 import {AdminOrderEditComponent} from "../../admin/admin-order-edit/admin-order-edit.component";
 import {AdminStatusComponent} from "../../admin/admin-status/admin-status.component";
 import {AdminTableComponent} from "../../admin/admin-table/admin-table.component";
+import {AuthGuardService as AuthGuard} from "../../services/auth-guard.service";
 
 export const ADMIN_ROUTES = [
-  {path: 'user/all', component: AdminUserComponent},
-  {path: 'user/edit/:id', component: AdminUserEditComponent},
-  {path: 'dish/all', component: AdminDishComponent},
-  {path: 'dish/add', component: AdminDishAddComponent},
-  {path: 'dish/edit/:id', component: AdminDishEditComponent},
-  {path: 'category/all', component: AdminCategoryComponent},
-  {path: 'category/add', component: AdminCategoryAddComponent},
-  {path: 'category/edit/:id', component: AdminCategoryEditComponent},
-  {path: 'order/all', component: AdminOrderComponent},
-  {path: 'category/edit/:id', component: AdminCategoryAddComponent},
-  {path: 'order/all', component: AdminOrderComponent},
-  {path: 'order/edit/:id', component: AdminOrderEditComponent},
-  {path: 'role/all', component: AdminRoleComponent},
-  {path: 'status/all', component: AdminStatusComponent},
-  {path: 'table', component: AdminTableComponent}
+  {path: 'user/all', component: AdminUserComponent, canActivate: [AuthGuard]},
+  {path: 'user/edit/:id', component: AdminUserEditComponent, canActivate: [AuthGuard]},
+  {path: 'dish/all', component: AdminDishComponent, canActivate: [AuthGuard]},
+  {path: 'dish/add', component: AdminDishAddComponent, canActivate: [AuthGuard]},
+  {path: 'dish/edit/:id', component: AdminDishEditComponent, canActivate: [AuthGuard]},
+  {path: 'category/all', component: AdminCategoryComponent, canActivate: [AuthGuard]},
+  {path: 'category/add', component: AdminCategoryAddComponent, canActivate: [AuthGuard]},
+  {path: 'category/edit/:id', component: AdminCategoryEditComponent, canActivate: [AuthGuard]},
+  {path: 'order/all', component: AdminOrderComponent, canActivate: [AuthGuard]},
+  {path: 'category/edit/:id', component: AdminCategoryAddComponent, canActivate: [AuthGuard]},
+  {path: 'order/all', component: AdminOrderComponent, canActivate: [AuthGuard]},
+  {path: 'order/edit/:id', component: AdminOrderEditComponent, canActivate: [AuthGuard]},
+  {path: 'role/all', component: AdminRoleComponent, canActivate: [AuthGuard]},
+  {path: 'status/all', component: AdminStatusComponent, canActivate: [AuthGuard]},
+  {path: 'table', component: AdminTableComponent, canActivate: [AuthGuard]}
 ];
