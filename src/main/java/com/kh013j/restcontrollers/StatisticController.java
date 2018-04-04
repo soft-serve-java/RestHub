@@ -1,5 +1,6 @@
 package com.kh013j.restcontrollers;
 
+import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +14,17 @@ import java.util.List;
 public class StatisticController {
     @Autowired
     OrderedDishService orderedDishService;
+    @Autowired
+    OrderService orderService;
 
     @GetMapping("populars")
     public List<Object[]> getTheMostPopular(){
         //Map<Integer,String> map = orderedDishService.getTheMostPooular();
         return orderedDishService.getTheMostPooular();
     }
-    /*SELECT COUNT (rh.orderdish.id), orderdish.quantity, rh.dish.name FROM rh.orderdish INNER JOIN rh.dish ON orderdish.dish_id = rh.dish.id WHERE
-  rh.orderdish.order_id IN
-  (SELECT rh."order".id FROM rh."order" WHERE EXTRACT(ISOYEAR FROM "order".time )
-  = EXTRACT(ISOYEAR FROM now()) AND EXTRACT(WEEK FROM "order".time) = EXTRACT(WEEK FROM NOW())) GROUP BY name, quantity;
-*/
+    @GetMapping("populars")
+    public List<Object[]> orederByMounth(){
+        //Map<Integer,String> map = orderedDishService.getTheMostPooular();
+        return orderService.orederByMounth();
+    }
 }

@@ -1,18 +1,21 @@
 package statGen.src;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Random;
+import java.util.Scanner;
 
 import static javax.script.ScriptEngine.FILENAME;
 
 public class DataGenerator {
     private static final String FILENAME = "populateForStatistic.sql";
-    public static void generateUsers() throws IOException {
+    public static void generate() throws IOException {
 
-        try (FileWriter fw =new FileWriter(FILENAME); BufferedWriter bw = new BufferedWriter(fw)) {
+        try (FileWriter fw =new FileWriter(FILENAME); BufferedWriter bw = new BufferedWriter(fw); Scanner in = new Scanner(new File("dishNames.txt"));
+        ) {
             for (int i = 0; i < 100; i++) {
                 String content = ("INSERT INTO rh.user(email, password, name, confirmationtoken, enabled) VALUES" +
                         "('user" + i + "@i.ua', '$2a$10$tkXKWLaylsMChogk6Ros.OXHjp5BDVpNlkuVFyrTJNjxjNtpu/6Gu'," +
@@ -26,8 +29,9 @@ public class DataGenerator {
                 int num = random.nextInt(3) + 1;
                 String content = ("INSERT INTO rh.dish(name, description, weight, calories, preparingtime, price, availability\n" +
                         ", category_id) VALUES " +
-                        "('Spicy buffalo Cauliflower', 'Fresh cauliflower florets buttermilk-battered and fried to a golden brown, then tossed in housemade Sriracha buffalo sauce and topped with a salad of celery, Gorgonzola and cilantro.'\n" +
-                        ", 300, 1200, 3, 130, true," + num +");\n");
+                        "('"+ in.nextLine() + "', 'Fresh cauliflower florets buttermilk-battered and fried to a golden brown, then tossed in housemade Sriracha buffalo sauce and topped with a salad of celery, Gorgonzola and cilantro.'\n" +
+                        ", 300, 1200, 3, 130, true," + num +");\n"+
+                        "INSERT INTO rh.image (url, dish_id) VALUES ('/assets/images/Spicy%20buffalo%20Cauliflower.jpg', " +(i+7) +");\n");
                 bw.write(content);
             }
             for (int i = 0; i < 1000; i++) {

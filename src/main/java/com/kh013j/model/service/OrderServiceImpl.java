@@ -172,5 +172,9 @@ public class OrderServiceImpl implements OrderService {
         order.setClosed(true);
         return update(order);
     }
+    @Override
+    public List<Object[]> orederByMounth(){
+        return orderRepository.orederByMounth();
+    }
 }
 

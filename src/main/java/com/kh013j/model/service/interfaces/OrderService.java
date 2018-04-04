@@ -40,6 +40,8 @@ public interface OrderService {
     void setWaiter(int table, User waiter);
 
     Order closeOrder(int table);
+
+    List<Object[]> orederByMounth();
     //SELECT rh."order".id FROM rh."order" WHERE EXTRACT(ISOYEAR FROM "order".time ) = EXTRACT(ISOYEAR FROM now()) AND EXTRACT(WEEK FROM "order".time) = EXTRACT(WEEK FROM NOW());
     //заказы за последнею неделю
 
