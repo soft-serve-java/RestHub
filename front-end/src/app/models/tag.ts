@@ -1,6 +1,6 @@
 
 export class Tag {
-  id: number;
+  public id: number;
   title: string;
 
 

@@ -42,34 +42,10 @@
           <h5 class="card-title inline">{{dish.price}}$</h5>
 
 
-
-          <!-- рабочая часть:
-          <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>-->
-
-
-          <!--<div *ngIf="{{dish.currenttime}} "> Welcome! </div>-->
-
-
-
-          <!--<button onclick="myFunction()">Try it!!</button>-->
-          <button onclick="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>
-
-          <p id="demo"></p>
-
-          <script>
-            function addToOrder() {
-              var hour = new Date().getHours();
-              var breakfast;
-              if (hour < 11) {
-                breakfast = "Good day";
-              } else {
-                breakfast = "Good evening";
-              }
-              document.getElementById("demo").innerHTML = breakfast;
-            }
-          </script>
-
-
+          <div *ngIf="dish.tags.indexOf(breakfast)==-1">
+            <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>
+          </div>
+          <!--<button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>-->
 
 
         </div>
@@ -98,6 +74,7 @@
     </nav>
   </div>
 </div>
+
 
 <style>
   .row1 {

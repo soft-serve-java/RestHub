@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Data} from "@angular/router";
 
 import {MenuService} from '../services/menu.service';
 import {Dish} from '../models/dish'
 import {OrderStorageService} from "../services/order-storage.service";
+import {Tag} from "../models/tag";
 
 
 @Component({
@@ -16,6 +17,9 @@ export class MenuComponent implements OnInit {
   private maxPage: number;
   private currPage: number;
   private numbers: number[];
+  private currentTime: number;
+  breakfast:Tag = new Tag("breakfast");
+  dateNow = new Date();
 
   private data:any = [];
 
@@ -47,24 +51,41 @@ export class MenuComponent implements OnInit {
     });
   }
 
+
+
+
   addToOrder(dish: Dish){
-    let temp = this.orderStorageService.orderMap;
-
-    if (!temp.some(elem => elem.key == dish.id)){
-      temp.push({key: dish.id, value:0});
-      let dishes = this.orderStorageService.orderDishes;
-      dishes.push(dish);
-      this.orderStorageService.orderDishes = dishes;
+    console.log(dish.tags.indexOf(new Tag( 'breakfast')));
+    //if(dish.tags.indexOf(new Tag( 'breakfast')) && new Date().getHours()<19){
+    if(dish.tags.indexOf(new Tag( 'breakfast')) && this.dateNow.getHours() > 8 && this.dateNow.getHours() < 19 ) {
+      console.log("return");
+      return;
     }
-    temp.find(function(val){
-        if (val.key == dish.id){
-          val.value += 1;
-        }
-    });
 
-    this.orderStorageService.orderMap = temp;
-    this.data = temp;
+     let temp = this.orderStorageService.orderMap;
+
+     if (!temp.some(elem => elem.key == dish.id)){
+        temp.push({key: dish.id, value:0});
+        let dishes = this.orderStorageService.orderDishes;
+        dishes.push(dish);
+        this.orderStorageService.orderDishes = dishes;
+      }
+     temp.find(function(val){
+          if (val.key == dish.id){
+            val.value += 1;
+          }
+     });
+
+      this.orderStorageService.orderMap = temp;
+      this.data = temp;
   }
+
+
+
+
+
+
+
 
   checkIfDishInOrder(dish: Dish): boolean{
     return this.data.some(e => e.key === dish.id);
@@ -86,5 +107,7 @@ export class MenuComponent implements OnInit {
       this.orderStorageService.orderDishes = [];
     }
   }
+
+
 
 }
