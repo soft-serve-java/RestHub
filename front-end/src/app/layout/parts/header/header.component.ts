@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
     const socket = new SockJS(this.socketUrl) as WebSocket;
     this.stompClient = stompjs.over(socket);
     this.stompClient.connect('', '', (frame: Frame) => {
-      this.stompClient.subscribe('/user/'+1+'/callBackInfo',
+      this.stompClient.subscribe('/user/'+this.tableStorageSerivce.table+'/callBackInfo',
         res => {this.showDialog = true});
     });
   }
