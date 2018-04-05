@@ -51,13 +51,15 @@ export class MenuComponent implements OnInit {
     });
   }
 
-
+compareBreakfast(dish: Dish){
+ return dish.tags.some(tag=> tag.title === 'breakfast')
+}
 
 
   addToOrder(dish: Dish){
     console.log(dish.tags.indexOf(new Tag( 'breakfast')));
     //if(dish.tags.indexOf(new Tag( 'breakfast')) && new Date().getHours()<19){
-    if(dish.tags.indexOf(new Tag( 'breakfast')) && this.dateNow.getHours() > 8 && this.dateNow.getHours() < 19 ) {
+    if(dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 8 && this.dateNow.getHours() < 22 ) {
       console.log("return");
       return;
     }

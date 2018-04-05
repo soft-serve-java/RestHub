@@ -42,10 +42,13 @@
           <h5 class="card-title inline">{{dish.price}}$</h5>
 
 
-          <div *ngIf="dish.tags.indexOf(breakfast)==-1">
+          <div *ngIf="!compareBreakfast(dish)">
             <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>
           </div>
-          <!--<button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>-->
+
+          <div *ngIf="compareBreakfast(dish)">
+            <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add!!!</button>
+          </div>
 
 
         </div>
@@ -86,4 +89,3 @@
   }
 
 </style>
-
