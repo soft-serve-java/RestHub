@@ -6,6 +6,11 @@
               aria-expanded="false">
         Sort by
       </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" (click)="sortByPrice()">Price</a>
+        <a class="dropdown-item" (click)="sortByCalories()">Calories</a>
+        <a class="dropdown-item" (click)="sortByPreparingTime()">Preparing time</a>
+      </div>
     </div>
   </div>
 
@@ -46,10 +51,7 @@
             <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>
           </div>
 
-          <div *ngIf="compareBreakfast(dish)">
-            <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add!!!</button>
-          </div>
-
+          <div *ngIf="compareBreakfast(dish)"> You can order this dish at 9:00-11:00AM</div>
 
         </div>
       </div>
@@ -78,7 +80,6 @@
   </div>
 </div>
 
-
 <style>
   .row1 {
     display: flex;
@@ -89,3 +90,4 @@
   }
 
 </style>
+
