@@ -53,7 +53,9 @@ import {TableStorageService} from "./services/table-storage.service";
 import { TokenConfermeComponent } from './token-conferme/token-conferme.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {StaticticService} from "./services/statictic.service";
-
+import {MatButtonModule, MatCardModule, MatDialogModule} from '@angular/material';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { WishComponent } from './wish/wish.component';
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -94,7 +96,8 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     AdminRoleComponent,
     AdminStatusComponent,
     TokenConfermeComponent,
-    AdminTableComponent
+    AdminTableComponent,
+    WishComponent
   ],
   imports: [
     CommonModule,
@@ -105,8 +108,13 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     StorageServiceModule,
     FormsModule,
     ChartsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [WelcomeService, WaiterService, TableStorageService,StaticticService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl}, {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [WishComponent]
 })
 export class AppModule { }

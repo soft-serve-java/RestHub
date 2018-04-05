@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderedDish} from "../models/orderedDish";
 import {StatusService} from "../services/status.service";
 import {OrderService} from "../services/order.service";
@@ -6,6 +6,12 @@ import {Order} from "../models/order";
 import {Status} from "../models/status";
 import {OrderStorageService} from "../services/order-storage.service";
 import {ActivatedRoute} from "@angular/router";
+import {MatCardModule, MatDialog} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material';
+import {WishComponent} from "../wish/wish.component";
+
+
 
 @Component({
   selector: 'app-order',
@@ -28,7 +34,8 @@ export class OrderComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private statusService: StatusService,
               private orderService: OrderService,
-              private orderStorageService: OrderStorageService) {
+              private orderStorageService: OrderStorageService,
+              public dialog: MatDialog) {
     this.statusService.saveStatusesToLocalStorage();
     this.getDishes();
     this.checkOrderByTableNumber();
@@ -160,6 +167,17 @@ export class OrderComponent implements OnInit {
     this.dishes = [];
     this.orderMap = [];
     this.newOrderedDishes = [];
+  }
+
+  showWishPopup(){
+    let dialogRef = this.dialog.open(WishComponent, {
+      width: '600px',
+      //data: 'This text is passed into the dialog!'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed: ${result}`);
+      //this.dialogResult = result;
+    });
   }
 
 }

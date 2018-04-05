@@ -40,6 +40,9 @@ public class Order {
     @JoinColumn(name = "waiter")
     User waiter;
 
+    @Transient
+    private String wish;
+
     public boolean hasFoodForDeliver(){
         long countOfFoodOnDelivery = orderedFood.stream()
                 .filter(orderedDish -> orderedDish.getStatus().getName().equals(Status.DELIVERY)).count();

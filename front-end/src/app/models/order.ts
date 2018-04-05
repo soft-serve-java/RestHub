@@ -9,4 +9,5 @@ export class Order {
   closed: boolean;
   orderedFood: Array<OrderedDish>;
   waiter: User;
+  wish: string;
 }
