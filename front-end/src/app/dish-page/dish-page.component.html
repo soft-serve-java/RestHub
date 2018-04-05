@@ -31,9 +31,19 @@
         Tags: <span *ngFor="let tag of dish.tags" class="text-muted">{{tag.title}} </span>
       </p>
       <div class="">
-        <h5 class="card-title">{{dish.price}}$ <button class="btn btn-primary" (click)="addToOrder()">Add to
-          order</button></h5>
+        <h5 class="card-title">{{dish.price}}$</h5>
       </div>
+
+
+
+        <div *ngIf="!compareBreakfast(dish)">
+          <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>
+        </div>
+
+        <div *ngIf="compareBreakfast(dish)"> You can order this dish at 9:00-11:00AM</div>
+
+
+
       <span *ngIf="quantityInOrder" class="text-muted">Already in order ({{quantityInOrder}})</span>
 
     </div>
