@@ -53,7 +53,10 @@ import {TableStorageService} from "./services/table-storage.service";
 import { TokenConfermeComponent } from './token-conferme/token-conferme.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {StaticticService} from "./services/statictic.service";
-import {MatButtonModule, MatCardModule, MatDialogModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { WishComponent } from './wish/wish.component';
 
@@ -111,7 +114,9 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [WelcomeService, WaiterService, TableStorageService,StaticticService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl}, {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
   bootstrap: [AppComponent],

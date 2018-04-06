@@ -6,12 +6,8 @@ import {Order} from "../models/order";
 import {Status} from "../models/status";
 import {OrderStorageService} from "../services/order-storage.service";
 import {ActivatedRoute} from "@angular/router";
-import {MatCardModule, MatDialog} from '@angular/material';
-import {MatButtonModule} from '@angular/material';
-import {MatDialogModule} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {WishComponent} from "../wish/wish.component";
-
-
 
 @Component({
   selector: 'app-order',
@@ -170,10 +166,8 @@ export class OrderComponent implements OnInit {
   }
 
   showWishPopup(){
-    let dialogRef = this.dialog.open(WishComponent, {
-      width: '600px',
-      //data: 'This text is passed into the dialog!'
-    });
+    let dialogRef = this.dialog.open(WishComponent);
+
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed: ${result}`);
       //this.dialogResult = result;
