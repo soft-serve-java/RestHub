@@ -13,7 +13,7 @@ const httpOptions = {
 
 @Injectable()
 export class CookService {
-  orderedDishesUrl = 'http://localhost:9090/api/cook';
+  orderedDishesUrl = 'http://localhost:8080/api/cook';
 
   constructor(@Inject('API_URL') private api: string,private http: HttpClient) {
   }

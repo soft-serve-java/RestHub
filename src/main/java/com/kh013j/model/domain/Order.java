@@ -43,6 +43,14 @@ public class Order {
     @Transient
     private String wish;
 
+    public int getTablenumber() {
+        return tablenumber;
+    }
+
+    public void setTablenumber(int tablenumber) {
+        this.tablenumber = tablenumber;
+    }
+
     public boolean hasFoodForDeliver(){
         long countOfFoodOnDelivery = orderedFood.stream()
                 .filter(orderedDish -> orderedDish.getStatus().getName().equals(Status.DELIVERY)).count();

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderedDish} from "../models/orderedDish";
 import {StatusService} from "../services/status.service";
 import {OrderService} from "../services/order.service";
@@ -6,8 +6,9 @@ import {Order} from "../models/order";
 import {Status} from "../models/status";
 import {OrderStorageService} from "../services/order-storage.service";
 import {ActivatedRoute} from "@angular/router";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {WishComponent} from "../wish/wish.component";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-order',
@@ -68,6 +69,20 @@ export class OrderComponent implements OnInit {
       this.getOrderedDishFromOrder();
       this.cleanUpAfterSubmission();
       this.orderedDishes = res.orderedFood;
+
+      // try to set order to every ordered dish
+      let i: number;
+      console.log('order = ' + this.newOrder);
+      for(i= 0; i < this.orderedDishes.length; i++){
+        console.log(this.orderedDishes[i]);
+        this.orderedDishes[i].order = this.newOrder;
+
+        console.log('set order:' + this.orderedDishes[i].order.valueOf());
+
+        console.log('dish with order: ' +  this.orderedDishes[i].valueOf());
+      }
+
+      console.log('all: ' +this.getOrderedDishFromOrder());
     });
   }
 
@@ -179,5 +194,4 @@ export class OrderComponent implements OnInit {
 
     console.log("wish = " + this.wish);
     }
-
 }

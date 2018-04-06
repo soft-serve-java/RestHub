@@ -4,6 +4,7 @@
     <tr style="text-align: center;">
       <th>Name</th>
       <th>Quantity</th>
+      <th>Wish</th>
       <th></th>
     </tr>
     </thead>
@@ -11,6 +12,7 @@
     <tr *ngFor="let orderedDish of orderedDishes">
       <td>{{orderedDish.dish.name}}</td>
       <td>{{orderedDish.quantity}}</td>
+      <td>{{orderedDish.order.wish}}</td>
       <td *ngIf="orderedDish.status.name=='preparing'; else elseBlock">
         <a class="btn btn-warning" (click)="update(orderedDish)" style="margin-bottom: 10%">
           Got it!<span class="fa fa-check"></span>
