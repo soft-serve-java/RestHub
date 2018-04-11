@@ -8,7 +8,6 @@ import {OrderStorageService} from "../services/order-storage.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from '@angular/material';
 import {WishComponent} from "../wish/wish.component";
-import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-order',
@@ -34,7 +33,7 @@ export class OrderComponent implements OnInit {
               private orderService: OrderService,
               private orderStorageService: OrderStorageService,
               public dialog: MatDialog,
-             /* @Inject(MAT_DIALOG_DATA) public data: any*/) {
+              /* @Inject(MAT_DIALOG_DATA) public data: any*/) {
     this.statusService.saveStatusesToLocalStorage();
     this.getDishes();
     this.checkOrderByTableNumber();
@@ -70,21 +69,28 @@ export class OrderComponent implements OnInit {
       this.cleanUpAfterSubmission();
       this.orderedDishes = res.orderedFood;
 
+      console.log("this.newOrder = " + this.newOrder.toString());
+
       // try to set order to every ordered dish
-      let i: number;
-      console.log('order = ' + this.newOrder);
-      for(i= 0; i < this.orderedDishes.length; i++){
-        console.log(this.orderedDishes[i]);
-        this.orderedDishes[i].order = this.newOrder;
+      /*  let i: number;
 
-        console.log('set order:' + this.orderedDishes[i].order.valueOf());
+        console.log('order wish= ' + this.newOrder.wish);
 
-        console.log('dish with order: ' +  this.orderedDishes[i].valueOf());
-      }
+        for (i = 0; i < this.orderedDishes.length; i++) {
 
-      console.log('all: ' +this.getOrderedDishFromOrder());
+          console.log(this.orderedDishes[i]);
+
+          this.orderedDishes[i].order = this.newOrder;
+
+          console.log('set order:' + this.orderedDishes[i].order.toString());
+        }
+  */
+      // console.log('all: ' + this.getOrderedDishFromOrder());
     });
   }
+
+  // on submit send ordered food to wish component
+  // on ok on wish component set all ordered food the same wish
 
   submitOne(orderedDish: OrderedDish) {
     this.orderService.submitOne(orderedDish).then(res => {
@@ -190,8 +196,25 @@ export class OrderComponent implements OnInit {
     dialogRef.componentInstance.onOk.subscribe(result => {
       console.log('result = ' + result);
       this.wish = result;
-    });
+      this.newOrder.wish = result;
 
-    console.log("wish = " + this.wish);
-    }
+      console.log("order = " + this.newOrder.wish);
+
+      console.log(this.newOrder.orderedFood.length);
+
+     /* let i: number;
+      for(i = 0; i < this.newOrder.orderedFood.length; i++){
+
+        this.newOrder.orderedFood[i].setOrder(this.newOrder);
+        console.log(this.newOrder.orderedFood[i].order.wish);
+      }*/
+      // try this.newOrder.getOrderedDishes or so
+
+     let o : Order = this.newOrder;
+      Array.prototype.forEach.call(this.newOrder.orderedFood,dish => {
+        dish.order = o;
+        console.log(dish.order.wish);
+      });
+    });
+  }
 }

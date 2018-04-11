@@ -19,4 +19,9 @@ export class OrderedDish {
   public setOrder(order: Order){
     this.order = order;
   }
+
+  public toString(): String{
+    return "OrderedDish: id" + this.id + ", dish: " + this.dish.toString() + ", status: " + this.status
+    + ", quantity: " + this.quantity + ", order: " + this.order;
+  }
 }

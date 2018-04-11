@@ -14,4 +14,11 @@ export class Dish {
    images: Image[];
    tags: Tag[];
    availability: boolean;
+
+   public toString(): String{
+     return "Dish: id" + this.id + ", name" + this.name + ", description: " + this.description +
+       ", weight: " + this.weight + ", calories: " + this.calories + ", preparingTime: " +
+       this.preparingtime + ", price: " + this.price + ", category: " + this.category +
+       ", images: " + this.images + " tags: " + this.tags + ", availability: " + this.availability;
+   }
 }

@@ -28,6 +28,8 @@ public class OrderRestController {
         this.userService = userService;
     }
 
+    // post here order and set wish to it on ok
+
     @GetMapping(value = "/table/{id}")
     public Order getOrderDetails(@PathVariable("id") int id){
         return orderService.findByTable(id);
