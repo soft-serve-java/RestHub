@@ -28,12 +28,12 @@ export class MenuComponent implements OnInit {
               private orderStorageService: OrderStorageService) {
     this.setSession();
     route.params.subscribe( params => {
-                                            this.category = params['category'];
-                                            this.currPage = Number(params['page']);
-                                            this.getDishes();
-                                            this.data = this.orderStorageService.orderMap;
-                                          });
-    }
+      this.category = params['category'];
+      this.currPage = Number(params['page']);
+      this.getDishes();
+      this.data = this.orderStorageService.orderMap;
+    });
+  }
 
   ngOnInit() {
     this.getDishes();
@@ -51,35 +51,33 @@ export class MenuComponent implements OnInit {
     });
   }
 
-compareBreakfast(dish: Dish){
-  return dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 8 && this.dateNow.getHours() < 19
-}
+  compareBreakfast(dish: Dish){
+    return dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11
+  }
 
 
   addToOrder(dish: Dish){
     console.log(dish.tags.indexOf(new Tag( 'breakfast')));
-    //if(dish.tags.indexOf(new Tag( 'breakfast')) && new Date().getHours()<19){
-    if(dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 8 && this.dateNow.getHours() < 12 ) {
-      console.log("return");
+    if(dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11 ) {
       return;
     }
 
-     let temp = this.orderStorageService.orderMap;
+    let temp = this.orderStorageService.orderMap;
 
-     if (!temp.some(elem => elem.key == dish.id)){
-        temp.push({key: dish.id, value:0});
-        let dishes = this.orderStorageService.orderDishes;
-        dishes.push(dish);
-        this.orderStorageService.orderDishes = dishes;
+    if (!temp.some(elem => elem.key == dish.id)){
+      temp.push({key: dish.id, value:0});
+      let dishes = this.orderStorageService.orderDishes;
+      dishes.push(dish);
+      this.orderStorageService.orderDishes = dishes;
+    }
+    temp.find(function(val){
+      if (val.key == dish.id){
+        val.value += 1;
       }
-     temp.find(function(val){
-          if (val.key == dish.id){
-            val.value += 1;
-          }
-     });
+    });
 
-      this.orderStorageService.orderMap = temp;
-      this.data = temp;
+    this.orderStorageService.orderMap = temp;
+    this.data = temp;
   }
 
 
@@ -96,7 +94,7 @@ compareBreakfast(dish: Dish){
   getDishQuantityInOrder(dish: Dish): Object{
     return this.data.find(function(val){
       if (val.key == dish.id) return val;
-      });
+    });
   }
 
   searchByName(name: string){

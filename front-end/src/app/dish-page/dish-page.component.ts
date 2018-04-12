@@ -32,7 +32,7 @@ export class DishPageComponent implements OnInit {
   }
 
   compareBreakfast(dish: Dish){
-    return dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 9 && this.dateNow.getHours() < 11
+    return dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11
   }
 
   addToOrder() {
