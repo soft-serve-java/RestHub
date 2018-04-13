@@ -13,6 +13,7 @@ export class DishPageComponent implements OnInit {
   private dish: Dish;
   private populars: Dish[];
   private quantityInOrder: number;
+  dateNow = new Date();
 
   constructor(private route: ActivatedRoute,
               private menuService: MenuService,
@@ -28,6 +29,10 @@ export class DishPageComponent implements OnInit {
   loadDishById(dishId: number) {
     this.menuService.getDishById(dishId).then(res => {this.dish = res; this.getQuantity();});
     this.menuService.getDishPopulars(dishId).then(res => this.populars = res);
+  }
+
+  compareBreakfast(dish: Dish){
+    return dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11
   }
 
   addToOrder() {

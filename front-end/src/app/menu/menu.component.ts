@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Data} from "@angular/router";
 
 import {MenuService} from '../services/menu.service';
 import {Dish} from '../models/dish'
 import {OrderStorageService} from "../services/order-storage.service";
+import {Tag} from "../models/tag";
 
 
 @Component({
@@ -16,6 +17,9 @@ export class MenuComponent implements OnInit {
   private maxPage: number;
   private currPage: number;
   private numbers: number[];
+  private currentTime: number;
+  breakfast:Tag = new Tag("breakfast");
+  dateNow = new Date();
   private asc: boolean;
 
   private data: any = [];
@@ -25,8 +29,8 @@ export class MenuComponent implements OnInit {
               private orderStorageService: OrderStorageService) {
     this.setSession();
     route.params.subscribe( params => {
-                                            this.category = params['category'];
-                                            this.currPage = Number(params['page']);
+      this.category = params['category'];
+      this.currPage = Number(params['page']);
 
                                             if (params['tag']){
                                               this.getDishesByTag(params['tag'])
@@ -38,7 +42,9 @@ export class MenuComponent implements OnInit {
                                           });
     }
 
+
   ngOnInit() {
+    this.getDishes();
   }
 
   getDishes() {
@@ -64,7 +70,19 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  compareBreakfast(dish: Dish){
+    return dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11
+  }
+
+
   addToOrder(dish: Dish){
+    console.log(dish.tags.indexOf(new Tag( 'breakfast')));
+    if(dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11 ) {
+      return;
+    }
+
+
+
     let temp = this.orderStorageService.orderMap;
 
     if (!temp.some(elem => elem.key == dish.id)){
@@ -74,9 +92,9 @@ export class MenuComponent implements OnInit {
       this.orderStorageService.orderDishes = dishes;
     }
     temp.find(function(val){
-        if (val.key == dish.id){
-          val.value += 1;
-        }
+      if (val.key == dish.id){
+        val.value += 1;
+      }
     });
 
     this.orderStorageService.orderMap = temp;
@@ -90,7 +108,7 @@ export class MenuComponent implements OnInit {
   getDishQuantityInOrder(dish: Dish): Object{
     return this.data.find(function(val){
       if (val.key == dish.id) return val;
-      });
+    });
   }
 
   searchByName(name: string){

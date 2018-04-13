@@ -129,4 +129,8 @@
     <changeSet id="12" author="artur"  runAlways="true">
         <sqlFile path="database/postgres/sql/tagEntity.sql"/>
     </changeSet>
+
+    <changeSet id="13" author="alex"  runAlways="true">
+        <sqlFile path="database/postgres/sql/createBreakfast.sql"/>
+    </changeSet>
 </databaseChangeLog>
