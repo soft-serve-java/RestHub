@@ -32,4 +32,6 @@ public interface OrderedDishService {
     List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap);
 
     OrderedDish createOrderedDishFromDish(Dish dish, int quantity);
+
+    List<Object[]> getTheMostPooular();
 }

@@ -20,8 +20,9 @@ export class MenuComponent implements OnInit {
   private currentTime: number;
   breakfast:Tag = new Tag("breakfast");
   dateNow = new Date();
+  private asc: boolean;
 
-  private data:any = [];
+  private data: any = [];
 
   constructor(private route: ActivatedRoute,
               private menuService: MenuService,
@@ -30,10 +31,17 @@ export class MenuComponent implements OnInit {
     route.params.subscribe( params => {
       this.category = params['category'];
       this.currPage = Number(params['page']);
-      this.getDishes();
-      this.data = this.orderStorageService.orderMap;
-    });
-  }
+
+                                            if (params['tag']){
+                                              this.getDishesByTag(params['tag'])
+                                            } else{
+                                              this.getDishes();
+                                            }
+
+                                            this.data = this.orderStorageService.orderMap;
+                                          });
+    }
+
 
   ngOnInit() {
     this.getDishes();
@@ -51,6 +59,17 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  getDishesByTag(tagName: string) {
+    if (!this.currPage) {
+      this.currPage = 1;
+    }
+    this.menuService.getDishesByTagName(tagName, this.currPage).then(res=> {
+      this.dishes = res.body;
+      this.maxPage = Number(res.headers.get('last'));
+      this.numbers = Array(this.maxPage).fill(1).map((x,i)=>i+1);
+    });
+  }
+
   compareBreakfast(dish: Dish){
     return dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11
   }
@@ -61,6 +80,8 @@ export class MenuComponent implements OnInit {
     if(dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11 ) {
       return;
     }
+
+
 
     let temp = this.orderStorageService.orderMap;
 
@@ -79,13 +100,6 @@ export class MenuComponent implements OnInit {
     this.orderStorageService.orderMap = temp;
     this.data = temp;
   }
-
-
-
-
-
-
-
 
   checkIfDishInOrder(dish: Dish): boolean{
     return this.data.some(e => e.key === dish.id);
@@ -108,6 +122,32 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  sortByKey(array, key, asc) {
+    return array.sort(function (a, b) {
+      var x = a[key];
+      var y = b[key];
+      if(asc){
+        return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+      }
+      else {
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      }
+    });
+  }
 
+  sortByPrice() {
+    this.dishes = this.sortByKey(this.dishes, 'price', this.asc);
+    this.asc = !this.asc;
+  }
+
+  sortByCalories(){
+    this.dishes = this.sortByKey(this.dishes, 'calories', this.asc);
+    this.asc = !this.asc;
+  }
+
+  sortByPreparingTime(){
+    this.dishes = this.sortByKey(this.dishes, 'preparingtime', this.asc);
+    this.asc = !this.asc;
+  }
 
 }

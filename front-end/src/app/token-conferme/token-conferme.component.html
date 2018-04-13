@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngIf="token!='0'">
+    <div *ngIf="processing">
+      <div class="loading">
+        <span> <i class="fa fa-circle-o-notch fa-spin" style="font-size:54px"></i></span>
+      </div>
+    </div>
+    <div *ngIf="tokenIsConfermed">
+      Congratulation you have registered
+    </div>
+  </div>
+  <div *ngIf="token=='0'">
+    Please confirm your email
+  </div>
+</div>

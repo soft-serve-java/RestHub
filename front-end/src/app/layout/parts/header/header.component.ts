@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   private categories: Array<Category>;
   private tableNumber: number;
+  private search: string;
 
   constructor(@Inject('SOCKET_URL') private socketUrl,
               public appService: AppService,public authService:AuthService,
@@ -36,7 +37,7 @@ export class HeaderComponent implements OnInit {
     const socket = new SockJS(this.socketUrl) as WebSocket;
     this.stompClient = stompjs.over(socket);
     this.stompClient.connect('', '', (frame: Frame) => {
-      this.stompClient.subscribe('/user/'+1+'/callBackInfo',
+      this.stompClient.subscribe('/user/'+this.tableStorageSerivce.table+'/callBackInfo',
         res => {this.showDialog = true});
     });
   }
@@ -50,9 +51,8 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.authService.logout();
   }
-  doPOSTonCallWaiter(tableNumber:number) {
-    this.appService.doPOSTonCallWaiter(tableNumber);
-    console.log(1);
+  doPOSTonCallWaiter() {
+    this.appService.doPOSTonCallWaiter(this.tableStorageSerivce.table);
   }
 
   getTableNumber(){
