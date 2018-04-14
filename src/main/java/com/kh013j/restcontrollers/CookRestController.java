@@ -28,26 +28,9 @@ public class CookRestController {
         return orderedDishService.findAll();
     }
 
-    /* public Map<Order, OrderedDish> getOrderedDishes(){
-         Map<Order, OrderedDish> map = new HashMap<>();
-         long orderId;
-         for (OrderedDish orderedDish: orderedDishService.findAll()) {
-             orderId = orderedDishService.getOrderIdByOrderedDishId(orderedDish.getId());
-             map.put(orderService.findById(orderId), orderedDish);
-         }
-
-         for (Map.Entry<Order, OrderedDish> entry: map.entrySet()){
-             System.out.println(entry);
-         }
-
-         return map;
-     }
- */
     @GetMapping("api/cook/get/{id}")
     public Order getOrderByOrderedDishId(@PathVariable("id") long id) {
-        System.out.println("get"+id);
         Order order = orderService.findById(orderedDishService.getOrderIdByOrderedDishId(id));
-        System.out.println("order.wish = " + order.getWish());
         return order;
     }
 

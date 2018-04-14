@@ -18,7 +18,7 @@ export class CookComponent implements OnInit {
   showOrdersOrderedDishes(): void {
     this.cookService.getOrderedDishes().subscribe(orderedDishes => {this.orderedDishes = orderedDishes; console.log(this.orderedDishes.length);
       for(let i = 0; i < this.orderedDishes.length; i++){
-        this.cookService.getOrderByOrderedDishId(this.orderedDishes[i].id).then(o => {console.log('WIISH:'+o.wish);this.orderedDishes[i].order = o});
+        this.cookService.getOrderByOrderedDishId(this.orderedDishes[i].id).then(o => {this.orderedDishes[i].order = o});
       }});
   }
 
