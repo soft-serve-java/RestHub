@@ -28,6 +28,11 @@ public class OrderRestController {
         return orderService.findByTable(id);
     }
 
+    @GetMapping(value = "/get-wish/{id}")
+    public String getOrderWish(@PathVariable("id") int id){
+        return  orderService.findById(id).getWish();
+    }
+
     @PostMapping("/wish")
     public Order setWishToOrder(@RequestParam("id") String id, @RequestBody String wish){
         Order order = orderService.findById(Long.parseLong(id));

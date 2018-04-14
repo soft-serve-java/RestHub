@@ -25,6 +25,10 @@ export class OrderService {
       }), params: params}).toPromise();
   }
 
+  public getOrderWish(id: number){
+    return this.http.get(this.apiUrl+ `order/get-wish/${id}`).toPromise();
+  }
+
   createOrder(orderDishes: OrderedDish[]):Promise<Order>{
     let item = localStorage.getItem('token');
     let tokenHeader = '';

@@ -189,24 +189,28 @@ export class OrderComponent implements OnInit {
   showWishPopup() {
     console.log('showWishPopup()');
 
-    let dialogRef = this.dialog.open(WishComponent);
+    if(this.newOrder == null){
+      let dialogRef = this.dialog.open(WishComponent);
 
-    dialogRef.componentInstance.onOk.subscribe(result => {
-      console.log('result = ' + result);
-      //*this.wish = result;
-      //this.newOrder.wish = result;
+      dialogRef.componentInstance.onOk.subscribe(result => {
+        console.log('result = ' + result);
 
-      //console.log("order = " + this.newOrder.wish);*/
+        this.orderService.addWishToOrder(this.newOrder.id, result).then(order => this.newOrder = order);
+      });
+    }
 
-      this.orderService.addWishToOrder(this.newOrder.id, result).then(order => this.newOrder = order);
+    else if(!this.orderService.getOrderWish(this.newOrder.id).then(a=> {
+        if (a === null){
+          let dialogRef = this.dialog.open(WishComponent);
 
+          dialogRef.componentInstance.onOk.subscribe(result => {
+            console.log('result = ' + result);
 
-      // do this at back-end
-     /* let o: Order = this.newOrder;
-      Array.prototype.forEach.call(this.newOrder.orderedFood, dish => {
-        dish.order = o;
-        console.log(dish.order.wish);
-      });*/
-    });
+            this.orderService.addWishToOrder(this.newOrder.id, result).then(order => this.newOrder = order);
+          });
+        }
+      })){
+
+    }
   }
 }

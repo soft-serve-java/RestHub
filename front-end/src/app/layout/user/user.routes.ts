@@ -19,7 +19,8 @@ export const USER_ROUTES: Routes = [
   {path: 'dish/:id', component: DishPageComponent},
   {path: 'order', component: OrderComponent},
 
-  {path: 'order/wish/:id', component:OrderComponent}, // my part
+  {path: 'order/wish/:id', component:OrderComponent}, // for wish
+  {path: 'order/get-wish/:id', component:OrderComponent}, // for wish
 
   {path:'login', component:LoginComponent},
   {path:'registration', component:RegistrationComponent},

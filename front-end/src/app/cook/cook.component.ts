@@ -24,7 +24,7 @@ export class CookComponent implements OnInit {
 
   getOrderByOrderedDishId(id: number): Order{
     let order: Order;
-     this.cookService.getOrderByOrderedDishId(id).then(o => {console.log(o.wish);order = o});
+     this.cookService.getOrderByOrderedDishId(id).then(o => {order = o});
      return order;
   }
 

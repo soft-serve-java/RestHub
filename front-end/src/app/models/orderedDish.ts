@@ -11,11 +11,11 @@ export class OrderedDish {
   }
 
   id: number;
-  dish: Dish;
+  dish: Dish
+
   status: Status;
   quantity: number;
   order: Order;
-  idOrder:number;
 
   public setOrder(order: Order){
     this.order = order;
