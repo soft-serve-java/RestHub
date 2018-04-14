@@ -5,14 +5,9 @@ import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
-import java.sql.Timestamp;
-import java.util.AbstractMap;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/order")
@@ -28,11 +23,17 @@ public class OrderRestController {
         this.userService = userService;
     }
 
-    // post here order and set wish to it on ok
-
     @GetMapping(value = "/table/{id}")
     public Order getOrderDetails(@PathVariable("id") int id){
         return orderService.findByTable(id);
+    }
+
+    @PostMapping("/wish")
+    public Order setWishToOrder(@RequestParam("id") String id, @RequestBody String wish){
+        System.out.println("/wish");
+        Order order = orderService.findById(new Long(id));
+        order.setWish(wish);
+        return order;
     }
 
     @PostMapping
@@ -55,7 +56,6 @@ public class OrderRestController {
             user = userService.findByEmail(principal.getName());
         }
         return orderService.submitOneDish(tableNumber, orderedDish, user);
-
     }
 
 }

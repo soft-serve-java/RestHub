@@ -18,6 +18,13 @@ export class OrderService {
     return this.http.get<Order>(this.apiUrl + 'order/table/'+this.tableStorageService.table).toPromise();
   }
 
+  public addWishToOrder(id: number, wish: String): Promise<Order>{
+    let params = new HttpParams().set("id", id.toString());
+
+    return this.http.post<Order>(this.apiUrl + `order/wish`, wish, {headers: new HttpHeaders({
+      }), params: params}).toPromise();
+  }
+
   createOrder(orderDishes: OrderedDish[]):Promise<Order>{
     let item = localStorage.getItem('token');
     let tokenHeader = '';

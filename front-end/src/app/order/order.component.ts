@@ -26,8 +26,6 @@ export class OrderComponent implements OnInit {
 
   private orderedDishes = [];
 
-  private wish: String;
-
   constructor(private route: ActivatedRoute,
               private statusService: StatusService,
               private orderService: OrderService,
@@ -195,26 +193,20 @@ export class OrderComponent implements OnInit {
 
     dialogRef.componentInstance.onOk.subscribe(result => {
       console.log('result = ' + result);
-      this.wish = result;
+      //*this.wish = result;
       this.newOrder.wish = result;
 
-      console.log("order = " + this.newOrder.wish);
+      //console.log("order = " + this.newOrder.wish);*/
 
-      console.log(this.newOrder.orderedFood.length);
+      this.orderService.addWishToOrder(this.newOrder.id, result).then(order => this.newOrder = order);
 
-     /* let i: number;
-      for(i = 0; i < this.newOrder.orderedFood.length; i++){
 
-        this.newOrder.orderedFood[i].setOrder(this.newOrder);
-        console.log(this.newOrder.orderedFood[i].order.wish);
-      }*/
-      // try this.newOrder.getOrderedDishes or so
-
-     let o : Order = this.newOrder;
-      Array.prototype.forEach.call(this.newOrder.orderedFood,dish => {
+      // do this at back-end
+     /* let o: Order = this.newOrder;
+      Array.prototype.forEach.call(this.newOrder.orderedFood, dish => {
         dish.order = o;
         console.log(dish.order.wish);
-      });
+      });*/
     });
   }
 }

@@ -119,4 +119,8 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     public List<Object[]> getTheMostPooular(){
         return orderedDishRepository.getTheMostPopular();
     }
+
+    public long getOrderIdByOrderedDishId(long id){
+        return orderedDishRepository.getOrderId(id);
+    }
 }

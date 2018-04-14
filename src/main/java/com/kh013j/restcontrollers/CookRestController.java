@@ -1,12 +1,16 @@
 package com.kh013j.restcontrollers;
 
+import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
+import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
@@ -14,13 +18,30 @@ public class CookRestController {
     @Autowired
     private OrderedDishService orderedDishService;
 
+    @Autowired
+    private OrderService orderService;
+
     public CookRestController(OrderedDishService orderedDishService) {
         this.orderedDishService = orderedDishService;
     }
 
-    @GetMapping("api/cook")
+    /*@GetMapping("api/cook")
     public List<OrderedDish> getOrderedDishes(){
         return orderedDishService.findAll();
+    }
+   */ public Map<Order, OrderedDish> getOrderedDishes(){
+        Map<Order, OrderedDish> map = new HashMap<>();
+        long orderId;
+        for (OrderedDish orderedDish: orderedDishService.findAll()) {
+            orderId = orderedDishService.getOrderIdByOrderedDishId(orderedDish.getId());
+            map.put(orderService.findById(orderId), orderedDish);
+        }
+
+        for (Map.Entry<Order, OrderedDish> entry: map.entrySet()){
+            System.out.println(entry);
+        }
+
+        return map;
     }
 
     @PostMapping("api/cook/{id}")

@@ -18,6 +18,9 @@ export const USER_ROUTES: Routes = [
   {path: 'menu/:category', component: MenuComponent},
   {path: 'dish/:id', component: DishPageComponent},
   {path: 'order', component: OrderComponent},
+
+  {path: 'order/wish/:id', component:OrderComponent}, // my part
+
   {path:'login', component:LoginComponent},
   {path:'registration', component:RegistrationComponent},
   //{path:'confirm/:token', component: TokenConfermeComponent},
