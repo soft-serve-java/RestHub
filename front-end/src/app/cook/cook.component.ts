@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {OrderedDish} from "../models/orderedDish";
 import {CookService} from "../services/cook.service";
+import {Order} from "../models/order";
 
 @Component({
   selector: 'app-cook',
@@ -14,12 +15,21 @@ export class CookComponent implements OnInit {
   constructor(private cookService: CookService) {
   }
 
-  showOrderedDishes(): void {
-    this.cookService.getOrderedDishes().subscribe(orderedDishes => this.orderedDishes = orderedDishes);
+  showOrdersOrderedDishes(): void {
+    this.cookService.getOrderedDishes().subscribe(orderedDishes => {this.orderedDishes = orderedDishes; console.log(this.orderedDishes.length);
+      for(let i = 0; i < this.orderedDishes.length; i++){
+        this.cookService.getOrderByOrderedDishId(this.orderedDishes[i].id).then(o => {this.orderedDishes[i].order = o});
+      }});
+  }
+
+  getOrderByOrderedDishId(id: number): Order{
+    let order: Order;
+     this.cookService.getOrderByOrderedDishId(id).then(o => {order = o});
+     return order;
   }
 
   ngOnInit() {
-    this.showOrderedDishes();
+    this.showOrdersOrderedDishes();
   }
 
   update(orderedDish: OrderedDish) {

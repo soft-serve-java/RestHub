@@ -115,7 +115,12 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         orderedDish.setStatus(statusService.create());
         return orderedDish;
     }
+
     public List<Object[]> getTheMostPooular(){
         return orderedDishRepository.getTheMostPopular();
+    }
+
+    public long getOrderIdByOrderedDishId(long id){
+        return orderedDishRepository.getOrderId(id);
     }
 }

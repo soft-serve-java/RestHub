@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$wish-theme-primary: mat-palette($mat-deep-orange);
+$wish-theme-accent:  mat-palette($mat-deep-orange, A200, A100, A400);
+$wish-theme-warn:    mat-palette($mat-red);
+$wish-theme: mat-light-theme($wish-theme-primary, $wish-theme-accent, $wish-theme-warn);
+@include angular-material-theme($wish-theme);

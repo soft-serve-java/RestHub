@@ -30,4 +30,8 @@ public class Status {
 
     @Transient
     public static final String DONE = "done";
+
+    public String getName() {
+        return name;
+    }
 }
