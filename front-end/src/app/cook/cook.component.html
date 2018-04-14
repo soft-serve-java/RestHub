@@ -9,16 +9,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let orderedDish of getOrderedDishes(); let order of getOrders()">
+    <tr *ngFor="let orderedDish of orderedDishes">
       <td>{{orderedDish.dish.name}}</td>
       <td>{{orderedDish.quantity}}</td>
-      <td>{{order.wish}}</td>
-    </tr>
-   <!-- <tr *ngFor="let orderedDish of orderedDishes">
-      <td>{{orderedDish.value.dish.name}}</td>
-      <td>{{orderedDish.value.quantity}}</td>
-      <td>{{orderedDish.key.wish}}</td>
-      <td *ngIf="orderedDish.value.status.name=='preparing'; else elseBlock">
+      <td>{{orderedDish.order.id}}</td>
+      <td *ngIf="orderedDish.status.name=='preparing'; else elseBlock">
         <a class="btn btn-warning" (click)="update(orderedDish)" style="margin-bottom: 10%">
           Got it!<span class="fa fa-check"></span>
         </a>
@@ -30,7 +25,7 @@
           </button>
           </td>
         </ng-template>
-    </tr> -->
+    </tr>
     </tbody>
   </table>
 </div>

@@ -11,40 +11,27 @@ import {Order} from "../models/order";
 })
 export class CookComponent implements OnInit {
   orderedDishes: Array<OrderedDish>;
-  //orders: Array<Order>;
-  //ordersOrederedDishesMap: Map<Order, OrderedDish>;
 
   constructor(private cookService: CookService) {
   }
 
- /* showOrdersOrderedDishes(): void {
-    this.cookService.getOrderedDishes().subscribe(orderedDishes => this.ordersOrederedDishesMap = orderedDishes);
-  }*/
-
-  // create there method getOrderByOrederedDishId and just use it
-
-
   showOrdersOrderedDishes(): void {
-    this.cookService.getOrderedDishes().subscribe(orderedDishes => this.orderedDishes = orderedDishes);
+    this.cookService.getOrderedDishes().subscribe(orderedDishes => {this.orderedDishes = orderedDishes; console.log(this.orderedDishes.length);
+      for(let i = 0; i < this.orderedDishes.length; i++){
+        this.cookService.getOrderByOrderedDishId(this.orderedDishes[i].id).then(o => {console.log('WIISH:'+o.wish);this.orderedDishes[i].order = o});
+      }});
   }
 
   getOrderByOrderedDishId(id: number): Order{
-    return
-    //return Array.from(this.ordersOrederedDishesMap.keys());
+    let order: Order;
+     this.cookService.getOrderByOrderedDishId(id).then(o => {console.log(o.wish);order = o});
+     return order;
   }
 
   ngOnInit() {
     this.showOrdersOrderedDishes();
   }
 
- /* getOrders(): Array<Order>{
-    return Array.from(this.ordersOrederedDishesMap.keys());
-  }
-
-  getOrderedDishes(): Array<OrderedDish>{
-    return Array.from(this.ordersOrederedDishesMap.values());
-  }
-  */
   update(orderedDish: OrderedDish) {
     this.cookService.updateOrderedDish(orderedDish.id).then(orderedDishes => this.orderedDishes = orderedDishes);
   }

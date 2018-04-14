@@ -30,9 +30,11 @@ public class OrderRestController {
 
     @PostMapping("/wish")
     public Order setWishToOrder(@RequestParam("id") String id, @RequestBody String wish){
-        System.out.println("/wish");
-        Order order = orderService.findById(new Long(id));
-        order.setWish(wish);
+        Order order = orderService.findById(Long.parseLong(id));
+        Order updatedOrder = new Order(order, wish);//.setWish(wish);
+        order = orderService.update(updatedOrder);
+
+        System.out.println("set wish " + orderService.findById(Long.parseLong(id)).getWish());
         return order;
     }
 

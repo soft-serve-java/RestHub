@@ -130,4 +130,11 @@
     <changeSet id="12" author="artur"  runAlways="true">
         <sqlFile path="database/postgres/sql/tagEntity.sql"/>
     </changeSet>
+
+    <changeSet author="emaxi" id="addWish" runAlways="true">
+        <addColumn schemaName="rh"
+                   tableName="order">
+            <column name="wish" type="VARCHAR(300)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

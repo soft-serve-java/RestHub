@@ -194,7 +194,7 @@ export class OrderComponent implements OnInit {
     dialogRef.componentInstance.onOk.subscribe(result => {
       console.log('result = ' + result);
       //*this.wish = result;
-      this.newOrder.wish = result;
+      //this.newOrder.wish = result;
 
       //console.log("order = " + this.newOrder.wish);*/
 

@@ -27,5 +27,6 @@ export const USER_ROUTES: Routes = [
 
   // for the cook
   {path: 'cook', component: CookComponent},
-  {path: 'cook/:id', component: CookComponent}
+  {path: 'cook/:id', component: CookComponent},
+  {path: 'cook/get/:id', component: CookComponent}
 ];

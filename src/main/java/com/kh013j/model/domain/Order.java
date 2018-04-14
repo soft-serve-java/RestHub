@@ -37,8 +37,20 @@ public class Order {
     @JoinColumn(name = "waiter")
     User waiter;
 
-    @Transient
+    @Column(name = "wish")
     private String wish;
+
+    public Order(Order order, String wish){
+        this.id = order.getId();
+        this.closed = order.isClosed();
+        this.orderedFood = order.getOrderedFood();
+        this.user = order.getUser();
+        this.time = order.getTime();
+        this.tablenumber = order.getTablenumber();
+        this.waiter = order.getWaiter();
+
+        this.wish = wish;
+    }
 
     public boolean hasFoodForDeliver(){
         long countOfFoodOnDelivery = orderedFood.stream()

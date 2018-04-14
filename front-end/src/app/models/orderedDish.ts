@@ -15,6 +15,7 @@ export class OrderedDish {
   status: Status;
   quantity: number;
   order: Order;
+  idOrder:number;
 
   public setOrder(order: Order){
     this.order = order;

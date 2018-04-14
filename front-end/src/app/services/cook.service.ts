@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {OrderedDish} from "../models/orderedDish";
 import 'rxjs/add/operator/map';
 import {logging} from "selenium-webdriver";
+import {Order} from "../models/order";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -36,8 +37,12 @@ export class CookService {
     return this.http.get<Order[]>(this.orderedDishesUrl+'/orders');
   }*/
 
+  getOrderByOrderedDishId(id: number): Promise<Order>{
+    const url = `${this.orderedDishesUrl}/get/${id}`;
+    return this.http.get<Order>(url, httpOptions).toPromise();
+  }
+
   updateOrderedDish(id: number) : Promise<OrderedDish[]> {
-   // console.log(id);
     const url = `${this.orderedDishesUrl}/${id}`;
     return this.http.post<OrderedDish[]>(url, httpOptions).toPromise();
   }
