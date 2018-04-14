@@ -32,16 +32,15 @@ export class MenuComponent implements OnInit {
       this.category = params['category'];
       this.currPage = Number(params['page']);
 
-                                            if (params['tag']){
-                                              this.getDishesByTag(params['tag'])
-                                            } else{
-                                              this.getDishes();
-                                            }
+      if (params['tag']){
+        this.getDishesByTag(params['tag'])
+      } else{
+        this.getDishes();
+      }
 
-                                            this.data = this.orderStorageService.orderMap;
-                                          });
-    }
-
+      this.data = this.orderStorageService.orderMap;
+    });
+  }
 
   ngOnInit() {
     this.getDishes();
@@ -80,8 +79,6 @@ export class MenuComponent implements OnInit {
     if(dish.tags.some(tag=> tag.title === 'breakfast') && this.dateNow.getHours() > 11 ) {
       return;
     }
-
-
 
     let temp = this.orderStorageService.orderMap;
 
