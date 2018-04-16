@@ -34,4 +34,6 @@ public interface OrderedDishService {
     OrderedDish createOrderedDishFromDish(Dish dish, int quantity);
 
     List<Object[]> getTheMostPooular();
+
+    long getOrderIdByOrderedDishId(long id);
 }

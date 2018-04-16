@@ -86,7 +86,7 @@
     <h4 class="col-md-5">
       Total amount: {{getTotalAmount()}}$
     </h4>
-        <button (click)="submitOrder()" [disabled]="isDisabledByNewOrderedDishes()" type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%">
+        <button (click)="submitOrder(); showWishPopup()" [disabled]="isDisabledByNewOrderedDishes()" type="button" class="btn btn-success col-md-2" style="margin-bottom: 10%">
           Submit All<span class="fa fa-check"></span>
         </button>
   </div>

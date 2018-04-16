@@ -1,9 +1,6 @@
 package com.kh013j.model.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Past;
@@ -40,9 +37,26 @@ public class Order {
     @JoinColumn(name = "waiter")
     User waiter;
 
+    @Column(name = "wish")
+    private String wish;
+
+    public Order(Order order, String wish){
+        this.id = order.getId();
+        this.closed = order.isClosed();
+        this.orderedFood = order.getOrderedFood();
+        this.user = order.getUser();
+        this.time = order.getTime();
+        this.tablenumber = order.getTablenumber();
+        this.waiter = order.getWaiter();
+
+        this.wish = wish;
+    }
+
     public boolean hasFoodForDeliver(){
         long countOfFoodOnDelivery = orderedFood.stream()
                 .filter(orderedDish -> orderedDish.getStatus().getName().equals(Status.DELIVERY)).count();
         return countOfFoodOnDelivery>0;
     }
+
+
 }

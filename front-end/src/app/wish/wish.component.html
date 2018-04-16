@@ -1,0 +1,13 @@
+<form>
+  <h4 mat-dialog-title>Would You like to add a wish?</h4>
+  <mat-dialog-content>
+    <mat-form-field color="primary">
+      <textarea matInput ([ngModel])="content" name="content" #input>
+      </textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit" color="primary" (click)="onOk.emit(input.value.toString()); dialogRef.close()">OK</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>
