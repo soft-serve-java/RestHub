@@ -4,7 +4,10 @@
     <thead>
     <tr style="text-align: center;">
       <th>#</th>
-      <th>Order</th>
+      <th>Order date</th>
+      <th>Table number</th>
+      <th></th>
+      <th></th>
 
     </tr>
     </thead>
@@ -17,9 +20,6 @@
 
           <td>{{ord.tablenumber}}</td>
 
-          <td>
-            <a [routerLink]="['/admin/order/edit/', ord.id]" class="btn btn-warning"><span class="fa fa-pen"> <i class="fa fa-pencil"></i></span></a>
-            </td>
             <td>
               <button class="btn btn-danger fa fa-trash-o" (click)="deleteOrder(ord)" ></button>
           </td>
