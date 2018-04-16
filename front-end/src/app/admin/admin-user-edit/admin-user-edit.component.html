@@ -15,8 +15,8 @@
 
         <div class="form-group">
           <label>Role:</label>
-          <select class="form-control" [(ngModel)]="user.roles" name="role">
-            <option *ngFor="let rol of role">{{rol.name}}</option>
+          <select class="form-control" [(ngModel)]="user.roles" name="role" multiple>
+            <option *ngFor="let rol of role" [value]="rol">{{rol.name}}</option>
           </select>
         </div>
 
