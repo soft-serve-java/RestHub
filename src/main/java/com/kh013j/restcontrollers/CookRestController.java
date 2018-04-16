@@ -8,6 +8,7 @@ import com.kh013j.model.service.interfaces.OrderedDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -25,7 +26,13 @@ public class CookRestController {
 
     @GetMapping("api/cook")
     public List<OrderedDish> getOrderedDishes() {
-        return orderedDishService.findAll();
+        List<OrderedDish> dishes = new ArrayList<>();
+        for (OrderedDish orderedDish:orderedDishService.findAll()){
+            if(!orderedDish.getStatus().getName().equals(Status.DELIVERY)){
+                dishes.add(orderedDish);
+            }
+        }
+        return dishes;
     }
 
     @GetMapping("api/cook/get/{id}")
@@ -36,13 +43,23 @@ public class CookRestController {
 
     @PostMapping("api/cook/{id}")
     public List<OrderedDish> changeOrderedDishStatus(@PathVariable("id") long id) {
+        List<OrderedDish> dishes = new ArrayList<>();
+
         OrderedDish orderedDish = orderedDishService.findById(id);
 
         if (orderedDish.getStatus().getName().equals(Status.PREPARING)) {
             orderedDishService.setCooking(orderedDish.getId());
         } else if (orderedDish.getStatus().getName().equals(Status.COOKING)) {
             orderedDishService.setDone(orderedDish.getId());
+           // dishes.remove(orderedDish);
         }
-        return orderedDishService.findAll();
+
+        for (OrderedDish dish: orderedDishService.findAll()) {
+            if(!dish.getStatus().getName().equals(Status.DELIVERY)){// && !dishes.contains(dish)){
+                dishes.add(dish);
+            }
+        }
+
+        return dishes; //orderedDishService.findAll();
     }
 }

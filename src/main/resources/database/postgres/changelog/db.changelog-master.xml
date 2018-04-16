@@ -131,6 +131,10 @@
         <sqlFile path="database/postgres/sql/tagEntity.sql"/>
     </changeSet>
 
+    <changeSet id="13" author="alex"  runAlways="true">
+        <sqlFile path="database/postgres/sql/createBreakfast.sql"/>
+    </changeSet>
+
     <changeSet author="emaxi" id="addWish" runAlways="true">
         <addColumn schemaName="rh"
                    tableName="order">
