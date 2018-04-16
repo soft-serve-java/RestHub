@@ -3,6 +3,7 @@ package com.kh013j;
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.domain.Image;
+import com.kh013j.model.domain.Tag;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.DishRepository;
 import com.kh013j.model.service.interfaces.DishService;
@@ -87,7 +88,7 @@ public class DishServiceImplTest {
         }
     }
 
-    @Test
+   @Test
     public void create() {
         Dish dish = new Dish();
 
@@ -97,9 +98,15 @@ public class DishServiceImplTest {
         dish.setWeight(250);
         dish.setCalories(550);
         dish.setPreparingtime(6);
+
         Image image = new Image();
         image.setUrl("some_pic.jpej");
+
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+       Tag tag = new Tag("Fast");
+       dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(10.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -127,6 +134,10 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("mexico_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag= new Tag("Breakfast");
+        dish.setTags(Collections.singletonList(tag));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -194,7 +205,7 @@ public class DishServiceImplTest {
     @Test
     public void delete() {
         Dish lastDish = new Dish(dishes.size()+1, "Guaca", "Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.",
-                200, 1000, 40,3.0, desertsCategory, null, null, true);
+                200, 1000, 40,3.0, desertsCategory, null, new ArrayList<>(), true);
 
         Dish createdDish = dishService.create(lastDish);
 
@@ -247,6 +258,10 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(-12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -266,6 +281,10 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -285,6 +304,10 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -304,6 +327,10 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
