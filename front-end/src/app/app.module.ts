@@ -59,6 +59,7 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { WishComponent } from './wish/wish.component';
+import {AdminRoleService} from "./services/admin-role.service";
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 export const SOCKET_URL = new InjectionToken<string>('socketUrl');
@@ -118,7 +119,7 @@ export const LOGIN_URL = new InjectionToken<string>('loginUrl');
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [WelcomeService, WaiterService, TableStorageService,StaticticService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl}, {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
+  providers: [WelcomeService, WaiterService, AdminRoleService, TableStorageService,StaticticService, OrderStorageService, AdminCategoryService, AdminDishService, AdminOrderService, AdminUserService, OrderStorageService, MenuService, StatusService, AuthGuardService, AuthService , OrderService, HttpClient, AppService, {provide: "API_URL", useValue: environment.apiUrl}, {provide: "SOCKET_URL", useValue: environment.socketUrl},{provide: "LOGIN_URL", useValue: environment.loginUrl}],
   bootstrap: [AppComponent],
   entryComponents: [WishComponent]
 })
