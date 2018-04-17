@@ -3,6 +3,7 @@ package com.kh013j;
 import com.kh013j.model.domain.Category;
 import com.kh013j.model.domain.Dish;
 import com.kh013j.model.domain.Image;
+import com.kh013j.model.domain.Tag;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.DishRepository;
 import com.kh013j.model.service.interfaces.DishService;
@@ -47,47 +48,47 @@ public class DishServiceImplTest {
         dishes.addAll(Arrays.asList(
                 (new Dish(1L, "White corn guacamol",
                         "Diced avocado, sweet white corn, black beans.",
-                        200, 1000, 40,3.0, soupsCategory, new ArrayList<>(), true)),
+                        200, 1000, 40,3.0, soupsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(2L, "Camole",
                         "Diced avocado, sweet white corn, black beans.",
-                        250, 1200, 10,33.0, soupsCategory, new ArrayList<>(), true)),
+                        250, 1200, 10,33.0, soupsCategory, new ArrayList<>(),new ArrayList<>(), true)),
                 (new Dish(3L, "Guacamole",
                         "Black beans.",
-                        430, 1400, 20,56.0, soupsCategory, new ArrayList<>(), true)),
+                        430, 1400, 20,56.0, soupsCategory, new ArrayList<>(),new ArrayList<>(), true)),
                 (new Dish(4L, "Tiramisu",
                         "Soft.",
-                        730, 1341, 26, 39.0, desertsCategory, new ArrayList<>(), true)),
+                        730, 1341, 26, 39.0, desertsCategory, new ArrayList<>(), new ArrayList<>(),true)),
                 (new Dish(5L, "Tortinni",
                         "Delicious.",
-                        330, 1909, 27, 60.0, desertsCategory, new ArrayList<>(), true)),
+                        330, 1909, 27, 60.0, desertsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(6L, "Our desert",
                         "From love",
-                        230, 1467, 29, 34.0, desertsCategory, new ArrayList<>(), true)),
+                        230, 1467, 29, 34.0, desertsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(7L, "Gua mole",
                         "Red beans.",
-                        230, 1348, 23, 39.0, mealsCategory, new ArrayList<>(), true)),
+                        230, 1348, 23, 39.0, mealsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(8L, "Mole",
                         "Beans.",
-                        530, 1906, 22, 6.0, mealsCategory, new ArrayList<>(), true)),
+                        530, 1906, 22, 6.0, mealsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(9L, "Dishy-Issy",
                         "Different beans.",
-                        730, 1409, 25, 66.0, mealsCategory, new ArrayList<>(), true)),
+                        730, 1409, 25, 66.0, mealsCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(10L, "Milk shake",
                         "Tasty drink",
-                        521, 1317, 13, 8.0, drinksCategory, new ArrayList<>(), true)),
+                        521, 1317, 13, 8.0, drinksCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(11L, "Strawberry cocktail",
                         "Tasty strawberry flavour",
-                        580, 1005, 14, 9.0, drinksCategory, new ArrayList<>(), true)),
+                        580, 1005, 14, 9.0, drinksCategory, new ArrayList<>(), new ArrayList<>(), true)),
                 (new Dish(12L, "Blackberry cocktail",
                         "Tasty blackberry flavour",
-                        570, 1404, 12, 11.0, drinksCategory, new ArrayList<>(), true))));
+                        570, 1404, 12, 11.0, drinksCategory, new ArrayList<>(), new ArrayList<>(), true))));
 
         for (Dish dish : dishes) {
             dishService.create(dish);
         }
     }
 
-    @Test
+   @Test
     public void create() {
         Dish dish = new Dish();
 
@@ -95,11 +96,17 @@ public class DishServiceImplTest {
         dish.setName("Tekila");
         dish.setDescription("This'll blow away your mind");
         dish.setWeight(250);
-        dish.setCalories(500);
-        dish.setPreparingtime(5);
+        dish.setCalories(550);
+        dish.setPreparingtime(6);
+
         Image image = new Image();
         image.setUrl("some_pic.jpej");
+
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+       Tag tag = new Tag("Fast");
+       dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(10.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -127,6 +134,10 @@ public class DishServiceImplTest {
         Image image = new Image();
         image.setUrl("mexico_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag= new Tag("Breakfast");
+        dish.setTags(Collections.singletonList(tag));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -189,14 +200,12 @@ public class DishServiceImplTest {
         Assert.assertNotNull(dishService.findAllAvailableDishByCategory(mealsCategory, 1));
 
         Assert.assertNotNull(dishService.findAllAvailableDishByCategory(drinksCategory, 1));
-
-        Assert.assertTrue(dishService.findAllAvailableDishByCategory(desertsCategory, 1).getContent().size() == 3);
-    }
+        }
 
     @Test
     public void delete() {
         Dish lastDish = new Dish(dishes.size()+1, "Guaca", "Diced avocado, sweet white corn, black beans, jicama, bell peppers, fresh cilantro and serrano peppers. Served with housemade blue & white corn tortilla chips.",
-                200, 1000, 40,3.0, desertsCategory, null, true);
+                200, 1000, 40,3.0, desertsCategory, null, new ArrayList<>(), true);
 
         Dish createdDish = dishService.create(lastDish);
 
@@ -244,11 +253,15 @@ public class DishServiceImplTest {
         dish.setName("Red vine");
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
-        dish.setCalories(450);
-        dish.setPreparingtime(5);
+        dish.setCalories(456);
+        dish.setPreparingtime(7);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(-12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -263,11 +276,15 @@ public class DishServiceImplTest {
         dish.setName("Red vine");
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(-200);
-        dish.setCalories(450);
-        dish.setPreparingtime(5);
+        dish.setCalories(453);
+        dish.setPreparingtime(8);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -282,11 +299,15 @@ public class DishServiceImplTest {
         dish.setName("Red vine");
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
-        dish.setCalories(450);
+        dish.setCalories(452);
         dish.setPreparingtime(-5);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);
@@ -302,10 +323,14 @@ public class DishServiceImplTest {
         dish.setDescription("Gorgeous flavour");
         dish.setWeight(200);
         dish.setCalories(-450);
-        dish.setPreparingtime(5);
+        dish.setPreparingtime(9);
         Image image = new Image();
         image.setUrl("vino_pic.jpej");
         dish.setImages(new ArrayList<>(Collections.singletonList(image)));
+
+        Tag tag = new Tag("Launch");
+        dish.setTags(new ArrayList<>(Collections.singletonList(tag)));
+
         dish.setPrice(12.0);
         dish.setCategory(drinksCategory);
         dish.setAvailability(true);

@@ -1,0 +1,64 @@
+<div class="container">
+  <h3>Add new dish</h3>
+    <div class="col-md-8  mx-auto">
+
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" class="form-control" [(ngModel)] = "name">
+        </div>
+
+        <div class="form-group">
+          <label>Description:</label>
+          <input type="text" class="form-control" [(ngModel)]= "description">
+        </div>
+
+        <div class="form-group">
+          <label>Category:</label>
+          <select class="form-control" [(ngModel)]="categoryName">
+            <option *ngFor="let cat of category" [value]="cat.name">{{cat.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Calories:</label>
+          <input type="number" class="form-control" [(ngModel)]="calories">
+        </div>
+
+        <div class="form-group">
+          <label>Weight:</label>
+          <input type="number" class="form-control" [(ngModel)]="weight">
+        </div>
+
+        <div class="form-group">
+          <label>Preparingtime</label>
+          <input type="number" class="form-control" [(ngModel)]="preparingtime">
+        </div>
+
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" class="form-control" [(ngModel)]="price">
+        </div>
+
+
+        <div class="form-group">
+      <div class="form-group">
+        <label>Tags:</label>
+        <div class="form-control">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="inputTag" (keyup.enter)="addTag()" placeholder="Submit tag by tapping enter" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="addTag()" type="button">Add</button>
+            </div>
+          </div>
+          <div class="container row">
+            <div *ngFor="let tag of tags" class="tag"><span>{{tag.title}}</span>
+              <i class="fa fa-close" (click)="removeTag(tag.title)"></i></div>
+          </div>
+        </div>
+        <!--</form>-->
+        </div>
+          <a class="btn btn-success" (click)="addDish()"><i style="color: #ffffff" class="fa fa-check fa-2x"></i></a>
+
+        </div>
+  </div>
+</div>

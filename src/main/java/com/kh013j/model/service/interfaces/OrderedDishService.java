@@ -1,7 +1,6 @@
 package com.kh013j.model.service.interfaces;
 
 import com.kh013j.model.domain.Dish;
-import com.kh013j.model.domain.Order;
 import com.kh013j.model.domain.OrderedDish;
 import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.DishNotFound;
@@ -25,7 +24,7 @@ public interface OrderedDishService {
 
     void setDone(long id);
 
-    List<OrderedDish> findAllForCooker();
+    List<OrderedDish> findAllForCook();
 
     @Transactional
     void setDelivered(long id);
@@ -33,4 +32,8 @@ public interface OrderedDishService {
     List<OrderedDish> createOrderedDishesFromMap(Map<Dish, Integer> orderMap);
 
     OrderedDish createOrderedDishFromDish(Dish dish, int quantity);
+
+    List<Object[]> getTheMostPooular();
+
+    long getOrderIdByOrderedDishId(long id);
 }

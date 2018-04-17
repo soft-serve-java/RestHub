@@ -31,7 +31,7 @@ public class StatusServiseImpl implements StatusService {
     }
 
     @Override
-    public List<Status> cookersStatuses() {
+    public List<Status> cookStatuses() {
         List<Status> statuses = new ArrayList<>();
         statuses.add(statusRepositiry.findFirstByName(Status.COOKING));
         statuses.add(statusRepositiry.findFirstByName(Status.PREPARING));
@@ -43,5 +43,10 @@ public class StatusServiseImpl implements StatusService {
         List<Status> statuses = new ArrayList<>();
         statuses.add(statusRepositiry.findFirstByName(Status.DELIVERY));
         return statuses;
+    }
+
+    @Override
+    public List<Status> findAll() {
+        return statusRepositiry.findAll();
     }
 }

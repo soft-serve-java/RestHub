@@ -20,14 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 
 @Controller
 public class AdminDishController {
-
-
     @Autowired
     private DishService dishService;
 
@@ -89,7 +86,10 @@ public class AdminDishController {
                               @RequestParam(value = "pic", required = false) List<MultipartFile> files,
                               Model model) throws DishNotFound {
         Dish oldDish = dishService.findById(dish.getId());
-        int totalSize = oldDish.getImages().size() + files.size();
+        int totalSize = files.size();
+        if (oldDish != null && oldDish.getImages() != null) {
+            totalSize += oldDish.getImages().size();
+        }
         if(totalSize > 5) {
             dishResult.rejectValue("images", "maxSizeImg", "The maximum number of images is 5!");
         }

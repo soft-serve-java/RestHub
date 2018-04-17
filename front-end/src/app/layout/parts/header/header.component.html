@@ -1,0 +1,44 @@
+<form action="/logout" method="post" id="logoutForm">
+  <input type="hidden" name=""
+         value=""/>
+</form>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" [routerLink]="['/welcome']"><img src="/assets/images/logo.png"></a>
+  <div class="navbar-collapse collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li  *ngFor="let category of categories" class="nav-item">
+        <a class="nav-link" [routerLink]="['/menu', category.name]">{{category.name}}</a>
+      </li>
+        <a [routerLink]="['/order']">
+          <button class="btn btn-info nav-button" style="margin-right:10px;">
+            <span class="left-span">Order  <i class="fa fa-coffee" aria-hidden="true"></i></span>
+          </button>
+        </a>
+      <p *ngIf="tableNumber" class="navbar-text" style="color: snow">Your table is {{tableNumber}}</p>
+    </ul>
+  </div>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2"  name="search" [(ngModel)]="search" type="text" placeholder="Search dish"/>
+    <button class="btn btn-default btn-lg nav-button btn-nav-search" [routerLink]="['/menu/search', search]">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
+  <div *ngIf="isAuthenticated();else loginblock">
+    <a class="nav-button a-nav nav-link" [routerLink]="['/login']" (click)="logout()">Logout</a>
+  </div>
+  <ng-template #loginblock>
+    <a class="nav-button a-nav nav-link" [routerLink]="['/login']" >Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+  </ng-template>
+</nav>
+  <div  *ngIf="showDialog;else waiterAvatar">
+    <div class="call_back_accept" (click)="doPOSTonCallWaiter()"><img src="/assets/images/cat.jpg"/></div>
+  </div>
+<ng-template #waiterAvatar>
+  <div class="call_back" (click)="doPOSTonCallWaiter()"><a><i class="fa fa-bell fa-3x" aria-hidden="true"></i></a></div>
+</ng-template>

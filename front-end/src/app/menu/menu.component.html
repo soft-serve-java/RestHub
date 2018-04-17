@@ -1,0 +1,93 @@
+<div class="container">
+
+  <div class="col1" style="text-align: right; padding-top: 10px;">
+    <div class="btn-group">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+        Sort by
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" (click)="sortByPrice()">Price</a>
+        <a class="dropdown-item" (click)="sortByCalories()">Calories</a>
+        <a class="dropdown-item" (click)="sortByPreparingTime()">Preparing time</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row1">
+    <div class="col-sm-3" *ngFor="let dish of dishes">
+      <div class="card">
+
+        <a [routerLink]="['/dish', dish.id]">
+          <div id="dishCarousel${{dish.id}}" class="carousel slide card-img-top" data-interval="false" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="{{dish.images[0].url}}" alt="{{dish.name}}">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#dishCarousel${item.id}" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#dishCarousel${item.id}" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </a>
+        <div class="card-header" *ngIf='checkIfDishInOrder(dish)'>
+          In order {{getDishQuantityInOrder(dish).value}}
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{dish.name}}</h4>
+          <p class="card-text">{{dish.description}}</p>
+        </div>
+
+        <div class="card-footer">
+          <h5 class="card-title inline">{{dish.price}}$</h5>
+
+
+          <div *ngIf="!compareBreakfast(dish)">
+            <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>
+          </div>
+
+          <div *ngIf="compareBreakfast(dish)"> You can order this dish until 11:00AM</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menuPagination">
+    <nav aria-label="RestHub menu pagination">
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="{'disabled': 1 == currPage}">
+          <a class="page-link"  [routerLink]="['/menu', category, currPage-1]" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let number of numbers" [ngClass]="{'active': number == currPage}" >
+          <a class="page-link"  [routerLink]="['/menu', category, number]">{{number}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{'disabled': maxPage == currPage}">
+          <a class="page-link" [routerLink]="['/menu', category, currPage+1]"  aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<style>
+  .row1 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .row1 > div[class*='col-'] {
+    display: flex;
+  }
+
+</style>
+

@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-7">
+      <div class="panel panel-default">
+        <div class="panel-heading"> <strong class="">Log in</strong>
+        </div>
+        <div class="panel-body">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+              <input type="email" [(ngModel)]="email"
+                     class="form-control col-sm-8 col-centered" id="inputEmail3" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+              <input type="password" class="form-control col-sm-8 col-centered"
+                     id="inputPassword3" placeholder="Password" [(ngModel)]="password" required="">
+            </div>
+            <div class="form-group">
+              <div class="form-check col-sm-8 col-centered">
+                <input type="checkbox" id="rememberMe" class="form-check-input">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+              </div>
+            </div>
+            <div class="form-group last">
+              <div class="col-sm-8 col-centered">
+                <button (click)="login()" class="btn btn-success btn-sm">Sign in</button>
+                <button type="reset" class="btn btn-default btn-sm">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">Not Registered? <a href="/registration" class="">Register here</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8" >
+      <div class="panel panel-default" style="padding-bottom: unset">
+        <h2>Dish of the week with the best price!</h2>
+        <img src="/assets/images/picLogin.jpg" alt="Carry" class="fluid" width="100%">
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="fb-root"></div>
+
+<style>
+  .error {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
+
+  .msg {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+  }
+  body {
+    background: url('assets/images/sezar.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .panel-default {
+    opacity: 0.9;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background: white;
+    max-height: 500px;
+  }
+  .form-group.last {
+    margin-bottom:0px;
+  }
+  .col-centered{
+    float: none;
+    margin: 0 auto;
+  }
+</style>

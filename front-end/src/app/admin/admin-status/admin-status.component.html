@@ -1,0 +1,57 @@
+<div class="container">
+  <div *ngIf="barChartData">
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+        <div style="display: block;">
+          <canvas baseChart
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      <table class="table table-responsive table-condensed">
+        <tr>
+          <th *ngFor="let label of lineChartLabels">{{label}}</th>
+        </tr>
+        <tr *ngFor="let d of lineChartData">
+          <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+        </tr>
+      </table>
+      <button (click)="randomize()">CLICK</button>
+  </div>
+ <!-- <table class="table table-hover">
+    <thead>
+    <tr style="text-align: center;">
+      <th>#</th>
+      <th>Name</th>
+      <th colspan="2" > <a href="/admin/status/new"><button type="submit" class="btn btn-primary fa fa-plus"></button> </a>
+      </th>
+    </tr>
+    </thead>
+
+    <tbody *ngFor="let status of statuses">
+      <tr>
+        <td>{{status.id}}</td>
+        <td>{{status.name}}</td>
+        <td>
+          <a [routerLink]="['/admin/status/edit/', status.id]" class="btn btn-warning"><span class="fa fa-pen"> <i class="fa fa-pencil"></i></span></a>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger fa fa-trash-o" data-toggle="modal" data-target="#exampleModal"
+                  data-whatever="${status.name}" data-href="/admin/status/delete/${status.id}">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>-->
+</div>

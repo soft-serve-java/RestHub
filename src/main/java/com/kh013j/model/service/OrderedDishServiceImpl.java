@@ -7,10 +7,11 @@ import com.kh013j.model.domain.Status;
 import com.kh013j.model.exception.CategoryNotFound;
 import com.kh013j.model.exception.DishNotFound;
 import com.kh013j.model.repository.OrderedDishRepository;
-import com.kh013j.model.service.interfaces.DishService;
+import com.kh013j.model.service.interfaces.OrderService;
 import com.kh013j.model.service.interfaces.OrderedDishService;
 import com.kh013j.model.service.interfaces.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -21,10 +22,15 @@ import java.util.Map;
 public class OrderedDishServiceImpl implements OrderedDishService {
     @Resource
     private OrderedDishRepository orderedDishRepository;
+
     @Autowired
     private StatusService statusService;
+
     @Autowired
-    private DishService dishService;
+    private SimpMessagingTemplate template;
+
+    @Autowired
+    OrderService orderService;
 
     @Override
     @Transactional
@@ -37,13 +43,9 @@ public class OrderedDishServiceImpl implements OrderedDishService {
     public OrderedDish delete(long id) throws DishNotFound {
         OrderedDish deletedOrderedDish = orderedDishRepository.findOne(id);
 
-        if (orderedDishRepository == null)
-            throw new DishNotFound();
-
         orderedDishRepository.delete(deletedOrderedDish);
         return deletedOrderedDish;
     }
-
 
     @Override
     @Transactional
@@ -56,10 +58,9 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         return orderedDishRepository.findAllByStatusIn(statuses);
     }
 
-    public List<OrderedDish> findAllForCooker() {
-        return orderedDishRepository.findAllByStatusIn(statusService.cookersStatuses());
+    public List<OrderedDish> findAllForCook() {
+        return orderedDishRepository.findAllByStatusIn(statusService.cookStatuses());
     }
-
 
     @Override
     @Transactional
@@ -67,6 +68,10 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         OrderedDish dish = orderedDishRepository.findOne(id);
         dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
+        long orderId = orderedDishRepository.getOrderId(id);
+        Order order = orderService.findById(orderId);
+        template.convertAndSendToUser(Integer.toString(order.getTablenumber()),
+                "/oreder-updates", order);
     }
 
     @Override
@@ -81,7 +86,12 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         OrderedDish dish = orderedDishRepository.findOne(id);
         dish.setStatus(statusService.nextStatus(dish.getStatus()));
         orderedDishRepository.saveAndFlush(dish);
+        long orderId = orderedDishRepository.getOrderId(id);
+        Order order = orderService.findById(orderId);
+        template.convertAndSendToUser(Integer.toString(order.getTablenumber()),
+                "/oreder-updates", order);
     }
+
     @Override
     @Transactional
     public void setDelivered(long id) {
@@ -104,5 +114,13 @@ public class OrderedDishServiceImpl implements OrderedDishService {
         orderedDish.setQuantity(quantity);
         orderedDish.setStatus(statusService.create());
         return orderedDish;
+    }
+
+    public List<Object[]> getTheMostPooular(){
+        return orderedDishRepository.getTheMostPopular();
+    }
+
+    public long getOrderIdByOrderedDishId(long id){
+        return orderedDishRepository.getOrderId(id);
     }
 }

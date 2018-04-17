@@ -20,6 +20,8 @@ public interface DishService {
     //Dish update(Dish dish) throws DishNotFound;
     Dish findById(long id);
 
+    Page<Dish> findAllAvailableDishByTagName(String tagName, Integer pageNumber);
+
     Page<Dish> findAllAvailableDishByCategory(Category category, Integer pageNumber);
 
     Page<Dish>  findAllAvailableDishByCategoryOrderByPrice(Category category, Integer pageNumber, String sortingDirection);

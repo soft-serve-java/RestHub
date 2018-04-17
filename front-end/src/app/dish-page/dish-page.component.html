@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container" style="text-align: left">
+  <div class="row">
+
+    <div class="col">
+      <div id="carouselExampleIndicators" class="carousel slide card-img-top carouselRH" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="{{dish.images[0].url}}" alt="{{dish.name}}">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4 class="reviews text-uppercase">{{dish.name}}</h4>
+      <p class="text-muted">{{dish.weight}} grams</p>
+      <p class="text-muted">{{dish.calories}} calories</p>
+      <p class="text-muted">Preparing time: {{dish.preparingtime}} min</p>
+      <p class="card-text">{{dish.description}}</p>
+      <p class="card-text" *ngIf="dish.tags.length > 0">
+        Tags: <a *ngFor="let tag of dish.tags" [routerLink]="['/menu/search', tag.title]" class="text-muted">{{tag.title}} </a>
+      </p>
+      <div class="">
+        <h5 class="card-title">{{dish.price}}$</h5>
+      </div>
+
+        <div *ngIf="!compareBreakfast(dish)">
+          <button (click)="addToOrder(dish)" class="btn btn-primary inline">Add to cart</button>
+        </div>
+
+        <div *ngIf="compareBreakfast(dish)"> You can order this dish until 11:00AM</div>
+
+      <span *ngIf="quantityInOrder" class="text-muted">Already in order ({{quantityInOrder}})</span>
+
+    </div>
+
+    <div *ngIf="populars.length">
+    <h3 class="reviews">Customers who ordered this dish also ordered:</h3>
+
+    <div class="container-fluid tab-pane" style="padding-bottom: 50px">
+      <div class="d-flex flex-row flex-nowrap">
+          <div class="card card-block" *ngFor="let popItem of populars">
+            <a href="/dish/{{popItem.id}}"> <img class="card-img-top" src="{{popItem.images[0].url}}"
+                                                alt="{{popItem.name}}"></a>
+            <h5>{{popItem.name}}</h5>
+            <p class="text-muted">{{popItem.price}}</p>
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+

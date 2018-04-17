@@ -32,7 +32,7 @@ public class AdminOrderController {
         return new ModelAndView("OrderAddCreate", "order", orderService.findById(id));
     }
 
-    @PostMapping(value = "/admin/order/delete/{id}")
+    @DeleteMapping(value = "/admin/order/{id}")
     public String deleteOrder(@PathVariable(value = "id") long id) throws DishNotFound {
         orderService.delete(id);
         return "redirect:/admin/order";

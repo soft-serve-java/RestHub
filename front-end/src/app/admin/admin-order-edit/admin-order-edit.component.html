@@ -1,0 +1,17 @@
+<div class="container py-2" style="width: 50rem">
+   <table class="table table-hover">
+      <tbody>
+      <h4 >Add new Order</h4>
+      <label>Time: </label>
+      <input path="time" type="time" class="form-control" placeholder="time"/>
+
+      <label>Tablenumber: </label>
+      <input path="tablenumber" type="tablenumber" class="form-control" placeholder="tablenumber"/>
+
+      <label>Close: </label>
+      <input path="close" type="close" class="form-control" placeholder="close"/>
+
+      <button (click)="save(order)" class="btn btn-primary">Save</button>
+
+    </table>
+</div>

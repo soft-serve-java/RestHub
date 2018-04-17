@@ -1,0 +1,54 @@
+<div class="container" >
+  <div class="row1">
+      <div class="card-deck">
+          <div *ngFor="let i of quantityOfTables" class="col-md-4 col-sm-6 col-xs-6">
+            <div class="card">
+              <img *ngIf="isOnDelivery(i)" class="imageforDelivery" src="/images/delivery.jpg"/>
+              <div [ngClass]="{hasNullWaiter:hasNullWaiter(i),
+              isOfCurrentWaiter:isOfCurrentWaiter(i),isOfOtherWaiter:isOfOtherWaiter(i)}">
+                <div *ngIf="isCalling(i)" class="bell">
+                  <i  class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title">{{i}}</h1>
+                  <a  [routerLink]="['/waiter/order/', i]" class="btn btn-default btn-sm">Order details</a>
+                  <div class="row">
+                    <button (click)="doPOSTonGettingTable(i)" class="btn btn-success btn-sm">Get this table</button>
+                    <button (click)="doPOSTonCloseCalling(i)" class="btn btn-default btn-sm">Accept calling</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<style>
+  .isOfCurrentWaiter{
+    background-color: lemonchiffon;
+  }
+  .hasNullWaiter{
+    background-color: palegreen;
+  }
+  .isOnDelivery{
+
+  }
+  .isOfOtherWaiter{
+    pointer-events: none;
+    opacity: 0.4;
+    background: gainsboro;
+  }
+  .imageforDelivery{
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    margin-right: 100px;
+
+  }
+  .bell{
+    position: absolute;
+    margin-top: 0%;
+    margin-left: 80%;
+
+  }
+</style>

@@ -61,6 +61,7 @@
         <validCheckSum>7:7f0d724c425559740dd4fe4766a2fac4</validCheckSum>
         <sqlFile path="database/postgres/sql/populateDB.sql"/>
     </changeSet>
+
    <!-- <include file="database/postgres/sql/populateDB.sql"/> -->
 
     <changeSet author="orasso" id="addWaiter" runAlways="true">
@@ -122,5 +123,26 @@
                    tableName="user">
             <column name="avatar" type="VARCHAR"/>
         </addColumn>
+    </changeSet>
+    <changeSet id="11" author="artur"  runAlways="true">
+        <sqlFile path="database/postgres/sql/changeImage.sql"/>
+    </changeSet>
+    <changeSet id="12" author="artur"  runAlways="true">
+        <sqlFile path="database/postgres/sql/tagEntity.sql"/>
+    </changeSet>
+
+    <changeSet id="13" author="alex"  runAlways="true">
+        <sqlFile path="database/postgres/sql/createBreakfast.sql"/>
+    </changeSet>
+
+    <changeSet author="emaxi" id="addWish" runAlways="true">
+        <addColumn schemaName="rh"
+                   tableName="order">
+            <column name="wish" type="VARCHAR(300)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="13" author="alex"  runAlways="true">
+        <sqlFile path="database/postgres/sql/createBreakfast.sql"/>
     </changeSet>
 </databaseChangeLog>

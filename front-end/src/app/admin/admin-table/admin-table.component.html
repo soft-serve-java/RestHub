@@ -1,0 +1,11 @@
+<div class="container">
+  <h3>Add category</h3>
+      <label for="table">Set table for this device!</label>
+      <select id="table" [(ngModel)]="chosenTable">
+        <option *ngFor="let num of tables" [value]="num">{{num}}</option>
+      </select>
+      <p></p>
+      <a style="color: #ffffff" class="btn btn-success" (click)="setTable()">Save <i class="fa fa-check fa-1x"></i></a>
+  <h3 style="color: green">{{message}}</h3>
+
+</div>

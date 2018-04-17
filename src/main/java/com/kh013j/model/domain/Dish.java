@@ -47,6 +47,15 @@ public class Dish {
     @JoinColumn(name="dish_id")
     private List<Image> images = new LinkedList<>();
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="tagdish",
+            schema = "rh",
+            joinColumns=@JoinColumn(name="dish_id", referencedColumnName="ID"),
+            inverseJoinColumns=@JoinColumn(name="tag_id", referencedColumnName="ID")
+    )
+    private List<Tag> tags;
+
     private boolean availability;
 
     public Dish(Dish dish) {
@@ -60,5 +69,6 @@ public class Dish {
         this.category = dish.getCategory();
         this.images = dish.getImages();
         this.availability = dish.isAvailability();
+        this.tags = dish.getTags();
     }
 }
